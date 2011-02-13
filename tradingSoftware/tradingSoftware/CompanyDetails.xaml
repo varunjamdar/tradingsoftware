@@ -1,0 +1,22 @@
+﻿<Window x:Class="tradingSoftware.CompanyDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="CompanyDetails" Height="400" Width="700">
+    <Grid>
+        <TabControl Name="tabControl1" >
+            <TabItem Header="Basic Information">
+                <Grid>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="35,44,0,0" Name="label1" VerticalAlignment="Top" Width="46">Name</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="35,82,0,0" Name="label2" VerticalAlignment="Top" Width="120">Print Name</Label>
+                    <TextBox Height="23" Margin="155,46,284,0" Name="textBox1" VerticalAlignment="Top" />
+                    <TextBox Margin="155,82,284,0" Name="textBox2" Height="23" VerticalAlignment="Top" />
+                    <Label Margin="35,133,0,0" Name="label3" Height="28.04" VerticalAlignment="Top" HorizontalAlignment="Left" Width="176">Financial Year Beginning From</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="35,0,0,137" Name="label4" VerticalAlignment="Bottom" Width="176">Books Commencing From</Label>
+                    
+                </Grid>
+            </TabItem>
+            <TabItem Header="Company Registration No."></TabItem>
+            <TabItem Header="Company Image"></TabItem>
+        </TabControl>
+    </Grid>
+</Window>
