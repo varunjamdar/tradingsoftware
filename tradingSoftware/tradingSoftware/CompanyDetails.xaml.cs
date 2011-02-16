@@ -22,5 +22,10 @@ namespace tradingSoftware
         {
             InitializeComponent();
         }
+
+        private void textBox6_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
