@@ -16,3 +16,21 @@ E:\6th SEM DATA\Repository\tradingSoftware\obj\Debug\tradingSoftware.exe
 E:\6th SEM DATA\Repository\tradingSoftware\obj\Debug\tradingSoftware.pdb
 E:\6th SEM DATA\Repository\tradingSoftware\obj\Debug\Main.baml
 E:\6th SEM DATA\Repository\tradingSoftware\obj\Debug\Main.g.cs
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.exe
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.pdb
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\bin\Debug\tradingSoftware.exe
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\bin\Debug\tradingSoftware.pdb
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\bin\Debug\WPFToolkit.dll
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\bin\Debug\WPFToolkit.pdb
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\ResolveAssemblyReference.cache
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\CompanyDetails.baml
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\Window1.baml
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\Main.baml
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\CompanyDetails.g.cs
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\Window1.g.cs
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\Main.g.cs
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\App.g.cs
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware_MarkupCompile.cache
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.g.resources
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.Properties.Resources.resources
+D:\Study\6 Sem\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.csproj.GenerateResource.Cache
