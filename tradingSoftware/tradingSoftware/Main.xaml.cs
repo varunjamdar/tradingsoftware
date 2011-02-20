@@ -22,5 +22,11 @@ namespace tradingSoftware
         {
             InitializeComponent();
         }
+
+        private void CompanyConfig_Click(object sender, RoutedEventArgs e)
+        {
+            CompanyDetails cd = new CompanyDetails();
+            cd.ShowDialog();
+        }
     }
 }
