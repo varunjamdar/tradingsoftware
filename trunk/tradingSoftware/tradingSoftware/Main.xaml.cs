@@ -28,5 +28,12 @@ namespace tradingSoftware
             CompanyDetails cd = new CompanyDetails();
             cd.ShowDialog();
         }
+
+        private void Unit_Click(object sender, RoutedEventArgs e)
+        {
+            //open unit form
+            Unit unitForm = new Unit();
+            unitForm.ShowDialog();
+        }
     }
 }
