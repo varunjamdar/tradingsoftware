@@ -1,0 +1,8 @@
+﻿<Page x:Class="tradingSoftware.cust_supplier_details"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="cust_supplier_details" Width="766" Height="332">
+    <Grid>
+        <Menu Height="22" Name="menu1" VerticalAlignment="Top" Margin="0,8,0,0" />
+    </Grid>
+</Page>
