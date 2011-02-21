@@ -24,7 +24,7 @@
             </MenuItem>
             <MenuItem Name="SupplierCustomerConfig" Header="Supplier/Customer Configuration">
                 <MenuItem Name="SupplierDetails" Header="Supplier Details"/>
-                <MenuItem Name="CustomerDetails" Header="Customer Details"/> 
+                <MenuItem Name="CustomerDetails" Header="Customer Details" Click="CustomerDetails_Click"/> 
             </MenuItem>
             <MenuItem Name="Transacton" Header="Transaction">
                 
