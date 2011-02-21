@@ -13,7 +13,7 @@
             </MenuItem>
             <MenuItem Name="BasicConfiguration" Header="Basic Configuration">
                 <MenuItem Name="Location" Header="Location Setup"/>
-                <MenuItem Name="Unit" Header="Unit Setup"/>
+                <MenuItem Name="Unit" Header="Unit Setup" Click="Unit_Click"/>
                 <MenuItem Name="Database" Header="Database">
                     <MenuItem.BitmapEffect>
                         <OuterGlowBitmapEffect GlowColor="LightGray" />
@@ -30,5 +30,6 @@
                 
             </MenuItem>            
         </Menu>
+        <Grid Name="MainGrid" Height="239" Margin="0,25,329,0" VerticalAlignment="Top" />
     </Grid>
 </Window>
