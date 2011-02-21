@@ -35,5 +35,11 @@ namespace tradingSoftware
             Unit unitForm = new Unit();
             unitForm.ShowDialog();
         }
+
+        private void CustomerDetails_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerDetails custdet = new CustomerDetails();
+            custdet.ShowDialog();
+        }
     }
 }
