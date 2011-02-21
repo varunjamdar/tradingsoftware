@@ -1,0 +1,32 @@
+﻿<Window x:Class="tradingSoftware.Unit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Unit" Height="308" Width="559">
+    <Grid Name="UnitGrid1">
+        <TabControl Name="tabControlUnit" SelectedIndex="1">
+            <TabItem Name="UnitTab" Header="Unit">
+                <Grid Name="UnitGrid">
+                    <Label Height="28" HorizontalAlignment="Left" Margin="181,44,0,0" Name="label9" VerticalAlignment="Top" Width="43">Name</Label>
+                    <Label HorizontalAlignment="Left" Margin="158,104,0,106" Name="label2" Width="81">Print Name</Label>
+                    <TextBox Height="23" Margin="241,46,161,0" Name="txtUnitName" VerticalAlignment="Top" />
+                    <TextBox Margin="241,104,161,111" Name="txtPrintName" />
+                    <Button Height="23" HorizontalAlignment="Left" Margin="20,0,0,20" Name="btnNew" VerticalAlignment="Bottom" Width="75">New</Button>
+                    <Button Height="23" HorizontalAlignment="Left" Margin="136,0,0,20" Name="btnSave" VerticalAlignment="Bottom" Width="75">Save</Button>
+                    <Button Height="23" Margin="241,0,226,20" Name="btnDelete" VerticalAlignment="Bottom">Delete</Button>
+                    <Button Height="23" HorizontalAlignment="Right" Margin="0,0,128,20" Name="btnFind" VerticalAlignment="Bottom" Width="75">Find</Button>
+                    <Button Height="23" HorizontalAlignment="Right" Margin="0,0,33,20" Name="btnClose" VerticalAlignment="Bottom" Width="75">Close</Button>
+                </Grid>
+            </TabItem>
+            <TabItem Name="UnitConversionTab" Header="Unit Conversion">
+                <Grid Name="UnitConversion">
+                    <Label Height="28" HorizontalAlignment="Left" Margin="41,26,0,0" Name="label1" VerticalAlignment="Top" Width="57">Unit</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="41,69,0,0" Name="label3" VerticalAlignment="Top" Width="57">Sub Unit</Label>
+                    <Label HorizontalAlignment="Left" Margin="41,112,0,98" Name="label4" Width="69">Conversion</Label>
+                    <ComboBox Height="23" Margin="150,26,258,0" Name="comboBox1" VerticalAlignment="Top" />
+                    <ComboBox Height="23" Margin="150,69,258,0" Name="comboBox2" VerticalAlignment="Top" />
+                    <TextBox Margin="150,117.04,256,98" Name="textBox1" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
