@@ -12,7 +12,7 @@
                 <MenuItem Name="EditCompany" Header="Edit Company"/>
             </MenuItem>
             <MenuItem Name="BasicConfiguration" Header="Basic Configuration">
-                <MenuItem Name="Location" Header="Location Setup"/>
+                <MenuItem Name="Location" Header="Location Setup" Click="Location_Click"/>
                 <MenuItem Name="Unit" Header="Unit Setup" Click="Unit_Click"/>
                 <MenuItem Name="Database" Header="Database">
                     <MenuItem.BitmapEffect>
