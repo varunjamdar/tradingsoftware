@@ -41,5 +41,11 @@ namespace tradingSoftware
             CustomerDetails custdet = new CustomerDetails();
             custdet.ShowDialog();
         }
+
+        private void Location_Click(object sender, RoutedEventArgs e)
+        {
+            Location locationForm = new Location();
+            locationForm.ShowDialog();
+        }
     }
 }
