@@ -3,10 +3,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Location" Height="302" Width="482">
     <Grid>
-        <Label Height="28" HorizontalAlignment="Left" Margin="85,27,0,0" Name="label1" VerticalAlignment="Top" Width="120">State</Label>
-        <Label HorizontalAlignment="Left" Margin="85,71,0,0" Name="label2" Width="54" Height="28" VerticalAlignment="Top">City</Label>
+        <Label Height="28" HorizontalAlignment="Left" Margin="85,30,0,0" Name="label1" VerticalAlignment="Top" Width="54">State</Label>
+        <Label HorizontalAlignment="Left" Margin="85,94,0,0" Name="label2" Width="54" Height="28" VerticalAlignment="Top">City</Label>
         <TextBox Height="23" Margin="169,32,181,0" Name="txtState" VerticalAlignment="Top" />
-        <TextBox Height="23" Margin="169,76,181,0" Name="txtCity" VerticalAlignment="Top" />
-        <Button Margin="143,125,0,112" Name="btnAdd" Click="btnAdd_Click" HorizontalAlignment="Left" Width="102">Add</Button>
+        <TextBox Height="23" Margin="169,96,181,0" Name="txtCity" VerticalAlignment="Top" />
+        <Button Margin="147,0,211,65" Name="btnAdd" Click="btnAdd_Click" Height="27" VerticalAlignment="Bottom">Add</Button>
     </Grid>
 </Window>
