@@ -3,8 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="CustSuppDetails" Height="600" Width="900">
     <Grid Name="CustomerDetailsMain">
-        <TabControl Name="tabControl1" SelectedIndex="0">
-            <TabItem Header="Personal Information">
+        <TabControl Name="tabControl1" SelectedIndex="0" >
+            <TabItem Header="Personal Information" >
                 <Grid ShowGridLines="False" Margin="1,0,9,32" Height="517">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*" />
@@ -39,7 +39,7 @@
                     <Label Height="28" HorizontalAlignment="Right" Margin="0,123,178,0" Name="label17" VerticalAlignment="Top" Width="39" Grid.Column="4">Pin</Label>
                     <TextBox Height="23" HorizontalAlignment="Right" Margin="0,125,55,0" Name="textBox14" VerticalAlignment="Top" Width="131" Grid.Column="4" />
                     <GroupBox Header="Address Details" Margin="250,10,15,228" Name="groupBox3" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" Grid.Column="4" />
-                    <GroupBox Header="Contacts" Height="180" Margin="12,294.04,15,0" Name="groupBox4" VerticalAlignment="Top" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" Opacity="1" Grid.Column="3" Grid.ColumnSpan="2"></GroupBox>
+                    <GroupBox Header="Contacts" Height="159" Margin="12,0,15,42.96" Name="groupBox4" VerticalAlignment="Bottom" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" Opacity="1" Grid.Column="3" Grid.ColumnSpan="2"></GroupBox>
                     <ComboBox Height="23" HorizontalAlignment="Left" Margin="137,39,0,0" Name="comboBox3" VerticalAlignment="Top" Width="120" Grid.Column="3" Grid.ColumnSpan="2" />
                     <Label Height="28" Margin="15,141,15,0" Name="label3" VerticalAlignment="Top" Grid.Column="3">Contact Person</Label>
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="137,141,0,0" Name="textBox1" VerticalAlignment="Top" Width="229" Grid.Column="3" Grid.ColumnSpan="2" />
