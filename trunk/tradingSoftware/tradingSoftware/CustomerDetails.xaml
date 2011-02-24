@@ -20,7 +20,7 @@
                     <TextBox Height="23" Margin="326,39,55,0" Name="textBox3" VerticalAlignment="Top" Grid.Column="4" />
                     <TextBox Height="23" Margin="326,67,55,0" Name="textBox4" VerticalAlignment="Top" Grid.Column="4" />
                     <TextBox Height="23" Margin="326,95,55,0" Name="textBox5" VerticalAlignment="Top" Grid.Column="4" />
-                    <TextBox Height="23" Margin="326,123,222,0" Name="textBox6" VerticalAlignment="Top"  Grid.Column="4" />
+                    <TextBox Height="23" Margin="326,123,222,0" Name="textBox6" VerticalAlignment="Top" Grid.Column="4" />
                     <Label Height="28" Margin="261,181,0,0" Name="label6" VerticalAlignment="Top" Grid.Column="4" HorizontalAlignment="Left" Width="57">Country</Label>
                     <Label Height="28" Margin="261,227,0,0" Name="label7" VerticalAlignment="Top" Grid.Column="4" HorizontalAlignment="Left" Width="57">State</Label>
                     <TextBox Height="23" Margin="326,183,186,0" Name="textBox7" VerticalAlignment="Top" Grid.Column="4" />
@@ -31,8 +31,8 @@
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="117,0,0,137" Name="textBox9" VerticalAlignment="Bottom" Width="195" Grid.Column="3" Grid.ColumnSpan="2" />
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="117,0,0,95" Name="textBox10" VerticalAlignment="Bottom" Width="195" Grid.Column="3" Grid.ColumnSpan="2" />
                     <TextBox Height="23" Margin="117,0,0,55" Name="textBox11" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="185" Grid.Column="3" Grid.ColumnSpan="2" />
-                    <Label Height="28" Margin="240,0,0,139" Name="label13" VerticalAlignment="Bottom" Grid.Column="4" HorizontalAlignment="Left" Width="71">Phone No 1</Label>
-                    <Label Height="28" Margin="240,0,0,97" Name="label14" VerticalAlignment="Bottom" Grid.Column="4" HorizontalAlignment="Left" Width="71">Phone No 2</Label>
+                    <Label Height="28" Margin="240,0,0,139" Name="label13" VerticalAlignment="Bottom" Grid.Column="4" HorizontalAlignment="Left" Width="78">Phone No 1</Label>
+                    <Label Height="28" Margin="240,0,0,97" Name="label14" VerticalAlignment="Bottom" Grid.Column="4" HorizontalAlignment="Left" Width="78">Phone No 2</Label>
                     <TextBox Height="23" Margin="347,0,164,139" Name="textBox12" VerticalAlignment="Bottom" Grid.Column="4" />
                     <TextBox Height="23" Margin="347,0,164,97" Name="textBox13" VerticalAlignment="Bottom" Grid.Column="4" />
                     <Label Height="28" Margin="261,121,0,0" Name="label16" VerticalAlignment="Top" Grid.Column="4" HorizontalAlignment="Left" Width="43">City</Label>
@@ -48,31 +48,31 @@
             <TabItem Header="Registration No.">
                 <Grid Name="gridCoregDet">
                     <Label Height="28" Margin="35,111,0,0" Name="label8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="102">Enable VAT/GST</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="150,111,0,0" Name="comboBox1" VerticalAlignment="Top" Width="80" >
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="150,111,0,0" Name="comboBox1" VerticalAlignment="Top" Width="80">
                         <ComboBoxItem>Yes</ComboBoxItem>
                         <ComboBoxItem>No</ComboBoxItem>
                     </ComboBox>
                     <Label Height="28" HorizontalAlignment="Left" Margin="259,111,0,0" Name="label9" VerticalAlignment="Top" Width="56">Type</Label>
-                    <ComboBox Height="23" Margin="318,116,0,0" Name="comboBox2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74">
+                    <ComboBox Height="23" Margin="318,111,0,0" Name="comboBox2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74">
                         <ComboBoxItem>CST</ComboBoxItem>
                         <ComboBoxItem>GST</ComboBoxItem>
                     </ComboBox>
-                    <Label HorizontalAlignment="Left" Margin="35,258,0,244" Name="label15" Width="66">TIN No.</Label>
-                    <TextBox HorizontalAlignment="Left" Margin="150,263.04,0,244" Name="textBox15" Width="242" />
-                    <Label HorizontalAlignment="Left" Margin="35,204,0,0" Name="label18" Width="89" Height="28.04" VerticalAlignment="Top">VAT/GST Date</Label>
-                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="150,203,0,0" Name="datePicker3" VerticalAlignment="Top" Width="133" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
+                    <Label HorizontalAlignment="Left" Margin="35,217.04,0,0" Name="label15" Width="66" Height="28.04" VerticalAlignment="Top">TIN No.</Label>
+                    <TextBox HorizontalAlignment="Left" Margin="150,219.04,0,0" Name="textBox15" Width="242" Height="23" VerticalAlignment="Top" />
+                    <Label HorizontalAlignment="Right" Margin="0,217.04,336,0" Name="label18" Width="89" Height="28.04" VerticalAlignment="Top">VAT/GST Date</Label>
+                    <my:DatePicker Height="25" HorizontalAlignment="Right" Margin="0,218.04,185,0" Name="datePicker3" VerticalAlignment="Top" Width="133" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
                     <Label Height="28" HorizontalAlignment="Left" Margin="35,51,0,0" Name="label19" VerticalAlignment="Top" Width="66">CST No.</Label>
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="150,51,0,0" Name="textBox16" VerticalAlignment="Top" Width="242" />
                     <Label Height="28" HorizontalAlignment="Right" Margin="0,51,336,0" Name="label20" VerticalAlignment="Top" Width="89">TIN CST Date</Label>
                     <my:DatePicker Height="25" HorizontalAlignment="Right" Margin="0,51,185,0" Name="datePicker4" VerticalAlignment="Top" Width="133" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-                    <Label Height="28" HorizontalAlignment="Right" Margin="0,116,355,0" Name="label21" VerticalAlignment="Top" Width="70">PAN No.</Label>
-                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,121,92,0" Name="textBox17" VerticalAlignment="Top" Width="195" />
-                    <Label HorizontalAlignment="Right" Margin="0,261.04,332,241" Name="label22" Width="93">Service Tax No</Label>
-                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,92,241" Name="textBox18" VerticalAlignment="Bottom" Width="195" />
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,111,355,0" Name="label21" VerticalAlignment="Top" Width="70">PAN No.</Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,111,123,0" Name="textBox17" VerticalAlignment="Top" Width="195" />
+                    <Label HorizontalAlignment="Right" Margin="0,0,332,227" Name="label22" Width="93" Height="28" VerticalAlignment="Bottom">Service Tax No</Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,123,232" Name="textBox18" VerticalAlignment="Bottom" Width="195" />
                     <Label Height="28" HorizontalAlignment="Left" Margin="35,158,0,0" Name="label4" VerticalAlignment="Top" Width="120">GST No</Label>
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="150,158,0,0" Name="textBox19" VerticalAlignment="Top" Width="242" />
-                    <my:DatePicker Height="25" HorizontalAlignment="Right" Margin="0,188,203,0" Name="datePicker1" VerticalAlignment="Top" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-                    <Label Height="28" HorizontalAlignment="Right" Margin="0,188,303,0" Name="label23" VerticalAlignment="Top" Width="120">TIN GST date</Label>
+                    <my:DatePicker Height="25" HorizontalAlignment="Right" Margin="0,155,185,0" Name="datePicker1" VerticalAlignment="Top" Width="133" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,158,332,0" Name="label23" VerticalAlignment="Top" Width="93">TIN GST date</Label>
                     <Label Height="28" HorizontalAlignment="Left" Margin="35,0,0,148" Name="label24" VerticalAlignment="Bottom" Width="195">Payment Terms/ Credit Capacity</Label>
                     <ComboBox Height="23" HorizontalAlignment="Left" Margin="259,0,0,153" Name="comboBox4" VerticalAlignment="Bottom" Width="120" />
                     <Label Height="28" HorizontalAlignment="Right" Margin="0,0,303,148" Name="label25" VerticalAlignment="Bottom" Width="120">Taxes Enabled</Label>
@@ -83,7 +83,7 @@
                 <Grid Name="gridCoImg">
                     <Label Height="28" HorizontalAlignment="Left" Margin="35,27,0,0" Name="label26" VerticalAlignment="Top" Width="177">Credit Capacity (market value)</Label>
                     <ComboBox Height="23" HorizontalAlignment="Left" Margin="272,32,0,0" Name="comboBox6" VerticalAlignment="Top" Width="120" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="35,93,0,0" Name="label27" VerticalAlignment="Top" Width="120">Customer TYpe</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="35,93,0,0" Name="label27" VerticalAlignment="Top" Width="120">Customer Type</Label>
                     <ComboBox Height="23" HorizontalAlignment="Left" Margin="272,98,0,0" Name="comboBox7" VerticalAlignment="Top" Width="120" />
                 </Grid>
             </TabItem>
