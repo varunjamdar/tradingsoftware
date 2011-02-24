@@ -47,5 +47,11 @@ namespace tradingSoftware
             Location locationForm = new Location();
             locationForm.ShowDialog();
         }
+
+        private void Accounts_Click(object sender, RoutedEventArgs e)
+        {
+            AccountSetup accountsetupform = new AccountSetup();
+            accountsetupform.ShowDialog();
+        }
     }
 }

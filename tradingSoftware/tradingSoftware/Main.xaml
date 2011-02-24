@@ -7,11 +7,8 @@
             <Menu.BitmapEffect>
                 <DropShadowBitmapEffect Color="Indigo" />
             </Menu.BitmapEffect>
-            <MenuItem Name="Company" Header="Company">
-                <MenuItem Name="CompanyConfig" Header="Company Configuration" Click="CompanyConfig_Click"/>
-                <MenuItem Name="EditCompany" Header="Edit Company"/>
-            </MenuItem>
             <MenuItem Name="BasicConfiguration" Header="Basic Configuration">
+                <MenuItem Name="CompanyConfig" Header="Company Configuration" Click="CompanyConfig_Click"/>
                 <MenuItem Name="Location" Header="Location Setup" Click="Location_Click"/>
                 <MenuItem Name="Unit" Header="Unit Setup" Click="Unit_Click"/>
                 <MenuItem Name="Database" Header="Database">
@@ -26,10 +23,13 @@
                 <MenuItem Name="SupplierDetails" Header="Supplier Details"/>
                 <MenuItem Name="CustomerDetails" Header="Customer Details" Click="CustomerDetails_Click"/> 
             </MenuItem>
+            <MenuItem Name="Masters" Header="Masters">
+                <MenuItem Name="Accounts" Header="Accounts" Click="Accounts_Click"/>
+            </MenuItem>
             <MenuItem Name="Transacton" Header="Transaction">
                 
             </MenuItem>            
         </Menu>
-        <Grid Name="MainGrid" Height="239" Margin="0,25,329,0" VerticalAlignment="Top" />
+        <Grid Name="MainGrid" Height="239" Margin="0,25,0,0" VerticalAlignment="Top" />
     </Grid>
 </Window>
