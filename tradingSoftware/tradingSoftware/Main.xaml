@@ -28,7 +28,11 @@
             </MenuItem>
             <MenuItem Name="Transacton" Header="Transaction">
                 
-            </MenuItem>            
+            </MenuItem>
+            <MenuItem Name="Sales" Header="Sales">
+
+            </MenuItem>
+
         </Menu>
         <Grid Name="MainGrid" Height="239" Margin="0,25,0,0" VerticalAlignment="Top" />
     </Grid>
