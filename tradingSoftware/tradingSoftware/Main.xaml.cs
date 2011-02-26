@@ -53,5 +53,10 @@ namespace tradingSoftware
             AccountSetup accountsetupform = new AccountSetup();
             accountsetupform.ShowDialog();
         }
+
+        private void Journal_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
     }
 }
