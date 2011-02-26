@@ -2,7 +2,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="AccountSetup" Height="600" Width="900">
-    <Grid Opacity="1">
+    <Grid Name="AccountSetupForm">
+        <TabControl Name="AccounttabControl" Background="FloralWhite">
+            <TabItem Header="Account" Background="DarkKhaki" BorderBrush="DarkOliveGreen" BorderThickness="5">
+                <Grid Name="AccountSetupGrid">
         <GroupBox Header="Address Info" Margin="430,34,19,268" Name="groupBox2" BorderBrush="DarkOliveGreen" Foreground="BlueViolet" BorderThickness="2" />
         <Label Height="28" HorizontalAlignment="Left" Margin="63,104,0,0" Name="label1" VerticalAlignment="Top" Width="76">Name</Label>
         <Label Height="28" HorizontalAlignment="Left" Margin="63,155,0,0" Name="label2" VerticalAlignment="Top" Width="76">Print Name</Label>
@@ -30,5 +33,9 @@
         <GroupBox Header="Contact Info" Height="183" Margin="31,0,19,60" Name="groupBox3" VerticalAlignment="Bottom" BorderBrush="DarkOliveGreen" Foreground="BlueViolet" BorderThickness="2" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="183,205,0,0" Name="textBox12" VerticalAlignment="Top" Width="197" />
         <GroupBox Header="Basic" HorizontalAlignment="Left" Margin="21,66,0,0" Name="groupBox1" Width="374" Height="210" VerticalAlignment="Top" BorderBrush="DarkOliveGreen" Foreground="BlueViolet" BorderThickness="2" />
-    </Grid>
+       </Grid>
+                </TabItem>
+            </TabControl>
+    
+        </Grid>
 </Window>

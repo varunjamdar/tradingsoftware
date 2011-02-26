@@ -101,6 +101,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="JournalSetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Location.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -137,6 +141,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TradeDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="JournalSetup.xaml.cs">
+      <DependentUpon>JournalSetup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Location.xaml.cs">
       <DependentUpon>Location.xaml</DependentUpon>
     </Compile>
@@ -158,6 +165,11 @@
     </Compile>
     <Compile Include="Taxsetup.xaml.cs">
       <DependentUpon>Taxsetup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TradeDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Unit.xaml.cs">
       <DependentUpon>Unit.xaml</DependentUpon>
@@ -181,6 +193,17 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TradeDataSet.xsc">
+      <DependentUpon>TradeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TradeDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TradeDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TradeDataSet.xss">
+      <DependentUpon>TradeDataSet.xsd</DependentUpon>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
