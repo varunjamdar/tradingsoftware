@@ -21,11 +21,19 @@ namespace tradingSoftware
         public Location()
         {
             InitializeComponent();
+            txtState.IsEnabled =false;
+            txtCity.IsEnabled = false;
+
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void btnNew_Click(object sender, RoutedEventArgs e)
         {
-            
+            txtState.IsEnabled = true;
+            txtCity.IsEnabled = true;
+
         }
+
+        
+
     }
 }
