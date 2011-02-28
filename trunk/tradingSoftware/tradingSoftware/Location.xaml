@@ -1,12 +1,23 @@
 ﻿<Window x:Class="tradingSoftware.Location"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Location" Height="302" Width="482">
-    <Grid>
-        <Label Height="28" HorizontalAlignment="Left" Margin="85,30,0,0" Name="label1" VerticalAlignment="Top" Width="54">State</Label>
-        <Label HorizontalAlignment="Left" Margin="85,94,0,0" Name="label2" Width="54" Height="28" VerticalAlignment="Top">City</Label>
-        <TextBox Height="23" Margin="169,32,181,0" Name="txtState" VerticalAlignment="Top" />
-        <TextBox Height="23" Margin="169,96,181,0" Name="txtCity" VerticalAlignment="Top" />
-        <Button Margin="147,0,211,65" Name="btnAdd" Click="btnAdd_Click" Height="27" VerticalAlignment="Bottom">Add</Button>
+    Title="Location" Height="600" Width="900">
+    <Grid Name="LocationSetupForm">
+        <TabControl Name="tabControl1">
+            <TabItem Header="Location Setup" Background="DarkKhaki" IsEnabled="True">
+                <Grid Name="LocationSetupGrid" Background="FloralWhite">
+        <Label Height="28" HorizontalAlignment="Left" Margin="216,48,0,0" Name="label1" VerticalAlignment="Top" Width="54">State</Label>
+        <Label HorizontalAlignment="Left" Margin="216,112,0,0" Name="label2" Width="54" Height="28" VerticalAlignment="Top">City</Label>
+        <TextBox Height="23" Margin="300,50,0,0" Name="txtState" VerticalAlignment="Top" HorizontalAlignment="Left" Width="286" />
+        <TextBox Height="23" Margin="300,114,0,0" Name="txtCity" VerticalAlignment="Top" HorizontalAlignment="Left" Width="286" />
+        <Button Margin="206,187,0,0" Name="btnAdd" Click="btnAdd_Click" Height="27.04" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75">New</Button>
+                    <my:DataGrid AutoGenerateColumns="False" Margin="179,290,177,0" Name="dataGrid1" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Height="213.04" VerticalAlignment="Top" />
+                    <Button Height="27.04" Margin="317,187,0,0" Name="button1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75">Save</Button>
+                    <Button Height="27.04" HorizontalAlignment="Left" Margin="419,187,0,0" Name="button2" VerticalAlignment="Top" Width="75">Edit</Button>
+                    <Button Height="27.04" HorizontalAlignment="Left" Margin="617,187,0,0" Name="button3" VerticalAlignment="Top" Width="75">Close</Button>
+                    <Button Height="27.04" HorizontalAlignment="Left" Margin="521,187,0,0" Name="button4" VerticalAlignment="Top" Width="75">Delete</Button>
+                </Grid>
+                </TabItem>
+            </TabControl>
     </Grid>
 </Window>
