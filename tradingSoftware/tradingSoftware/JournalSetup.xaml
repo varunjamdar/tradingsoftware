@@ -35,10 +35,10 @@
                     <my:DataGrid AutoGenerateColumns="False" Margin="63,67,53,0" Name="dataGrid2" Height="236" VerticalAlignment="Top" />
                     <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="167,24,0,0" Name="datePicker3" VerticalAlignment="Top" Width="115" />
                     <Label Height="28" HorizontalAlignment="Left" Margin="63,24,0,0" Name="label7" VerticalAlignment="Top" Width="85">Select Date</Label>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="97,0,0,168" Name="label3" VerticalAlignment="Bottom" Width="64">D/C</Label>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="167,0,0,168" Name="label4" VerticalAlignment="Bottom" Width="81">Perticulars</Label>
-                    <Label Height="28" Margin="517,0,0,168" Name="label5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="102">Debit Amount</Label>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="653,0,0,168" Name="label6" VerticalAlignment="Bottom" Width="105">Credit Amount</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="97,0,0,168" Name="label8" VerticalAlignment="Bottom" Width="64">D/C</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="167,0,0,168" Name="label9" VerticalAlignment="Bottom" Width="81">Perticulars</Label>
+                    <Label Height="28" Margin="517,0,0,168" Name="label19" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="102">Debit Amount</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="653,0,0,168" Name="label20" VerticalAlignment="Bottom" Width="105">Credit Amount</Label>
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="97,0,0,135" Name="textBox9" VerticalAlignment="Bottom" Width="39" />
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="97,0,0,95" Name="textBox10" VerticalAlignment="Bottom" Width="39" />
                     <TextBox Height="23" Margin="167,0,0,135" Name="textBox11" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="313" />
