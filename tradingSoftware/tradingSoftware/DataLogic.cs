@@ -56,7 +56,7 @@ namespace tradingSoftware
             int toAccountID = int.Parse(ds.Tables[0].Rows[0][0].ToString());
             ds.Clear();
             
-            cmd.CommandText = "INSERT into Transaction (Date, ByAccountID, ToAccountID, Amount) values('" + dt + "',"+byAccountID+","+toAccountID+","+amount+")";
+            cmd.CommandText = "INSERT into [Transaction] (Date, ByAccountID, ToAccountID, Amount) values('" + dt + "',"+byAccountID+","+toAccountID+","+amount+")";
             
             cmd.ExecuteNonQuery();
             conn.Close();

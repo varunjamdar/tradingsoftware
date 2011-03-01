@@ -199,10 +199,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\Trade.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Database\Trade_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>Trade.mdf</DependentUpon>
     </Content>
   </ItemGroup>
