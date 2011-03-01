@@ -56,7 +56,8 @@ namespace tradingSoftware
 
         private void Journal_Click(object sender, RoutedEventArgs e)
         {
-           
+            Journal journalForm = new Journal();
+            journalForm.ShowDialog();
         }
     }
 }
