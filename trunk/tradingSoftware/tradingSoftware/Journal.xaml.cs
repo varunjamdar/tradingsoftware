@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Sql;
 using System.Data.SqlClient;
 
 namespace tradingSoftware
@@ -19,14 +21,23 @@ namespace tradingSoftware
     /// </summary>
     public partial class Journal : Window
     {
+        
 
         public Journal()
         {
             InitializeComponent();
+
             Database.TradeDataSet ds = new tradingSoftware.Database.TradeDataSet();
             Database.TradeDataSetTableAdapters.AccountTableAdapter adpt = new tradingSoftware.Database.TradeDataSetTableAdapters.AccountTableAdapter();
             adpt.Fill(ds.Account);
             GridAdd.DataContext = ds.Account;
+
+            DataTable dt = new DataLogic().getTransactions();
+            //dataGrid1.Items.Add(
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    dataGrid1.Items.Add();
+            //}
         }
 
         private void comboBoxCD1_SelectionChanged(object sender, SelectionChangedEventArgs e)
