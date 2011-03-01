@@ -22,5 +22,16 @@ namespace tradingSoftware.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\Trade.mdf;Integrated Se" +
+            "curity=True;User Instance=True")]
+        public string TradeConnectionString {
+            get {
+                return ((string)(this["TradeConnectionString"]));
+            }
+        }
     }
 }
