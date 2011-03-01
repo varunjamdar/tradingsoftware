@@ -21,6 +21,8 @@ namespace tradingSoftware
         public Taxsetup()
         {
             InitializeComponent();
+            DataLogic dl = new DataLogic();
+            dl.addTax();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

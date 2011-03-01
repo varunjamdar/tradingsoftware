@@ -28,6 +28,25 @@ namespace tradingSoftware
             ds = new DataSet();
         }
 
+        public void addTax()
+        {
+            conn.Open();
+            cmd.CommandText = "INSERT INTO Tax (TaxName, Value) VALUES('VAT',69)";
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+            int a = cmd.ExecuteNonQuery();
+            
+
+            //check whether insert worked successfully
+            //cmd.CommandText = "Select * from Tax";
+            //adpt.SelectCommand = cmd;
+            //adpt.Fill(ds);
+            //System.Windows.Forms.MessageBox.Show("" + ds.Tables[0].Rows[0][0].ToString() + " " + ds.Tables[0].Rows[0][1].ToString());
+            //ds.Clear();
+            conn.Close();
+            cmd.Dispose();
+        }
+
         public DataTable getTransactions()
         {
             cmd.CommandText = "SELECT t.Date, a.AccountName AS 'By Account', b.AccountName AS 'To Account', t.Amount FROM Transactions AS t INNER JOIN Account AS a ON t.ByAccountID = a.AccountID INNER JOIN Account AS b ON t.ToAccountID = b.AccountID";

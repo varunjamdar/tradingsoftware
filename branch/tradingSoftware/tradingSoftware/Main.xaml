@@ -11,6 +11,7 @@
                 <MenuItem Name="CompanyConfig" Header="Company Configuration" Click="CompanyConfig_Click"/>
                 <MenuItem Name="Location" Header="Location Setup" Click="Location_Click"/>
                 <MenuItem Name="Unit" Header="Unit Setup" Click="Unit_Click"/>
+                <MenuItem Name="Tax" Header="Tax Configuration" Click="Tax_Click"/>
                 <MenuItem Name="Database" Header="Database">
                     <MenuItem.BitmapEffect>
                         <OuterGlowBitmapEffect GlowColor="LightGray" />

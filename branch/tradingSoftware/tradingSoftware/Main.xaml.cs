@@ -59,5 +59,11 @@ namespace tradingSoftware
             Journal journalForm = new Journal();
             journalForm.ShowDialog();
         }
+
+        private void Tax_Click(object sender, RoutedEventArgs e)
+        {
+            Taxsetup taxForm = new Taxsetup();
+            taxForm.ShowDialog();
+        }
     }
 }
