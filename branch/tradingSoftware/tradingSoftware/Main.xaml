@@ -1,0 +1,39 @@
+﻿<Window x:Class="tradingSoftware.Window2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Window2" Height="600" Width="1000" Background="FloralWhite">
+    <Grid>
+        <Menu Height="29" Name="menu1" VerticalAlignment="Top" Background="DarkKhaki" FontSize="14">
+            <Menu.BitmapEffect>
+                <DropShadowBitmapEffect Color="Indigo" />
+            </Menu.BitmapEffect>
+            <MenuItem Name="BasicConfiguration" Header="Basic Configuration">
+                <MenuItem Name="CompanyConfig" Header="Company Configuration" Click="CompanyConfig_Click"/>
+                <MenuItem Name="Location" Header="Location Setup" Click="Location_Click"/>
+                <MenuItem Name="Unit" Header="Unit Setup" Click="Unit_Click"/>
+                <MenuItem Name="Database" Header="Database">
+                    <MenuItem.BitmapEffect>
+                        <OuterGlowBitmapEffect GlowColor="LightGray" />
+                    </MenuItem.BitmapEffect>
+                    <MenuItem Name="RestoreDb" Header="Restore Database"/>
+                    <MenuItem Name="BackupDb" Header="Backup Database"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Name="SupplierCustomerConfig" Header="Supplier/Customer Configuration">
+                <MenuItem Name="SupplierDetails" Header="Supplier Details"/>
+                <MenuItem Name="CustomerDetails" Header="Customer Details" Click="CustomerDetails_Click"/> 
+            </MenuItem>
+            <MenuItem Name="Masters" Header="Masters">
+                <MenuItem Name="Accounts" Header="Accounts" Click="Accounts_Click"/>
+            </MenuItem>
+            <MenuItem Name="Transacton" Header="Transaction">
+                <MenuItem Name="Journal" Header="Journal" Click="Journal_Click"/>
+            </MenuItem>
+            <MenuItem Name="Sales" Header="Sales">
+
+            </MenuItem>
+
+        </Menu>
+        <Grid Name="MainGrid" Height="239" Margin="0,25,0,0" VerticalAlignment="Top" />
+    </Grid>
+</Window>
