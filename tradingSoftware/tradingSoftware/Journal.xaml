@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Journal" Height="424" Width="660" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid Name="GridJournal">
-        <TabControl Name="tabControlJournal" Margin="0,0,0,8" SelectedIndex="0">
+        <TabControl Name="tabControlJournal" Margin="0,0,0,8" SelectedIndex="1">
             <TabItem Header="Add" Name="TabItemAdd">
                 <Grid Name="GridAdd">
                     <Label Height="28" HorizontalAlignment="Left" Margin="84,88,0,0" Name="label1" VerticalAlignment="Top" Width="58">Date</Label>
