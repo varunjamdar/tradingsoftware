@@ -26,11 +26,23 @@ namespace tradingSoftware.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\Database\\Trade.mdf;Inte" +
-            "grated Security=True;User Instance=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=D:\\Study\\6 Sem\\tradingSoftware\\tradingS" +
+            "oftware\\tradingSoftware\\Database\\Trade.mdf;Integrated Security=True;User Instanc" +
+            "e=True")]
         public string TradeConnectionString {
             get {
                 return ((string)(this["TradeConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\Database\\Trade.mdf;Inte" +
+            "grated Security=True;Connect Timeout=30;User Instance=True")]
+        public string EarlierConnectionString {
+            get {
+                return ((string)(this["EarlierConnectionString"]));
             }
         }
     }

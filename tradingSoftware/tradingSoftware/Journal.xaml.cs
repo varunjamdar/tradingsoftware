@@ -30,14 +30,31 @@ namespace tradingSoftware
             Database.TradeDataSet ds = new tradingSoftware.Database.TradeDataSet();
             Database.TradeDataSetTableAdapters.AccountTableAdapter adpt = new tradingSoftware.Database.TradeDataSetTableAdapters.AccountTableAdapter();
             adpt.Fill(ds.Account);
-            GridAdd.DataContext = ds.Account;
+            dgAddJournalEntry.DataContext = ds.Account;
 
             DataTable dt = new DataLogic().getTransactions();
-            //dataGrid1.Items.Add(
-            //foreach (DataRow dr in dt.Rows)
-            //{
-            //    dataGrid1.Items.Add();
-            //}
+            
+            List<JournalRow> journalSource = new List<JournalRow>();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                journalSource.Add(new JournalRow()
+                {
+                    DateOfTransaction = ""+dr[0],
+                    DebitOrCredit = "D",
+                    TransactionDetails = "" + dr[1],
+                    Debit = (decimal)dr[3]
+                });
+
+                journalSource.Add(new JournalRow()
+                {
+                    DebitOrCredit = "C",
+                    TransactionDetails = "To  " + dr[2],
+                    Credit = (decimal)dr[3]
+                });
+            }
+            dgViewEditJournal.ItemsSource = journalSource;
+
         }
 
         private void comboBoxCD1_SelectionChanged(object sender, SelectionChangedEventArgs e)
