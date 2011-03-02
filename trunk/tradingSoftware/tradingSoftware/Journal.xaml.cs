@@ -34,7 +34,7 @@ namespace tradingSoftware
 
             DataTable dt = new DataLogic().getTransactions();
             
-            List<JournalRow> journalSource = new List<JournalRow>();
+            List<JournalRow> journalSource = new List<JournalRow>(); //list that implements IEnumerable. so that it can be set as item source of grid.
 
             foreach (DataRow dr in dt.Rows)
             {
