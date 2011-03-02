@@ -34,12 +34,10 @@ namespace tradingSoftware
             conn.Open();
             adpt.SelectCommand = cmd;
 
-            adpt.Fill(ds,"Transaction"); 
+            adpt.Fill(ds,"Transactions"); 
             conn.Close();
-            DataTable dt=ds.Tables["Transaction"];
-            ds.Clear();
-            return dt; //You can directly set the datagrid Itemssource; or you can create a IDictionary<string, Transaction> create transaction objects based on the dataset rows and then set the datagrid data..
-            
+            return ds.Tables["Transactions"];
+            //You can directly set the datagrid Itemssource; or you can create a IDictionary<string, Transaction> create transaction objects based on the dataset rows and then set the datagrid data..
         }
 
         public void addJournalEntry(DateTime dt, string FromAccountName, string ToAccountName, decimal amount)
@@ -56,7 +54,7 @@ namespace tradingSoftware
             int toAccountID = int.Parse(ds.Tables[0].Rows[0][0].ToString());
             ds.Clear();
             
-            cmd.CommandText = "INSERT into [Transaction] (Date, ByAccountID, ToAccountID, Amount) values('" + dt + "',"+byAccountID+","+toAccountID+","+amount+")";
+            cmd.CommandText = "INSERT into [Transactions] (Date, ByAccountID, ToAccountID, Amount) values('" + dt + "',"+byAccountID+","+toAccountID+","+amount+")";
             
             cmd.ExecuteNonQuery();
             conn.Close();
