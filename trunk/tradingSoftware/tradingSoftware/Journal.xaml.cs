@@ -40,17 +40,24 @@ namespace tradingSoftware
             {
                 journalSource.Add(new JournalRow()
                 {
-                    DateOfTransaction = ""+dr[0],
+                    TransactionID = ((int)dr[0]).ToString(),
+                    DateOfTransaction = "" + dr[1],
                     DebitOrCredit = "D",
-                    TransactionDetails = "" + dr[1],
-                    Debit = (decimal)dr[3]
+                    TransactionDetails = "" + dr[3],
+                    Debit = ((decimal)dr[6]).ToString(),
+                    Credit = "",
+                    Narration = "" + dr[7]
                 });
 
                 journalSource.Add(new JournalRow()
                 {
+                    TransactionID = ((int)dr[0]).ToString(),
+                    DateOfTransaction = "",
                     DebitOrCredit = "C",
                     TransactionDetails = "To  " + dr[2],
-                    Credit = (decimal)dr[3]
+                    Debit = "",
+                    Credit = ((decimal)dr[3]).ToString(),
+                    Narration = "" + dr[7]
                 });
             }
             dgViewEditJournal.ItemsSource = journalSource;
