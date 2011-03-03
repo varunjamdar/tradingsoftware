@@ -28,6 +28,15 @@ namespace tradingSoftware
             ds = new DataSet();
         }
 
+        public void addCompanyDetails(string CompName,string CompPrintName,DateTime FYStartDate, DateTime BooksCommFrom, string AddLine1, string AddLine2, string AddLine3, string City, int Pin, string State, string Country, int PhoneNo1, int PhoneNo2, string Website, string Email, int Fax, string VatGst, int TinNo, DateTime VatGstDate, int CstNo, DateTime CstDate, int PanNo, int ServiceTaxNo, string Image)
+        {
+            conn.Open();
+            cmd.CommandText = "Insert into CompanyDetails (CompanyName, CompanyPrintName, FYStartDate, BooksCommencingFrom, AddressLine1, Addressline2, AddressLine3, City, Pin, State, Country, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, Image) values ('" + CompName + "','" + CompPrintName + "','" + FYStartDate + "','" + BooksCommFrom + "','" + AddLine1 + "','" + AddLine2 + "','" + AddLine3 + "','" + City + "'," + Pin + ",'" + State + "','" + Country + "'," + PhoneNo1 + "," + PhoneNo2 + ",'" + Website + "','" + Email + "'," + Fax + ",'" + VatGst + "','" + TinNo + "','" + VatGstDate + "'," + CstNo + ",'" + CstDate + "'," + PanNo + "," + ServiceTaxNo + ",'" + Image + "');";
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
         public DataTable getTransactions()
         {
             ds.Clear();
@@ -44,9 +53,9 @@ namespace tradingSoftware
         public void addJournalEntry(DateTime dt, string FromAccountName, string ToAccountName, decimal amount)
         {
             ds.Clear();
-            conn.Open();
             cmd.CommandText="SELECT AccountID FROM Account WHERE AccountName='"+FromAccountName+"'";
             adpt.SelectCommand = cmd;
+            conn.Open();
             adpt.Fill(ds);
             int byAccountID = int.Parse(ds.Tables[0].Rows[0][0].ToString());
             ds.Clear();
@@ -67,13 +76,19 @@ namespace tradingSoftware
 
         }
 
-        public void addCompanyDetails(string CompName,string CompPrintName,DateTime FYStartDate, DateTime BooksCommFrom, string AddLine1, string AddLine2, string AddLine3, string City, int Pin, string State, string Country, int PhoneNo1, int PhoneNo2, string Website, string Email, int Fax, string VatGst, int TinNo, DateTime VatGstDate, int CstNo, DateTime CstDate, int PanNo, int ServiceTaxNo, string Image)
+        public DataTable getLedger(string LedgerName)
         {
+            ds = new DataSet();
+            cmd.CommandText = "SELECT AccountID FROM ACCOUNT WHERE AccountName='"+LedgerName+"'";
+            adpt.SelectCommand = cmd;
             conn.Open();
-            cmd.CommandText = "Insert into CompanyDetails (CompanyName, CompanyPrintName, FYStartDate, BooksCommencingFrom, AddressLine1, Addressline2, AddressLine3, City, Pin, State, Country, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, Image) values ('" + CompName + "','" + CompPrintName + "','" + FYStartDate + "','" + BooksCommFrom + "','" + AddLine1 + "','" + AddLine2 + "','" + AddLine3 + "','" + City + "'," + Pin + ",'" + State + "','" + Country + "'," + PhoneNo1 + "," + PhoneNo2 + ",'" + Website + "','" + Email + "'," + Fax + ",'" + VatGst + "','" + TinNo + "','" + VatGstDate + "'," + CstNo + ",'" + CstDate + "'," + PanNo + "," + ServiceTaxNo + ",'" + Image + "');";
-
-            cmd.ExecuteNonQuery();
+            adpt.Fill(ds);
+            int accountID = int.Parse(ds.Tables[0].Rows[0][0].ToString());
+            ds.Tables.Clear();
+            cmd.CommandText = @"SELECT t.TransactionID, t.Date, t.ByAccountID, a.AccountName AS 'By Account', t.ToAccountID, b.AccountName AS 'To Account', t.Amount, t.Narration FROM Transactions AS t INNER JOIN Account AS a ON t.ByAccountID = a.AccountID INNER JOIN Account AS b ON t.ToAccountID = b.AccountID WHERE t.ByAccountID=" + accountID + " OR t.ToAccountID=" + accountID + "";
+            adpt.Fill(ds);
             conn.Close();
+            return ds.Tables[0];
         }
 
         //public bool numberCheck(int i)
@@ -82,7 +97,5 @@ namespace tradingSoftware
         //        return false;// in these cases no check is to be issued
         //    else return true;//true only if char is present
         //}
-
-
     }
 }

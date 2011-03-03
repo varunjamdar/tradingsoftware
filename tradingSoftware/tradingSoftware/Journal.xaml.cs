@@ -30,16 +30,16 @@ namespace tradingSoftware
             adpt.Fill(ds.Account);
             dgAddJournalEntry.DataContext = ds.Account;
 
-            DataTable dt = new DataLogic().getTransactions();
+            DataTable transactionTable = new DataLogic().getTransactions();
             
             List<JournalRow> journalSource = new List<JournalRow>(); //list that implements IEnumerable. so that it can be set as item source of grid.
             List<Transaction> transactions = new List<Transaction>();
 
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dr in transactionTable.Rows)
             {
                 journalSource.Add(new JournalRow()
                 {
-                    TransactionID = ((int)dr[0]).ToString(),
+                    TransactionID = (int)dr[0],
                     DateOfTransaction = ((DateTime)dr[1]).ToShortDateString(),
                     DebitOrCredit = "D",
                     TransactionDetails = "" + dr[3],
@@ -50,7 +50,7 @@ namespace tradingSoftware
 
                 journalSource.Add(new JournalRow()
                 {
-                    TransactionID = ((int)dr[0]).ToString(),
+                    TransactionID = (int)dr[0],
                     DateOfTransaction = "",
                     DebitOrCredit = "C",
                     TransactionDetails = "To  " + dr[5],

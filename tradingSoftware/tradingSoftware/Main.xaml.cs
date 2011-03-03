@@ -59,5 +59,11 @@ namespace tradingSoftware
             Journal journalForm = new Journal();
             journalForm.ShowDialog();
         }
+
+        private void Ledger_Click(object sender, RoutedEventArgs e)
+        {
+            tradingSoftware.LedgerVJ ledgerForm = new LedgerVJ();
+            ledgerForm.ShowDialog();
+        }
     }
 }
