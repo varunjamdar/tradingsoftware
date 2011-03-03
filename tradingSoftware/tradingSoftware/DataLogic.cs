@@ -30,6 +30,7 @@ namespace tradingSoftware
 
         public DataTable getTransactions()
         {
+            ds.Clear();
             cmd.CommandText = "SELECT t.TransactionID, t.Date, t.ByAccountID, a.AccountName AS 'By Account', t.ToAccountID, b.AccountName AS 'To Account', t.Amount, t.Narration FROM Transactions AS t INNER JOIN Account AS a ON t.ByAccountID = a.AccountID INNER JOIN Account AS b ON t.ToAccountID = b.AccountID";
             conn.Open();
             adpt.SelectCommand = cmd;
@@ -42,6 +43,7 @@ namespace tradingSoftware
 
         public void addJournalEntry(DateTime dt, string FromAccountName, string ToAccountName, decimal amount)
         {
+            ds.Clear();
             conn.Open();
             cmd.CommandText="SELECT AccountID FROM Account WHERE AccountName='"+FromAccountName+"'";
             adpt.SelectCommand = cmd;
@@ -58,7 +60,11 @@ namespace tradingSoftware
             
             cmd.ExecuteNonQuery();
             conn.Close();
-           
+        }
+
+        public void updateJournal(int transactionID, DateTime dateOfTransaction, int byAccountID, int toAccountID, decimal amount, string narration)
+        {
+
         }
 
         public void addCompanyDetails(string CompName,string CompPrintName,DateTime FYStartDate, DateTime BooksCommFrom, string AddLine1, string AddLine2, string AddLine3, string City, int Pin, string State, string Country, int PhoneNo1, int PhoneNo2, string Website, string Email, int Fax, string VatGst, int TinNo, DateTime VatGstDate, int CstNo, DateTime CstDate, int PanNo, int ServiceTaxNo, string Image)

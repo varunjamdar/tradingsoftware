@@ -26,9 +26,8 @@ namespace tradingSoftware.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=D:\\janice\\6th Sem Data\\Repository\\tradi" +
-            "ngSoftware\\tradingSoftware\\Database\\Trade.mdf;Integrated Security=True;User Inst" +
-            "ance=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=\"C:\\Program Files\\Microsoft SQL Server\\" +
+            "MSSQL.1\\MSSQL\\Data\\Trade.mdf\";Integrated Security=True;User Instance=True")]
         public string TradeConnectionString {
             get {
                 return ((string)(this["TradeConnectionString"]));
