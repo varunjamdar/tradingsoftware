@@ -21,27 +21,26 @@ namespace tradingSoftware
     /// </summary>
     public partial class Journal : Window
     {
-        
-
         public Journal()
         {
             InitializeComponent();
 
-            Database.TradeDataSet ds = new tradingSoftware.Database.TradeDataSet();
-            Database.TradeDataSetTableAdapters.AccountTableAdapter adpt = new tradingSoftware.Database.TradeDataSetTableAdapters.AccountTableAdapter();
+            TradeDataSet ds = new tradingSoftware.TradeDataSet();
+            TradeDataSetTableAdapters.AccountTableAdapter adpt = new tradingSoftware.TradeDataSetTableAdapters.AccountTableAdapter();
             adpt.Fill(ds.Account);
             dgAddJournalEntry.DataContext = ds.Account;
 
             DataTable dt = new DataLogic().getTransactions();
             
             List<JournalRow> journalSource = new List<JournalRow>(); //list that implements IEnumerable. so that it can be set as item source of grid.
+            List<Transaction> transactions = new List<Transaction>();
 
             foreach (DataRow dr in dt.Rows)
             {
                 journalSource.Add(new JournalRow()
                 {
                     TransactionID = ((int)dr[0]).ToString(),
-                    DateOfTransaction = "" + dr[1],
+                    DateOfTransaction = ((DateTime)dr[1]).ToShortDateString(),
                     DebitOrCredit = "D",
                     TransactionDetails = "" + dr[3],
                     Debit = ((decimal)dr[6]).ToString(),
@@ -54,9 +53,19 @@ namespace tradingSoftware
                     TransactionID = ((int)dr[0]).ToString(),
                     DateOfTransaction = "",
                     DebitOrCredit = "C",
-                    TransactionDetails = "To  " + dr[2],
+                    TransactionDetails = "To  " + dr[5],
                     Debit = "",
-                    Credit = ((decimal)dr[3]).ToString(),
+                    Credit = ((decimal)dr[6]).ToString(),
+                    Narration = "" + dr[7]
+                });
+
+                transactions.Add(new Transaction()
+                {
+                    TransactionID = (int)dr[0],
+                    DateOfTransaction = (DateTime)dr[1],
+                    ByAccountID = (int)dr[2],
+                    ToAccountID = (int)dr[4],
+                    Amount = (decimal)dr[6],
                     Narration = "" + dr[7]
                 });
             }
