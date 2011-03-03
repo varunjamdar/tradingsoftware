@@ -5,7 +5,7 @@
     <Grid Name="GridLedgerMain">
         <TabControl Name="tabControlLedger" >
             <TabItem Header="Ledger" Name="TabItemLedger">
-                <Grid Name="GridLedger">   
+                <Grid Name="GridLedger" Height="638" Width="829">   
                     <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,13,31,0" Name="comboBoxLedger" VerticalAlignment="Top" Width="200" ItemsSource="{Binding}" DisplayMemberPath="AccountName" IsSynchronizedWithCurrentItem="False" SelectionChanged="comboBoxLedger_SelectionChanged" />
                     <Label Height="28" Margin="0,13,267,0" Name="label1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="51">Ledger</Label>
                     <my:DataGrid AutoGenerateColumns="False" Margin="25,52,31,28" Name="dataGridLedger">
@@ -17,11 +17,6 @@
                             <my:DataGridTextColumn Header="Balance" Binding="{Binding Balance}" Width="100" />
                         </my:DataGrid.Columns>
                     </my:DataGrid>
-					<Label Height="28" Margin="416,20,0,0" Name="label2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81">Start Date</Label>
-                    <Label Height="28" Margin="416,68,0,0" Name="label3" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81">End Date</Label>
-                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="522,23,0,0" Name="datePicker1" VerticalAlignment="Top" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="522,69,0,0" Name="datePicker2" VerticalAlignment="Top" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-                    <Button Height="30" Margin="328,125,0,0" Name="button1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="152">Display Ledger</Button>
                 </Grid>
             </TabItem>
         </TabControl>     
