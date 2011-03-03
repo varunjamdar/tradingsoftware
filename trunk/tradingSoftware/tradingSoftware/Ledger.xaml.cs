@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.DataVisualization;
+using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -20,13 +22,13 @@ namespace tradingSoftware
     /// <summary>
     /// Interaction logic for Ledger.xaml
     /// </summary>
-    public partial class LedgerVJ : Window
+    public partial class Ledger : Window
     {
         private DataLogic dl;
         private List<LedgerRow> ledgerSource;
         private TradeDataSet ds;
 
-        public LedgerVJ()
+        public Ledger()
         {
             InitializeComponent();
 
@@ -44,6 +46,7 @@ namespace tradingSoftware
             string ledgerSelected=comboBoxLedger.Text;
             if (ledgerSelected.Length>0)
             {
+                
                 ledgerSource.Clear();
                 DataTable ledgerTable = dl.getLedger(ledgerSelected);
                 decimal balance = 0;
@@ -73,8 +76,11 @@ namespace tradingSoftware
                     }
                     ledgerSource.Add(lr);
                 }
-                if(ledgerSource.Count>0)
+                if (ledgerSource.Count > 0)
+                {
                     dataGridLedger.ItemsSource = ledgerSource;
+                    System.Windows.Forms.MessageBox.Show("" + ledgerTable.Rows[0][0]);
+                }
             }
         }
     }

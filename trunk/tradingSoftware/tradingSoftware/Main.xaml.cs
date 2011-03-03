@@ -62,7 +62,7 @@ namespace tradingSoftware
 
         private void Ledger_Click(object sender, RoutedEventArgs e)
         {
-            tradingSoftware.LedgerVJ ledgerForm = new LedgerVJ();
+            tradingSoftware.Ledger ledgerForm = new Ledger();
             ledgerForm.ShowDialog();
         }
     }
