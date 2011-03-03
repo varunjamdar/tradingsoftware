@@ -30,7 +30,7 @@ namespace tradingSoftware
 
         public DataTable getTransactions()
         {
-            cmd.CommandText = "SELECT t.Date, a.AccountName AS 'By Account', b.AccountName AS 'To Account', t.Amount FROM Transactions AS t INNER JOIN Account AS a ON t.ByAccountID = a.AccountID INNER JOIN Account AS b ON t.ToAccountID = b.AccountID";
+            cmd.CommandText = "SELECT t.TransactionID, t.Date, t.ByAccountID, a.AccountName AS 'By Account', t.ToAccountID, b.AccountName AS 'To Account', t.Amount, t.Narration FROM Transactions AS t INNER JOIN Account AS a ON t.ByAccountID = a.AccountID INNER JOIN Account AS b ON t.ToAccountID = b.AccountID";
             conn.Open();
             adpt.SelectCommand = cmd;
 

@@ -136,15 +136,6 @@
     <Compile Include="CustomerDetails.xaml.cs">
       <DependentUpon>CustomerDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Database\TradeDataSet.cs">
-      <DependentUpon>TradeDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Database\TradeDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TradeDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DataLogic.cs" />
     <Compile Include="Journal.xaml.cs">
       <DependentUpon>Journal.xaml</DependentUpon>
@@ -172,6 +163,7 @@
     <Compile Include="Taxsetup.xaml.cs">
       <DependentUpon>Taxsetup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Transaction.cs" />
     <Compile Include="Unit.xaml.cs">
       <DependentUpon>Unit.xaml</DependentUpon>
     </Compile>
@@ -181,29 +173,11 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="Database\TradeDataSet.xsc">
-      <DependentUpon>TradeDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Database\TradeDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TradeDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Database\TradeDataSet.xss">
-      <DependentUpon>TradeDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Database\Trade.mdf">
-    </Content>
-    <Content Include="Database\Trade_log.ldf">
-      <DependentUpon>Trade.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

@@ -7,25 +7,13 @@ namespace tradingSoftware
 {
     public class JournalRow
     {   // A class to simulate expected DataGrid Rows
-	
-        private DateTime date;
-
-        public string DateOfTransaction
-        { 
-            get
-            {
-                return date.ToShortDateString();
-            }
-            set
-            {
-                DateTime dt;
-                DateTime.TryParse(value.ToString(), out dt);
-                date = dt;
-            }
-        }
+ 
+        public string TransactionID { get; set; }
+        public string DateOfTransaction { get; set; }
         public string DebitOrCredit { get; set; }
         public string TransactionDetails { get; set; }
-        public decimal Debit { get; set; }
-        public decimal Credit { get; set; }
+        public string Debit { get; set; }
+        public string Credit { get; set; }
+        public string Narration { get; set; }
     }
 }
