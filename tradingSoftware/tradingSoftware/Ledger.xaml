@@ -6,7 +6,7 @@
         <TabControl Name="tabControl1" FontSize="14" Background="FloralWhite">
             <TabItem Name="ViewLedger" Header="View Ledger" Background="DarkKhaki">
                 <Grid>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="20,53,0,0" Name="label1" VerticalAlignment="Top" Width="105">Account Name</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="20,53,0,0" Name="label1" VerticalAlignment="Top" Width="106">Account Name</Label>
                     <ComboBox Height="23" HorizontalAlignment="Left" Margin="140,58,0,0" Name="comboBox1" VerticalAlignment="Top" Width="192" />
                     <my:DataGrid AutoGenerateColumns="False" Margin="75,168,83,42" Name="dataGrid1" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" >
                         <my:DataGrid.Columns>
