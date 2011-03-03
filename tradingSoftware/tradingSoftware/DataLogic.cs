@@ -28,7 +28,6 @@ namespace tradingSoftware
             ds = new DataSet();
         }
 
-<<<<<<< .mine
         public void addCompanyDetails(string CompName, string CompPrintName, DateTime FYStartDate, DateTime BooksCommFrom, string AddLine1, string AddLine2, string AddLine3, string City, int Pin, string State, string Country, int PhoneNo1, int PhoneNo2, string Website, string Email, int Fax, string VatGst, int TinNo, DateTime VatGstDate, int CstNo, DateTime CstDate, int PanNo, int ServiceTaxNo, string Image)
         {
             conn.Open();
@@ -38,7 +37,7 @@ namespace tradingSoftware
             conn.Close();
         }
 
-=======
+
         public void addCompanyDetails(string CompName,string CompPrintName,DateTime FYStartDate, DateTime BooksCommFrom, string AddLine1, string AddLine2, string AddLine3, string City, int Pin, string State, string Country, int PhoneNo1, int PhoneNo2, string Website, string Email, int Fax, string VatGst, int TinNo, DateTime VatGstDate, int CstNo, DateTime CstDate, int PanNo, int ServiceTaxNo, string Image)
         {
             conn.Open();
@@ -48,7 +47,7 @@ namespace tradingSoftware
             conn.Close();
         }
 
->>>>>>> .r65
+
         public DataTable getTransactions()
         {
             ds.Clear();
@@ -65,12 +64,12 @@ namespace tradingSoftware
         public void addJournalEntry(DateTime dt, string FromAccountName, string ToAccountName, decimal amount)
         {
             ds.Clear();
-<<<<<<< .mine
+
             cmd.CommandText = "SELECT AccountID FROM Account WHERE AccountName='" + FromAccountName + "'";
             adpt.SelectCommand = cmd;
             conn.Open();
-=======
->>>>>>> .r65
+
+
             conn.Open();
             adpt.Fill(ds);
             int byAccountID = int.Parse(ds.Tables[0].Rows[0][0].ToString());
@@ -94,15 +93,15 @@ namespace tradingSoftware
 
         public DataTable getLedger(string LedgerName)
         {
-<<<<<<< .mine
+
             ds = new DataSet();
             cmd.CommandText = "SELECT AccountID FROM ACCOUNT WHERE AccountName='" + LedgerName + "'";
             adpt.SelectCommand = cmd;
-=======
+
             ds = new DataSet();
             cmd.CommandText = "SELECT AccountID FROM ACCOUNT WHERE AccountName='"+LedgerName+"'";
             adpt.SelectCommand = cmd;
->>>>>>> .r65
+
             conn.Open();
             adpt.Fill(ds);
             int accountID = int.Parse(ds.Tables[0].Rows[0][0].ToString());
