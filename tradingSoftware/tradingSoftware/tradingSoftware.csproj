@@ -105,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Ledger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Location.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -141,6 +145,9 @@
       <DependentUpon>Journal.xaml</DependentUpon>
     </Compile>
     <Compile Include="JournalRow.cs" />
+    <Compile Include="Ledger.xaml.cs">
+      <DependentUpon>Ledger.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Location.xaml.cs">
       <DependentUpon>Location.xaml</DependentUpon>
     </Compile>
