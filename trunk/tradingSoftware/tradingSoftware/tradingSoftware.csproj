@@ -146,7 +146,6 @@
       <DependentUpon>TradeDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataLogic.cs" />
-    <Compile Include="DateTimeConverter.cs" />
     <Compile Include="Journal.xaml.cs">
       <DependentUpon>Journal.xaml</DependentUpon>
     </Compile>
