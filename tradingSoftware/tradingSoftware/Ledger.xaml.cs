@@ -43,17 +43,24 @@ namespace tradingSoftware
 
         private void comboBoxLedger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string ledgerSelected=comboBoxLedger.Text;
+            if (comboBoxLedger.Text == "")
+            {
+                return;
+            }
+            //System.Windows.Forms.MessageBox.Show("fired");
+            string ledgerSelected = textBox1.Text;
             if (ledgerSelected.Length>0)
             {
-                
-                ledgerSource.Clear();
+                //System.Windows.Forms.MessageBox.Show("inside IF");
+
+                ledgerSource = new List<LedgerRow>();
                 DataTable ledgerTable = dl.getLedger(ledgerSelected);
                 decimal balance = 0;
                 LedgerRow lr;
 
                 foreach (DataRow dr in ledgerTable.Rows)
                 {
+                    //System.Windows.Forms.MessageBox.Show("foreach : " + dr[0]);
                     lr = new LedgerRow();
                     lr.TransactionID = (int)dr[0];
                     lr.DateOfTransaction = ((DateTime)dr[1]).ToShortDateString();
@@ -75,11 +82,17 @@ namespace tradingSoftware
                         lr.Balance = balance.ToString();
                     }
                     ledgerSource.Add(lr);
+                    //System.Windows.Forms.MessageBox.Show("Added in LedgerSource : "+lr.TransactionID+" "+lr.TransactionDetails);
                 }
                 if (ledgerSource.Count > 0)
                 {
+                    //dataGridLedger = new Microsoft.Windows.Controls.DataGrid();
+                    //dataGridLedger.AutoGenerateColumns = false;
+                    //dataGridLedger.Margin = new Thickness(25, 52, 31, 28);
+                    InitializeComponent();
+
                     dataGridLedger.ItemsSource = ledgerSource;
-                    System.Windows.Forms.MessageBox.Show("" + ledgerTable.Rows[0][0]);
+                    //System.Windows.Forms.MessageBox.Show("last");
                 }
             }
         }
