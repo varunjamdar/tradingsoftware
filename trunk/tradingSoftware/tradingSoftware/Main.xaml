@@ -1,7 +1,7 @@
 ﻿<Window x:Class="tradingSoftware.Window2"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Window2" Height="600" Width="1000" Background="FloralWhite">
+    Title="Window2" Height="700" Width="1000" Background="FloralWhite">
     <Grid>
         <Menu Height="29" Name="menu1" VerticalAlignment="Top" Background="DarkKhaki" FontSize="14">
             <Menu.BitmapEffect>
@@ -25,6 +25,7 @@
             </MenuItem>
             <MenuItem Name="Masters" Header="Masters">
                 <MenuItem Name="Accounts" Header="Accounts" Click="Accounts_Click"/>
+                <MenuItem Name="ItemGroup" Header="Item Group" Click="ItemGroup_Click"/>
             </MenuItem>
             <MenuItem Name="Transacton" Header="Transaction">
                 <MenuItem Name="Journal" Header="Journal" Click="Journal_Click"/>
