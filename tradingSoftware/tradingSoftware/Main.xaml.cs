@@ -65,5 +65,11 @@ namespace tradingSoftware
             tradingSoftware.Ledger ledgerForm = new Ledger();
             ledgerForm.ShowDialog();
         }
+
+        private void TrialBalance_Click(object sender, RoutedEventArgs e)
+        {
+            tradingSoftware.TrialBalance trialBalanceForm = new TrialBalance();
+            trialBalanceForm.ShowDialog();
+        }
     }
 }
