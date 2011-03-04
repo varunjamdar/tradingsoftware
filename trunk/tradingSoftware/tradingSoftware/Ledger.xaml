@@ -6,17 +6,19 @@
         <TabControl Name="tabControlLedger" >
             <TabItem Header="Ledger" Name="TabItemLedger">
                 <Grid Name="GridLedger" Height="638" Width="829">   
-                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,13,31,0" Name="comboBoxLedger" VerticalAlignment="Top" Width="200" ItemsSource="{Binding}" DisplayMemberPath="AccountName" IsSynchronizedWithCurrentItem="False" SelectionChanged="comboBoxLedger_SelectionChanged" />
+                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,13,31,0" Name="comboBoxLedger" VerticalAlignment="Top" Width="200" ItemsSource="{Binding}" DisplayMemberPath="AccountName" IsSynchronizedWithCurrentItem="True" SelectionChanged="comboBoxLedger_SelectionChanged">
+                    </ComboBox>
                     <Label Height="28" Margin="0,13,267,0" Name="label1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="51">Ledger</Label>
                     <my:DataGrid AutoGenerateColumns="False" Margin="25,52,31,28" Name="dataGridLedger">
                         <my:DataGrid.Columns>
                             <my:DataGridTextColumn Header="Transaction Date" Binding="{Binding DateOfTransaction}" />
-                            <my:DataGridTextColumn Header="Transaction Details" Binding="{Binding transactionDetails}" Width="370" />
+                            <my:DataGridTextColumn Header="Transaction Details" Binding="{Binding TransactionDetails}" Width="370" />
                             <my:DataGridTextColumn Header="Debit" Binding="{Binding Debit}" Width="100" />
                             <my:DataGridTextColumn Header="Credit" Binding="{Binding Credit}" Width="100" />
                             <my:DataGridTextColumn Header="Balance" Binding="{Binding Balance}" Width="100" />
                         </my:DataGrid.Columns>
                     </my:DataGrid>
+                    <TextBox Height="23" Margin="365,13,344,0" Name="textBox1" VerticalAlignment="Top"  Text="{Binding Path=AccountName}" Visibility="Hidden" />
                 </Grid>
             </TabItem>
         </TabControl>     
