@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Controls.DataVisualization;
 using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Data;
@@ -24,7 +25,6 @@ namespace tradingSoftware
     /// </summary>
     public partial class Ledger : Window
     {
-        private DataLogic dl;
         private List<LedgerRow> ledgerSource;
         private TradeDataSet ds;
 
@@ -32,7 +32,6 @@ namespace tradingSoftware
         {
             InitializeComponent();
 
-            dl = new DataLogic();
             ledgerSource = new List<LedgerRow>();
 
             ds = new TradeDataSet();
@@ -47,54 +46,103 @@ namespace tradingSoftware
             {
                 return;
             }
-            //System.Windows.Forms.MessageBox.Show("fired");
+
             string ledgerSelected = textBox1.Text;
             if (ledgerSelected.Length>0)
             {
-                //System.Windows.Forms.MessageBox.Show("inside IF");
+                ledgerSource = getLedgerSource(ledgerSelected);
 
-                ledgerSource = new List<LedgerRow>();
-                DataTable ledgerTable = dl.getLedger(ledgerSelected);
-                decimal balance = 0;
-                LedgerRow lr;
+                #region
+                //==============
+                //ledgerSource = new List<LedgerRow>();
+                //DataTable ledgerTable = dl.getLedger(ledgerSelected);
+                //decimal balance = 0;
+                //LedgerRow lr;
 
-                foreach (DataRow dr in ledgerTable.Rows)
-                {
-                    //System.Windows.Forms.MessageBox.Show("foreach : " + dr[0]);
-                    lr = new LedgerRow();
-                    lr.TransactionID = (int)dr[0];
-                    lr.DateOfTransaction = ((DateTime)dr[1]).ToShortDateString();
+                //foreach (DataRow dr in ledgerTable.Rows)
+                //{
+                //    lr = new LedgerRow();
+                //    lr.TransactionID = (int)dr[0];
+                //    lr.DateOfTransaction = ((DateTime)dr[1]).ToShortDateString();
 
-                    if (dr[3].ToString() == ledgerSelected)//ByAccountName==ledgerSelected
-                    {
-                        lr.TransactionDetails = dr[5].ToString();
-                        lr.Debit = ((decimal)dr[6]).ToString();
-                        lr.Credit = "";
-                        balance += ((decimal)dr[6]);
-                        lr.Balance = balance.ToString();
-                    }
-                    else //ToAccountName==ledgerSelected
-                    {
-                        lr.TransactionDetails = dr[3].ToString();
-                        lr.Debit = "";
-                        lr.Credit = ((decimal)dr[6]).ToString();
-                        balance -= ((decimal)dr[6]);
-                        lr.Balance = balance.ToString();
-                    }
-                    ledgerSource.Add(lr);
-                    //System.Windows.Forms.MessageBox.Show("Added in LedgerSource : "+lr.TransactionID+" "+lr.TransactionDetails);
-                }
+                //    if (dr[3].ToString() == ledgerSelected)//ByAccountName==ledgerSelected
+                //    {
+                //        lr.TransactionDetails = dr[5].ToString();
+                //        lr.Debit = ((decimal)dr[6]).ToString();
+                //        lr.Credit = "";
+                //        balance += ((decimal)dr[6]);
+                //        lr.Balance = balance.ToString();
+                //    }
+                //    else //ToAccountName==ledgerSelected
+                //    {
+                //        lr.TransactionDetails = dr[3].ToString();
+                //        lr.Debit = "";
+                //        lr.Credit = ((decimal)dr[6]).ToString();
+                //        balance -= ((decimal)dr[6]);
+                //        lr.Balance = balance.ToString();
+                //    }
+                //    ledgerSource.Add(lr);
+                //}
+                #endregion
+
                 if (ledgerSource.Count > 0)
                 {
-                    //dataGridLedger = new Microsoft.Windows.Controls.DataGrid();
-                    //dataGridLedger.AutoGenerateColumns = false;
-                    //dataGridLedger.Margin = new Thickness(25, 52, 31, 28);
                     InitializeComponent();
-
                     dataGridLedger.ItemsSource = ledgerSource;
-                    //System.Windows.Forms.MessageBox.Show("last");
                 }
             }
+        }
+
+        public List<LedgerRow> getLedgerSource(string ledgerName)
+        {
+            List<LedgerRow> ledgerGridSource = new List<LedgerRow>();
+            DataLogic dataLogic = new DataLogic();
+            DataTable ledgerTable = dataLogic.getLedger(ledgerName);
+
+            decimal balance = 0;
+            LedgerRow lr;
+
+            foreach (DataRow dr in ledgerTable.Rows)
+            {
+                lr = new LedgerRow();
+                lr.TransactionID = (int)dr[0];
+                lr.DateOfTransaction = ((DateTime)dr[1]).ToShortDateString();
+
+                if (dr[3].ToString() == ledgerName)//ByAccountName==ledgerName
+                {
+                    lr.TransactionDetails = dr[5].ToString();
+                    lr.Debit = ((decimal)dr[6]).ToString();
+                    lr.Credit = "";
+                    balance += ((decimal)dr[6]);
+                    lr.Balance = Math.Abs(balance).ToString();
+                }
+                else //ToAccountName==ledgerName
+                {
+                    lr.TransactionDetails = dr[3].ToString();
+                    lr.Debit = "";
+                    lr.Credit = ((decimal)dr[6]).ToString();
+                    balance -= ((decimal)dr[6]);
+                    lr.Balance = Math.Abs(balance).ToString();
+                }
+                ledgerGridSource.Add(lr);
+            }
+            lr = new LedgerRow();
+            lr.TransactionID = -1;
+            lr.TransactionDetails = lr.DateOfTransaction = "";
+            lr.Balance = "Closing Balance";
+            if (balance > 0)
+            {
+                lr.Debit = balance.ToString();
+                lr.Credit = "";
+            }
+            else
+            {
+                lr.Credit = Math.Abs(balance).ToString();
+                lr.Debit = "";
+            }
+            ledgerGridSource.Add(lr);
+
+            return ledgerGridSource;
         }
     }
 }
