@@ -18,7 +18,7 @@
             </TabItem>
             <TabItem Header="Edit/Delete" Background="DarkKhaki" IsEnabled="True">
                 <Grid Name="EditGrid">
-                    <Button HorizontalAlignment="Right" Margin="0,147,225,166" Name="btnEdit" Width="105" Click="btnEdit_Click_1" IsEnabled="True">Edit</Button>
+                    <Button HorizontalAlignment="Right" Margin="0,147,225,166" Name="btnEdit" Width="105" Click="btnEdit_Click_1" IsEnabled="True">Save</Button>
                     <Button Margin="0,147,101,166" Name="btnDeleteCity" HorizontalAlignment="Right" Width="96" Click="btnDeleteCity_Click_1">Delete City</Button>
                     <ListBox HorizontalAlignment="Left" Margin="19,54,0,72" Name="listBoxState" Width="142" 
                              ItemsSource="{Binding}"
@@ -32,7 +32,7 @@
                     <Label Height="28" HorizontalAlignment="Right" Margin="0,51,283,0" Name="labelState" VerticalAlignment="Top" Width="47">State</Label>
                     <Label Height="28" HorizontalAlignment="Right" Margin="0,93,255,0" Name="label4" VerticalAlignment="Top" Width="75">City</Label>
                     <TextBox Height="23" HorizontalAlignment="Right" Margin="0,56,101,0" Name="textBoxState" VerticalAlignment="Top" Width="158" Text="{Binding Path=StateName, Mode=OneWay}" IsEnabled="True" />
-                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,95,101,0" Name="textBoxCity" VerticalAlignment="Top" Width="158" Text="{Binding Path=State_City/CityName}" TextChanged="textBoxCity_TextChanged" IsEnabled="True" />
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,95,101,0" Name="textBoxCity" VerticalAlignment="Top" Width="158" Text="{Binding Path=State_City/CityName, Mode=OneWay}" TextChanged="textBoxCity_TextChanged" IsEnabled="True" />
                     <Label Height="28" HorizontalAlignment="Right" Margin="0,54,51,0" Name="labelStateID" VerticalAlignment="Top" Width="46" Content="{Binding Path=StateID}"/>
                     <Label Height="28" HorizontalAlignment="Right" Margin="0,90,51,0" Name="labelCityID" VerticalAlignment="Top" Width="46" IsEnabled="True" Content="{Binding Path=State_City/CityID}"/>
                     <Button Height="27.04" HorizontalAlignment="Right" Margin="0,0,101,127" Name="btnDeleteState" VerticalAlignment="Bottom" Width="96" Click="btnDeleteState_Click">Delete State</Button>

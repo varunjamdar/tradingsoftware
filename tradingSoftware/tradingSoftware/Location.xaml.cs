@@ -32,9 +32,9 @@ namespace tradingSoftware
         }
         public void fillStateCityListBox()
         {
-            Database.TradeDataSet ds = new Database.TradeDataSet();
-            Database.TradeDataSetTableAdapters.StateTableAdapter stateAdpt = new Database.TradeDataSetTableAdapters.StateTableAdapter();
-            Database.TradeDataSetTableAdapters.CityTableAdapter cityAdpt = new Database.TradeDataSetTableAdapters.CityTableAdapter();
+            TradeDataSet ds = new TradeDataSet();
+            TradeDataSetTableAdapters.StateTableAdapter stateAdpt = new TradeDataSetTableAdapters.StateTableAdapter();
+            TradeDataSetTableAdapters.CityTableAdapter cityAdpt = new TradeDataSetTableAdapters.CityTableAdapter();
             stateAdpt.Fill(ds.State);
             cityAdpt.Fill(ds.City);
             EditGrid.DataContext = ds.State;
