@@ -110,8 +110,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Location.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Taxsetup.xaml">
       <SubType>Designer</SubType>
