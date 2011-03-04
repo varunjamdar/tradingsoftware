@@ -108,5 +108,232 @@ namespace tradingSoftware
         //        return false;// in these cases no check is to be issued
         //    else return true;//true only if char is present
         //}
+
+        public string addStateCity(string stateName, string city)
+        {
+            string Msg = "";
+            bool stateExist = false;
+            int stateId = 0;//For Already added State in Table
+            adpt = new SqlDataAdapter();
+            ds = new DataSet();
+
+            if (stateName == "--add State--" || city == "--add City--")
+            {
+                Msg = "Inproper Inputs";
+            }
+            else
+            {
+                Msg = "Succeed";
+
+                //check that state is not exist in the state table
+                conn.Open();
+                cmd.CommandText = "SELECT * FROM State";
+                adpt.SelectCommand = cmd;
+                adpt.Fill(ds, "State");
+                conn.Close();
+
+                foreach (DataRow dr in ds.Tables["State"].Rows)
+                {
+                    if (stateName == dr["StateName"].ToString())
+                    {
+                        stateExist = true;
+                        stateId = Int32.Parse(dr["StateID"].ToString());
+                    }
+
+                }
+
+                if (stateExist == true)
+                {
+                    //check that state in City is not exist in the City Table
+                    conn.Open();
+                    cmd.CommandText = @"SELECT CityName FROM City WHERE
+                             (StateID IN
+                             (SELECT        StateID
+                               FROM            State
+                               WHERE        (StateName = '" + stateName + "')))";
+                    adpt.SelectCommand = cmd;
+                    adpt.Fill(ds, "City");
+                    conn.Close();
+
+                    if (ds.Tables["City"].Rows.Count == 0)
+                    {//First Time Entry
+                        conn.Open();
+                        cmd.CommandText = "INSERT INTO City (StateId,CityName) VALUES(" + stateId + ",'" + city + "')";
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        Msg = "City In State Added Successfully";
+
+                    }
+
+                    foreach (DataRow dr2 in ds.Tables["City"].Rows)
+                    {
+                        if (city == dr2["CityName"].ToString())
+                        {
+                            Msg = "Dublicate State-City Entry";
+                        }
+                        else
+                        {
+                            //add the city in city table
+                            conn.Open();
+                            cmd.CommandText = "INSERT INTO City (StateId,CityName) VALUES(" + stateId + ",'" + city + "')";
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                            Msg = "City Added Successfully";
+                            break;
+                        }
+                    }
+                }
+                else
+                {//add New State
+
+                    //add the state in state table
+                    conn.Open();
+                    cmd.CommandText = "INSERT INTO State (StateName) VALUES('" + stateName + "')";
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    //Get New State's Id
+                    ds = new DataSet();
+                    adpt = new SqlDataAdapter();
+                    conn.Open();
+                    cmd.CommandText = "SELECT StateID FROM State WHERE StateName='" + stateName + "'";
+                    adpt.SelectCommand = cmd;
+                    adpt.Fill(ds, "State");
+                    stateId = Int32.Parse(ds.Tables["State"].Rows[0]["StateID"].ToString());
+                    conn.Close();
+
+                    //add the city in city table
+                    conn.Open();
+                    cmd.CommandText = "INSERT INTO City (StateId,CityName) VALUES(" + stateId + ",'" + city + "')";
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    Msg = "State and City Added Successfully";
+                }
+            }
+            return Msg;
+        }
+
+        public DataTable showState()
+        {
+            conn.Open();
+            cmd.CommandText = "SELECT StateName FROM State";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "State");
+            conn.Close();
+            return ds.Tables["State"];
+        }
+
+        public string updateStateCity(string StateIDS, string State, string CityIDS, string City)
+        {
+            int StateID = Int32.Parse(StateIDS);
+            int CityID = 0;
+            if (CityIDS == "")
+            {
+                CityID = 0;
+            }
+            else
+            {
+                CityID = Int32.Parse(StateIDS);
+            }
+            bool stateExist = false; bool cityExist = false; string Msg = "Nothing Updated";
+            ds = new DataSet();
+            //check that state is not exist in DB
+            conn.Open();
+            cmd.CommandText = "SELECT * FROM State";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "State");
+            conn.Close();
+
+            foreach (DataRow dr in ds.Tables["State"].Rows)
+            {
+                if (State == dr["StateName"].ToString())
+                {
+                    stateExist = true;
+
+                    ds = new DataSet();
+                    if (CityID != 0)
+                    {
+                        //check that state in City is not exist in the City Table
+                        conn.Open();
+                        cmd.CommandText = @"SELECT CityName FROM City WHERE
+                             (StateID IN
+                             (SELECT        StateID
+                               FROM            State
+                               WHERE        (StateName = '" + State + "')))";
+                        adpt.SelectCommand = cmd;
+                        adpt.Fill(ds, "City");
+                        conn.Close();
+
+                        foreach (DataRow dr2 in ds.Tables["City"].Rows)
+                        {
+                            if (City == dr2["CityName"].ToString())
+                            {
+                                cityExist = true;
+                                Msg = "Error ! " + City + " city is already exist in " + State + " state";
+                            }
+                        }
+
+                        if (cityExist == false)
+                        {
+                            {
+                                //Update the City
+                                conn.Open();
+                                cmd.CommandText = "UPDATE City SET CityName = '" + City + "'Where CityID=" + CityID + "";
+                                cmd.ExecuteNonQuery();
+                                conn.Close();
+                                Msg = "Successfully Updated ( " + City + " city in " + State + " state )";
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (stateExist == false)
+            {
+                //update state
+                conn.Open();
+                cmd.CommandText = "UPDATE State SET StateName = '" + State + "' Where StateID=" + StateID + "";
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                //update city
+                if (CityID == 0)
+                {
+                    Msg = "Successfully Updated. ( " + State + " state )";
+                }
+                else
+                {
+                    conn.Open();
+                    cmd.CommandText = "UPDATE City SET CityName = '" + City + "' Where CityID=" + CityID + "";
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    Msg = "Successfully Updated. ( " + City + " city in " + State + " state )";
+                }
+            }
+            return Msg;
+        }
+
+        public void deleteCity(int cityID)
+        {
+            conn.Open();
+            cmd.CommandText = "DELETE FROM City WHERE (CityID = " + cityID + ")";
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void deleteState(int StateID)
+        {
+            conn.Open();
+            cmd.CommandText = "DELETE FROM State WHERE (StateID = " + StateID + ")";
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            conn.Open();
+            cmd.CommandText = "DELETE FROM City WHERE (StateID = " + StateID + ")";
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
     }
 }
