@@ -1,0 +1,15 @@
+﻿<Window x:Class="tradingSoftware.Item"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Item" Height="600" Width="900">
+    <Grid Name="ItemSetup">
+        <TabControl Name="tabControl1" FontSize="14">
+            <TabItem Name="ItenConf" Header="Item">
+                
+            </TabItem>
+            <TabItem Name="ItemMonth" Header="Monthly Stock">
+                
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
