@@ -37,6 +37,8 @@ namespace tradingSoftware {
         
         private TaxDataTable tableTax;
         
+        private global::System.Data.DataRelation relationState_City;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -296,6 +298,7 @@ namespace tradingSoftware {
                     this.tableTax.InitVars();
                 }
             }
+            this.relationState_City = this.Relations["State_City"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -317,6 +320,10 @@ namespace tradingSoftware {
             base.Tables.Add(this.tableAccountGroup);
             this.tableTax = new TaxDataTable();
             base.Tables.Add(this.tableTax);
+            this.relationState_City = new global::System.Data.DataRelation("State_City", new global::System.Data.DataColumn[] {
+                        this.tableState.StateIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCity.StateIDColumn}, false);
+            this.Relations.Add(this.relationState_City);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1236,12 +1243,15 @@ namespace tradingSoftware {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public CityRow AddCityRow(int StateID, string CityName) {
+            public CityRow AddCityRow(StateRow parentStateRowByState_City, string CityName) {
                 CityRow rowCityRow = ((CityRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        StateID,
+                        null,
                         CityName};
+                if ((parentStateRowByState_City != null)) {
+                    columnValuesArray[1] = parentStateRowByState_City[0];
+                }
                 rowCityRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCityRow);
                 return rowCityRow;
@@ -2616,6 +2626,16 @@ namespace tradingSoftware {
                     this[this.tableCity.CityNameColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public StateRow StateRow {
+                get {
+                    return ((StateRow)(this.GetParentRow(this.Table.ParentRelations["State_City"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["State_City"]);
+                }
+            }
         }
         
         /// <summary>
@@ -2649,6 +2669,16 @@ namespace tradingSoftware {
                 }
                 set {
                     this[this.tableState.StateNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public CityRow[] GetCityRows() {
+                if ((this.Table.ChildRelations["State_City"] == null)) {
+                    return new CityRow[0];
+                }
+                else {
+                    return ((CityRow[])(base.GetChildRows(this.Table.ChildRelations["State_City"])));
                 }
             }
         }
@@ -5453,21 +5483,21 @@ SELECT AccountGroupID, AccountGroupName FROM AccountGroup WHERE (AccountGroupID 
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._accountGroupTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.AccountGroup.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._accountGroupTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._taxTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Tax.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._taxTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._accountGroupTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.AccountGroup.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._accountGroupTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5515,19 +5545,19 @@ SELECT AccountGroupID, AccountGroupName FROM AccountGroup WHERE (AccountGroupID 
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._accountGroupTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.AccountGroup.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._accountGroupTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._taxTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Tax.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._taxTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._accountGroupTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.AccountGroup.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._accountGroupTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5588,19 +5618,19 @@ SELECT AccountGroupID, AccountGroupName FROM AccountGroup WHERE (AccountGroupID 
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._taxTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Tax.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._taxTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._accountGroupTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.AccountGroup.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._accountGroupTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._taxTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Tax.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._taxTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
