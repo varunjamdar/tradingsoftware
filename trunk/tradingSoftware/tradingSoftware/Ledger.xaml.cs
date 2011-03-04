@@ -93,7 +93,7 @@ namespace tradingSoftware
             }
         }
 
-        public List<LedgerRow> getLedgerSource(string ledgerName)
+        public static List<LedgerRow> getLedgerSource(string ledgerName)
         {
             List<LedgerRow> ledgerGridSource = new List<LedgerRow>();
             DataLogic dataLogic = new DataLogic();
@@ -128,18 +128,21 @@ namespace tradingSoftware
             }
             lr = new LedgerRow();
             lr.TransactionID = -1;
-            lr.TransactionDetails = lr.DateOfTransaction = "";
-            lr.Balance = "Closing Balance";
+            lr.Balance = lr.DateOfTransaction = "";
+            lr.TransactionDetails = "Closing Balance";
             if (balance > 0)
             {
                 lr.Debit = balance.ToString();
                 lr.Credit = "";
             }
-            else
+            else if (balance < 0)
             {
                 lr.Credit = Math.Abs(balance).ToString();
                 lr.Debit = "";
             }
+            else
+                lr.Debit = lr.Credit = Math.Abs(balance).ToString();
+
             ledgerGridSource.Add(lr);
 
             return ledgerGridSource;
