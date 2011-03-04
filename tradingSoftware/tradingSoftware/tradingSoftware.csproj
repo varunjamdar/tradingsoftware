@@ -188,6 +188,7 @@
     <Compile Include="TrialBalance.xaml.cs">
       <DependentUpon>TrialBalance.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TrialBalanceRow.cs" />
     <Compile Include="Unit.xaml.cs">
       <DependentUpon>Unit.xaml</DependentUpon>
     </Compile>

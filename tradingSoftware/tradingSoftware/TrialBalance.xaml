@@ -1,16 +1,16 @@
-﻿<Window x:Class="tradingSoftware.Trial_Balance"
+﻿<Window x:Class="tradingSoftware.TrialBalance"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Trial_Balance" Height="600" Width="685" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
+    Title="Trial Balance" Height="500" Width="685" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid Name="GridTrialBalanceMain">
         <TabControl Name="tabControlTrialBalance">
             <TabItem Name="TabItemTrialBalance" Header="Trial Balance">
                 <Grid Name="GridTrialBalance">
                     <my:DataGrid AutoGenerateColumns="False" Name="dataGridTrialBalance" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
                         <my:DataGrid.Columns>
-                            <my:DataGridTextColumn Header="Account" Binding="{Binding }" Width="350" />
-                            <my:DataGridTextColumn Header="Debit" Binding="{Binding }" Width="150" />
-                            <my:DataGridTextColumn Header="Credit" Binding="{Binding }" Width="150"/>
+                            <my:DataGridTextColumn Header="Account" Binding="{Binding AccountName}" Width="350" />
+                            <my:DataGridTextColumn Header="Debit" Binding="{Binding Debit}" Width="150" />
+                            <my:DataGridTextColumn Header="Credit" Binding="{Binding Credit}" Width="150"/>
                         </my:DataGrid.Columns>
                     </my:DataGrid>
                 </Grid>
