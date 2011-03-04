@@ -29,6 +29,7 @@
             <MenuItem Name="Transacton" Header="Transaction">
                 <MenuItem Name="Journal" Header="Journal" Click="Journal_Click"/>
                 <MenuItem Name="Ledger" Header="Ledger" Click="Ledger_Click" />
+                <MenuItem Name="TrialBalance" Header="Trial Balance" Click="TrialBalance_Click" />
             </MenuItem>
             <MenuItem Name="Sales" Header="Sales">
 

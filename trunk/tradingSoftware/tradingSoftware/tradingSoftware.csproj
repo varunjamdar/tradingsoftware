@@ -121,6 +121,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TrialBalance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Unit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -181,6 +185,9 @@
       <DependentUpon>TradeDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Transaction.cs" />
+    <Compile Include="TrialBalance.xaml.cs">
+      <DependentUpon>TrialBalance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Unit.xaml.cs">
       <DependentUpon>Unit.xaml</DependentUpon>
     </Compile>
