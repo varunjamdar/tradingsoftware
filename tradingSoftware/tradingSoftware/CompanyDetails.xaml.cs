@@ -85,7 +85,7 @@ namespace tradingSoftware
 
         private void btnCompanySave_Click(object sender, RoutedEventArgs e)
         {
-            dl.addCompanyDetails(txtCompanyName.Text, txtCompanyPrintName.Text, (DateTime)dtFinancialYearBegin.SelectedDate, (DateTime)dtBooksCommencing.SelectedDate, txtCompanyAddLine1.Text, txtCompanyAddLine2.Text, txtCompanyAddLine3.Text, txtCompanyCity.Text, int.Parse(txtCompanyPin.Text), txtCompanyState.Text, txtCompanyCountry.Text, int.Parse(txtCompanyPhone1.Text), int.Parse(txtCompanyPhone2.Text), txtCompanyWebsite.Text, txtCompanyEmailId.Text, int.Parse(txtCompanyFax.Text), cmbVatGstType.Text, int.Parse(txtCompanyTinNo.Text), (DateTime)dtVatGstDate.SelectedDate, int.Parse(txtCstNo.Text), (DateTime)dtCstDate.SelectedDate, int.Parse(TxtPanNo.Text), int.Parse(TxtServiceTaxNo.Text), txtcompanylogo.Text);
+            dl.addCompanyDetails(txtCompanyName.Text, txtCompanyPrintName.Text, (DateTime)dtFinancialYearBegin.SelectedDate, (DateTime)dtBooksCommencing.SelectedDate, txtCompanyAddLine1.Text, txtCompanyAddLine2.Text, txtCompanyAddLine3.Text, cmbCompanyCity.Text, int.Parse(txtCompanyPin.Text), cmbCompanyState.Text, txtCompanyCountry.Text, int.Parse(txtCompanyPhone1.Text), int.Parse(txtCompanyPhone2.Text), txtCompanyWebsite.Text, txtCompanyEmailId.Text, int.Parse(txtCompanyFax.Text), cmbVatGstType.Text, int.Parse(txtCompanyTinNo.Text), (DateTime)dtVatGstDate.SelectedDate, int.Parse(txtCstNo.Text), (DateTime)dtCstDate.SelectedDate, int.Parse(TxtPanNo.Text), int.Parse(TxtServiceTaxNo.Text), txtcompanylogo.Text);
         }
 
            

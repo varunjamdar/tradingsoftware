@@ -71,5 +71,11 @@ namespace tradingSoftware
             tradingSoftware.TrialBalance trialBalanceForm = new TrialBalance();
             trialBalanceForm.ShowDialog();
         }
+
+        private void ItemGroup_Click(object sender, RoutedEventArgs e)
+        {
+            tradingSoftware.ItemGroup itemGroupForm = new ItemGroup();
+            itemGroupForm.ShowDialog();
+        }
     }
 }
