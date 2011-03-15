@@ -26,8 +26,8 @@ namespace tradingSoftware.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=\"C:\\Program Files\\Microsoft SQL Server\\" +
-            "MSSQL.1\\MSSQL\\Data\\Trade.mdf\";Integrated Security=True;User Instance=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SHAILESHKALSARI\\SQLEXPRESS;Initial Catalog=\"C:\\PROGRAM FILES\\MICROSOF" +
+            "T SQL SERVER\\MSSQL.1\\MSSQL\\DATA\\TRADE.MDF\";Integrated Security=True")]
         public string TradeConnectionString {
             get {
                 return ((string)(this["TradeConnectionString"]));
@@ -48,9 +48,21 @@ namespace tradingSoftware.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=D:\\Study\\6 Sem\\tradingSoftware\\tradingS" +
-            "oftware\\tradingSoftware\\Database\\Trade.mdf;Integrated Security=True;User Instanc" +
-            "e=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=C:\\Users\\Shailesh Kalsariya\\Dropbox\\VI " +
+            "Sem Project- Trading Software\\Database\\Trade.mdf;Integrated Security=True;User I" +
+            "nstance=True")]
+        public string ShaConStr {
+            get {
+                return ((string)(this["ShaConStr"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=C:\\Users\\Shailesh Kalsariya\\Dropbox\\VI " +
+            "Sem Project- Trading Software\\Database\\Trade.mdf;Integrated Security=True;User I" +
+            "nstance=True")]
         public string VJConStr {
             get {
                 return ((string)(this["VJConStr"]));

@@ -77,5 +77,11 @@ namespace tradingSoftware
             tradingSoftware.ItemGroup itemGroupForm = new ItemGroup();
             itemGroupForm.ShowDialog();
         }
+
+        private void Purchase_Click(object sender, RoutedEventArgs e)
+        {
+            Purchase purchaseForm = new Purchase();
+            purchaseForm.ShowDialog();
+        }
     }
 }
