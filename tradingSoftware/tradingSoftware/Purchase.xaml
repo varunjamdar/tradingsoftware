@@ -1,0 +1,16 @@
+﻿<Window x:Class="tradingSoftware.Purchase"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Purchase" Height="330" Width="605">
+    <Grid>
+        <ListView Margin="21,15,29,14" Name="myList" IsSynchronizedWithCurrentItem="True">
+            <ListView.View>
+                <GridView ColumnHeaderToolTip="test" >
+                    <GridViewColumn Width = "200" Header="firstname" DisplayMemberBinding="{Binding Path=first}"/>
+                    <GridViewColumn Width = "200" Header="lastname" DisplayMemberBinding="{Binding Path=last}" />
+                    <GridViewColumn Width = "200" Header="city" DisplayMemberBinding="{Binding Path=city}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
