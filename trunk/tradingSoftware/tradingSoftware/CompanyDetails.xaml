@@ -5,7 +5,7 @@
     <Grid Name="CompanyDetailsMain" >    
     <TabControl Name="tabControl1" Background="FloralWhite" FontSize="14" SelectedIndex="0">
             <TabItem Header="Basic Information" Background="DarkKhaki">
-                <Grid ShowGridLines="True" Margin="1,0,9,32">
+                <Grid Name="BasicInformationGrid" ShowGridLines="True" Margin="1,0,9,32">
                     <GroupBox Header="Address Details" Name="groupBox3" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" Margin="383,17,33,218.06" />
                     <GroupBox Header="Contacts" Height="180" Margin="14,0,0,24" Name="groupBox4" VerticalAlignment="Bottom" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" Opacity="1" HorizontalAlignment="Left" Width="829"></GroupBox>
                     <GroupBox Header="Basic" Height="223" HorizontalAlignment="Left" Margin="14,20,0,0" Name="groupBox2" VerticalAlignment="Top" Width="345" BorderBrush="DarkOliveGreen" BorderThickness="2" FontSize="11" Foreground="BlueViolet" />
@@ -37,7 +37,7 @@
                     <Label Height="28" Margin="413,180,402,0" Name="label16" VerticalAlignment="Top">City</Label>
                     <Label Height="28" HorizontalAlignment="Right" Margin="0,182,177,0" Name="label17" VerticalAlignment="Top" Width="39">Pin</Label>
                     <TextBox Height="23" HorizontalAlignment="Right" Margin="0,184,54,0" Name="txtCompanyPin" VerticalAlignment="Top" Width="131" />
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="478,132,0,0" Name="cmbCompanyState" VerticalAlignment="Top" Width="233" />
+                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,133,147,0" Name="cmbCompanyState" VerticalAlignment="Top" Width="233" SelectionChanged="cmbCompanyState_SelectionChanged" ItemsSource="{Binding}" DisplayMemberPath="StateName"/>
                     <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,180,227,0" Name="cmbCompanyCity" VerticalAlignment="Top" Width="152" />
                 </Grid>
             </TabItem>
