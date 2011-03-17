@@ -1,41 +1,39 @@
-E:\Project\Repository\tradingSoftware\tradingSoftware\bin\Debug\tradingSoftware.exe.config
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\ResolveAssemblyReference.cache
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\AccountSetup.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\CompanyDetails.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\CustomerDetails.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Item.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\ItemGroup.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Journal.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Ledger.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Location.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Taxsetup.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\TrialBalance.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Unit.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Main.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\AccountSetup.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\CompanyDetails.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\CustomerDetails.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Item.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\ItemGroup.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Journal.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Ledger.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Location.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Taxsetup.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\TrialBalance.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Unit.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Main.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\App.g.cs
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware_MarkupCompile.cache
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.g.resources
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.Properties.Resources.resources
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.csproj.GenerateResource.Cache
-E:\Project\Repository\tradingSoftware\tradingSoftware\bin\Debug\tradingSoftware.exe
-E:\Project\Repository\tradingSoftware\tradingSoftware\bin\Debug\tradingSoftware.pdb
-E:\Project\Repository\tradingSoftware\tradingSoftware\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
-E:\Project\Repository\tradingSoftware\tradingSoftware\bin\Debug\WPFToolkit.dll
-E:\Project\Repository\tradingSoftware\tradingSoftware\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.pdb
-E:\Project\Repository\tradingSoftware\tradingSoftware\bin\Debug\WPFToolkit.pdb
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.exe
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.pdb
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Purchase.baml
-E:\Project\Repository\tradingSoftware\tradingSoftware\obj\Debug\Purchase.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\bin\Debug\tradingSoftware.exe.config
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\bin\Debug\tradingSoftware.exe
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\bin\Debug\tradingSoftware.pdb
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\bin\Debug\WPFToolkit.dll
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.pdb
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\bin\Debug\WPFToolkit.pdb
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\ResolveAssemblyReference.cache
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\AccountSetup.baml
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\CompanyDetails.baml
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\CustomerDetails.baml
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Item.baml
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\ItemGroup.baml
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Journal.baml
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Ledger.baml
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Location.baml
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Taxsetup.baml
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\TrialBalance.baml
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Unit.baml
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Main.baml
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\AccountSetup.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\CompanyDetails.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\CustomerDetails.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Item.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\ItemGroup.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Journal.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Ledger.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Location.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Taxsetup.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\TrialBalance.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Unit.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\Main.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\App.g.cs
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware_MarkupCompile.cache
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.g.resources
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.Properties.Resources.resources
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.csproj.GenerateResource.Cache
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.exe
+D:\janice\6th Sem Data\Repository\tradingSoftware\tradingSoftware\obj\Debug\tradingSoftware.pdb
