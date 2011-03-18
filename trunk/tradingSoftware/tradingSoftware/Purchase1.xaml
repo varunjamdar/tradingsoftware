@@ -14,7 +14,7 @@
         <TextBox Height="23" HorizontalAlignment="Left" Margin="115,60,0,0" Name="txtVoucherNo" VerticalAlignment="Top" Width="96" />
         <Label Height="28" HorizontalAlignment="Left" Margin="261,54,0,0" Name="label2" VerticalAlignment="Top" Width="37">Date</Label>
         <my:DatePicker Height="25" Margin="307,56,0,0" Name="datePicker1" VerticalAlignment="Top" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" HorizontalAlignment="Left" Width="115" />
-        <Label Height="28" Margin="495,55,0,0" Name="label3" VerticalAlignment="Top" HorizontalAlignment="Left" Width="83">Manufacturar</Label>
+        <Label Height="28" Margin="495,55,0,0" Name="label3" VerticalAlignment="Top" HorizontalAlignment="Left" Width="83">Manufacturer</Label>
         <ComboBox Height="23" HorizontalAlignment="Left" Margin="614,57,0,0" Name="comboBox1" VerticalAlignment="Top" Width="220" />
         <my:DataGrid AutoGenerateColumns="False" Height="202" Margin="32,0,27,24" Name="dataGrid1" VerticalAlignment="Bottom" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
         <Label Height="28" HorizontalAlignment="Left" Margin="22,144,0,0" Name="label4" VerticalAlignment="Top" Width="43">Item</Label>
