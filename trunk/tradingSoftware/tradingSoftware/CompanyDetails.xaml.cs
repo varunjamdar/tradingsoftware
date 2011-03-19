@@ -25,8 +25,13 @@ namespace tradingSoftware
         {
             InitializeComponent();
             DataLogic dl = new DataLogic();
-            this.cmbCompanyState.DataContext = dl.showState();
-           
+            //this.cmbCompanyState.DataContext = dl.showState();
+
+            TradeDataSet tds = new TradeDataSet();
+            TradeDataSetTableAdapters.StateTableAdapter stateadpt = new tradingSoftware.TradeDataSetTableAdapters.StateTableAdapter();
+            stateadpt.Fill(tds.State);
+            this.BasicInformationGrid.DataContext = tds.State;
+            
         }
 
         private void textBox6_TextChanged(object sender, TextChangedEventArgs e)
@@ -89,15 +94,6 @@ namespace tradingSoftware
         private void btnCompanySave_Click(object sender, RoutedEventArgs e)
         {
             dl.addCompanyDetails(txtCompanyName.Text, txtCompanyPrintName.Text, (DateTime)dtFinancialYearBegin.SelectedDate, (DateTime)dtBooksCommencing.SelectedDate, txtCompanyAddLine1.Text, txtCompanyAddLine2.Text, txtCompanyAddLine3.Text, cmbCompanyCity.Text, int.Parse(txtCompanyPin.Text), cmbCompanyState.Text, txtCompanyCountry.Text, int.Parse(txtCompanyPhone1.Text), int.Parse(txtCompanyPhone2.Text), txtCompanyWebsite.Text, txtCompanyEmailId.Text, int.Parse(txtCompanyFax.Text), cmbVatGstType.Text, int.Parse(txtCompanyTinNo.Text), (DateTime)dtVatGstDate.SelectedDate, int.Parse(txtCstNo.Text), (DateTime)dtCstDate.SelectedDate, int.Parse(TxtPanNo.Text), int.Parse(TxtServiceTaxNo.Text), txtcompanylogo.Text);
-        }
-
-        private void cmbCompanyState_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-           
-
-        
+        }       
     }
 }

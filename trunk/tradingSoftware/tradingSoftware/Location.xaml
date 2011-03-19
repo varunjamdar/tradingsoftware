@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Location" Height="410" Width="712">
     <Grid Name="LocationSetupForm">
-        <TabControl Name="tabControlLocation" SelectedIndex="0">
+        <TabControl Name="tabControlLocation" SelectedIndex="1">
             <TabItem Header="Add" Background="DarkKhaki" IsEnabled="True">
                 <Grid Name="LocationSetupGrid" Background="FloralWhite">
         <Label Height="28" HorizontalAlignment="Left" Margin="216,48,0,0" Name="label1" VerticalAlignment="Top" Width="54">State</Label>
