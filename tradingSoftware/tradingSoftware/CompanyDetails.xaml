@@ -37,8 +37,8 @@
                     <Label Height="28" Margin="413,180,402,0" Name="label16" VerticalAlignment="Top">City</Label>
                     <Label Height="28" HorizontalAlignment="Right" Margin="0,182,177,0" Name="label17" VerticalAlignment="Top" Width="39">Pin</Label>
                     <TextBox Height="23" HorizontalAlignment="Right" Margin="0,184,54,0" Name="txtCompanyPin" VerticalAlignment="Top" Width="131" />
-                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,133,147,0" Name="cmbCompanyState" VerticalAlignment="Top" Width="233" SelectionChanged="cmbCompanyState_SelectionChanged" ItemsSource="{Binding}" DisplayMemberPath="StateName"/>
-                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,180,227,0" Name="cmbCompanyCity" VerticalAlignment="Top" Width="152" />
+                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,133,147,0" Name="cmbCompanyState" VerticalAlignment="Top" Width="233" ItemsSource="{Binding}" DisplayMemberPath="StateName" IsSynchronizedWithCurrentItem="True"/>
+                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,180,227,0" Name="cmbCompanyCity" VerticalAlignment="Top" Width="152" ItemsSource="{Binding Path=State_City}" DisplayMemberPath="CityName" IsSynchronizedWithCurrentItem="True"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Company Registration No." Background="DarkKhaki">
