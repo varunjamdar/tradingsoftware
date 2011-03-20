@@ -3,19 +3,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Unit" Height="600" Width="900">
     <Grid Name="UnitGrid1">
-        <TabControl Name="tabControlUnit" SelectedIndex="1" Background="FloralWhite">
+        <TabControl Name="tabControlUnit" SelectedIndex="0" Background="FloralWhite">
             <TabItem Name="UnitTab" Header="Unit" Background="DarkKhaki">
                 <Grid Name="UnitGrid">
                     <Label Height="28" HorizontalAlignment="Left" Margin="181,44,0,0" Name="label9" VerticalAlignment="Top" Width="43">Name</Label>
                     <Label HorizontalAlignment="Left" Margin="158,104,0,0" Name="label2" Width="81" Height="27" VerticalAlignment="Top">Print Name</Label>
                     <TextBox Height="23" Margin="241,46,310,0" Name="txtUnitName" VerticalAlignment="Top" />
                     <TextBox Margin="241,104,310,0" Name="txtPrintName" Height="27" VerticalAlignment="Top" />
-                    <Button Height="23" HorizontalAlignment="Left" Margin="181,174,0,0" Name="btnNew" VerticalAlignment="Top" Width="75">New</Button>
-                    <Button Height="23" HorizontalAlignment="Left" Margin="278,174,0,0" Name="btnSave" VerticalAlignment="Top" Width="75">Save</Button>
+                    <Button Height="23" HorizontalAlignment="Left" Margin="181,174,0,0" Name="btnNew" VerticalAlignment="Top" Width="75" Click="btnNew_Click">New</Button>
+                    <Button Height="23" HorizontalAlignment="Left" Margin="278,174,0,0" Name="btnAdd" VerticalAlignment="Top" Width="75" Click="btnAdd_Click">Add Unit</Button>
                     <Button Height="23" Margin="476,174,0,0" Name="btnDelete" VerticalAlignment="Top" HorizontalAlignment="Left" Width="87">Delete</Button>
-                    <Button Height="23" Margin="584,174,0,0" Name="btnClose" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75">Close</Button>
+                    <Button Height="23" Margin="584,174,0,0" Name="btnClose" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Click="btnClose_Click">Close</Button>
                     <Button Height="23" Margin="380,174,0,0" Name="button5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75">Edit</Button>
-                    <my:DataGrid AutoGenerateColumns="False" Margin="125,238,135,92" Name="dataGrid2" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
+                    <my:DataGrid AutoGenerateColumns="False" Margin="125,238,135,92" Name="dataGrid2" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" >
+                        <my:DataGrid.Columns>
+                            <my:DataGridTextColumn Header="Unit" Binding="{Binding UnitName}" Width="auto" />
+                        </my:DataGrid.Columns>
+                    </my:DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Name="UnitConversionTab" Header="Unit Conversion" Background="DarkKhaki">
