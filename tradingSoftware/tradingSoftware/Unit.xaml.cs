@@ -21,7 +21,35 @@ namespace tradingSoftware
         public Unit()
         {
             InitializeComponent();
+            txtUnitName.IsEnabled = false;
+            txtPrintName.IsEnabled = false;
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnNew_Click(object sender, RoutedEventArgs e)
+        {
+            txtUnitName.IsEnabled = true;
+            txtPrintName.IsEnabled = true;
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtUnitName.Text == "" || txtPrintName.Text == "")
+            {
+                MessageBox.Show("You Must Enter Both Unit Name and Unit Print Name", "Warning..!!");
+                return;
+            }
+
+
+        }
+
+        
+
+        
 
     }
 }
