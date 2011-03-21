@@ -22,5 +22,10 @@ namespace tradingSoftware
         {
             InitializeComponent();
         }
+
+        private void comboBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
