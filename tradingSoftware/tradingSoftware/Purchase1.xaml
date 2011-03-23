@@ -4,7 +4,7 @@
     xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit"
     Title="Purchase Order" Height="600" Width="900">
     <Grid Name="PurchaseOrderGrid">
-        <TabControl Name="tabControl1" Margin="0,0,0,0" SelectedIndex="1">
+        <TabControl Name="tabControl1" Margin="0,0,0,0" SelectedIndex="0">
             <TabItem Header="Purchase Form" FontSize="14">
                 <Grid Name="PurchaseOrder2Grid">
                     <Label Height="28" HorizontalAlignment="Left" Margin="10,10,0,0" Name="lblPONo" VerticalAlignment="Top" Width="127.765">Purchase Order No.</Label>
