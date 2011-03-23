@@ -30,6 +30,11 @@ namespace tradingSoftware
             TradeDataSet tds = new TradeDataSet();
             TradeDataSetTableAdapters.StateTableAdapter stateadpt = new tradingSoftware.TradeDataSetTableAdapters.StateTableAdapter();
             stateadpt.Fill(tds.State);
+
+            //City adpt and ds are necessary.. ha ha ha
+            TradeDataSetTableAdapters.CityTableAdapter cityadpt = new tradingSoftware.TradeDataSetTableAdapters.CityTableAdapter();
+            cityadpt.Fill(tds.City);
+            
             this.BasicInformationGrid.DataContext = tds.State;
             
         }
