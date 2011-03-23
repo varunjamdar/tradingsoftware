@@ -80,7 +80,8 @@ namespace tradingSoftware
 
         private void Purchase_Click(object sender, RoutedEventArgs e)
         {
-            Purchase purchaseForm = new Purchase();
+            
+            Purchase1 purchaseForm = new Purchase1();
             purchaseForm.ShowDialog();
         }
     }
