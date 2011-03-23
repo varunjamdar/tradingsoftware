@@ -354,5 +354,62 @@ namespace tradingSoftware
 
         }
 
+        public int getUnitId(UnitObject unitObject)
+        {
+            conn.Open();
+            cmd = conn.CreateCommand();
+
+            cmd.CommandText = "Select UnitId from Unit where UnitName=@UnitName AND UnitPrintName=@UnitPrintName;";
+
+            cmd.Parameters.Add("@UnitName", SqlDbType.VarChar, 50);
+            cmd.Parameters.Add("@UnitPrintName", SqlDbType.VarChar, 50);
+
+            cmd.Parameters["@UnitName"].Value = unitObject.UnitName;
+            cmd.Parameters["@UnitPrintName"].Value = unitObject.UnitPrintName;
+
+            return (int)cmd.ExecuteScalar();
+
+            conn.Close();
+            
+        }
+
+        //public void editUnit(UnitObject originalUnitObject,UnitObject newUnitObject)
+        //{
+        //    int id = getUnitId(originalUnitObject);
+
+        //    cmd = conn.CreateCommand();
+        //    conn.Open();
+
+        //    cmd.CommandText = "UPDATE Unit SET UnitName=@UnitName, UnitPrintName=@UnitPrintName WHERE UnitId=@UnitId";
+
+        //    cmd.Parameters.Add("@UnitName", SqlDbType.VarChar, 50);
+        //    cmd.Parameters.Add("@UnitPrintName", SqlDbType.VarChar, 50);
+        //    cmd.Parameters.Add("@UnitId", SqlDbType.Int);
+
+        //    cmd.Parameters["@UnitName"].Value = newUnitObject.UnitName;
+        //    cmd.Parameters["@UnitPrintName"].Value = newUnitObject.UnitPrintName;
+        //    cmd.Parameters["@UnitId"].Value = id;
+
+        //    cmd.ExecuteNonQuery();
+        //    conn.Close();
+        //}
+
+        public void deleteUnit(UnitObject unitObject)
+        {
+            conn.Open();
+            cmd = conn.CreateCommand();
+
+            cmd.CommandText = "Delete From Unit where UnitName=@UnitName AND UnitPrintName=@UnitPrintName;";
+
+            cmd.Parameters.Add("@UnitName", SqlDbType.VarChar, 50);
+            cmd.Parameters.Add("@UnitPrintName", SqlDbType.VarChar, 50);
+
+            cmd.Parameters["@UnitName"].Value = unitObject.UnitName;
+            cmd.Parameters["@UnitPrintName"].Value = unitObject.UnitPrintName;
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
     }
 }
