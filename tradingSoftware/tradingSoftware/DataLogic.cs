@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace tradingSoftware
 {
-    class DataLogic
+    public class DataLogic
     {
         SqlConnection conn = null;
         SqlCommand cmd = null;
