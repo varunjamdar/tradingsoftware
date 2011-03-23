@@ -78,11 +78,36 @@ namespace tradingSoftware
             itemGroupForm.ShowDialog();
         }
 
-        private void Purchase_Click(object sender, RoutedEventArgs e)
+      
+        private void PurchaseOrder_Click(object sender, RoutedEventArgs e)
         {
-            
             Purchase1 purchaseForm = new Purchase1();
             purchaseForm.ShowDialog();
+        }
+
+        private void GoodsReceipt_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Payment_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaleOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sale_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Receipt_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
