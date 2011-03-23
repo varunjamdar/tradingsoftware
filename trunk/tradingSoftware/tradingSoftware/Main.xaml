@@ -38,8 +38,8 @@
                 <MenuItem Name="Purchase" Header="Purchase" Click="Purchase_Click"/>
                 <MenuItem Name="Payment" Header="Payment"/>
                 <Separator />
-                <MenuItem Name="SellsOrder" Header="Sells Order"/>
-                <MenuItem Name="Sell" Header="Sell"/>
+                <MenuItem Name="SalesOrder" Header="Sale"/>
+                <MenuItem Name="Sale" Header="Sale"/>
                 <MenuItem Name="Receipt" Header="Receipt"/>
             </MenuItem>
         </Menu>
