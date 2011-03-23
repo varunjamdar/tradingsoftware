@@ -34,13 +34,13 @@
                 <MenuItem Name="Ledger" Header="Ledger" Click="Ledger_Click" />
                 <MenuItem Name="TrialBalance" Header="Trial Balance" Click="TrialBalance_Click" />
                 <Separator />
-                <MenuItem Name="PurchaseOrder" Header="Purchase Order"/>
-                <MenuItem Name="Purchase" Header="Purchase" Click="Purchase_Click"/>
-                <MenuItem Name="Payment" Header="Payment"/>
+                <MenuItem Name="PurchaseOrder" Header="Purchase Order" Click="PurchaseOrder_Click"/>
+                <MenuItem Name="GoodsReceipt" Header="Goods Receipt" Click="GoodsReceipt_Click"/>
+                <MenuItem Name="Payment" Header="Payment" Click="Payment_Click"/>
                 <Separator />
-                <MenuItem Name="SalesOrder" Header="Sale"/>
-                <MenuItem Name="Sale" Header="Sale"/>
-                <MenuItem Name="Receipt" Header="Receipt"/>
+                <MenuItem Name="SaleOrder" Header="Sale Order" Click="SaleOrder_Click"/>
+                <MenuItem Name="Sale" Header="Sale" Click="Sale_Click"/>
+                <MenuItem Name="Receipt" Header="Receipt" Click="Receipt_Click"/>
             </MenuItem>
         </Menu>
     </Grid>
