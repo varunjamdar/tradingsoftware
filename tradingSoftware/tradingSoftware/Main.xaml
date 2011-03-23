@@ -2,15 +2,17 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Trading Software" Height="700" Width="1000" Background="FloralWhite" ResizeMode="CanMinimize" SizeToContent="Manual" WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    <Grid>
+    <Grid Name="MainGrid">
         <Menu Height="29" Name="menu1" VerticalAlignment="Top" Background="DarkKhaki" FontSize="14">
             <Menu.BitmapEffect>
                 <DropShadowBitmapEffect Color="Indigo" />
             </Menu.BitmapEffect>
             <MenuItem Name="BasicConfiguration" Header="Basic Configuration">
                 <MenuItem Name="CompanyConfig" Header="Company Configuration" Click="CompanyConfig_Click"/>
+                <Separator />
                 <MenuItem Name="Location" Header="Location Setup" Click="Location_Click"/>
                 <MenuItem Name="Unit" Header="Unit Setup" Click="Unit_Click"/>
+                <Separator />
                 <MenuItem Name="Database" Header="Database">
                     <MenuItem.BitmapEffect>
                         <OuterGlowBitmapEffect GlowColor="LightGray" />
@@ -31,9 +33,15 @@
                 <MenuItem Name="Journal" Header="Journal" Click="Journal_Click"/>
                 <MenuItem Name="Ledger" Header="Ledger" Click="Ledger_Click" />
                 <MenuItem Name="TrialBalance" Header="Trial Balance" Click="TrialBalance_Click" />
+                <Separator />
+                <MenuItem Name="PurchaseOrder" Header="Purchase Order"/>
                 <MenuItem Name="Purchase" Header="Purchase" Click="Purchase_Click"/>
+                <MenuItem Name="Payment" Header="Payment"/>
+                <Separator />
+                <MenuItem Name="SellsOrder" Header="Sells Order"/>
+                <MenuItem Name="Sell" Header="Sell"/>
+                <MenuItem Name="Receipt" Header="Receipt"/>
             </MenuItem>
         </Menu>
-        <Grid Name="MainGrid" Height="239" Margin="0,25,0,0" VerticalAlignment="Top" />
     </Grid>
 </Window>
