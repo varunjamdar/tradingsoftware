@@ -335,5 +335,24 @@ namespace tradingSoftware
             conn.Close();
         }
 
+        public void addUnit(UnitObject unitobject)
+        {
+            conn.Open();
+            cmd = conn.CreateCommand();
+
+            cmd.CommandText = "Insert into Unit(UnitName, UnitPrintName) values (@UnitName,@UnitPrintName)";
+
+            cmd.Parameters.Add("@UnitName", SqlDbType.VarChar, 50);
+            cmd.Parameters.Add("@UnitPrintName", SqlDbType.VarChar, 50);
+
+            cmd.Parameters["@UnitName"].Value = unitobject.UnitName;
+            cmd.Parameters["@unitPrintName"].Value = unitobject.UnitPrintName;
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+        }
+
     }
 }

@@ -44,6 +44,14 @@ namespace tradingSoftware
                 return;
             }
 
+            UnitObject unitobject = new UnitObject();
+            DataLogic dl = new DataLogic();
+
+            unitobject.UnitName = txtUnitName.Text;
+            unitobject.UnitPrintName = txtPrintName.Text;
+
+            dl.addUnit(unitobject);
+
 
         }
 
