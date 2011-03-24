@@ -5,7 +5,7 @@ using System.Text;
 
 namespace tradingSoftware
 {
-    class UnitObject
+    public class UnitObject
     {
         public int UnitId { get; set; }
         public String UnitName { get; set; }

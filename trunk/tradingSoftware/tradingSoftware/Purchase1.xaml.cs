@@ -27,7 +27,7 @@ namespace tradingSoftware
 
         private void btn_AddPurchaseItem_Click(object sender, RoutedEventArgs e)
         {
-            addRow(txt_PurchaseNo.Text, dtPick_PODate.Text,cb_Mfg.Text,cb_ItemGroup.Text,cb_Item.Text,txt_Quantity.Text,txt_PPU.Text);
+            addRow(txt_PurchaseNo.Text, dtPick_PODate.Text,cb_Supplier.Text,cb_ItemGroup.Text,cb_Item.Text,txt_Quantity.Text,txt_PPU.Text);
         }
 
 
@@ -39,7 +39,7 @@ namespace tradingSoftware
             {
                 lvc.PONo = v1;
                 lvc.PODate = v2;
-                lvc.Manufacturer = v3;
+                lvc.Supplier = v3;
                 lvc.ItemGroup = v4;
                 lvc.Item1 = v5;
                 lvc.Quantity = v6;
@@ -54,7 +54,7 @@ namespace tradingSoftware
             listViewPurchseOrder.Items.Add(new ListViewPurchaseOrder(v1,v2,v3,v4,v5,v6,v7));
             txt_PurchaseNo.Text = "";
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            cb_Mfg.Text = "";
+            cb_Supplier.Text = "";
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
@@ -78,13 +78,12 @@ namespace tradingSoftware
                 ListViewPurchaseOrder lvpo = (ListViewPurchaseOrder)listViewPurchseOrder.SelectedItem;
                 txt_PurchaseNo.Text = lvpo.PONo;
                 dtPick_PODate.Text = lvpo.PODate;
-                cb_Mfg.Text = lvpo.Manufacturer;
+                cb_Supplier.Text = lvpo.Supplier;
                 cb_ItemGroup.Text = lvpo.ItemGroup;
                 cb_Item.Text = lvpo.Item1;
                 txt_Quantity.Text = lvpo.Quantity;
          
                 txt_PPU.Text = lvpo.PricePerUnit;
-                //listViewPurchseOrder.SelectedIndex = -1;
             }
             catch (NullReferenceException nre) { }
             
@@ -99,7 +98,7 @@ namespace tradingSoftware
         {
             txt_PurchaseNo.Text = "";
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            cb_Mfg.Text = "";
+            cb_Supplier.Text = "";
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
@@ -112,7 +111,7 @@ namespace tradingSoftware
         {
             txt_PurchaseNo.Text = "";
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            cb_Mfg.Text = "";
+            cb_Supplier.Text = "";
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
@@ -122,10 +121,10 @@ namespace tradingSoftware
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
-            RefreshListView(txt_PurchaseNo.Text, dtPick_PODate.Text, cb_Mfg.Text, cb_ItemGroup.Text, cb_Item.Text, txt_Quantity.Text, txt_PPU.Text);
+            RefreshListView(txt_PurchaseNo.Text, dtPick_PODate.Text, cb_Supplier.Text, cb_ItemGroup.Text, cb_Item.Text, txt_Quantity.Text, txt_PPU.Text);
             txt_PurchaseNo.Text = "";
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            cb_Mfg.Text = "";
+            cb_Supplier.Text = "";
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
@@ -138,7 +137,7 @@ namespace tradingSoftware
             listViewPurchseOrder.Items.Remove(listViewPurchseOrder.SelectedItem);
             txt_PurchaseNo.Text = "";
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            cb_Mfg.Text = "";
+            cb_Supplier.Text = "";
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
