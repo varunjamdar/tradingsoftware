@@ -1,0 +1,55 @@
+﻿<Window x:Class="tradingSoftware.Journal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Journal" Height="600" Width="900" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
+    <Grid Name="JournalSetupform">
+        <TabControl Name="tabControl1" FontSize="14" SelectedIndex="0">
+            <TabItem Name="ViewJournal" Header="View Journal" Width="120">
+                <Grid Name="ViewJournalGrid">
+                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="167,24,0,0" Name="datePicker1" VerticalAlignment="Top" Width="115" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="63,24,0,0" Name="label1" VerticalAlignment="Top" Width="85">Select Date</Label>
+                    <my:DataGrid AutoGenerateColumns="False" Margin="82,73,49,26" Name="dataGrid1" />
+                </Grid>
+            </TabItem>
+            <TabItem Name="AddJournal" Header="Add" Width="120">
+                <Grid Name="AddJournalGrid">
+                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="167,24,0,0" Name="datePicker2" VerticalAlignment="Top" Width="115" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="63,24,0,0" Name="label2" VerticalAlignment="Top" Width="85">Select Date</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="84,102,0,0" Name="label3" VerticalAlignment="Top" Width="64">D/C</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="154,102,0,0" Name="label4" VerticalAlignment="Top" Width="64">Perticulars</Label>
+                    <Label Height="28" Margin="493,102,0,0" Name="label5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="102">Debit Amount</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="601,102,0,0" Name="label6" VerticalAlignment="Top" Width="95">Credit Amount</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="84,140,0,0" Name="textBox1" VerticalAlignment="Top" Width="39" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="84,180,0,0" Name="textBox2" VerticalAlignment="Top" Width="39" />
+                    <TextBox Height="23" Margin="154,140,0,0" Name="textBox3" VerticalAlignment="Top" HorizontalAlignment="Left" Width="313" />
+                    <TextBox Height="23" Margin="154,180,0,0" Name="textBox4" VerticalAlignment="Top" HorizontalAlignment="Left" Width="313" />
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,140,294,0" Name="textBox5" VerticalAlignment="Top" Width="81" />
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,180,294,0" Name="textBox6" VerticalAlignment="Top" Width="81" />
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,140,186,0" Name="textBox7" VerticalAlignment="Top" Width="81" />
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,180,186,0" Name="textBox8" VerticalAlignment="Top" Width="81" />
+                    <Button Margin="370,0,343,228" Name="button1" Height="32" VerticalAlignment="Bottom">Save</Button>
+                </Grid>
+            </TabItem>
+            <TabItem Name="EditJournal" Header="Edit" Width="120">
+                <Grid Name="EditJournalGrid">
+                    <my:DataGrid AutoGenerateColumns="False" Margin="63,67,53,0" Name="dataGrid2" Height="236" VerticalAlignment="Top" />
+                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="167,24,0,0" Name="datePicker3" VerticalAlignment="Top" Width="115" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="63,24,0,0" Name="label7" VerticalAlignment="Top" Width="85">Select Date</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="97,0,0,168" Name="label8" VerticalAlignment="Bottom" Width="64">D/C</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="167,0,0,168" Name="label9" VerticalAlignment="Bottom" Width="81">Perticulars</Label>
+                    <Label Height="28" Margin="517,0,0,168" Name="label19" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="102">Debit Amount</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="653,0,0,168" Name="label20" VerticalAlignment="Bottom" Width="105">Credit Amount</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="97,0,0,135" Name="textBox9" VerticalAlignment="Bottom" Width="39" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="97,0,0,95" Name="textBox10" VerticalAlignment="Bottom" Width="39" />
+                    <TextBox Height="23" Margin="167,0,0,135" Name="textBox11" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="313" />
+                    <TextBox Height="23" Margin="167,0,0,95" Name="textBox12" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="313" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="527,0,0,135" Name="textBox13" VerticalAlignment="Bottom" Width="81" TextChanged="textBox13_TextChanged" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="527,0,0,95" Name="textBox14" VerticalAlignment="Bottom" Width="81" />
+                    <TextBox Height="23" Margin="653,0,0,135" Name="textBox15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="81" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="653,0,0,95" Name="textBox16" VerticalAlignment="Bottom" Width="81" />
+                    <Button Margin="386,0,327,24" Name="button2" Height="32" VerticalAlignment="Bottom">Save</Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
