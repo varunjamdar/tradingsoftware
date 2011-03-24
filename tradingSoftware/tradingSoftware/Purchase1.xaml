@@ -4,13 +4,14 @@
     xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit"
     Title="Purchase Order" Height="600" Width="900">
     <Grid Name="PurchaseOrderGrid">
-        <TabControl Name="tabControl1" Margin="0,0,0,0" SelectedIndex="0">
+        <TabControl Name="tabControl1" Margin="0,0,0,0" SelectedIndex="0
+                    ">
             <TabItem Header="Purchase Form" FontSize="14">
                 <Grid Name="PurchaseOrder2Grid">
                     <Label Height="28" HorizontalAlignment="Left" Margin="10,22,0,0" Name="lblPONo" VerticalAlignment="Top" Width="127.765">Purchase Order No.</Label>
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="140,26,0,0" Name="txt_PurchaseNo" VerticalAlignment="Top" Width="96" TabIndex="1001" />
-                    <Label Height="28" Margin="34.442,93,0,0" Name="lblMfg" VerticalAlignment="Top" HorizontalAlignment="Left" Width="103.323">Manufacturer</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="140,93,0,0" Name="cb_Mfg" VerticalAlignment="Top" Width="220" IsEditable="True" TabIndex="1003" />
+                    <Label Height="28" Margin="34.442,93,0,0" Name="lblSupplier" VerticalAlignment="Top" HorizontalAlignment="Left" Width="103.323">Supplier</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="140,93,0,0" Name="cb_Supplier" VerticalAlignment="Top" Width="220" IsEditable="True" TabIndex="1003" />
                     <Label Height="28" Margin="73,57,0,0" Name="lblPODate" VerticalAlignment="Top" HorizontalAlignment="Left" Width="64">PO  Date</Label>
                     <my:DatePicker Height="25" Margin="140,57,0,0" Name="dtPick_PODate" VerticalAlignment="Top" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" HorizontalAlignment="Left" Width="115" TabIndex="1002" />
                     <Label Height="28" Margin="53.11,133,0,0" Name="lblItemGroup" VerticalAlignment="Top" HorizontalAlignment="Left" Width="85">Item Group</Label>
@@ -34,8 +35,8 @@
                                 <GridViewColumn Header="PO Date" Width="100" 
                         DisplayMemberBinding="{Binding PODate}" />
 
-                                <GridViewColumn Header="Manufacturer" Width="160" 
-                        DisplayMemberBinding="{Binding Manufacturer}" />
+                                <GridViewColumn Header="Supplier" Width="160" 
+                        DisplayMemberBinding="{Binding Supplier}" />
                                 
                                 <GridViewColumn Header="ItemGroup" Width="160" 
                         DisplayMemberBinding="{Binding ItemGroup}" />
@@ -62,7 +63,6 @@
                     <ComboBox Height="23" HorizontalAlignment="Left" Margin="27,68,0,0" Name="cb_TaxName" VerticalAlignment="Top" Width="169" />
                     <Label Height="28" HorizontalAlignment="Left" Margin="240,35,0,0" Name="label11" VerticalAlignment="Top" Width="76">Value / %</Label>
                     <ComboBox Height="23" HorizontalAlignment="Left" Margin="209,67.95,0,0" Name="cb_ValuePer" VerticalAlignment="Top" Width="151" SelectedIndex="0">
-                    <ComboBoxItem Name="SelectValuePer">-- Select Value/% --</ComboBoxItem>
                         <ComboBoxItem Name="Value">Value</ComboBoxItem>
                         <ComboBoxItem Name="Percentage">%</ComboBoxItem>
                     </ComboBox>
@@ -70,7 +70,6 @@
                     <TextBox Height="23" Margin="378,68,392,0" Name="txt_Amount" VerticalAlignment="Top" />
                     <Label Height="28" HorizontalAlignment="Left" Margin="523,35,0,0" Name="label13" VerticalAlignment="Top" Width="62">Type</Label>
                     <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,68,242,0" Name="cmb_Type" VerticalAlignment="Top" Width="128" SelectedIndex="0">
-                        <ComboBoxItem Name="SelectType">-- Select Type --</ComboBoxItem>
                         <ComboBoxItem Name="Inclusive">Inclusive</ComboBoxItem>
                         <ComboBoxItem Name="Exclusive">Exclusive</ComboBoxItem>
                     </ComboBox>
