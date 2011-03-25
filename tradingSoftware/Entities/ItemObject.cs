@@ -23,7 +23,7 @@ namespace tradingSoftwareEntities
         public int insuranceAmount;
         public int hsnCode;
         public String imcoClass;
-        public int casNo;
+        public String casNo;
 
         public int ItemId {
             get
@@ -130,14 +130,144 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public int OpenStockValue { get; set; }
-        public int PurchasePrice { get; set; }
-        public int SalePrice { get; set; }
-        public int Mrp { get; set; }
-        public int MinimumSalePrice { get; set; }
-        public int InsuranceAmount { get; set; }
-        public int HsnCode { get; set; }
-        public String ImcoClass { get; set; }
-        public int CasNo { get; set; }
+        public int OpenStockValue {
+            get
+            {
+                return this.openStockValue;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    this.openStockValue = value;
+                }
+                else
+                {
+                    throw new NegativeValueException("Open Stock Value cannot be negative");
+                }
+            }
+        }
+        public int PurchasePrice {
+            get
+            {
+                return this.purchasePrice;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    this.purchasePrice = value;
+                }
+                else
+                {
+                    throw new NegativeValueException("Purchase Price cannot be negative");
+                }
+            }
+        }
+        public int SalePrice {
+            get
+            {
+                return this.salePrice;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    this.salePrice = value;
+                }
+                else
+                {
+                    throw new NegativeValueException("Sale Price cannot be negative");
+                }
+            }
+        }
+        public int Mrp {
+            get
+            {
+                return this.mrp;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    this.mrp = value;
+                }
+                else
+                {
+                    throw new NegativeValueException("MRP of an Item cannot be negative");
+                }
+            }
+        }
+        public int MinimumSalePrice {
+            get
+            {
+                return this.minimumSalePrice;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    this.minimumSalePrice = value;
+                }
+                else
+                {
+                    throw new NegativeValueException("Minimum Sale Price cannot be negative");
+                }
+            }
+        }
+        public int InsuranceAmount {
+            get
+            {
+                return this.insuranceAmount;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    this.insuranceAmount = value;
+                }
+                else
+                {
+                    throw new NegativeValueException("Insurance Amount cannot be negative");
+                }
+            }
+        }
+        public int HsnCode {
+            get
+            {
+                return this.hsnCode;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    this.hsnCode = value;
+                }
+                else
+                {
+                    throw new NegativeValueException("HSN Code cannot be negative");
+                }
+            }
+        }
+        public String ImcoClass {
+            get
+            {
+                return this.imcoClass;
+            }
+            set
+            {
+                this.imcoClass = value;
+            }
+        }
+        public String CasNo {
+            get
+            {
+                return this.casNo;
+            }
+            set
+            {
+                this.casNo = value;
+            }
+        }
     }
 }

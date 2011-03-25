@@ -23,7 +23,7 @@ namespace tradingSoftwareEntities
             set
             {
                 if (value >= 0)
-                    this.unitId = unitId;
+                    this.unitId = value;
                 else
                     throw new NegativeValueException("UnitID cannot be negative.");
             }
