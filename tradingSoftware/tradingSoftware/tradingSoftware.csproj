@@ -180,7 +180,7 @@
       <DependentUpon>Ledger.xaml</DependentUpon>
     </Compile>
     <Compile Include="LedgerRow.cs" />
-    <Compile Include="ListViewPurchaseOrder.cs" />
+    <Compile Include="ListViewClasses.cs" />
     <Compile Include="Location.xaml.cs">
       <DependentUpon>Location.xaml</DependentUpon>
     </Compile>
