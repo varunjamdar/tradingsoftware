@@ -4,7 +4,7 @@
     xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit"
     Title="Purchase Order" Height="600" Width="900">
     <Grid Name="PurchaseOrderGrid">
-        <TabControl Name="tabControl1" Margin="0,0,0,0" SelectedIndex="0
+        <TabControl Name="tabControl1" Margin="0,0,0,0" SelectedIndex="1
                     ">
             <TabItem Header="Purchase Form" FontSize="14">
                 <Grid Name="PurchaseOrder2Grid">
@@ -73,12 +73,12 @@
                         <ComboBoxItem Name="Inclusive">Inclusive</ComboBoxItem>
                         <ComboBoxItem Name="Exclusive">Exclusive</ComboBoxItem>
                     </ComboBox>
-                    <Button Height="23" HorizontalAlignment="Right" Margin="0,108,318,0" Name="btnInsertTax" VerticalAlignment="Top" Width="75">Insert</Button>
-                    <Button Height="23" HorizontalAlignment="Left" Margin="771,68,0,0" Name="button5" VerticalAlignment="Top" Width="75">Reset</Button>
-                    <Button Height="23" HorizontalAlignment="Right" Margin="0,0,255,87" Name="button6" VerticalAlignment="Bottom" Width="75">Close</Button>
+                    <Button Height="38" HorizontalAlignment="Right" Margin="0,0,242,72" Name="button6" VerticalAlignment="Bottom" Width="88">Close</Button>
                     <ListView Margin="27,144,242,129" Name="listViewTaxDetails" />
-                    <Button Height="23" Margin="384,108,408,0" Name="btnRemoveTax" VerticalAlignment="Top">Remove</Button>
-                    <Button Height="23" HorizontalAlignment="Right" Margin="0,108,242,0" Name="btn_ResetTax" VerticalAlignment="Top" Width="65.549">Reset</Button>
+                    <Button Height="23" Margin="0,108,345,0" Name="btnRemoveTax" VerticalAlignment="Top" HorizontalAlignment="Right" Width="96">Remove</Button>
+                    <Button Height="23" HorizontalAlignment="Right" Margin="0,108,242,0" Name="btn_ClearTax" VerticalAlignment="Top" Width="88">Clear</Button>
+                    <Button Height="23" HorizontalAlignment="Left" Margin="318,108,0,0" Name="btnAdd" VerticalAlignment="Top" Width="95">Add</Button>
+                    <Button Height="38" Margin="427,0,0,72" Name="btnResetAllTax" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="96">Reset All</Button>
                 </Grid>
             </TabItem>
         </TabControl>
