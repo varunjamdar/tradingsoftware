@@ -22,5 +22,39 @@ namespace tradingSoftware
         {
             InitializeComponent();
         }
+
+        ItemGroupObject igo;
+        DataLogic dl;
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtGroupName.Text == "")
+            {
+                MessageBox.Show("Enter the Group Name", "Warning..!!");
+                return;
+            }
+
+            igo = new ItemGroupObject();
+
+            igo.ItemGroupName = txtGroupName.Text;
+            igo.ItemGroupDesc = txtGroupDesc.Text;
+
+            dl = new DataLogic();
+
+            String reply = dl.AddItemGroup(igo);
+                       
+
+            MessageBox.Show(reply, "Message");
+
+            txtGroupName.Text = "";
+            txtGroupDesc.Text = "";
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+             
     }
 }
