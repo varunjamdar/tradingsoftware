@@ -5,9 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tradingSoftware", "tradingS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tradingSoftwareDataAccessLayer", "tradingSoftwareDataAccessLayer\tradingSoftwareDataAccessLayer.csproj", "{F57FEC88-26BC-443F-98D7-8E5ED4917016}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{39D9D54D-310A-4FDA-B543-27535BDD56F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tradingSoftwareBusinessLogicLayer", "BusinessLogicLayer\tradingSoftwareBusinessLogicLayer.csproj", "{39D9D54D-310A-4FDA-B543-27535BDD56F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{750C3118-FA92-40AA-9A2E-3053DE494075}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tradingSoftwareEntities", "Entities\tradingSoftwareEntities.csproj", "{750C3118-FA92-40AA-9A2E-3053DE494075}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
