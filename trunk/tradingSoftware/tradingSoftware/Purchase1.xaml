@@ -60,25 +60,44 @@
             <TabItem Header="TaxDetails" FontSize="14">
                 <Grid Name="TaxDetailsGrid">
                     <Label Height="28" HorizontalAlignment="Left" Margin="66,35,0,0" Name="label8" VerticalAlignment="Top" Width="76">Tax Name</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="27,68,0,0" Name="cb_TaxName" VerticalAlignment="Top" Width="169" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="240,35,0,0" Name="label11" VerticalAlignment="Top" Width="76">Value / %</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="209,67.95,0,0" Name="cb_ValuePer" VerticalAlignment="Top" Width="151" SelectedIndex="0">
-                        <ComboBoxItem Name="Value">Value</ComboBoxItem>
-                        <ComboBoxItem Name="Percentage">%</ComboBoxItem>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="27,68,0,0" Name="cb_TaxName" VerticalAlignment="Top" Width="169"
+                              ItemsSource="{Binding}"
+                              DisplayMemberPath="TaxName"
+                              IsSynchronizedWithCurrentItem="True">
                     </ComboBox>
-                    <Label Height="28" Margin="389,35,405,0" Name="label12" VerticalAlignment="Top">Amount</Label>
-                    <TextBox Height="23" Margin="378,68,392,0" Name="txt_Amount" VerticalAlignment="Top" />
+                    <TextBox Height="23" Margin="349,68,421,0" Name="txtAmount" VerticalAlignment="Top"
+                              AllowDrop="True" OverridesDefaultStyle="False" IsEnabled="True" />
                     <Label Height="28" HorizontalAlignment="Left" Margin="523,35,0,0" Name="label13" VerticalAlignment="Top" Width="62">Type</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,68,242,0" Name="cmb_Type" VerticalAlignment="Top" Width="128" SelectedIndex="0">
+                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,68,242,0" Name="cb_Type" VerticalAlignment="Top" Width="128" SelectedIndex="0">
                         <ComboBoxItem Name="Inclusive">Inclusive</ComboBoxItem>
                         <ComboBoxItem Name="Exclusive">Exclusive</ComboBoxItem>
                     </ComboBox>
-                    <Button Height="38" HorizontalAlignment="Right" Margin="0,0,242,72" Name="button6" VerticalAlignment="Bottom" Width="88">Close</Button>
-                    <ListView Margin="27,144,242,129" Name="listViewTaxDetails" />
-                    <Button Height="23" Margin="0,108,345,0" Name="btnRemoveTax" VerticalAlignment="Top" HorizontalAlignment="Right" Width="96">Remove</Button>
-                    <Button Height="23" HorizontalAlignment="Right" Margin="0,108,242,0" Name="btn_ClearTax" VerticalAlignment="Top" Width="88">Clear</Button>
-                    <Button Height="23" HorizontalAlignment="Left" Margin="318,108,0,0" Name="btnAdd" VerticalAlignment="Top" Width="95">Add</Button>
-                    <Button Height="38" Margin="427,0,0,72" Name="btnResetAllTax" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="96">Reset All</Button>
+                    <Button Height="38" HorizontalAlignment="Right" Margin="0,0,242,72" Name="btnCloseTax" VerticalAlignment="Bottom" Width="88" Click="btnCloseTax_Click">Close</Button>
+                    <ListView Margin="27,144,242,129" Name="listViewTaxDetails" SelectionChanged="listViewTaxDetails_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Tax" Width="160" 
+                        DisplayMemberBinding="{Binding TaxName}" />
+
+                                <GridViewColumn Header="Percentage" Width="50" 
+                        DisplayMemberBinding="{Binding TaxPercentage}" />
+
+                                <GridViewColumn Header="Amount" Width="100" 
+                        DisplayMemberBinding="{Binding TaxValue}" />
+
+                                <GridViewColumn Header="Type" Width="110" 
+                        DisplayMemberBinding="{Binding TaxType}" />
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Height="23" Margin="0,108,345,0" Name="btnRemoveTax" VerticalAlignment="Top" HorizontalAlignment="Right" Width="96" Click="btnRemoveTax_Click">Remove</Button>
+                    <Button Height="23" HorizontalAlignment="Right" Margin="0,108,242,0" Name="btnClearTax" VerticalAlignment="Top" Width="88" Click="btnClearTax_Click">Clear</Button>
+                    <Button Height="23" HorizontalAlignment="Left" Margin="318,108,0,0" Name="btnAddTax" VerticalAlignment="Top" Width="95" Click="btnAddTax_Click">Add</Button>
+                    <Button Height="38" Margin="427,0,0,72" Name="btnResetAllTax" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="96" Click="btnResetAllTax_Click">Reset All</Button>
+                    <RadioButton Height="16" HorizontalAlignment="Left" Margin="293,47,0,0" Name="rbPercentage" VerticalAlignment="Top" Width="33" GroupName="TaxValuePer" IsChecked="True" Checked="rbPercentage_Checked">%</RadioButton>
+                    <RadioButton Height="16" HorizontalAlignment="Left" Margin="293,71,0,0" Name="rbValue" VerticalAlignment="Top" Width="55" GroupName="TaxValuePer" Checked="rbValue_Checked">Value</RadioButton>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="349,35,0,0" Name="lblPercentageTax" VerticalAlignment="Top" Width="41" Content="{Binding Path=Percentage}"></Label>
                 </Grid>
             </TabItem>
         </TabControl>

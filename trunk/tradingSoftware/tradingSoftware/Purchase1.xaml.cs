@@ -18,11 +18,20 @@ namespace tradingSoftware
     /// </summary>
     public partial class Purchase1 : Window
     {
+        DataLogic dl = new DataLogic();
         public Purchase1()
         {
             InitializeComponent();
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
             txt_PurchaseNo.Focus();
+
+            //-------tax detail--
+
+            TradeDataSet ds = new TradeDataSet();
+            TradeDataSetTableAdapters.TaxTableAdapter taxApdt = new tradingSoftware.TradeDataSetTableAdapters.TaxTableAdapter();
+            taxApdt.Fill(ds.Tax);
+            TaxDetailsGrid.DataContext = ds.Tax;
+
         }
 
         private void btn_AddPurchaseItem_Click(object sender, RoutedEventArgs e)
@@ -144,5 +153,77 @@ namespace tradingSoftware
             txt_PPU.Text = "";
             listViewPurchseOrder.SelectedIndex = -1;
         }
+//------------------Tax Tab----------------------------------------------------
+        private void btnCloseTax_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnClearTax_Click(object sender, RoutedEventArgs e)
+        {
+            cb_TaxName.Text = "";
+            //cb_ValuePer.SelectedIndex = 0;
+            txtAmount.Text = "";
+            cb_Type.SelectedIndex = 0;
+        }
+
+        private void listViewTaxDetails_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnResetAllTax_Click(object sender, RoutedEventArgs e)
+        {
+            cb_TaxName.Text = "";
+            rbPercentage.IsChecked = true;
+            rbValue.IsChecked = false;
+            txtAmount.Text = "";
+            cb_Type.SelectedIndex = 0;
+
+            listViewTaxDetails.Items.Clear();
+        }
+
+        private void rbPercentage_Checked(object sender, RoutedEventArgs e)
+        {
+           // txtPercentage.Visibility;
+           // txtAmount.Visibility = Visibility.Hidden;
+        }
+
+        private void rbValue_Checked(object sender, RoutedEventArgs e)
+        {
+            //txtPercentage.Visibility = Visibility.Hidden;
+            //txtAmount.Visibility = Visibility.Visible;
+        }
+
+        private void btnAddTax_Click(object sender, RoutedEventArgs e)
+        {
+            string p="", a="";
+            if(rbPercentage.IsChecked==true)
+            {
+                p = lblPercentageTax.Content.ToString();//txtPercentage.Text;
+            }
+            else
+            {
+                a=txtAmount.Text;
+            }
+            listViewTaxDetails.Items.Add(new ListViewPurchaseTaxDetails(cb_TaxName.Text,p,a,cb_Type.Text));
+            cb_TaxName.Text = "";
+            rbPercentage.IsChecked = true;
+            rbValue.IsChecked = false;
+            txtAmount.Text = "";
+            cb_Type.SelectedIndex = 0;
+            listViewTaxDetails.SelectedIndex = -1;
+        }
+
+        private void btnRemoveTax_Click(object sender, RoutedEventArgs e)
+        {
+            listViewTaxDetails.Items.Remove(listViewTaxDetails.SelectedItem);
+            cb_TaxName.Text = "";
+            rbPercentage.IsChecked = true;
+            rbValue.IsChecked = false;
+            txtAmount.Text = "";
+            listViewTaxDetails.SelectedIndex = -1;
+        }
+
     }
 }

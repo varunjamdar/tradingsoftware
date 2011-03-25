@@ -234,9 +234,9 @@
       <DependentUpon>TradeDataSet.xsd</DependentUpon>
     </None>
     <None Include="TradeDataSet.xsd">
-      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>TradeDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="TradeDataSet.xss">
       <DependentUpon>TradeDataSet.xsd</DependentUpon>
