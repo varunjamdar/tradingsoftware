@@ -36,10 +36,20 @@ namespace tradingSoftware
     {
         public ListViewPurchaseTaxDetails() { }
 
-        public ListViewPurchaseTaxDetails(string v1, string v2)
+        public ListViewPurchaseTaxDetails(string v1, string v2,string v3,string v4)
         {
- 
+            TaxName = v1;
+            TaxPercentage = v2;
+            TaxValue = v3;
+            TaxType = v4;
         }
+
+        public string TaxName{get;set;}
+        public string TaxPercentage { get; set; }
+        public string TaxValue { get; set; }
+        public string TaxType { get; set; }
+
+
 
     }
 }

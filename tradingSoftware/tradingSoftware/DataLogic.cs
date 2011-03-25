@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace tradingSoftware
 {
@@ -453,6 +454,17 @@ namespace tradingSoftware
             String str1 = "Item Group : \""+itemGroupObj.ItemGroupName+"\" , Added into Database";
             return str1;
         }
+
+        //public float getValueOfTax(string TaxName)
+        //{
+        //    MessageBox.Show(TaxName);
+        //    conn.Open();
+        //    cmd.CommandText = "SELECT Value FROM Tax Where TaxName='"+TaxName+"'";
+        //    adpt.SelectCommand = cmd;
+        //    adpt.Fill(ds, "Tax");
+        //    conn.Close();
+        //    return float.Parse(ds.Tables["Tax"].Rows[0][0].ToString());
+        //}
 
     }
 }
