@@ -171,6 +171,7 @@
     <Compile Include="ItemGroup.xaml.cs">
       <DependentUpon>ItemGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ItemGroupObject.cs" />
     <Compile Include="Journal.xaml.cs">
       <DependentUpon>Journal.xaml</DependentUpon>
     </Compile>

@@ -411,5 +411,48 @@ namespace tradingSoftware
             conn.Close();
         }
 
+        public String AddItemGroup(ItemGroupObject itemGroupObj)
+        {
+            conn.Open();
+            
+            cmd.CommandText = "Select * from ItemGroup";
+            adpt.SelectCommand = cmd;
+            
+
+            bool itemgroupexists=false;
+
+            adpt.Fill(ds, "ItemGrp");
+
+            foreach (DataRow dr in ds.Tables["ItemGrp"].Rows)
+            {
+                if (itemGroupObj.ItemGroupName == dr["ItemGroupName"].ToString())
+                    itemgroupexists = true;
+            }
+
+            if (itemgroupexists == true)
+            {
+                String str = "" + itemGroupObj.ItemGroupName + " already exists.";
+                return str;
+            }
+
+            //SqlCommand cmd1 = new SqlCommand();
+            //cmd1.Connection = conn;
+            cmd = conn.CreateCommand();
+            cmd.CommandText = @"Insert into ItemGroup(ItemGroupName, ItemGroupDesc) values (@ItemGroupName, @ItemGroupDesc)";
+
+            cmd.Parameters.Add("@ItemGroupName", SqlDbType.VarChar, 50);
+            cmd.Parameters.Add("@ItemGroupDesc", SqlDbType.VarChar);
+
+            cmd.Parameters["@ItemGroupName"].Value = itemGroupObj.ItemGroupName;
+            cmd.Parameters["@ItemGroupDesc"].Value = itemGroupObj.ItemGroupDesc;
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            String str1 = "Item Group : \""+itemGroupObj.ItemGroupName+"\" , Added into Database";
+            return str1;
+        }
+
     }
 }
