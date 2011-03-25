@@ -235,7 +235,7 @@ namespace tradingSoftware
             }
             else
             {
-                CityID = Int32.Parse(StateIDS);
+                CityID = Int32.Parse(CityIDS);//updated StateIDS
             }
             bool stateExist = false; bool cityExist = false; string Msg = "Nothing Updated";
             ds = new DataSet();
@@ -245,7 +245,7 @@ namespace tradingSoftware
             adpt.SelectCommand = cmd;
             adpt.Fill(ds, "State");
             conn.Close();
-
+            
             foreach (DataRow dr in ds.Tables["State"].Rows)
             {
                 if (State == dr["StateName"].ToString())
