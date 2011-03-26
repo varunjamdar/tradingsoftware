@@ -8,24 +8,25 @@ namespace tradingSoftwareEntities
 {
     public class ItemObject
     {
-        public int itemId;
-        public int itemGroupId;
-        public String itemName;
-        public String itemDesc;
-        public int unitId;
-        public DateTime openDate;
-        public int openStockQty;
-        public int openStockValue;
-        public int purchasePrice;
-        public int salePrice;
-        public int mrp;
-        public int minimumSalePrice;
-        public int insuranceAmount;
-        public int hsnCode;
-        public String imcoClass;
-        public String casNo;
+        private int itemId;
+        private int itemGroupId;
+        private string itemName;
+        private string itemDescription;
+        private int unitId;
+        private DateTime openDate;
+        private int openStockQty;
+        private int openStockValue;
+        private int purchasePrice;
+        private int salePrice;
+        private int mrp;
+        private int minimumSalePrice;
+        private int insuranceAmount;
+        private int hsnCode;
+        private string imcoClass;
+        private string casNo;
 
-        public int ItemId {
+        public int ItemID
+        {
             get
             {
                 return this.itemId;
@@ -43,7 +44,7 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public int ItemGroupId
+        public int ItemGroupID
         {
             get
             {
@@ -61,7 +62,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public String ItemName {
+        public string ItemName
+        {
             get
             {
                 return this.itemName;
@@ -74,20 +76,21 @@ namespace tradingSoftwareEntities
                 }
                 else
                 {
-                    throw new NullValueException("The Item Name cannot be Blank");
+                    throw new NullValueException("The Item Name cannot be blank");
                 }
             }
         }
-        public String ItemDesc {
+        public string ItemDescription
+        {
             get
             {
-                return this.itemDesc;
+                return this.itemDescription;
             }
             set
             {
                 if (value.Length >= 0)
                 {
-                    this.itemDesc = value;
+                    this.itemDescription = value;
                 }
                 else
                 {
@@ -95,7 +98,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public int UnitId {
+        public int UnitID
+        {
             get
             {
                 return this.unitId;
@@ -112,8 +116,19 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public DateTime OpenDate { get; set; }
-        public int OpenStockQty {
+        public DateTime OpenDate
+        {
+            get
+            {
+                return this.openDate;
+            }
+            set
+            {
+                this.openDate = value;
+            }
+        }
+        public int OpenStockQuantity
+        {
             get
             {
                 return this.openStockQty;
@@ -126,11 +141,12 @@ namespace tradingSoftwareEntities
                 }
                 else
                 {
-                    throw new NegativeValueException("Open Stock Quantity cannot be negative");
+                    throw new NegativeValueException("Open Stock Quantity cannot be negative.");
                 }
             }
         }
-        public int OpenStockValue {
+        public int OpenStockValue
+        {
             get
             {
                 return this.openStockValue;
@@ -147,7 +163,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public int PurchasePrice {
+        public int PurchasePrice
+        {
             get
             {
                 return this.purchasePrice;
@@ -164,7 +181,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public int SalePrice {
+        public int SalePrice
+        {
             get
             {
                 return this.salePrice;
@@ -181,7 +199,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public int Mrp {
+        public int Mrp
+        {
             get
             {
                 return this.mrp;
@@ -198,7 +217,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public int MinimumSalePrice {
+        public int MinimumSalePrice
+        {
             get
             {
                 return this.minimumSalePrice;
@@ -215,7 +235,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public int InsuranceAmount {
+        public int InsuranceAmount
+        {
             get
             {
                 return this.insuranceAmount;
@@ -232,7 +253,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public int HsnCode {
+        public int HsnCode
+        {
             get
             {
                 return this.hsnCode;
@@ -249,7 +271,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public String ImcoClass {
+        public string IMCOClass
+        {
             get
             {
                 return this.imcoClass;
@@ -259,7 +282,8 @@ namespace tradingSoftwareEntities
                 this.imcoClass = value;
             }
         }
-        public String CasNo {
+        public string CasNo
+        {
             get
             {
                 return this.casNo;

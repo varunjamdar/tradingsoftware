@@ -9,9 +9,9 @@ namespace tradingSoftwareEntities
     public class UnitObject
     {
         private int unitId;
-        private String unitName;
-        private String unitPrintName;
-        private String subUnitName;
+        private string unitName;
+        private string unitPrintName;
+        private string subUnitName;
         private int conversion;
 
         public int UnitID
@@ -28,7 +28,7 @@ namespace tradingSoftwareEntities
                     throw new NegativeValueException("UnitID cannot be negative.");
             }
         }
-        public String UnitName
+        public string UnitName
         {
             get
             {
@@ -42,7 +42,7 @@ namespace tradingSoftwareEntities
                     throw new NullValueException("Unit Name cannot be empty string.");
             }
         }
-        public String UnitPrintName
+        public string UnitPrintName
         {
             get
             {
@@ -56,7 +56,7 @@ namespace tradingSoftwareEntities
                     throw new NullValueException("Unit print Name cannot be empty string.");
             }
         }
-        public String SubUnitName
+        public string SubUnitName
         {
             get
             {

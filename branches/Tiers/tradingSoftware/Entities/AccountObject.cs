@@ -8,22 +8,23 @@ namespace tradingSoftwareEntities
 {
     public class AccountObject
     {
-        public int accountId;
-        public String accountName;
-        public String accountPrintName;
-        public int accountGroupId;
-        public String addressLine1;
-        public String addressLine2;
-        public String addressLine3;
-        public String city;
-        public String state;
-        public int pincode;
-        public String email;
-        public String contactPerson;
-        public int telephoneNo;
-        public int panNo;
+        private int accountId;
+        private string accountName;
+        private string accountPrintName;
+        private int accountGroupId;
+        private string addressLine1;
+        private string addressLine2;
+        private string addressLine3;
+        private string city;
+        private string state;
+        private int pincode;
+        private string email;
+        private string contactPerson;
+        private int telephoneNo;
+        private string panNo;
 
-        public int AccountId {
+        public int AccountId
+        {
             get
             {
                 return this.accountId;
@@ -40,7 +41,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public String AccountName {
+        public string AccountName
+        {
             get
             {
                 return this.accountName;
@@ -57,7 +59,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public String AccountPrintName {
+        public string AccountPrintName
+        {
             get
             {
                 return this.accountPrintName;
@@ -74,7 +77,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public int AccountGroupId {
+        public int AccountGroupId
+        {
             get
             {
                 return this.accountGroupId;
@@ -91,7 +95,8 @@ namespace tradingSoftwareEntities
                 }
             }
         }
-        public String AddressLine1 {
+        public string AddressLine1
+        {
             get
             {
                 return this.addressLine1;
@@ -101,7 +106,8 @@ namespace tradingSoftwareEntities
                 this.addressLine1 = value;
             }
         }
-        public String AddressLine2 {
+        public string AddressLine2
+        {
             get
             {
                 return this.addressLine2;
@@ -111,7 +117,8 @@ namespace tradingSoftwareEntities
                 this.addressLine2 = value;
             }
         }
-        public String AddressLine3 {
+        public string AddressLine3
+        {
             get
             {
                 return this.addressLine3;
@@ -121,7 +128,8 @@ namespace tradingSoftwareEntities
                 this.addressLine3 = value;
             }
         }
-        public String City {
+        public string City
+        {
             get
             {
                 return this.city;
@@ -131,7 +139,8 @@ namespace tradingSoftwareEntities
                 this.city = value;
             }
         }
-        public String State {
+        public string State
+        {
             get
             {
                 return this.state;
@@ -141,7 +150,8 @@ namespace tradingSoftwareEntities
                 this.state = value;
             }
         }
-        public int Pincode {
+        public int Pincode
+        {
             get
             {
                 return this.pincode;
@@ -151,7 +161,8 @@ namespace tradingSoftwareEntities
                 this.pincode = value;
             }
         }
-        public String Email { 
+        public string Email
+        { 
             get
             {
                 return this.email;
@@ -161,7 +172,8 @@ namespace tradingSoftwareEntities
                 this.email = value;
             }
         }
-        public int TelephoneNo {
+        public int TelephoneNo
+        {
             get
             {
                 return this.telephoneNo;
@@ -171,7 +183,8 @@ namespace tradingSoftwareEntities
                 this.telephoneNo = value;
             }
         }
-        public int PanNo {
+        public string PanNo
+        {
             get
             {
                 return this.panNo;
