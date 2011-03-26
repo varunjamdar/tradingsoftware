@@ -41,7 +41,10 @@ namespace tradingSoftware
             float FPPU = float.Parse(txt_PPU.Text);
             addRow(IPONO, dtPick_PODate.Text,cb_Supplier.Text,cb_ItemGroup.Text,cb_Item.Text,IQuantity,FPPU);
 
+
+            //refresh the Both Amount Label
             lblTotalAmount.Content = getTotalAmountOFListViewPurchaseOrder();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
         }
 
         //get Total Amount
@@ -73,15 +76,6 @@ namespace tradingSoftware
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
             listViewPurchseOrder.SelectedIndex = -1;
-        }
-
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            for(int i=0;i<=listViewPurchseOrder.Items.Count-1;i++)
-            {
-                ListViewPurchaseOrder lvc = (ListViewPurchaseOrder)listViewPurchseOrder.Items[i];
-                MessageBox.Show(lvc.PONo+" "+lvc.PODate);
-            }
         }
 
         private void listViewPurchseOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -117,6 +111,10 @@ namespace tradingSoftware
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
             listViewPurchseOrder.Items.Clear();
+
+            //refresh the Both Amount Label
+            lblTotalAmount.Content = getTotalAmountOFListViewPurchaseOrder();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
 
         }
 
@@ -160,7 +158,9 @@ namespace tradingSoftware
             listViewPurchseOrder.SelectedIndex = -1;
 
 
+            //refresh the Both Amount Label
             lblTotalAmount.Content = getTotalAmountOFListViewPurchaseOrder();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
         }
 
         private void btn_RemoveItem_Click(object sender, RoutedEventArgs e)
@@ -175,7 +175,9 @@ namespace tradingSoftware
             txt_PPU.Text = "";
             listViewPurchseOrder.SelectedIndex = -1;
 
+            //refresh the Both Amount Label
             lblTotalAmount.Content = getTotalAmountOFListViewPurchaseOrder();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
         }
 //------------------Tax Tab----------------------------------------------------
         private void btnCloseTax_Click(object sender, RoutedEventArgs e)
@@ -203,8 +205,11 @@ namespace tradingSoftware
             rbValue.IsChecked = false;
             txtAmount.Text = "";
             cb_Type.SelectedIndex = 0;
-
             listViewTaxDetails.Items.Clear();
+
+            //Displat Total Amount Tax
+            lblTotalAmountTax.Content = getTotalAmountTax();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
         }
 
         private void rbPercentage_Checked(object sender, RoutedEventArgs e)
@@ -219,12 +224,27 @@ namespace tradingSoftware
             //txtAmount.Visibility = Visibility.Visible;
         }
 
+        public float getTotalAmountTax()
+        {
+            float tAmountTax = 0;
+            for (int i = 0; i <= listViewTaxDetails.Items.Count - 1; i++)
+            {
+                ListViewPurchaseTaxDetails lvc = (ListViewPurchaseTaxDetails)listViewTaxDetails.Items[i];
+                if (lvc.TaxType == "Exclusive")
+                {
+                    tAmountTax += lvc.TaxAmount;
+                }
+            }
+            return tAmountTax;
+
+        }
+
         private void btnAddTax_Click(object sender, RoutedEventArgs e)
         {
             float p=0, a=0;
             if(rbPercentage.IsChecked==true)
             {
-                MessageBox.Show(lblPercentageTax.Content.ToString());
+            //    MessageBox.Show(lblPercentageTax.Content.ToString());
                 p = float.Parse( lblPercentageTax.Content.ToString());//txtPercentage.Text;
             }
             else
@@ -242,9 +262,12 @@ namespace tradingSoftware
             txtAmount.Text = "";
             cb_Type.SelectedIndex = 0;
             listViewTaxDetails.SelectedIndex = -1;
-            
-            //Calculation
 
+            cb_Type.SelectedIndex = -1;
+
+            //Displat Total Amount Tax
+            lblTotalAmountTax.Content = getTotalAmountTax();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
         }
 
         private void btnRemoveTax_Click(object sender, RoutedEventArgs e)
@@ -255,14 +278,36 @@ namespace tradingSoftware
             rbValue.IsChecked = false;
             txtAmount.Text = "";
             listViewTaxDetails.SelectedIndex = -1;
+
+            //Displat Total Amount Tax
+            lblTotalAmountTax.Content = getTotalAmountTax();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
         }
 
         private void cb_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cb_Type.Text == "Inclusive")
-            {
-                rbPercentage.Visibility = Visibility.Hidden;
-            }
+            //if (cb_Type.Text == "Inclusive")
+            //{
+                
+
+            //    rbPercentage.Visibility = Visibility.Visible;
+            //    rbValue.Visibility = Visibility.Visible;
+            //    lblPercentageTax.Visibility = Visibility.Visible;
+            //    txtAmount.Visibility = Visibility.Visible;
+            //}
+
+            //if (cb_Type.Text == "Exclusive")
+            //{
+            //    rbPercentage.Visibility = Visibility.Hidden;
+            //    rbValue.Visibility = Visibility.Hidden;
+            //    lblPercentageTax.Visibility = Visibility.Hidden;
+            //    txtAmount.Visibility = Visibility.Hidden;
+            //}
+        }
+
+        private void btnPlacePurchaseOrder_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
     }
