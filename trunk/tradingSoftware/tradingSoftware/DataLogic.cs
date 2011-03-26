@@ -466,5 +466,10 @@ namespace tradingSoftware
         //    return float.Parse(ds.Tables["Tax"].Rows[0][0].ToString());
         //}
 
+        public void placePurchaseOrder()
+        {
+ 
+        }
+
     }
 }

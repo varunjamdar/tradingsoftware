@@ -53,7 +53,7 @@ namespace tradingSoftware
 
                 if (v4 == "Inclusive")
                 {
-                    TaxAmount = 0;
+                    TaxAmount = v3;
                 }
             }
             else
@@ -66,7 +66,7 @@ namespace tradingSoftware
 
                 if (v4 == "Inclusive")
                 {
-                    TaxAmount = 0;
+                    TaxAmount = (TotalAmount / 100) * v2;
                 }
             }
             //TaxAmount = v3;
