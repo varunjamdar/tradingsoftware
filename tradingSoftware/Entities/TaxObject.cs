@@ -9,10 +9,11 @@ namespace tradingSoftwareEntities
     public class TaxObject
     {
         public int taxId;
-        public String taxName;
+        public string taxName;
         public double value;
 
-        public int TaxId {
+        public int TaxID
+        {
             get
             {
                 return this.taxId;
@@ -25,11 +26,12 @@ namespace tradingSoftwareEntities
                 }
                 else
                 {
-                    throw new NegativeValueException("Tax ID Cannot be negative");
+                    throw new NegativeValueException("Tax ID Cannot be negative.");
                 }
             }
         }
-        public String TaxName {
+        public string TaxName
+        {
             get
             {
                 return this.taxName;
@@ -42,18 +44,22 @@ namespace tradingSoftwareEntities
                 }
                 else
                 {
-                    throw new NullValueException("Tax Name cannot be blank");
+                    throw new NullValueException("Tax Name cannot be blank.");
                 }
             }
         }
-        public double Value {
+        public double Value
+        {
             get
             {
                 return this.value;
             }
             set
             {
-                this.value = value;
+                if (value > 0d)
+                    this.value = value;
+                else
+                    throw new NegativeValueException("Tax Value cannot be negative.");
             }
         }
     }

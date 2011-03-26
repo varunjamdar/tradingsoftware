@@ -42,7 +42,7 @@ namespace tradingSoftwareEntities
                     throw new NullValueException("Item Group Name cannot ne empty string.");
             }
         }
-        public String ItemGroupDescription
+        public string ItemGroupDescription
         {
             get
             {
