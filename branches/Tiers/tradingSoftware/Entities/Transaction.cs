@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
-using System.Data;
+
 //reference added for this namespace : System.Data.Linq
+using System.Data;
 using System.Data.Linq.Mapping;
 using tradingSoftwareEntities;
 

@@ -6,14 +6,10 @@ using System.Data;
 using System.Data.Linq.Mapping;
 using tradingSoftwareEntities;
 
+
 namespace tradingSoftwareEntities
 {
-    public class NullValueException: Exception
+    public class Company
     {
-        public NullValueException():base()
-        {  }
-
-        public NullValueException(string errorString): base(errorString)
-        {  }
     }
 }

@@ -8,12 +8,7 @@ using tradingSoftwareEntities;
 
 namespace tradingSoftwareEntities
 {
-    public class NullValueException: Exception
+    public class City
     {
-        public NullValueException():base()
-        {  }
-
-        public NullValueException(string errorString): base(errorString)
-        {  }
     }
 }
