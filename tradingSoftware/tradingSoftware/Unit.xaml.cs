@@ -18,21 +18,30 @@ namespace tradingSoftware
     /// </summary>
     public partial class Unit : Window
     {
-        DataLogic dl;
-        TradeDataSet tds;
+        private DataLogic dl = null;
+        private TradeDataSet tds = null;
+        private TradeDataSetTableAdapters.UnitTableAdapter unitTableAdpt = null;
+
+        private UnitObject unitobject = null;
+
         public Unit()
         {
             InitializeComponent();
             txtUnitName.IsEnabled = false;
             txtPrintName.IsEnabled = false;
+
+            dl = new DataLogic();
+            tds = new TradeDataSet();
+            unitTableAdpt = new tradingSoftware.TradeDataSetTableAdapters.UnitTableAdapter();
+
             this.showUnitData();
         }
 
         private void showUnitData()
         {
-            tds = new TradeDataSet();
-            TradeDataSetTableAdapters.UnitTableAdapter unitTableAdpt = new tradingSoftware.TradeDataSetTableAdapters.UnitTableAdapter();
-
+            //for better performance made these changes.
+            //author=VJ, timestamp=27/3/2011 1:00 pm
+            tds.Clear();
             unitTableAdpt.Fill(tds.Unit);
             UnitDataGrid.DataContext = tds.Unit;
             
@@ -60,8 +69,9 @@ namespace tradingSoftware
                 return;
             }
 
-            UnitObject unitobject = new UnitObject();
-            dl = new DataLogic();
+//            UnitObject unitobject = new UnitObject();
+            unitobject = new UnitObject();
+//            dl = new DataLogic();
 
             unitobject.UnitName = txtUnitName.Text;
             unitobject.UnitPrintName = txtPrintName.Text;
@@ -90,8 +100,9 @@ namespace tradingSoftware
                 return;
             }
 
-            UnitObject unitobject = new UnitObject();
-            dl = new DataLogic();
+//            UnitObject unitobject = new UnitObject();
+            unitobject = new UnitObject();
+//            dl = new DataLogic();
 
             unitobject.UnitName = txtUnitName.Text;
             unitobject.UnitPrintName = txtPrintName.Text;
