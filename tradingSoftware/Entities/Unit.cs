@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using tradingSoftwareEntities;
 
 namespace tradingSoftwareEntities
 {
-    public class UnitObject
+    public class Unit
     {
         private int unitId;
         private string unitName;

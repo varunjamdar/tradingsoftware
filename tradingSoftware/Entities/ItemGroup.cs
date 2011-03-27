@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Data.Linq.Mapping;
 using tradingSoftwareEntities;
 
 namespace tradingSoftwareEntities
 {
     [Serializable]
-    public class ItemGroupObject
+    public class ItemGroup
     {
         private int itemGroupId;
         private string itemGroupName;

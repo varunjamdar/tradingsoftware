@@ -8,12 +8,8 @@ using tradingSoftwareEntities;
 
 namespace tradingSoftwareEntities
 {
-    public class NullValueException: Exception
+    //The major class that will consist of every thing, you can think it as the whole database in memory !!
+    public class Trade
     {
-        public NullValueException():base()
-        {  }
-
-        public NullValueException(string errorString): base(errorString)
-        {  }
     }
 }

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Data.Linq.Mapping;
 using tradingSoftwareEntities;
 
 namespace tradingSoftwareEntities
 {
-    public class ItemObject
+    public class Item
     {
         private int itemId;
         private int itemGroupId;
