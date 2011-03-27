@@ -8,7 +8,7 @@ namespace tradingSoftware
     public class ItemGroupObject
     {
         public int ItemGroupId { get; set; }
-        public String ItemGroupName { get; set; }
-        public String ItemGroupDesc { get; set; }
+        public string ItemGroupName { get; set; }
+        public string ItemGroupDesc { get; set; }
     }
 }

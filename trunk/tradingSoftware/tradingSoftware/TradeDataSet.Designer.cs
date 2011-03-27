@@ -49,6 +49,10 @@ namespace tradingSoftware {
         
         private UnitConversionDataTable tableUnitConversion;
         
+        private global::System.Data.DataRelation relationFK_AccountGroup_Account;
+        
+        private global::System.Data.DataRelation relationFK_ItemGroup_Item;
+        
         private global::System.Data.DataRelation relationState_City;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
@@ -436,6 +440,8 @@ namespace tradingSoftware {
                     this.tableUnitConversion.InitVars();
                 }
             }
+            this.relationFK_AccountGroup_Account = this.Relations["FK_AccountGroup_Account"];
+            this.relationFK_ItemGroup_Item = this.Relations["FK_ItemGroup_Item"];
             this.relationState_City = this.Relations["State_City"];
         }
         
@@ -470,6 +476,29 @@ namespace tradingSoftware {
             base.Tables.Add(this.tableUnit);
             this.tableUnitConversion = new UnitConversionDataTable();
             base.Tables.Add(this.tableUnitConversion);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_AccountGroup_Account", new global::System.Data.DataColumn[] {
+                        this.tableAccountGroup.AccountGroupIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAccount.AccountGroupIDColumn});
+            this.tableAccount.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_ItemGroup_Item", new global::System.Data.DataColumn[] {
+                        this.tableItemGroup.ItemGroupIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItem.ItemGroupIdColumn});
+            this.tableItem.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            this.relationFK_AccountGroup_Account = new global::System.Data.DataRelation("FK_AccountGroup_Account", new global::System.Data.DataColumn[] {
+                        this.tableAccountGroup.AccountGroupIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAccount.AccountGroupIDColumn}, false);
+            this.Relations.Add(this.relationFK_AccountGroup_Account);
+            this.relationFK_ItemGroup_Item = new global::System.Data.DataRelation("FK_ItemGroup_Item", new global::System.Data.DataColumn[] {
+                        this.tableItemGroup.ItemGroupIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItem.ItemGroupIdColumn}, false);
+            this.Relations.Add(this.relationFK_ItemGroup_Item);
             this.relationState_City = new global::System.Data.DataRelation("State_City", new global::System.Data.DataColumn[] {
                         this.tableState.StateIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableCity.StateIDColumn}, false);
@@ -806,13 +835,13 @@ namespace tradingSoftware {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public AccountRow AddAccountRow(string AccountName, string AccountPrintName, int AccountGroupID, string AddressLine1, string AddressLine2, string AddressLine3, string City, string State, string Pincode, string Email, string ContactPerson, string TelephoneNo, string PANNo) {
+            public AccountRow AddAccountRow(string AccountName, string AccountPrintName, AccountGroupRow parentAccountGroupRowByFK_AccountGroup_Account, string AddressLine1, string AddressLine2, string AddressLine3, string City, string State, string Pincode, string Email, string ContactPerson, string TelephoneNo, string PANNo) {
                 AccountRow rowAccountRow = ((AccountRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         AccountName,
                         AccountPrintName,
-                        AccountGroupID,
+                        null,
                         AddressLine1,
                         AddressLine2,
                         AddressLine3,
@@ -823,6 +852,9 @@ namespace tradingSoftware {
                         ContactPerson,
                         TelephoneNo,
                         PANNo};
+                if ((parentAccountGroupRowByFK_AccountGroup_Account != null)) {
+                    columnValuesArray[3] = parentAccountGroupRowByFK_AccountGroup_Account[0];
+                }
                 rowAccountRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAccountRow);
                 return rowAccountRow;
@@ -2367,7 +2399,7 @@ namespace tradingSoftware {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ItemRow AddItemRow(
                         int ItemId, 
-                        int ItemGroupId, 
+                        ItemGroupRow parentItemGroupRowByFK_ItemGroup_Item, 
                         string ItemName, 
                         string ItemDesc, 
                         int UnitId, 
@@ -2385,7 +2417,7 @@ namespace tradingSoftware {
                 ItemRow rowItemRow = ((ItemRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ItemId,
-                        ItemGroupId,
+                        null,
                         ItemName,
                         ItemDesc,
                         UnitId,
@@ -2400,6 +2432,9 @@ namespace tradingSoftware {
                         HSNCode,
                         IMCOCLass,
                         CASNo};
+                if ((parentItemGroupRowByFK_ItemGroup_Item != null)) {
+                    columnValuesArray[1] = parentItemGroupRowByFK_ItemGroup_Item[0];
+                }
                 rowItemRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowItemRow);
                 return rowItemRow;
@@ -2742,11 +2777,14 @@ namespace tradingSoftware {
                 base.Columns.Add(this.columnItemGroupName);
                 this.columnItemGroupDesc = new global::System.Data.DataColumn("ItemGroupDesc", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnItemGroupDesc);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnItemGroupId}, false));
                 this.columnItemGroupId.AutoIncrement = true;
                 this.columnItemGroupId.AutoIncrementSeed = -1;
                 this.columnItemGroupId.AutoIncrementStep = -1;
                 this.columnItemGroupId.AllowDBNull = false;
                 this.columnItemGroupId.ReadOnly = true;
+                this.columnItemGroupId.Unique = true;
                 this.columnItemGroupName.AllowDBNull = false;
                 this.columnItemGroupName.MaxLength = 50;
                 this.columnItemGroupDesc.AllowDBNull = false;
@@ -4758,6 +4796,16 @@ namespace tradingSoftware {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public AccountGroupRow AccountGroupRow {
+                get {
+                    return ((AccountGroupRow)(this.GetParentRow(this.Table.ParentRelations["FK_AccountGroup_Account"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_AccountGroup_Account"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsAddressLine1Null() {
                 return this.IsNull(this.tableAccount.AddressLine1Column);
             }
@@ -4889,6 +4937,16 @@ namespace tradingSoftware {
                 }
                 set {
                     this[this.tableAccountGroup.AccountGroupNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public AccountRow[] GetAccountRows() {
+                if ((this.Table.ChildRelations["FK_AccountGroup_Account"] == null)) {
+                    return new AccountRow[0];
+                }
+                else {
+                    return ((AccountRow[])(base.GetChildRows(this.Table.ChildRelations["FK_AccountGroup_Account"])));
                 }
             }
         }
@@ -5588,6 +5646,16 @@ namespace tradingSoftware {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ItemGroupRow ItemGroupRow {
+                get {
+                    return ((ItemGroupRow)(this.GetParentRow(this.Table.ParentRelations["FK_ItemGroup_Item"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ItemGroup_Item"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsInsuranceAmountNull() {
                 return this.IsNull(this.tableItem.InsuranceAmountColumn);
             }
@@ -5669,6 +5737,16 @@ namespace tradingSoftware {
                 }
                 set {
                     this[this.tableItemGroup.ItemGroupDescColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ItemRow[] GetItemRows() {
+                if ((this.Table.ChildRelations["FK_ItemGroup_Item"] == null)) {
+                    return new ItemRow[0];
+                }
+                else {
+                    return ((ItemRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ItemGroup_Item"])));
                 }
             }
         }
@@ -11681,75 +11759,12 @@ SELECT UnitId, SubUnitId, Conversion FROM UnitConversion WHERE (SubUnitId = @Sub
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._taxTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Tax.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._taxTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._itemsTransactionTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ItemsTransaction.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._itemsTransactionTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._unitConversionTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.UnitConversion.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._unitConversionTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._unitTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Unit.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._unitTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._transactionsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Transactions.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._transactionsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._cityTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.City.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._cityTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._accountGroupTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.AccountGroup.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._accountGroupTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._accountTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Account.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._accountTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -11762,12 +11777,39 @@ SELECT UnitId, SubUnitId, Conversion FROM UnitConversion WHERE (SubUnitId = @Sub
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._itemTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._taxTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Tax.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._itemTableAdapter.Update(updatedRows));
+                    result = (result + this._taxTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._unitTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Unit.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._unitTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._unitConversionTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.UnitConversion.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._unitConversionTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._transactionsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Transactions.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._transactionsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -11777,6 +11819,42 @@ SELECT UnitId, SubUnitId, Conversion FROM UnitConversion WHERE (SubUnitId = @Sub
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._companyDetailsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._cityTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.City.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._cityTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._itemTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._itemTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._itemsTransactionTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ItemsTransaction.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._itemsTransactionTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._accountTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Account.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._accountTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -11797,67 +11875,11 @@ SELECT UnitId, SubUnitId, Conversion FROM UnitConversion WHERE (SubUnitId = @Sub
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._taxTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Tax.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._taxTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._itemsTransactionTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ItemsTransaction.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._itemsTransactionTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._unitConversionTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.UnitConversion.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._unitConversionTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._unitTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Unit.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._unitTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._transactionsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Transactions.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._transactionsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._cityTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.City.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._cityTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._accountGroupTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.AccountGroup.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._accountGroupTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._accountTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Account.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._accountTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11869,11 +11891,35 @@ SELECT UnitId, SubUnitId, Conversion FROM UnitConversion WHERE (SubUnitId = @Sub
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._itemTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._taxTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Tax.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._itemTableAdapter.Update(addedRows));
+                    result = (result + this._taxTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._unitTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Unit.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._unitTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._unitConversionTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.UnitConversion.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._unitConversionTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._transactionsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Transactions.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._transactionsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11882,6 +11928,38 @@ SELECT UnitId, SubUnitId, Conversion FROM UnitConversion WHERE (SubUnitId = @Sub
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._companyDetailsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._cityTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.City.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._cityTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._itemTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._itemTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._itemsTransactionTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ItemsTransaction.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._itemsTransactionTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._accountTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Account.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._accountTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11894,75 +11972,11 @@ SELECT UnitId, SubUnitId, Conversion FROM UnitConversion WHERE (SubUnitId = @Sub
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private int UpdateDeletedRows(TradeDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._companyDetailsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.CompanyDetails.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._companyDetailsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._itemTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._itemTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._itemGroupTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ItemGroup.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._itemGroupTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._accountTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Account.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._accountTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._accountGroupTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.AccountGroup.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._accountGroupTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._cityTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.City.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._cityTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._transactionsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Transactions.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._transactionsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._unitTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Unit.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._unitTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._unitConversionTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.UnitConversion.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._unitConversionTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -11974,11 +11988,75 @@ SELECT UnitId, SubUnitId, Conversion FROM UnitConversion WHERE (SubUnitId = @Sub
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._itemTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._itemTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._cityTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.City.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._cityTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._companyDetailsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.CompanyDetails.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._companyDetailsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._transactionsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Transactions.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._transactionsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._unitConversionTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.UnitConversion.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._unitConversionTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._unitTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Unit.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._unitTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._taxTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Tax.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._taxTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._itemGroupTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ItemGroup.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._itemGroupTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._accountGroupTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.AccountGroup.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._accountGroupTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
