@@ -28,6 +28,7 @@
             <MenuItem Name="Masters" Header="Masters">
                 <MenuItem Name="Accounts" Header="Accounts" Click="Accounts_Click"/>
                 <MenuItem Name="ItemGroup" Header="Item Group" Click="ItemGroup_Click"/>
+                <MenuItem Name="Item" Header="Item" Click="Item_Click"/>
             </MenuItem>
             <MenuItem Name="Transacton" Header="Transaction">
                 <MenuItem Name="Journal" Header="Journal" Click="Journal_Click"/>
