@@ -1,0 +1,10 @@
+﻿<Window x:Class="tradingSoftware.ItemsFind"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="ItemsFind" Height="600" Width="900" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
+    <Grid>
+        <my:DataGrid AutoGenerateColumns="False" Margin="26,14,30,135" Name="dataGrid1" />
+        <Button Height="28" HorizontalAlignment="Left" Margin="246,0,0,49" Name="btnSelect" VerticalAlignment="Bottom" Width="107">Select</Button>
+        <Button Margin="458,0,0,49" Name="btnCancel" Height="28" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="107">Cancel</Button>
+    </Grid>
+</Window>
