@@ -109,5 +109,11 @@ namespace tradingSoftware
         {
 
         }
+
+        private void Item_Click(object sender, RoutedEventArgs e)
+        {
+            Item itemForm = new Item();
+            itemForm.ShowDialog();
+        }
     }
 }
