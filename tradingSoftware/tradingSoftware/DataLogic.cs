@@ -501,8 +501,6 @@ namespace tradingSoftware
         //--get SupplierId
         public int getSupplierId(string SupplierName)
         {
-            if (SupplierName == string.Empty)
-                return -1;
             conn.Open();
             cmd.CommandText = "SELECT SupplierId From Supplier Where SupplierName='" + SupplierName + "'";
             adpt.SelectCommand = cmd;
