@@ -145,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Taxinvoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Taxsetup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -226,6 +230,9 @@
     </Compile>
     <Compile Include="SupplierDetails.xaml.cs">
       <DependentUpon>SupplierDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Taxinvoice.xaml.cs">
+      <DependentUpon>Taxinvoice.xaml</DependentUpon>
     </Compile>
     <Compile Include="Taxsetup.xaml.cs">
       <DependentUpon>Taxsetup.xaml</DependentUpon>
