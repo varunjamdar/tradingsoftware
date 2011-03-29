@@ -1,7 +1,7 @@
 ﻿<Window x:Class="tradingSoftware.CustomerDetails"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="CustSuppDetails" Height="600" Width="900" Loaded="Window_Loaded">
+    Title="CustSuppDetails" Height="600" Width="900" >
     <Grid Name="CustomerDetailsMain">
         <TabControl Name="tabControl1" SelectedIndex="0" >
             <TabItem Header="Personal Information" IsSelected="True">
