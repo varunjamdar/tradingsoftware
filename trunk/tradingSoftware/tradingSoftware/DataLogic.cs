@@ -33,7 +33,6 @@ namespace tradingSoftware
         {
             conn.Open();
             cmd.CommandText = "Insert into CompanyDetails (CompanyName, CompanyPrintName, FYStartDate, BooksCommencingFrom, AddressLine1, Addressline2, AddressLine3, City, Pin, State, Country, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, Image) values ('" + CompName + "','" + CompPrintName + "','" + FYStartDate + "','" + BooksCommFrom + "','" + AddLine1 + "','" + AddLine2 + "','" + AddLine3 + "','" + City + "'," + Pin + ",'" + State + "','" + Country + "'," + PhoneNo1 + "," + PhoneNo2 + ",'" + Website + "','" + Email + "'," + Fax + ",'" + VatGst + "','" + TinNo + "','" + VatGstDate + "'," + CstNo + ",'" + CstDate + "'," + PanNo + "," + ServiceTaxNo + ",'" + Image + "');";
-
             cmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -466,9 +465,80 @@ namespace tradingSoftware
         //    return float.Parse(ds.Tables["Tax"].Rows[0][0].ToString());
         //}
 
-        public void placePurchaseOrder()
+        //get Max purchase order no
+        public int getPurchaseOrderNo()
         {
- 
+            conn.Open();
+            cmd.CommandText = "SELECT Max(PurchaseOrderId) From PurchaseOrder";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "PurchaseOrder");
+            conn.Close();
+            return Int32.Parse(ds.Tables["PurchaseOrder"].Rows[0][0].ToString())+1;
+            
+        }
+        //--get ItemId
+        public int getItemId(string ItemName)
+        {
+            conn.Open();
+            cmd.CommandText = "SELECT ItemId From Item where ItemName='"+ItemName+"'";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Item");
+            conn.Close();
+            return Int32.Parse(ds.Tables["Item"].Rows[0][0].ToString());
+        }
+
+        //--get taxId
+        public int getTaxId(string TaxName)
+        {
+            conn.Open();
+            cmd.CommandText = "SELECT TaxID From Tax where TaxName='" + TaxName + "'";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Tax");
+            conn.Close();
+            return Int32.Parse(ds.Tables["Tax"].Rows[0][0].ToString());
+        }
+
+        //--get SupplierId
+        public int getSupplierId(string SupplierName)
+        {
+            if (SupplierName == string.Empty)
+                return -1;
+            conn.Open();
+            cmd.CommandText = "SELECT SupplierId From Supplier Where SupplierName='" + SupplierName + "'";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Supplier");
+            conn.Close();
+
+            return Int32.Parse(ds.Tables["Supplier"].Rows[0][0].ToString());
+        }
+
+        public void placePurchaseOrder_PurchaseOrderTable(int PurchaseOrderId,DateTime PurchaseOrderDate,int SupplierId,float AmountItems,float AmountTaxes)
+        {
+            //PurchaseOrder table
+            conn.Open();
+            cmd.CommandText = "Insert into PurchaseOrder (PurchaseOrderId, PurchaseOrderDate, SupplierId, AmountItems, AmountTaxes, GoodsRecieved) values ("+PurchaseOrderId+",'"+PurchaseOrderDate+"',"+SupplierId+","+AmountItems+","+AmountTaxes+",'"+false+"')";     
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void placePurchaseOrder_PurchaseOrderItemsTable(int PurchseOrderId, int ItemId, int Quantity, float PricePerUnit)
+        {
+            //PurchaseOrderItems table
+            conn.Open();
+            cmd.CommandText = "Insert into PurchaseOrderItems (PurchaseOrderId, ItemId, Quantity, PricePerUnit) values (" + PurchseOrderId + "," + ItemId + "," + Quantity + ",'" + PricePerUnit + "')";
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void placePurchaseOrder_PurchaseOrderTaxesTable(int PurchaseOrderId, int TaxId, string TaxType, float TaxAmount)
+        {
+            //PurchaseOrderTaxes table
+            conn.Open();
+            cmd.CommandText = "Insert into PurchaseOrderTaxes (PurchaseOrderId, TaxId, Type, Amount) values (" + PurchaseOrderId + "," + TaxId + ",'" + TaxType + "','" + TaxAmount + "')";
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+
         }
 
         //if the item code exists in the item table

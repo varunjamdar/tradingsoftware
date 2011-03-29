@@ -12,20 +12,14 @@ namespace tradingSoftware
 
         }
 
-        public ListViewPurchaseOrder(int pONo, string pODate, string supplier, string itemGroup, string item1, int quantity, float pricePerUnit)
+        public ListViewPurchaseOrder(string itemGroup, string item1, int quantity, float pricePerUnit)
         {
-            PONo = pONo;
-            PODate = pODate;
-            Supplier = supplier;
             ItemGroup = itemGroup;
             Item1 = item1;
             Quantity = quantity;
             PricePerUnit = pricePerUnit;
             Rs = quantity * pricePerUnit;
         }
-        public int PONo { get; set; }
-        public string PODate { get; set; }
-        public string Supplier { get; set; }
         public string ItemGroup { get; set; }
         public string Item1 { get; set; }
         public int Quantity { get; set; }
