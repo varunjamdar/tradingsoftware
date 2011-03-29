@@ -137,6 +137,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Sales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SupplierDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Taxsetup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -213,6 +221,12 @@
     <Compile Include="Purchase1.xaml.cs">
       <DependentUpon>Purchase1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sales.xaml.cs">
+      <DependentUpon>Sales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierDetails.xaml.cs">
+      <DependentUpon>SupplierDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Taxsetup.xaml.cs">
       <DependentUpon>Taxsetup.xaml</DependentUpon>
     </Compile>
@@ -236,6 +250,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
