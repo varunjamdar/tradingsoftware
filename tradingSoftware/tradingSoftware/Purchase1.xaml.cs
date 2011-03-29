@@ -32,6 +32,22 @@ namespace tradingSoftware
             taxApdt.Fill(ds.Tax);
             TaxDetailsGrid.DataContext = ds.Tax;
 
+
+            //---Supplier
+            TradeDataSetTableAdapters.SupplierTableAdapter supplierApdt = new tradingSoftware.TradeDataSetTableAdapters.SupplierTableAdapter();
+            supplierApdt.Fill(ds.Supplier);
+            cb_Supplier.DataContext = ds.Supplier;
+
+            //---Item Group
+            TradeDataSetTableAdapters.ItemGroupTableAdapter itemGroupAdpt = new tradingSoftware.TradeDataSetTableAdapters.ItemGroupTableAdapter();
+            itemGroupAdpt.Fill(ds.ItemGroup);
+            PurchaseOrder2Grid.DataContext = ds.ItemGroup;
+            //----Item
+            TradeDataSetTableAdapters.ItemTableAdapter itemAdpt = new tradingSoftware.TradeDataSetTableAdapters.ItemTableAdapter();
+            itemAdpt.Fill(ds.Item);
+
+            //--Max Purchase Id
+            txt_PurchaseNo.Text= dl.getPurchaseOrderNo().ToString();
         }
 
         private void btn_AddPurchaseItem_Click(object sender, RoutedEventArgs e)
@@ -39,7 +55,7 @@ namespace tradingSoftware
             int IPONO = Int32.Parse(txt_PurchaseNo.Text);
             int IQuantity = Int32.Parse(txt_Quantity.Text);
             float FPPU = float.Parse(txt_PPU.Text);
-            addRow(IPONO, dtPick_PODate.Text,cb_Supplier.Text,cb_ItemGroup.Text,cb_Item.Text,IQuantity,FPPU);
+            addRow(cb_ItemGroup.Text,cb_Item.Text,IQuantity,FPPU);
 
 
             //refresh the Both Amount Label
@@ -65,12 +81,10 @@ namespace tradingSoftware
            
         }
 
-        public void addRow(int v1,string v2,string v3,string v4,string v5,int v6,float v7)
+        public void addRow(string v4,string v5,int v6,float v7)
         {
-            listViewPurchseOrder.Items.Add(new ListViewPurchaseOrder(v1,v2,v3,v4,v5,v6,v7));
-            txt_PurchaseNo.Text = "";
+            listViewPurchseOrder.Items.Add(new ListViewPurchaseOrder(v4,v5,v6,v7));
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            cb_Supplier.Text = "";
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
@@ -83,9 +97,6 @@ namespace tradingSoftware
             try
             {
                 ListViewPurchaseOrder lvpo = (ListViewPurchaseOrder)listViewPurchseOrder.SelectedItem;
-                txt_PurchaseNo.Text = lvpo.PONo.ToString();
-                dtPick_PODate.Text = lvpo.PODate;
-                cb_Supplier.Text = lvpo.Supplier;
                 cb_ItemGroup.Text = lvpo.ItemGroup;
                 cb_Item.Text = lvpo.Item1;
                 txt_Quantity.Text = lvpo.Quantity.ToString();
@@ -103,7 +114,6 @@ namespace tradingSoftware
 
         private void btn_ResetItems_Click(object sender, RoutedEventArgs e)
         {
-            txt_PurchaseNo.Text = "";
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
             cb_Supplier.Text = "";
             cb_ItemGroup.Text = "";
@@ -120,7 +130,6 @@ namespace tradingSoftware
 
         private void btn_Clear_Click(object sender, RoutedEventArgs e)
         {
-            txt_PurchaseNo.Text = "";
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
             cb_Supplier.Text = "";
             cb_ItemGroup.Text = "";
@@ -136,9 +145,6 @@ namespace tradingSoftware
             ListViewPurchaseOrder lvc = (ListViewPurchaseOrder)listViewPurchseOrder.SelectedItem;
             if (lvc != null)
             {
-                lvc.PONo = Int32.Parse(txt_PurchaseNo.Text); ;
-                lvc.PODate = dtPick_PODate.Text;
-                lvc.Supplier = cb_Supplier.Text;
                 lvc.ItemGroup = cb_ItemGroup.Text;
                 lvc.Item1 = cb_Item.Text;
                 lvc.Quantity = Int32.Parse(txt_Quantity.Text);
@@ -148,9 +154,7 @@ namespace tradingSoftware
             }
             //
             //RefreshListView(txt_PurchaseNo.Text, dtPick_PODate.Text, cb_Supplier.Text, cb_ItemGroup.Text, cb_Item.Text, txt_Quantity.Text, txt_PPU.Text);
-            txt_PurchaseNo.Text = "";
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            cb_Supplier.Text = "";
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
@@ -166,9 +170,7 @@ namespace tradingSoftware
         private void btn_RemoveItem_Click(object sender, RoutedEventArgs e)
         {
             listViewPurchseOrder.Items.Remove(listViewPurchseOrder.SelectedItem);
-            txt_PurchaseNo.Text = "";
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            cb_Supplier.Text = "";
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
@@ -307,7 +309,33 @@ namespace tradingSoftware
 
         private void btnPlacePurchaseOrder_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult mbr = MessageBox.Show("Are You Sure to place purchase Order ?", "Varifiacation", MessageBoxButton.YesNo,MessageBoxImage.Question);
 
+            if (mbr == MessageBoxResult.Yes)
+            {
+                string supplierName = (string)cb_Supplier.Text;
+                
+                int supplierId = dl.getSupplierId(supplierName);
+                dl.placePurchaseOrder_PurchaseOrderTable(Int32.Parse(txt_PurchaseNo.Text), DateTime.Parse(dtPick_PODate.Text),supplierId, float.Parse(lblTotalAmount.Content.ToString()), float.Parse(lblTotalAmountTax.Content.ToString()));
+
+
+                //For Each and Every Item place to the PurchaseOrderItems table
+                for (int i = 0; i <= listViewPurchseOrder.Items.Count - 1; i++)
+                {
+                    ListViewPurchaseOrder lvc = (ListViewPurchaseOrder)listViewPurchseOrder.Items[i];
+                    dl.placePurchaseOrder_PurchaseOrderItemsTable(Int32.Parse(txt_PurchaseNo.Text),dl.getItemId(lvc.Item1), lvc.Quantity, lvc.PricePerUnit);
+                }
+
+
+                //For Each and Every Item Tax to the PurchaseOrderTaxes table
+                for (int i = 0; i <= listViewTaxDetails.Items.Count - 1; i++)
+                {
+                    ListViewPurchaseTaxDetails lvc = (ListViewPurchaseTaxDetails)listViewTaxDetails.Items[i];
+                    dl.placePurchaseOrder_PurchaseOrderTaxesTable(Int32.Parse(txt_PurchaseNo.Text), dl.getTaxId(lvc.TaxName), lvc.TaxType, lvc.TaxAmount);
+                }
+
+                MessageBox.Show("Order Placed Successfully","Succeeded",MessageBoxButton.OK,MessageBoxImage.Information);
+            }
         }
 
     }
