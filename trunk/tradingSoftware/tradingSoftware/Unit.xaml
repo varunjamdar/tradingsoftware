@@ -20,7 +20,7 @@
                     <Button Height="23" Margin="584,174,0,0" Name="btnClose" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Click="btnClose_Click">Close</Button>
                     <Button Height="23" Margin="380,174,0,0" Name="btnEdit" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Click="btnEdit_Click">Edit</Button>
                     <my:DataGrid Name="UnitDataGrid" AutoGenerateColumns="False" Margin="110,239,111,52" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" 
-                                 ItemsSource="{Binding}">
+                                 ItemsSource="{Binding}" >
                         <my:DataGrid.Columns>
                             <my:DataGridTextColumn Binding="{Binding Path=UnitName}" Header="Unit Name" Width="auto"/>
                             <my:DataGridTextColumn Binding="{Binding Path=UnitPrintName}" Header="Unit Print Name" Width="auto"/>

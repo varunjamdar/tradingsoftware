@@ -43,8 +43,8 @@
                     <TextBox FontSize="14" Height="23" HorizontalAlignment="Left" Margin="549,506,0,0" Name="txtCasNo" VerticalAlignment="Top" Width="132" />
                     <Button FontSize="14" Height="29" HorizontalAlignment="Left" Margin="151,0,0,33" Name="btnSave" VerticalAlignment="Bottom" Width="108" Click="btnSave_Click">Save</Button>
                     <Button FontSize="14" Height="29" Margin="304,0,0,33" Name="btnDelete" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="103">Delete</Button>
-                    <Button FontSize="14" Height="29" Margin="0,0,314,33" Name="btnFind" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="108">Find</Button>
-                    <Button FontSize="14" Height="29" HorizontalAlignment="Right" Margin="0,0,176,33" Name="btnClose" VerticalAlignment="Bottom" Width="108">Close</Button>
+                    <Button FontSize="14" Height="29" Margin="451,0,0,33" Name="btnFind" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="108" Click="btnFind_Click">Find</Button>
+                    <Button FontSize="14" Height="29" HorizontalAlignment="Left" Margin="589,0,0,33" Name="btnClose" VerticalAlignment="Bottom" Width="108">Close</Button>
                     
                 </Grid>
             </TabItem>
