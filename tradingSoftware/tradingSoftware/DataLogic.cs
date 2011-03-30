@@ -476,17 +476,19 @@ namespace tradingSoftware
             return Int32.Parse(ds.Tables["PurchaseOrder"].Rows[0][0].ToString())+1;
             
         }
-        //--get ItemId
-        public int getItemId(string ItemName)
-        {
-            conn.Open();
-            cmd.CommandText = "SELECT ItemId From Item where ItemName='"+ItemName+"'";
-            adpt.SelectCommand = cmd;
-            adpt.Fill(ds, "Item");
-            conn.Close();
-            return Int32.Parse(ds.Tables["Item"].Rows[0][0].ToString());
-        }
 
+
+
+
+
+
+
+
+
+
+
+        //if the item code exists in the item table
+        public bool itemCodeExists(string itemcode)
         //--get taxId
         public int getTaxId(string TaxName)
         {

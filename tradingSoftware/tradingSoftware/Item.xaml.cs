@@ -34,6 +34,10 @@ namespace tradingSoftware
             this.cbxUnitUsed.DataContext = tds.Unit;
         }
 
+        DataLogic dl;
+        ItemObject item;
+        ItemsFind itemsfind;
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             //checking only for item code, item name, item group and unit used..
@@ -62,6 +66,36 @@ namespace tradingSoftware
             }
 
             //to store unid id and item group id used .selectedvalue
+            item = new ItemObject();
+
+            item.ItemCode=txtItemCode.Text;
+            item.ItemGroup=cbxItemGroup.Text.ToString();
+            item.ItemName = txtName.Text;
+            item.ItemDescription = txtDesc.Text;
+            item.Unit = cbxUnitUsed.Text.ToString();
+            item.OpenDate = (DateTime)dtOpenDate.SelectedDate;
+            item.OpenStockQuantity = int.Parse(txtOpenStockQty.Text);
+            item.OpenStockValue = float.Parse(txtOpenStockValue.Text);
+            item.PurchasePrice = float.Parse(txtPurchasePrice.Text);
+            item.SalePrice = float.Parse(txtSalePrice.Text);
+            item.Mrp = float.Parse(txtMrp.Text);
+            item.MinimumSalePrice = float.Parse(txtMinSalePrice.Text);
+            item.InsuranceAmount = float.Parse(txtInsuranceAmt.Text);
+            item.HsnCode = txtHsnCode.Text;
+            item.IMCOClass = txtImcoClass.Text;
+            item.CasNo = txtCasNo.Text;
+
+            dl = new DataLogic();
+
+            string reply = dl.AddItem(item);
+
+            MessageBox.Show("" + reply);
+        }
+
+        private void btnFind_Click(object sender, RoutedEventArgs e)
+        {
+            itemsfind = new ItemsFind();
+            itemsfind.ShowDialog();
         }
     }
 }

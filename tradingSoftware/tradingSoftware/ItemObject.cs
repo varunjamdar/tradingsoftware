@@ -18,13 +18,13 @@ namespace tradingSoftware
         private String unit;
         private DateTime openDate;
         private int openStockQty;
-        private int openStockValue;
-        private int purchasePrice;
-        private int salePrice;
-        private int mrp;
-        private int minimumSalePrice;
-        private int insuranceAmount;
-        private int hsnCode;
+        private float openStockValue;
+        private float purchasePrice;
+        private float salePrice;
+        private float mrp;
+        private float minimumSalePrice;
+        private float insuranceAmount;
+        private string hsnCode;
         private string imcoClass;
         private string casNo;
 
@@ -167,7 +167,7 @@ namespace tradingSoftware
                 }
             }
         }
-        public int OpenStockValue
+        public float OpenStockValue
         {
             get
             {
@@ -185,7 +185,7 @@ namespace tradingSoftware
                 }
             }
         }
-        public int PurchasePrice
+        public float PurchasePrice
         {
             get
             {
@@ -203,7 +203,7 @@ namespace tradingSoftware
                 }
             }
         }
-        public int SalePrice
+        public float SalePrice
         {
             get
             {
@@ -221,7 +221,7 @@ namespace tradingSoftware
                 }
             }
         }
-        public int Mrp
+        public float Mrp
         {
             get
             {
@@ -239,7 +239,7 @@ namespace tradingSoftware
                 }
             }
         }
-        public int MinimumSalePrice
+        public float MinimumSalePrice
         {
             get
             {
@@ -257,7 +257,7 @@ namespace tradingSoftware
                 }
             }
         }
-        public int InsuranceAmount
+        public float InsuranceAmount
         {
             get
             {
@@ -275,7 +275,7 @@ namespace tradingSoftware
                 }
             }
         }
-        public int HsnCode
+        public string HsnCode
         {
             get
             {
@@ -283,14 +283,7 @@ namespace tradingSoftware
             }
             set
             {
-                if (value > 0)
-                {
-                    this.hsnCode = value;
-                }
-                else
-                {
-                    throw new NegativeValueException("HSN Code cannot be negative");
-                }
+                this.hsnCode = value;
             }
         }
         public string IMCOClass
