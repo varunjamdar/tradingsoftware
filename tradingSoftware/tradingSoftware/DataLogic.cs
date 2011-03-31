@@ -488,7 +488,7 @@ namespace tradingSoftware
 
 
         //if the item code exists in the item table
-        public bool itemCodeExists(string itemcode);
+        
         //--get taxId
         public int getTaxId(string TaxName)
         {
@@ -596,29 +596,34 @@ namespace tradingSoftware
         //write code for getting itemgroupid for item group name n same for unit..
 
 
-        //public String AddItem(ItemObject item)
-        //{
-        //    String itemCode = item.ItemCode;
-        //    String itemName = item.ItemName;
+        public String AddItem(ItemObject item)//method ncommented just to build successfully..
+        {
+            //    String itemCode = item.ItemCode;
+            //    String itemName = item.ItemName;
 
-        //    if (itemCodeExists(itemCode))
-        //    {
-        //        String str = "Item With the same Code already exists, Cannot add another item with same code";
-        //        return str;
-        //    }
+            //    if (itemCodeExists(itemCode))
+            //    {
+            //        String str = "Item With the same Code already exists, Cannot add another item with same code";
+            //        return str;
+            //    }
 
-        //    if (itemNameExists(itemName))
-        //    {
-        //        String str = "Another Item With the same name already exists, cannot add another item with same name";
-        //        return str;
-        //    }
+            //    if (itemNameExists(itemName))
+            //    {
+            //        String str = "Another Item With the same name already exists, cannot add another item with same name";
+            //        return str;
+            //    }
 
-        //    cmd = conn.CreateCommand();
-        //    cmd.CommandText = @"Insert Into Item(ItemCode,ItemGroupId,ItemName,ItemDesc,UnitId,OpenDate,OpenStockQty,OpenStockValue,PurchasePrice,SalePrice,MRP,MinimumSalePrice,InsuranceAmount,HSNCode,IMCOClass,CASNo)values(@ItemCode,@ItemGroupId,@ItemName,@ItemDesc,@UnitId,@OpenDate,@OpenStockQty,@OpenStockValue,@PurchasePrice,@SalePrice,@MRP,@MinimumSalePrice,@InsuranceAmount,@HSNCode,@IMCOClass,@CASNo);";
+            //    cmd = conn.CreateCommand();
+            //    cmd.CommandText = @"Insert Into Item(ItemCode,ItemGroupId,ItemName,ItemDesc,UnitId,OpenDate,OpenStockQty,OpenStockValue,PurchasePrice,SalePrice,MRP,MinimumSalePrice,InsuranceAmount,HSNCode,IMCOClass,CASNo)values(@ItemCode,@ItemGroupId,@ItemName,@ItemDesc,@UnitId,@OpenDate,@OpenStockQty,@OpenStockValue,@PurchasePrice,@SalePrice,@MRP,@MinimumSalePrice,@InsuranceAmount,@HSNCode,@IMCOClass,@CASNo);";
 
-        //    cmd.Parameters.Add("@ItemCode", SqlDbType.VarChar, 50);
-        //    cmd.Parameters.Add("@ItemGroupId", SqlDbType.Int);
-        //}
+            //    cmd.Parameters.Add("@ItemCode", SqlDbType.VarChar, 50);
+            //    cmd.Parameters.Add("@ItemGroupId", SqlDbType.Int);
+            return "";
+        }
 
+        public int getItemId(string s)//code remaining to write
+        {
+            return 1;
+        }
     }
 }

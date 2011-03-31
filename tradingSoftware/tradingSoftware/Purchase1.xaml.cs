@@ -337,6 +337,5 @@ namespace tradingSoftware
                 MessageBox.Show("Order Placed Successfully","Succeeded",MessageBoxButton.OK,MessageBoxImage.Information);
             }
         }
-
     }
 }

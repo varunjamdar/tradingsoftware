@@ -16,9 +16,9 @@ namespace tradingSoftware
     /// <summary>
     /// Interaction logic for Sales.xaml
     /// </summary>
-    public partial class Sales : Window
+    public partial class SupplierDetails : Window
     {
-        public Sales()
+        public SupplierDetails()
         {
             InitializeComponent();
         }

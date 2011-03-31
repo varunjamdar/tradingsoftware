@@ -137,7 +137,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sales.xaml">
+    <Page Include="SupplierDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -173,6 +173,7 @@
       <DependentUpon>CustomerDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataLogic.cs" />
+    <Compile Include="DateTimeConverter.cs" />
     <Compile Include="Item.xaml.cs">
       <DependentUpon>Item.xaml</DependentUpon>
     </Compile>
@@ -217,8 +218,8 @@
     <Compile Include="Purchase1.xaml.cs">
       <DependentUpon>Purchase1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sales.xaml.cs">
-      <DependentUpon>Sales.xaml</DependentUpon>
+    <Compile Include="SupplierDetails.xaml.cs">
+      <DependentUpon>SupplierDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Taxsetup.xaml.cs">
       <DependentUpon>Taxsetup.xaml</DependentUpon>
