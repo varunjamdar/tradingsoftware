@@ -488,7 +488,7 @@ namespace tradingSoftware
 
 
         //if the item code exists in the item table
-        public bool itemCodeExists(string itemcode)
+        public bool itemCodeExists(string itemcode);
         //--get taxId
         public int getTaxId(string TaxName)
         {

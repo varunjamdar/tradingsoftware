@@ -5,12 +5,7 @@
     <Grid Name="SalesorderGrid">
         <TabControl Name="TabCont1" Margin="0,-5,0,62" SelectedIndex="0">
             <TabItem Header="SalesForm" FontSize="14">
-                
-            
-            
-          
-        
-        <Grid Margin="0,21,0,62" Name="grid1">
+          <Grid Margin="0,21,0,62" Name="grid1">
             <Label Height="28" HorizontalAlignment="Left" Margin="33,46,0,0" Name="lblSalesOrderNo" VerticalAlignment="Top" Width="120" FlowDirection="RightToLeft" FontSize="14">Sales Order No</Label>
             <Label FlowDirection="RightToLeft" Height="28" HorizontalAlignment="Left" Margin="33,80,0,0" Name="lblSODate" VerticalAlignment="Top" Width="120" FontSize="14">SO Date</Label>
             <Label Height="28" HorizontalAlignment="Left" Margin="33,115,0,0" Name="lblCustomerName" VerticalAlignment="Top" Width="120" FlowDirection="RightToLeft" FontSize="14">Customer</Label>
