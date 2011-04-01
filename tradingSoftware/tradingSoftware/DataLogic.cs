@@ -477,18 +477,18 @@ namespace tradingSoftware
             
         }
 
+        //--get ItemId
+        public int getItemId(string ItemName)
+        {
+            conn.Open();
+            cmd.CommandText = "SELECT ItemId From Item where ItemName='"+ItemName+"'";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Item");
+            conn.Close();
+            return Int32.Parse(ds.Tables["Item"].Rows[0][0].ToString());
+        }
 
-
-
-
-
-
-
-
-
-
-        //if the item code exists in the item table
-        
+             
         //--get taxId
         public int getTaxId(string TaxName)
         {
@@ -621,9 +621,5 @@ namespace tradingSoftware
             return "";
         }
 
-        public int getItemId(string s)//code remaining to write
-        {
-            return 1;
-        }
     }
 }
