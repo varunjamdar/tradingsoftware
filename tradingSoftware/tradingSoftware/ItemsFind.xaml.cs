@@ -30,7 +30,17 @@ namespace tradingSoftware
             itemgroupadpt.Fill(tds.ItemGroup);
 
             this.ItemListingGrid.DataContext = tds.Item;
-            //this.ItemListingGrid.DataContext = tds.ItemGroup;
+            
+        }
+
+        private void btnSelect_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

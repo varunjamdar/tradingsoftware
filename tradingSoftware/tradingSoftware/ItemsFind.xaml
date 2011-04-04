@@ -4,17 +4,17 @@
     Title="ItemsFind" Height="600" Width="900" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid Name="ItemListingGrid">
         <Label Height="28" HorizontalAlignment="Left" Margin="36,9,0,0" Name="label1" VerticalAlignment="Top" Width="120" FontSize="14">Items Listing</Label>
-        <my:DataGrid AutoGenerateColumns="False" Margin="26,41,30,135" Name="dataGrid1" 
+        <my:DataGrid AutoGenerateColumns="False" Margin="26,41,30,135" Name="ItemGrid" 
                      ItemsSource="{Binding}">
             <my:DataGrid.Columns>
-                <my:DataGridTextColumn Header="Item Code" Binding="{Binding Path=ItemCode}"/>
-                <my:DataGridTextColumn Header="Item Name" Binding="{Binding Path=ItemName}"/>
-                <my:DataGridTextColumn Header="Description" Binding="{Binding Path=ItemDesc}"/>
-                <my:DataGridTextColumn Header="Item Group" Binding="{Binding Path=ItemGroup_Item\ItemGroupName}"/>
+                <my:DataGridTextColumn Header="Item Code" IsReadOnly="True" Binding="{Binding Path=ItemCode}"/>
+                <my:DataGridTextColumn Header="Item Name" IsReadOnly="True" Binding="{Binding Path=ItemName}"/>
+                <my:DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding Path=ItemDesc}"/>
+                <my:DataGridTextColumn Header="Item Group" IsReadOnly="True" Binding="{Binding Path=ItemGroup_Item, ElementName=ItemGroupName}"/>
             </my:DataGrid.Columns>            
         </my:DataGrid>
-        <Button Height="28" HorizontalAlignment="Left" Margin="246,0,0,49" Name="btnSelect" VerticalAlignment="Bottom" Width="107">Select</Button>
-        <Button Margin="458,0,0,49" Name="btnCancel" Height="28" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="107">Cancel</Button>
+        <Button Height="28" HorizontalAlignment="Left" Margin="246,0,0,49" Name="btnSelect" VerticalAlignment="Bottom" Width="107" Click="btnSelect_Click">Select</Button>
+        <Button Margin="458,0,0,49" Name="btnCancel" Height="28" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="107" Click="btnCancel_Click">Cancel</Button>
         
     </Grid>
 </Window>

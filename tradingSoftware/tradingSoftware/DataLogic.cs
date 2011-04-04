@@ -541,21 +541,29 @@ namespace tradingSoftware
 
         }
 
+        public DataSet getItemTable()
+        {
+            conn.Open();
+            cmd.CommandText = "Select * from Item";
+            adpt.SelectCommand = cmd;
+
+            ds.Clear();
+            adpt.Fill(ds);
+            conn.Close();
+
+            return ds;
+        }
+
         //if the item code exists in the item table
         public bool itemCodeExists(string itemcode)
         {
             bool itemcodethere = false;
 
-            conn.Open();
+            ds = this.getItemTable();
 
-            cmd.CommandText = "Select * from Item";
-            adpt.SelectCommand = cmd;
-
-            adpt.Fill(ds, "Itemsrc");
-
-            foreach (DataRow dr in ds.Tables["Itemsrc"].Rows)
+            foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                if (dr["ItemSrc"].Equals(itemcode))
+                if (dr["ItemCode"].Equals(itemcode))
                 {
                     itemcodethere = true;
                     goto A;
@@ -563,26 +571,19 @@ namespace tradingSoftware
             }
 
         A:
-            conn.Close();
             return itemcodethere;
         }
 
         //if the item name exists int the table..
         public bool itemNameExists(string itemName)
         {
+            bool itemNamether = false;
 
-            conn.Open();
+            ds = this.getItemTable();
 
-            bool itemNamether=false;
-
-            cmd.CommandText="Select * from Item";
-            adpt.SelectCommand=cmd;
-
-            adpt.Fill(ds,"itemSrc");
-
-            foreach (DataRow dr in ds.Tables["itemSrc"].Rows)
+            foreach (DataRow dr in ds.Tables[0].Rows)
     	    {
-		       if(dr["itemSrc"].Equals(itemName))
+		       if(dr["ItemName"].Equals(itemName))
                {
                    itemNamether=true;
                    goto A;
@@ -590,7 +591,6 @@ namespace tradingSoftware
 	        }
 
             A:
-            conn.Close();
             return itemNamether;
         }
         //write code for getting itemgroupid for item group name n same for unit..
@@ -598,27 +598,81 @@ namespace tradingSoftware
 
         public String AddItem(ItemObject item)//method ncommented just to build successfully..
         {
-            //    String itemCode = item.ItemCode;
-            //    String itemName = item.ItemName;
+            string itemCode = item.ItemCode;
+            string itemName = item.ItemName;
 
-            //    if (itemCodeExists(itemCode))
-            //    {
-            //        String str = "Item With the same Code already exists, Cannot add another item with same code";
-            //        return str;
-            //    }
+            if (itemCodeExists(itemCode))
+            {
+                string str = "Item With the same Code already exists, Cannot add another item with same code";
+                return str;
+            }
 
-            //    if (itemNameExists(itemName))
-            //    {
-            //        String str = "Another Item With the same name already exists, cannot add another item with same name";
-            //        return str;
-            //    }
+            if (itemNameExists(itemName))
+            {
+                string str = "Another Item With the same name already exists, cannot add another item with same name";
+                return str;
+            }
+            
+            ds.Tables.Clear();
+            cmd=conn.CreateCommand();
+            string itemGroup = item.ItemGroup;
+            adpt.SelectCommand = cmd;
+            cmd.CommandText="Select ItemGroupId from ItemGroup where ItemGroupName='"+itemGroup+"';";
+            adpt.Fill(ds,"ItemGroup");
 
-            //    cmd = conn.CreateCommand();
-            //    cmd.CommandText = @"Insert Into Item(ItemCode,ItemGroupId,ItemName,ItemDesc,UnitId,OpenDate,OpenStockQty,OpenStockValue,PurchasePrice,SalePrice,MRP,MinimumSalePrice,InsuranceAmount,HSNCode,IMCOClass,CASNo)values(@ItemCode,@ItemGroupId,@ItemName,@ItemDesc,@UnitId,@OpenDate,@OpenStockQty,@OpenStockValue,@PurchasePrice,@SalePrice,@MRP,@MinimumSalePrice,@InsuranceAmount,@HSNCode,@IMCOClass,@CASNo);";
+            int ItemGroupId=int.Parse(ds.Tables["ItemGroup"].Rows[0]["ItemGroupId"].ToString());
 
-            //    cmd.Parameters.Add("@ItemCode", SqlDbType.VarChar, 50);
-            //    cmd.Parameters.Add("@ItemGroupId", SqlDbType.Int);
-            return "";
+            ds.Tables.Clear();
+            string unitName = item.Unit;
+            cmd.CommandText="Select UnitId from Unit where UnitName='"+unitName+"';";
+            adpt.SelectCommand=cmd;
+            adpt.Fill(ds,"Unit");
+
+            int UnitId = int.Parse(ds.Tables["Unit"].Rows[0]["UnitId"].ToString());
+            
+            cmd.CommandText = @"Insert Into Item(ItemCode,ItemGroupId,ItemName,ItemDesc,UnitId,OpenDate,OpenStockQty,OpenStockValue,PurchasePrice,SalePrice,MRP,MinimumSalePrice,InsuranceAmount,HSNCode,IMCOClass,CASNo)values(@ItemCode,@ItemGroupId,@ItemName,@ItemDesc,@UnitId,@OpenDate,@OpenStockQty,@OpenStockValue,@PurchasePrice,@SalePrice,@MRP,@MinimumSalePrice,@InsuranceAmount,@HSNCode,@IMCOClass,@CASNo);";
+            
+            cmd.Parameters.Add("@ItemCode", SqlDbType.VarChar, 50);
+            cmd.Parameters.Add("@ItemGroupId", SqlDbType.Int);
+            cmd.Parameters.Add("@ItemName",SqlDbType.VarChar);
+            cmd.Parameters.Add("@ItemDesc",SqlDbType.VarChar);
+            cmd.Parameters.Add("@UnitId",SqlDbType.Int);
+            cmd.Parameters.Add("@OpenDate",SqlDbType.DateTime);
+            cmd.Parameters.Add("@OpenStockQty",SqlDbType.Int);
+            cmd.Parameters.Add("@OpenStockValue",SqlDbType.Float);
+            cmd.Parameters.Add("@PurchasePrice",SqlDbType.Float);
+            cmd.Parameters.Add("@SalePrice",SqlDbType.Float);
+            cmd.Parameters.Add("@MRP",SqlDbType.Float);
+            cmd.Parameters.Add("@MinimumSalePrice",SqlDbType.Float);
+            cmd.Parameters.Add("@InsuranceAmount",SqlDbType.Float);
+            cmd.Parameters.Add("@HSNCode",SqlDbType.VarChar);
+            cmd.Parameters.Add("@IMCOClass",SqlDbType.VarChar);
+            cmd.Parameters.Add("@CASNo",SqlDbType.VarChar);
+
+            cmd.Parameters["@ItemCode"].Value=item.ItemCode;
+            cmd.Parameters["@ItemGroupId"].Value=ItemGroupId;
+            cmd.Parameters["@ItemName"].Value=item.ItemName;
+            cmd.Parameters["@ItemDesc"].Value=item.ItemDescription;
+            cmd.Parameters["@UnitId"].Value=UnitId;
+            cmd.Parameters["@OpenDate"].Value=item.OpenDate;
+            cmd.Parameters["@OpenStockQty"].Value=item.OpenStockQuantity;
+            cmd.Parameters["@OpenStockValue"].Value=item.OpenStockValue;
+            cmd.Parameters["@PurchasePrice"].Value=item.PurchasePrice;
+            cmd.Parameters["@SalePrice"].Value=item.SalePrice;
+            cmd.Parameters["@MRP"].Value=item.Mrp;
+            cmd.Parameters["@MinimumSalePrice"].Value=item.MinimumSalePrice;
+            cmd.Parameters["@InsuranceAmount"].Value=item.InsuranceAmount;
+            cmd.Parameters["@HSNCode"].Value=item.HsnCode;
+            cmd.Parameters["@IMCOClass"].Value=item.IMCOClass;
+            cmd.Parameters["@CASNo"].Value=item.CasNo;
+
+            conn.Open();
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            string str1 = "Your Item : \""+item.ItemName+"\" has been Saved to the database";
+            return str1;
         }
 
     }
