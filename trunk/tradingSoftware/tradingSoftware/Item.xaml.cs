@@ -30,8 +30,13 @@ namespace tradingSoftware
             TradeDataSetTableAdapters.UnitTableAdapter unitTableAdpt = new tradingSoftware.TradeDataSetTableAdapters.UnitTableAdapter();
             unitTableAdpt.Fill(tds.Unit);
 
+            TradeDataSetTableAdapters.ItemTableAdapter itemTableAdpt = new tradingSoftware.TradeDataSetTableAdapters.ItemTableAdapter();
+            itemTableAdpt.Fill(tds.Item);
+
             this.cbxItemGroup.DataContext = tds.ItemGroup;
             this.cbxUnitUsed.DataContext = tds.Unit;
+            this.ItemId.DataContext = tds.Item;
+
         }
 
         DataLogic dl;
@@ -44,12 +49,12 @@ namespace tradingSoftware
 
             if (txtItemCode.Text == "")
             {
-                MessageBox.Show("Enter the Item Code, cant proceed further", "Warning");
+                MessageBox.Show("Enter/Select the Item Code, cant proceed further", "Warning");
                 return;
             }
             if (txtName.Text == "")
             {
-                MessageBox.Show("Enter the Name of the Item to be configured, cant proceed further", "Warning");
+                MessageBox.Show("Enter/Select the Name of the Item to be configured, cant proceed further", "Warning");
                 return;
             }
 
@@ -90,12 +95,34 @@ namespace tradingSoftware
             string reply = dl.AddItem(item);
 
             MessageBox.Show("" + reply);
+
+            txtItemCode.Text = "";
+            cbxItemGroup.SelectedIndex = -1;
+            txtName.Text = "";
+            txtDesc.Text = "";
+            cbxUnitUsed.SelectedIndex = - 1;
+            dtOpenDate.SelectedDate = null;
+            txtOpenStockQty.Text = "";
+            txtOpenStockValue.Text = "";
+            txtPurchasePrice.Text = "";
+            txtSalePrice.Text = "";
+            txtMrp.Text = "";
+            txtMinSalePrice.Text = "";
+            txtInsuranceAmt.Text = "";
+            txtHsnCode.Text = "";
+            txtImcoClass.Text = "";
+            txtCasNo.Text = "";
         }
 
         private void btnFind_Click(object sender, RoutedEventArgs e)
         {
             itemsfind = new ItemsFind();
             itemsfind.ShowDialog();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

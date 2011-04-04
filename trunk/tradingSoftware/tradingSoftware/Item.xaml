@@ -6,6 +6,7 @@
         <TabControl Name="tabControl1" FontSize="14" Margin="0,-4,0,-10" SelectedIndex="0">
             <TabItem Name="ItemConf" Header="Item">
                 <Grid Name="ItemConfGrid" Height="646" Width="873">
+                    <Label Height="28" HorizontalAlignment="Left" Margin="12,69,0,0" Name="ItemId" VerticalAlignment="Top" Width="31" Content="{Binding Path=ItemId}"></Label>
                     <Label Height="28" Margin="47,69,0,0" Name="label2" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="85">Item Code</Label>
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="144,74,0,0" Name="txtItemCode" VerticalAlignment="Top" Width="211" FontSize="14" />
                     <Label Height="28" HorizontalAlignment="Left" Margin="47,118,0,0" Name="label3" VerticalAlignment="Top" Width="59" FontSize="14">Name</Label>
@@ -44,7 +45,7 @@
                     <Button FontSize="14" Height="29" HorizontalAlignment="Left" Margin="151,0,0,33" Name="btnSave" VerticalAlignment="Bottom" Width="108" Click="btnSave_Click">Save</Button>
                     <Button FontSize="14" Height="29" Margin="304,0,0,33" Name="btnDelete" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="103">Delete</Button>
                     <Button FontSize="14" Height="29" Margin="451,0,0,33" Name="btnFind" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="108" Click="btnFind_Click">Find</Button>
-                    <Button FontSize="14" Height="29" HorizontalAlignment="Left" Margin="589,0,0,33" Name="btnClose" VerticalAlignment="Bottom" Width="108">Close</Button>
+                    <Button FontSize="14" Height="29" HorizontalAlignment="Left" Margin="589,0,0,33" Name="btnClose" VerticalAlignment="Bottom" Width="108" Click="btnClose_Click">Close</Button>
                     
                 </Grid>
             </TabItem>
