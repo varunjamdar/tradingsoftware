@@ -238,15 +238,12 @@
     <Compile Include="Purchase1.xaml.cs">
       <DependentUpon>Purchase1.xaml</DependentUpon>
     </Compile>
-<<<<<<< .mine
     <Compile Include="PurchaseOrder.xaml.cs">
       <DependentUpon>PurchaseOrder.xaml</DependentUpon>
     </Compile>
-=======
     <Compile Include="Sales.xaml.cs">
       <DependentUpon>Sales.xaml</DependentUpon>
     </Compile>
->>>>>>> .r150
     <Compile Include="SupplierDetails.xaml.cs">
       <DependentUpon>SupplierDetails.xaml</DependentUpon>
     </Compile>
