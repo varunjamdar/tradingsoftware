@@ -512,11 +512,11 @@ namespace tradingSoftware
             return Int32.Parse(ds.Tables["Supplier"].Rows[0][0].ToString());
         }
 
-        public void placePurchaseOrder_PurchaseOrderTable(int PurchaseOrderId,DateTime PurchaseOrderDate,int SupplierId,float AmountItems,float AmountTaxes)
+        public void placePurchaseOrder_PurchaseOrderTable(int PurchaseOrderId,DateTime PurchaseOrderDate,int SupplierId,float AmountItems)
         {
             //PurchaseOrder table
             conn.Open();
-            cmd.CommandText = "Insert into PurchaseOrder (PurchaseOrderId, PurchaseOrderDate, SupplierId, AmountItems, AmountTaxes, GoodsRecieved) values ("+PurchaseOrderId+",'"+PurchaseOrderDate+"',"+SupplierId+","+AmountItems+","+AmountTaxes+",'"+false+"')";     
+            cmd.CommandText = "Insert into PurchaseOrder (PurchaseOrderId, PurchaseOrderDate, SupplierId, AmountItems) values ("+PurchaseOrderId+",'"+PurchaseOrderDate+"',"+SupplierId+","+AmountItems+")";     
             cmd.ExecuteNonQuery();
             conn.Close();
         }

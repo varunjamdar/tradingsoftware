@@ -81,13 +81,14 @@ namespace tradingSoftware
       
         private void PurchaseOrder_Click(object sender, RoutedEventArgs e)
         {
-            Purchase1 purchaseForm = new Purchase1();
-            purchaseForm.ShowDialog();
+            PurchaseOrder purchaseOrderForm = new PurchaseOrder();
+            purchaseOrderForm.ShowDialog();
         }
 
         private void GoodsReceipt_Click(object sender, RoutedEventArgs e)
         {
-
+            Purchase1 purchaseForm = new Purchase1();
+            purchaseForm.ShowDialog();
         }
 
         private void Payment_Click(object sender, RoutedEventArgs e)
