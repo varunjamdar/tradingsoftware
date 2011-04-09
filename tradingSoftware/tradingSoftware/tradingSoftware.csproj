@@ -194,6 +194,7 @@
     </Compile>
     <Compile Include="DataLogic.cs" />
     <Compile Include="DateTimeConverter.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Item.xaml.cs">
       <DependentUpon>Item.xaml</DependentUpon>
     </Compile>
