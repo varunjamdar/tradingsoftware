@@ -18,19 +18,23 @@ namespace tradingSoftware
     /// </summary>
     public partial class ItemsFind : Window
     {
+        private DataLogic dl = null;
+
         public ItemsFind()
         {
             InitializeComponent();
 
-            TradeDataSet tds = new TradeDataSet();
-            TradeDataSetTableAdapters.ItemTableAdapter itemadpt = new tradingSoftware.TradeDataSetTableAdapters.ItemTableAdapter();
-            itemadpt.Fill(tds.Item);
+            //TradeDataSet tds = new TradeDataSet();
+            //TradeDataSetTableAdapters.ItemTableAdapter itemadpt = new tradingSoftware.TradeDataSetTableAdapters.ItemTableAdapter();
+            //itemadpt.Fill(tds.Item);
 
-            TradeDataSetTableAdapters.ItemGroupTableAdapter itemgroupadpt = new tradingSoftware.TradeDataSetTableAdapters.ItemGroupTableAdapter();
-            itemgroupadpt.Fill(tds.ItemGroup);
+            //TradeDataSetTableAdapters.ItemGroupTableAdapter itemgroupadpt = new tradingSoftware.TradeDataSetTableAdapters.ItemGroupTableAdapter();
+            //itemgroupadpt.Fill(tds.ItemGroup);
 
-            this.ItemListingGrid.DataContext = tds.Item;
-            
+            //this.ItemListingGrid.DataContext = tds.Item;
+
+            dl = new DataLogic();
+            this.ItemGrid.ItemsSource = dl.getItems().DefaultView;
         }
 
         private void btnSelect_Click(object sender, RoutedEventArgs e)

@@ -675,5 +675,16 @@ namespace tradingSoftware
             return str1;
         }
 
+        public DataTable getItems()
+        {
+            ds.Clear();
+            cmd.CommandText = "SELECT Item.ItemCode, Item.ItemName, Item.ItemDesc, ItemGroup.ItemGroupName FROM Item INNER JOIN ItemGroup ON Item.ItemGroupId = ItemGroup.ItemGroupId";
+            conn.Open();
+            adpt.SelectCommand = cmd;
+
+            adpt.Fill(ds, "Items");
+            conn.Close();
+            return ds.Tables["Items"];
+        }
     }
 }

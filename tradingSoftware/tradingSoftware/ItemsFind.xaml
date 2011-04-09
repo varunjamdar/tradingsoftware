@@ -7,10 +7,10 @@
         <my:DataGrid AutoGenerateColumns="False" Margin="26,41,30,135" Name="ItemGrid" 
                      ItemsSource="{Binding}">
             <my:DataGrid.Columns>
-                <my:DataGridTextColumn Header="Item Code" IsReadOnly="True" Binding="{Binding Path=ItemCode}"/>
-                <my:DataGridTextColumn Header="Item Name" IsReadOnly="True" Binding="{Binding Path=ItemName}"/>
-                <my:DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding Path=ItemDesc}"/>
-                <my:DataGridTextColumn Header="Item Group" IsReadOnly="True" Binding="{Binding Path=ItemGroup_Item, ElementName=ItemGroupName}"/>
+                <my:DataGridTextColumn Header="Item Code" IsReadOnly="True" Width="100" Binding="{Binding Path=ItemCode}"/>
+                <my:DataGridTextColumn Header="Item Name" IsReadOnly="True" Width="150" Binding="{Binding Path=ItemName}"/>
+                <my:DataGridTextColumn Header="Item Group" IsReadOnly="True" Width="150" Binding="{Binding Path=ItemGroupName}"/>
+                <my:DataGridTextColumn Header="Description" IsReadOnly="True" Width="250" Binding="{Binding Path=ItemDesc}"/>
             </my:DataGrid.Columns>            
         </my:DataGrid>
         <Button Height="28" HorizontalAlignment="Left" Margin="246,0,0,49" Name="btnSelect" VerticalAlignment="Bottom" Width="107" Click="btnSelect_Click">Select</Button>
