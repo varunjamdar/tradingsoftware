@@ -37,6 +37,7 @@ namespace tradingSoftware
             this.cbxUnitUsed.DataContext = tds.Unit;
             this.ItemId.DataContext = tds.Item;
 
+
         }
 
         DataLogic dl;
@@ -116,13 +117,43 @@ namespace tradingSoftware
 
         private void btnFind_Click(object sender, RoutedEventArgs e)
         {
-            itemsfind = new ItemsFind();
+            itemsfind = new ItemsFind(this);
             itemsfind.ShowDialog();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        ItemObject io;
+        public void populate(string Itemcode,string ItemName)
+        {
+            dl = new DataLogic();
+            io = new ItemObject();
+
+            io = dl.getDetailsofItemCode(Itemcode, ItemName);
+
+            txtItemCode.Text = io.ItemCode;
+            cbxItemGroup.Text = io.ItemGroup;
+            txtName.Text = io.ItemName;
+            txtDesc.Text = io.ItemDescription;
+            cbxUnitUsed.Text = io.Unit;
+            dtOpenDate.SelectedDate = io.OpenDate;
+            txtOpenStockQty.Text = io.OpenStockQuantity.ToString();
+            txtOpenStockValue.Text = io.OpenStockValue.ToString();
+            txtPurchasePrice.Text = io.PurchasePrice.ToString();
+            txtSalePrice.Text = io.SalePrice.ToString();
+            txtMrp.Text = io.Mrp.ToString();
+            txtMinSalePrice.Text = io.MinimumSalePrice.ToString();
+            txtInsuranceAmt.Text = io.InsuranceAmount.ToString();
+            txtHsnCode.Text = io.HsnCode;
+            txtImcoClass.Text = io.IMCOClass;
+            txtCasNo.Text = io.CasNo;
+
+            txtItemCode.IsEnabled = false;
+            txtName.IsEnabled = false;
+
         }
     }
 }
