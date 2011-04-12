@@ -24,9 +24,11 @@ namespace tradingSoftware
     public partial class ItemsFind : Window
     {
         private DataLogic dl = null;
-        private int itemCode;
+        private string ItemCode;
+        private string ItemName;
+        private Item Parent;
 
-        public ItemsFind()
+        public ItemsFind(Item item)
         {
             InitializeComponent();
 
@@ -38,6 +40,7 @@ namespace tradingSoftware
             //itemgroupadpt.Fill(tds.ItemGroup);
 
             //this.ItemListingGrid.DataContext = tds.Item;
+            Parent = item;
 
             dl = new DataLogic();
             this.ItemGrid.ItemsSource = dl.getItems().DefaultView;
@@ -99,8 +102,16 @@ namespace tradingSoftware
 
                     DataGridCell dgc = helperClass.GetCell(rowIndex, 0);
                     object valueToShow = helperClass.ExtractBoundValue(row, dgc);
-                    MessageBox.Show(valueToShow.ToString());
-                    itemCode = int.Parse(valueToShow.ToString());
+                    //MessageBox.Show(valueToShow.ToString());
+                   // ItemCode = int.Parse(valueToShow.ToString());
+                    ItemCode = valueToShow.ToString();
+
+                    DataGridCell dgc1 = helperClass.GetCell(rowIndex, 1);
+                    object valueToShow1 = helperClass.ExtractBoundValue(row, dgc1);
+                    ItemName = valueToShow1.ToString();
+
+                    Parent.populate(ItemCode, ItemName);
+                    this.Close();
                 }
             }
             catch (Exception ex)

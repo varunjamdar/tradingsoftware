@@ -16,6 +16,8 @@ namespace tradingSoftware
         SqlDataAdapter adpt = null;
         DataSet ds = null;
 
+        ItemObject io;
+
         public DataLogic()
         {
             conn = new SqlConnection();
@@ -685,6 +687,41 @@ namespace tradingSoftware
             adpt.Fill(ds, "Items");
             conn.Close();
             return ds.Tables["Items"];
+        }
+
+        
+        public ItemObject getDetailsofItemCode(string itemcode, string itemname)
+        {
+            io = new ItemObject();
+
+            cmd.CommandText = "SELECT Item.ItemId, Item.ItemCode, Item.ItemName, Item.ItemDesc, Item.OpenDate, Item.OpenStockValue, Item.OpenStockQty, Item.PurchasePrice, Item.SalePrice, Item.MRP, Item.MinimumSalePrice, Item.InsuranceAmount, Item.HSNCode, Item.IMCOCLass, Item.CASNo, ItemGroup.ItemGroupName, Unit.UnitName FROM Item INNER JOIN ItemGroup ON Item.ItemGroupId = ItemGroup.ItemGroupId INNER JOIN Unit ON Item.UnitId = Unit.UnitId where Item.ItemCode='" + itemcode + "' and Item.ItemName='" + itemname + "'";
+            adpt.SelectCommand = cmd;
+            ds.Tables.Clear();
+
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            io.ItemID = int.Parse(ds.Tables[0].Rows[0]["ItemId"].ToString());
+            io.ItemCode = ds.Tables[0].Rows[0]["ItemCode"].ToString();
+            io.ItemGroup = ds.Tables[0].Rows[0]["ItemGroupName"].ToString();
+            io.ItemName = ds.Tables[0].Rows[0]["ItemName"].ToString();
+            io.ItemDescription = ds.Tables[0].Rows[0]["ItemDesc"].ToString();
+            io.Unit = ds.Tables[0].Rows[0]["UnitName"].ToString();
+            io.OpenDate = (DateTime)ds.Tables[0].Rows[0]["OpenDate"];
+            io.OpenStockQuantity = int.Parse(ds.Tables[0].Rows[0]["OpenStockQty"].ToString());
+            io.OpenStockValue = float.Parse(ds.Tables[0].Rows[0]["OpenStockValue"].ToString());
+            io.PurchasePrice = float.Parse(ds.Tables[0].Rows[0]["PurchasePrice"].ToString());
+            io.SalePrice = float.Parse(ds.Tables[0].Rows[0]["SalePrice"].ToString());
+            io.Mrp = float.Parse(ds.Tables[0].Rows[0]["MRP"].ToString());
+            io.MinimumSalePrice = float.Parse(ds.Tables[0].Rows[0]["MinimumSalePrice"].ToString());
+            io.InsuranceAmount = float.Parse(ds.Tables[0].Rows[0]["InsuranceAmount"].ToString());
+            io.HsnCode = ds.Tables[0].Rows[0]["HSNCode"].ToString();
+            io.IMCOClass = ds.Tables[0].Rows[0]["IMCOCLass"].ToString();
+            io.CasNo = ds.Tables[0].Rows[0]["CASNo"].ToString();
+
+            return io;
+            
         }
     }
 }
