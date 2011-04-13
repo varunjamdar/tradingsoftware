@@ -542,6 +542,47 @@ namespace tradingSoftware
 
 
         }
+
+        //purchase item
+        public void placePurchase_PurchaseTable(int PurchaeId,int PurchaseOrderId, DateTime PurchaseDate, int SupplierId, float AmountItems,string Note)
+        {
+            //Purchase table
+            conn.Open();
+            cmd.CommandText = "Insert into Purchase (PurchaseId,PurchaseOrderId, PurchaseDate, SupplierId, AmountItems,Note) values ("+PurchaeId+"," + PurchaseOrderId + ",'" + PurchaseDate + "'," + SupplierId + "," + AmountItems + ",'"+Note+"')";
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void placePurchase_PurchaseItemsTable(int PurchseId, int ItemId, int Quantity, float PricePerUnit)
+        {
+            //PurchaseItems table
+            conn.Open();
+            cmd.CommandText = "Insert into PurchaseItems (PurchaseId, ItemId, Quantity, PricePerUnit) values (" + PurchseId + "," + ItemId + "," + Quantity + ",'" + PricePerUnit + "')";
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void placePurchase_PurchaseTaxesTable(int PurchaseId, int TaxId, string TaxType, float TaxAmount)
+        {
+            //PurchaseTaxes table
+            conn.Open();
+            cmd.CommandText = "Insert into PurchaseTaxes (PurchaseId, TaxId, Type, Amount) values (" + PurchaseId + "," + TaxId + ",'" + TaxType + "','" + TaxAmount + "')";
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+
+        }
+
+        public int getPurchaseNo()
+        {
+            conn.Open();
+            cmd.CommandText = "SELECT Max(PurchaseId) From Purchase";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Purchase");
+            conn.Close();
+            return Int32.Parse(ds.Tables["Purchase"].Rows[0][0].ToString()) + 1;
+
+        }
         //
         
         public DataSet getItemTable()

@@ -28,6 +28,29 @@ namespace tradingSoftware
 
     }
 
+    public class ListViewPurchase
+    {
+        public ListViewPurchase()
+        {
+
+        }
+
+        public ListViewPurchase(string itemGroup, string item1, int quantity, float pricePerUnit)
+        {
+            ItemGroup = itemGroup;
+            Item1 = item1;
+            Quantity = quantity;
+            PricePerUnit = pricePerUnit;
+            Rs = quantity * pricePerUnit;
+        }
+        public string ItemGroup { get; set; }
+        public string Item1 { get; set; }
+        public int Quantity { get; set; }
+        public float PricePerUnit { get; set; }
+        public float Rs { get; set; }
+
+    }
+
     class ListViewPurchaseTaxDetails
     {
         public ListViewPurchaseTaxDetails() { }
@@ -35,6 +58,7 @@ namespace tradingSoftware
         public ListViewPurchaseTaxDetails(string v1, float v2,float v3,string v4,float TotalAmount)
         {
             TaxName = v1;
+
             TaxPercentage = v2;
 
             if (v2 == 0)

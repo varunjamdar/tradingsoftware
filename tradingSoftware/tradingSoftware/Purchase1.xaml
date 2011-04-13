@@ -4,35 +4,36 @@
     xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit"
     Title="Purchase Items (Goods Receipt Note)" Height="728" Width="900" >
     <Grid Name="PurchaseOrderGrid">
-        <TabControl Name="tabControl1" Margin="0,-5,0,56" SelectedIndex="0">
+        <TabControl Name="tabControl1" Margin="0,-5,0,56" SelectedIndex="0                    
+                    ">
             <TabItem Header="Purchase Form" FontSize="14" IsSelected="True">
                 <Grid Name="PurchaseOrder2Grid">
-                    <Label Height="28" HorizontalAlignment="Left" Margin="10,22,0,0" Name="lblPONo" VerticalAlignment="Top" Width="127.765">Purchase Order No.</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="140,26,0,0" Name="txt_PurchaseNo" VerticalAlignment="Top" Width="96" TabIndex="1001" IsEnabled="False" />
-                    <Label Height="28" Margin="68.765,93,0,0" Name="lblSupplier" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68.558">Supplier</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="140,93,0,0" Name="cb_Supplier" VerticalAlignment="Top" Width="220" IsEditable="False" TabIndex="1003" 
+                    <Label Height="28" HorizontalAlignment="Left" Margin="9.235,8,0,0" Name="lblPONo" VerticalAlignment="Top" Width="159">Ref. Purchase Order No.</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="164,10,0,0" Name="txt_PurchaseOrderNo" VerticalAlignment="Top" Width="96" TabIndex="1001" IsEnabled="True" TextChanged="txt_PurchaseOrderNo_TextChanged" />
+                    <Label Height="28" Margin="69,104,0,0" Name="lblSupplier" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68.558">Supplier</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="140,104,0,0" Name="cb_Supplier" VerticalAlignment="Top" Width="220" IsEditable="False" TabIndex="1003" 
                               ItemsSource="{Binding}" DisplayMemberPath="SupplierName"
                              IsSynchronizedWithCurrentItem="True" />
-                    <Label Height="28" Margin="73,57,0,0" Name="lblPODate" VerticalAlignment="Top" HorizontalAlignment="Left" Width="64">PO  Date</Label>
-                    <my:DatePicker Height="25" Margin="140,57,0,0" Name="dtPick_PODate" VerticalAlignment="Top" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" HorizontalAlignment="Left" Width="115" TabIndex="1002" />
-                    <Label Height="28" Margin="53.11,133,0,0" Name="lblItemGroup" VerticalAlignment="Top" HorizontalAlignment="Left" Width="85">Item Group</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="140,133,0,0" Name="cb_ItemGroup" VerticalAlignment="Top" Width="220" IsEditable="False" TabIndex="1004" 
+                    <Label Height="28" Margin="73,68,0,0" Name="lblPODate" VerticalAlignment="Top" HorizontalAlignment="Left" Width="64">PO  Date</Label>
+                    <my:DatePicker Height="25" Margin="140,68,0,0" Name="dtPick_PODate" VerticalAlignment="Top" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" HorizontalAlignment="Left" Width="115" TabIndex="1002" />
+                    <Label Height="28" Margin="53,144,0,0" Name="lblItemGroup" VerticalAlignment="Top" HorizontalAlignment="Left" Width="85">Item Group</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="140,144,0,0" Name="cb_ItemGroup" VerticalAlignment="Top" Width="220" IsEditable="False" TabIndex="1004" 
                                ItemsSource="{Binding}" DisplayMemberPath="ItemGroupName"
                              IsSynchronizedWithCurrentItem="True"/>
                     <Button Margin="68.765,216,0,0" Name="btn_AddPurchaseItem" HorizontalAlignment="Left" Width="136" Height="23" VerticalAlignment="Top" Click="btn_AddPurchaseItem_Click">Add</Button>
                     <Button Margin="0,0,102,11" Name="btn_ResetItems" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="144" Click="btn_ResetItems_Click">Reset All</Button>
                     <Button HorizontalAlignment="Right" Margin="0,0,12,11" Name="btn_Close" Width="80" Height="32" VerticalAlignment="Bottom" Click="btn_Close_Click">Close</Button>
-                    <Label HorizontalAlignment="Left" Margin="68.765,171,0,0" Name="label5" Width="69" Height="28.04" VerticalAlignment="Top">Quantity</Label>
-                    <TextBox HorizontalAlignment="Left" Margin="140,171,0,0" Name="txt_Quantity" Width="120" Height="23.04" VerticalAlignment="Top" TabIndex="1006" />
-                    <Label Margin="370.604,171,402.396,0" Name="label6" Height="28" VerticalAlignment="Top">Price Per Unit</Label>
-                    <TextBox Margin="0,171,294.541,0" Name="txt_PPU" Height="23" VerticalAlignment="Top" TabIndex="1007" HorizontalAlignment="Right" Width="95.855" 
+                    <Label HorizontalAlignment="Left" Margin="69,182,0,0" Name="label5" Width="69" Height="28.04" VerticalAlignment="Top">Quantity</Label>
+                    <TextBox HorizontalAlignment="Left" Margin="140,182,0,0" Name="txt_Quantity" Width="120" Height="23.04" VerticalAlignment="Top" TabIndex="1006" />
+                    <Label Margin="371,182,402,0" Name="label6" Height="28" VerticalAlignment="Top">Price Per Unit</Label>
+                    <TextBox Margin="0,182,295,0" Name="txt_PPU" Height="23" VerticalAlignment="Top" TabIndex="1007" HorizontalAlignment="Right" Width="95.855" 
                              Text="{Binding Path=ItemGroup_Item/PurchasePrice}"/>
-                    <Label Height="28" Margin="432,133,393,0" Name="lblItem" VerticalAlignment="Top">Item</Label>
-                    <ComboBox Height="23" Margin="0,133,149,0" Name="cb_Item" VerticalAlignment="Top" IsEditable="False" TabIndex="1005" 
+                    <Label Height="28" Margin="432,144,393,0" Name="lblItem" VerticalAlignment="Top">Item</Label>
+                    <ComboBox Height="23" Margin="0,144,149,0" Name="cb_Item" VerticalAlignment="Top" IsEditable="False" TabIndex="1005" 
                                ItemsSource="{Binding Path=ItemGroup_Item}" DisplayMemberPath="ItemName"
                              IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Right" Width="241.396" />
                     <Button Height="23" HorizontalAlignment="Left" Margin="222,216,0,0" Name="btn_RemoveItem" VerticalAlignment="Top" Width="147" Click="btn_RemoveItem_Click">Remove</Button>
-                    <ListView Margin="11.149,249,12,88" Name="listViewPurchseOrder" SelectionChanged="listViewPurchseOrder_SelectionChanged">
+                    <ListView Margin="11.149,249,12,88" Name="listViewPurchse" SelectionChanged="listViewPurchse_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="ItemGroup" Width="160" 
@@ -57,6 +58,11 @@
                     <Button Height="23" HorizontalAlignment="Right" Margin="0,216,204.424,0" Name="btn_Save" VerticalAlignment="Top" Width="127.576" Click="btn_Save_Click">Save</Button>
                     <Label Height="28" HorizontalAlignment="Right" Margin="0,0,115,49" Name="label1" VerticalAlignment="Bottom" Width="54" FontSize="16">Total :</Label>
                     <Label Height="35" HorizontalAlignment="Right" Margin="0,0,12,43" Name="lblTotalAmount" VerticalAlignment="Bottom" Width="99" FontSize="18">0</Label>
+                    <TextBox Height="56" Margin="0,70,151,0" Name="txtNote" VerticalAlignment="Top" HorizontalAlignment="Right" Width="239.396" MinLines="3" />
+                    <Label Height="28" Margin="426,69,393,0" Name="lblNote" VerticalAlignment="Top">Note</Label>
+                    <Button Height="23" HorizontalAlignment="Left" Margin="262,10,0,0" Name="btnViewPO" VerticalAlignment="Top" Width="75" Click="btnViewPO_Click">View PO</Button>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="73.235,36,0,0" Name="label3" VerticalAlignment="Top" Width="95">Purchase No.</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="164,38,0,0" Name="txtPurchaseNo" VerticalAlignment="Top" Width="96" IsEnabled="False" />
                 </Grid>
             </TabItem>
             <TabItem Header="TaxDetails" FontSize="14" IsSelected="True">
@@ -109,7 +115,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Height="43" Margin="433,0,5,6" Name="btnPlacePurchaseOrder" VerticalAlignment="Bottom" Click="btnPlacePurchaseOrder_Click" FontSize="20" Foreground="Green">Place Purchase Order</Button>
+        <Button Height="43" Margin="433,0,5,6" Name="btnPlacePurchase" VerticalAlignment="Bottom" Click="btnPlacePurchase_Click" FontSize="20" Foreground="Green">Purchase  Items</Button>
         <Label Height="34.48" Margin="16.149,0,637,9" Name="label2" VerticalAlignment="Bottom" FontSize="16">Item Amount + Tax Amount :</Label>
         <Label Height="28" HorizontalAlignment="Left" Margin="238,0,0,14" Name="lblItemTaxAmount" VerticalAlignment="Bottom" Width="104" FontSize="17">0</Label>
     </Grid>
