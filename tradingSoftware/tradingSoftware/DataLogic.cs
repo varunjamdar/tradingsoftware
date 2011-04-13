@@ -542,7 +542,8 @@ namespace tradingSoftware
 
 
         }
-
+        //
+        
         public DataSet getItemTable()
         {
             conn.Open();
