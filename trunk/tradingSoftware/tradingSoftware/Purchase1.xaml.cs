@@ -23,7 +23,7 @@ namespace tradingSoftware
         {
             InitializeComponent();
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            txt_PurchaseNo.Focus();
+            txt_PurchaseOrderNo.Focus();
 
             //-------tax detail--
 
@@ -47,29 +47,54 @@ namespace tradingSoftware
             itemAdpt.Fill(ds.Item);
 
             //--Max Purchase Id
-            txt_PurchaseNo.Text= dl.getPurchaseOrderNo().ToString();
+            txtPurchaseNo.Text= dl.getPurchaseNo().ToString();
         }
 
+        public void refreshTaxes()
+        {
+            //refresh the taxes
+            for (int i = 0; i <= listViewTaxDetails.Items.Count - 1; i++)
+            {
+                ListViewPurchaseTaxDetails lvc = (ListViewPurchaseTaxDetails)listViewTaxDetails.Items[i];
+                if (lvc != null)
+                {
+                    if (lvc.TaxPercentage != 0)
+                    {
+                        lvc.TaxAmount = lvc.TaxPercentage * (float.Parse(lblTotalAmount.Content.ToString()) / 100);
+                    }
+                    listViewTaxDetails.Items.Refresh();
+                }
+            }
+
+            //Display Total Amount Tax
+            lblTotalAmountTax.Content = getTotalAmountTax();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+        }
         private void btn_AddPurchaseItem_Click(object sender, RoutedEventArgs e)
         {
-            int IPONO = Int32.Parse(txt_PurchaseNo.Text);
+            int IPONO = Int32.Parse(txt_PurchaseOrderNo.Text);
             int IQuantity = Int32.Parse(txt_Quantity.Text);
             float FPPU = float.Parse(txt_PPU.Text);
             addRow(cb_ItemGroup.Text,cb_Item.Text,IQuantity,FPPU);
 
 
             //refresh the Both Amount Label
-            lblTotalAmount.Content = getTotalAmountOFListViewPurchaseOrder();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
+            lblTotalAmount.Content = getTotalAmountOFListViewPurchase();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+
+            refreshTaxes();
         }
 
-        //get Total Amount
-        public float getTotalAmountOFListViewPurchaseOrder()
+        
+
+
+        //get Total Amount Purchase Order
+        public float getTotalAmountOFListViewPurchase()
         {
-            float tAmount=0;
-            for (int i = 0; i <= listViewPurchseOrder.Items.Count - 1; i++)
+            float tAmount = 0;
+            for (int i = 0; i <= listViewPurchse.Items.Count - 1; i++)
             {
-                ListViewPurchaseOrder lvc = (ListViewPurchaseOrder)listViewPurchseOrder.Items[i];
+                ListViewPurchase lvc = (ListViewPurchase)listViewPurchse.Items[i];
                 //MessageBox.Show(lvc.PONo + " " + lvc.PODate);
                 tAmount += lvc.Rs;
             }
@@ -83,20 +108,20 @@ namespace tradingSoftware
 
         public void addRow(string v4,string v5,int v6,float v7)
         {
-            listViewPurchseOrder.Items.Add(new ListViewPurchaseOrder(v4,v5,v6,v7));
+            listViewPurchse.Items.Add(new ListViewPurchase(v4,v5,v6,v7));
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
-            listViewPurchseOrder.SelectedIndex = -1;
+            listViewPurchse.SelectedIndex = -1;
         }
 
-        private void listViewPurchseOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void listViewPurchse_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                ListViewPurchaseOrder lvpo = (ListViewPurchaseOrder)listViewPurchseOrder.SelectedItem;
+                ListViewPurchase lvpo = (ListViewPurchase)listViewPurchse.SelectedItem;
                 cb_ItemGroup.Text = lvpo.ItemGroup;
                 cb_Item.Text = lvpo.Item1;
                 txt_Quantity.Text = lvpo.Quantity.ToString();
@@ -120,11 +145,17 @@ namespace tradingSoftware
             cb_Item.Text = "";
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
-            listViewPurchseOrder.Items.Clear();
+            listViewPurchse.Items.Clear();
 
+            txt_PurchaseOrderNo.Text = "";
             //refresh the Both Amount Label
-            lblTotalAmount.Content = getTotalAmountOFListViewPurchaseOrder();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
+            //lblTotalAmount.Content = getTotalAmountOFListViewPurchase();
+            //lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+            lblTotalAmount.Content = 0;
+            lblTotalAmountTax.Content = 0;
+            lblItemTaxAmount.Content = 0;
+
+            listViewTaxDetails.Items.Clear();
 
         }
 
@@ -136,13 +167,15 @@ namespace tradingSoftware
             cb_Item.Text = "";
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
-            listViewPurchseOrder.SelectedIndex = -1;
+
+            txt_PurchaseOrderNo.Text = "";
+            listViewPurchse.SelectedIndex = -1;
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
             //
-            ListViewPurchaseOrder lvc = (ListViewPurchaseOrder)listViewPurchseOrder.SelectedItem;
+            ListViewPurchase lvc = (ListViewPurchase)listViewPurchse.SelectedItem;
             if (lvc != null)
             {
                 lvc.ItemGroup = cb_ItemGroup.Text;
@@ -150,36 +183,44 @@ namespace tradingSoftware
                 lvc.Quantity = Int32.Parse(txt_Quantity.Text);
                 lvc.PricePerUnit = float.Parse(txt_PPU.Text);
                 lvc.Rs = Int32.Parse(txt_Quantity.Text) * float.Parse(txt_PPU.Text);
-                listViewPurchseOrder.Items.Refresh();
+                listViewPurchse.Items.Refresh();
             }
             //
-            //RefreshListView(txt_PurchaseNo.Text, dtPick_PODate.Text, cb_Supplier.Text, cb_ItemGroup.Text, cb_Item.Text, txt_Quantity.Text, txt_PPU.Text);
+            //RefreshListView(txt_PurchaseOrderNo.Text, dtPick_PODate.Text, cb_Supplier.Text, cb_ItemGroup.Text, cb_Item.Text, txt_Quantity.Text, txt_PPU.Text);
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
-            listViewPurchseOrder.SelectedIndex = -1;
+            listViewPurchse.SelectedIndex = -1;
 
 
             //refresh the Both Amount Label
-            lblTotalAmount.Content = getTotalAmountOFListViewPurchaseOrder();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
+            lblTotalAmount.Content = getTotalAmountOFListViewPurchase();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+
+            refreshTaxes();
+
+
         }
 
         private void btn_RemoveItem_Click(object sender, RoutedEventArgs e)
         {
-            listViewPurchseOrder.Items.Remove(listViewPurchseOrder.SelectedItem);
+            listViewPurchse.Items.Remove(listViewPurchse.SelectedItem);
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
-            listViewPurchseOrder.SelectedIndex = -1;
+            listViewPurchse.SelectedIndex = -1;
+
+            
 
             //refresh the Both Amount Label
-            lblTotalAmount.Content = getTotalAmountOFListViewPurchaseOrder();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
+            lblTotalAmount.Content = getTotalAmountOFListViewPurchase();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+
+            refreshTaxes();
         }
 //------------------Tax Tab----------------------------------------------------
         private void btnCloseTax_Click(object sender, RoutedEventArgs e)
@@ -211,7 +252,7 @@ namespace tradingSoftware
 
             //Displat Total Amount Tax
             lblTotalAmountTax.Content = getTotalAmountTax();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
         }
 
         private void rbPercentage_Checked(object sender, RoutedEventArgs e)
@@ -267,9 +308,9 @@ namespace tradingSoftware
 
             cb_Type.SelectedIndex = -1;
 
-            //Displat Total Amount Tax
+            //Display Total Amount Tax
             lblTotalAmountTax.Content = getTotalAmountTax();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
         }
 
         private void btnRemoveTax_Click(object sender, RoutedEventArgs e)
@@ -281,9 +322,9 @@ namespace tradingSoftware
             txtAmount.Text = "";
             listViewTaxDetails.SelectedIndex = -1;
 
-            //Displat Total Amount Tax
+            //Display Total Amount Tax
             lblTotalAmountTax.Content = getTotalAmountTax();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
         }
 
         private void cb_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -307,23 +348,23 @@ namespace tradingSoftware
             //}
         }
 
-        private void btnPlacePurchaseOrder_Click(object sender, RoutedEventArgs e)
+        private void btnPlacePurchase_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult mbr = MessageBox.Show("Are You Sure to place purchase Order ?", "Varifiacation", MessageBoxButton.YesNo,MessageBoxImage.Question);
+            MessageBoxResult mbr = MessageBox.Show("Are You Sure to place purchase Items ?", "Varifiacation", MessageBoxButton.YesNo,MessageBoxImage.Question);
 
             if (mbr == MessageBoxResult.Yes)
             {
                 string supplierName = (string)cb_Supplier.Text;
                 
                 int supplierId = dl.getSupplierId(supplierName);
-                dl.placePurchaseOrder_PurchaseOrderTable(Int32.Parse(txt_PurchaseNo.Text), DateTime.Parse(dtPick_PODate.Text),supplierId, float.Parse(lblTotalAmount.Content.ToString()));
+                dl.placePurchase_PurchaseTable(Int32.Parse(txtPurchaseNo.Text), Int32.Parse(txt_PurchaseOrderNo.Text), DateTime.Parse(dtPick_PODate.Text), supplierId, float.Parse(lblTotalAmount.Content.ToString()),txtNote.Text);
 
 
                 //For Each and Every Item place to the PurchaseOrderItems table
-                for (int i = 0; i <= listViewPurchseOrder.Items.Count - 1; i++)
+                for (int i = 0; i <= listViewPurchse.Items.Count - 1; i++)
                 {
-                    ListViewPurchaseOrder lvc = (ListViewPurchaseOrder)listViewPurchseOrder.Items[i];
-                    dl.placePurchaseOrder_PurchaseOrderItemsTable(Int32.Parse(txt_PurchaseNo.Text),dl.getItemId(lvc.Item1), lvc.Quantity, lvc.PricePerUnit);
+                    ListViewPurchase lvc = (ListViewPurchase)listViewPurchse.Items[i];
+                    dl.placePurchase_PurchaseItemsTable(Int32.Parse(txtPurchaseNo.Text),dl.getItemId(lvc.Item1), lvc.Quantity, lvc.PricePerUnit);
                 }
 
 
@@ -331,10 +372,58 @@ namespace tradingSoftware
                 for (int i = 0; i <= listViewTaxDetails.Items.Count - 1; i++)
                 {
                     ListViewPurchaseTaxDetails lvc = (ListViewPurchaseTaxDetails)listViewTaxDetails.Items[i];
-                    dl.placePurchaseOrder_PurchaseOrderTaxesTable(Int32.Parse(txt_PurchaseNo.Text), dl.getTaxId(lvc.TaxName), lvc.TaxType, lvc.TaxAmount);
+                    dl.placePurchase_PurchaseTaxesTable(Int32.Parse(txtPurchaseNo.Text), dl.getTaxId(lvc.TaxName), lvc.TaxType, lvc.TaxAmount);
                 }
 
-                MessageBox.Show("Order Placed Successfully","Succeeded",MessageBoxButton.OK,MessageBoxImage.Information);
+                MessageBox.Show("Purchase Placed Successfully","Succeeded",MessageBoxButton.OK,MessageBoxImage.Information);
+            }
+
+            //clear All
+            dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
+            cb_Supplier.Text = "";
+            cb_ItemGroup.Text = "";
+            cb_Item.Text = "";
+            txt_Quantity.Text = "";
+            txt_PPU.Text = "";
+            listViewPurchse.Items.Clear();
+
+            txt_PurchaseOrderNo.Text = "";
+            //refresh the Both Amount Label
+            //lblTotalAmount.Content = getTotalAmountOFListViewPurchase();
+            //lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+            lblTotalAmount.Content = 0;
+            lblTotalAmountTax.Content = 0;
+            lblItemTaxAmount.Content = 0;
+
+            listViewTaxDetails.Items.Clear();
+
+        }
+
+        private void btnViewPO_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int po = Int32.Parse(txt_PurchaseOrderNo.Text);
+
+
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show("Invalid Purchase Order No.","Error",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
+        }
+
+        private void txt_PurchaseOrderNo_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                int po = Int32.Parse(txt_PurchaseOrderNo.Text);
+                btnViewPO.IsEnabled = true;
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show("Invalid Purchase Order No.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                btnViewPO.IsEnabled = false;
             }
         }
     }
