@@ -6,46 +6,48 @@
         <TabControl Name="tabControl1" FontSize="14" Margin="0,-4,0,-10" SelectedIndex="0">
             <TabItem Name="ItemConf" Header="Item">
                 <Grid Name="ItemConfGrid" Height="646" Width="873">
-                    <Label Height="28" HorizontalAlignment="Left" Margin="12,69,0,0" Name="ItemId" VerticalAlignment="Top" Width="31" Content="{Binding Path=ItemId}"></Label>
-                    <Label Height="28" Margin="47,69,0,0" Name="label2" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="85">Item Code</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="144,74,0,0" Name="txtItemCode" VerticalAlignment="Top" Width="211" FontSize="14" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="47,118,0,0" Name="label3" VerticalAlignment="Top" Width="59" FontSize="14">Name</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="144,123,0,0" Name="txtName" VerticalAlignment="Top" Width="222" FontSize="14" />
-                    <Label Height="28" Margin="389,121,0,0" Name="label17" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120">Item Group</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,123,168,0" Name="cbxItemGroup" VerticalAlignment="Top" Width="216" 
+                    <Label Height="28" HorizontalAlignment="Left" Margin="53,52,0,0" Name="lblItemId" VerticalAlignment="Top" Width="70">Item ID</Label>
+                    <TextBox Height="23" Margin="150,57,0,0" Name="txtItemId" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" />
+                    <Label Height="28" Margin="53,93,0,0" Name="label2" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="85">Item Code</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="150,98,0,0" Name="txtItemCode" VerticalAlignment="Top" Width="211" FontSize="14" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="53,142,0,0" Name="label3" VerticalAlignment="Top" Width="59" FontSize="14">Name</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="150,147,0,0" Name="txtName" VerticalAlignment="Top" Width="222" FontSize="14" />
+                    <Label Height="28" Margin="395,145,358,0" Name="label17" VerticalAlignment="Top">Item Group</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,147,162,0" Name="cbxItemGroup" VerticalAlignment="Top" Width="216" 
                               ItemsSource="{Binding}" DisplayMemberPath="ItemGroupName" IsSynchronizedWithCurrentItem="True"/>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="47,171,0,0" Name="label4" VerticalAlignment="Top" Width="85" FontSize="14">Description</Label>
-                    <TextBox Height="47" Margin="141,176,388,0" Name="txtDesc" VerticalAlignment="Top" MinLines="3"
+                    <Label Height="28" HorizontalAlignment="Left" Margin="53,195,0,0" Name="label4" VerticalAlignment="Top" Width="85" FontSize="14">Description</Label>
+                    <TextBox Height="47" Margin="147,200,382,0" Name="txtDesc" VerticalAlignment="Top" MinLines="3"
                  TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" FontSize="14"></TextBox>
-                    <Label Height="28" HorizontalAlignment="Right" Margin="0,171,284,0" Name="label5" VerticalAlignment="Top" Width="84" FontSize="14">Unit used</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,171,95,0" Name="cbxUnitUsed" VerticalAlignment="Top" Width="184" FontSize="14"
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,195,278,0" Name="label5" VerticalAlignment="Top" Width="84" FontSize="14">Unit used</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,195,89,0" Name="cbxUnitUsed" VerticalAlignment="Top" Width="184" FontSize="14"
                               ItemsSource="{Binding}" DisplayMemberPath="UnitName" IsSynchronizedWithCurrentItem="True"/>
-                    <Label HorizontalAlignment="Left" Margin="47,277,0,0" Name="label6" Width="85" FontSize="14" Height="28" VerticalAlignment="Top">Open Date</Label>
-                    <my:DatePicker HorizontalAlignment="Left" Margin="207,278,0,0" Name="dtOpenDate" Width="132" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" FontSize="14" Height="24" VerticalAlignment="Top" />
-                    <Label Height="28" Margin="47,334,0,0" Name="label7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="144" FontSize="14">Open Stock Quantity</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="207,334,0,0" Name="txtOpenStockQty" VerticalAlignment="Top" Width="132" FontSize="14" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="47,389,0,0" Name="label8" VerticalAlignment="Top" Width="144" FontSize="14">Open Stock Value</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="207,389,0,0" Name="txtOpenStockValue" VerticalAlignment="Top" Width="132" FontSize="14" />
-                    <Label FontSize="14" HorizontalAlignment="Left" Margin="519,265,0,0" Name="label9" Width="144" Height="28" VerticalAlignment="Top">Purchase Price</Label>
-                    <TextBox FontSize="14" HorizontalAlignment="Left" Margin="679,265,0,0" Name="txtPurchasePrice" Width="132" Height="23" VerticalAlignment="Top" />
-                    <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="519,305,0,0" Name="label10" VerticalAlignment="Top" Width="144">Sale Price</Label>
-                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Left" Margin="679,305,0,0" Name="txtSalePrice" VerticalAlignment="Top" Width="132" />
-                    <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="519,348,0,0" Name="label11" VerticalAlignment="Top" Width="144">MRP</Label>
-                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Left" Margin="679,348,0,0" Name="txtMrp" VerticalAlignment="Top" Width="132" />
-                    <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="519,388,0,0" Name="label12" VerticalAlignment="Top" Width="144">Minimum Sale Price</Label>
-                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Left" Margin="679,388,0,0" Name="txtMinSalePrice" VerticalAlignment="Top" Width="132" />
-                    <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="47,462,0,0" Name="label13" VerticalAlignment="Top" Width="144">Insurance Amount</Label>
-                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Left" Margin="207,467,0,0" Name="txtInsuranceAmt" VerticalAlignment="Top" Width="132" />
-                    <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="47,501,0,0" Name="label14" VerticalAlignment="Top" Width="144">HSN Code</Label>
-                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Left" Margin="207,506,0,0" Name="txtHsnCode" VerticalAlignment="Top" Width="132" />
-                    <Label FontSize="14" Height="28" Margin="389,462,345,0" Name="label15" VerticalAlignment="Top">IMCO Class</Label>
-                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Left" Margin="549,467,0,0" Name="txtImcoClass" VerticalAlignment="Top" Width="132" />
-                    <Label FontSize="14" Height="28" Margin="389,501,0,0" Name="label16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="144">CAS No</Label>
-                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Left" Margin="549,506,0,0" Name="txtCasNo" VerticalAlignment="Top" Width="132" />
-                    <Button FontSize="14" Height="29" HorizontalAlignment="Left" Margin="151,0,0,33" Name="btnSave" VerticalAlignment="Bottom" Width="108" Click="btnSave_Click">Save</Button>
-                    <Button FontSize="14" Height="29" Margin="304,0,0,33" Name="btnDelete" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="103">Delete</Button>
-                    <Button FontSize="14" Height="29" Margin="451,0,0,33" Name="btnFind" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="108" Click="btnFind_Click">Find</Button>
-                    <Button FontSize="14" Height="29" HorizontalAlignment="Left" Margin="589,0,0,33" Name="btnClose" VerticalAlignment="Bottom" Width="108" Click="btnClose_Click">Close</Button>
+                    <Label HorizontalAlignment="Left" Margin="53,301,0,317" Name="label6" Width="85" FontSize="14">Open Date</Label>
+                    <my:DatePicker HorizontalAlignment="Left" Margin="213,302,0,320" Name="dtOpenDate" Width="132" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" FontSize="14" />
+                    <Label Height="28" Margin="53,0,0,260" Name="label7" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="144" FontSize="14">Open Stock Quantity</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="213,0,0,265" Name="txtOpenStockQty" VerticalAlignment="Bottom" Width="132" FontSize="14" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="53,0,0,205" Name="label8" VerticalAlignment="Bottom" Width="144" FontSize="14">Open Stock Value</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="213,0,0,210" Name="txtOpenStockValue" VerticalAlignment="Bottom" Width="132" FontSize="14" />
+                    <Label FontSize="14" HorizontalAlignment="Right" Margin="0,289,204,0" Name="label9" Width="144" Height="28" VerticalAlignment="Top">Purchase Price</Label>
+                    <TextBox FontSize="14" HorizontalAlignment="Right" Margin="0,289,56,0" Name="txtPurchasePrice" Width="132" Height="23" VerticalAlignment="Top" />
+                    <Label FontSize="14" HorizontalAlignment="Right" Margin="0,0,204,289" Name="label10" Width="144" Height="28" VerticalAlignment="Bottom">Sale Price</Label>
+                    <TextBox FontSize="14" HorizontalAlignment="Right" Margin="0,0,56,294" Name="txtSalePrice" Width="132" Height="23" VerticalAlignment="Bottom" />
+                    <Label FontSize="14" Height="28" HorizontalAlignment="Right" Margin="0,0,204,246" Name="label11" VerticalAlignment="Bottom" Width="144">MRP</Label>
+                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Right" Margin="0,0,56,251" Name="txtMrp" VerticalAlignment="Bottom" Width="132" />
+                    <Label FontSize="14" Height="28" HorizontalAlignment="Right" Margin="0,0,204,206" Name="label12" VerticalAlignment="Bottom" Width="144">Minimum Sale Price</Label>
+                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Right" Margin="0,0,56,211" Name="txtMinSalePrice" VerticalAlignment="Bottom" Width="132" />
+                    <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="53,0,0,132" Name="label13" VerticalAlignment="Bottom" Width="144">Insurance Amount</Label>
+                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Left" Margin="213,0,0,132" Name="txtInsuranceAmt" VerticalAlignment="Bottom" Width="132" />
+                    <Label FontSize="14" Height="28" HorizontalAlignment="Left" Margin="53,0,0,93" Name="label14" VerticalAlignment="Bottom" Width="144">HSN Code</Label>
+                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Left" Margin="213,0,0,93" Name="txtHsnCode" VerticalAlignment="Bottom" Width="132" />
+                    <Label FontSize="14" Height="28" Margin="395,0,339,132" Name="label15" VerticalAlignment="Bottom">IMCO Class</Label>
+                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Right" Margin="0,0,186,132" Name="txtImcoClass" VerticalAlignment="Bottom" Width="132" />
+                    <Label FontSize="14" Height="28" Margin="395,0,334,93" Name="label16" VerticalAlignment="Bottom">CAS No</Label>
+                    <TextBox FontSize="14" Height="23" HorizontalAlignment="Right" Margin="0,0,186,93" Name="txtCasNo" VerticalAlignment="Bottom" Width="132" />
+                    <Button FontSize="14" Height="29" HorizontalAlignment="Left" Margin="106,0,0,33" Name="btnNew" VerticalAlignment="Bottom" Width="108" Click="btnNew_Click">New</Button>
+                    <Button FontSize="14" Height="29" HorizontalAlignment="Left" Margin="253,0,0,33" Name="btnSave" VerticalAlignment="Bottom" Width="108" Click="btnSave_Click">Save</Button>
+                    <Button FontSize="14" Height="29" Margin="395,0,375,33" Name="btnDelete" VerticalAlignment="Bottom">Delete</Button>
+                    <Button FontSize="14" Height="29" Margin="0,0,223,33" Name="btnFind" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="108" Click="btnFind_Click">Find</Button>
+                    <Button FontSize="14" Height="29" HorizontalAlignment="Right" Margin="0,0,85,33" Name="btnClose" VerticalAlignment="Bottom" Width="108" Click="btnClose_Click">Close</Button>
                     
                 </Grid>
             </TabItem>
