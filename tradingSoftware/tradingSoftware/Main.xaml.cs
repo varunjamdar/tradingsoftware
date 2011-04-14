@@ -116,5 +116,11 @@ namespace tradingSoftware
             Item itemForm = new Item();
             itemForm.ShowDialog();
         }
+
+        private void SupplierCustomerConfig_Click(object sender, RoutedEventArgs e)
+        {
+            SupplierDetails sd = new SupplierDetails();
+            sd.ShowDialog();
+        }
     }
 }
