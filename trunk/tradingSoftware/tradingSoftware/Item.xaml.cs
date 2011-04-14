@@ -35,7 +35,10 @@ namespace tradingSoftware
 
             this.cbxItemGroup.DataContext = tds.ItemGroup;
             this.cbxUnitUsed.DataContext = tds.Unit;
-            this.ItemId.DataContext = tds.Item;
+            //this.ItemId.DataContext = tds.Item;
+            txtItemId.IsEnabled = false;
+            txtItemCode.IsEnabled = false;
+            txtName.IsEnabled = false;
 
 
         }
@@ -47,6 +50,11 @@ namespace tradingSoftware
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             //checking only for item code, item name, item group and unit used..
+            if (txtItemId.Text == "")
+            {
+                MessageBox.Show("Click New To add NEW Value", "WARNING");
+                return;
+            }
 
             if (txtItemCode.Text == "")
             {
@@ -74,6 +82,7 @@ namespace tradingSoftware
             //to store unid id and item group id used .selectedvalue
             item = new ItemObject();
 
+            item.ItemID = int.Parse(txtItemId.Text.ToString());
             item.ItemCode=txtItemCode.Text;
             item.ItemGroup=cbxItemGroup.Text.ToString();
             item.ItemName = txtName.Text;
@@ -97,6 +106,7 @@ namespace tradingSoftware
 
             MessageBox.Show("" + reply);
 
+            txtItemId.Text = "";
             txtItemCode.Text = "";
             cbxItemGroup.SelectedIndex = -1;
             txtName.Text = "";
@@ -134,6 +144,7 @@ namespace tradingSoftware
 
             io = dl.getDetailsofItemCode(Itemcode, ItemName);
 
+            txtItemId.Text = io.ItemID.ToString();
             txtItemCode.Text = io.ItemCode;
             cbxItemGroup.Text = io.ItemGroup;
             txtName.Text = io.ItemName;
@@ -153,7 +164,19 @@ namespace tradingSoftware
 
             txtItemCode.IsEnabled = false;
             txtName.IsEnabled = false;
+            
+        }
 
+        private void btnNew_Click(object sender, RoutedEventArgs e)
+        {
+            txtItemCode.IsEnabled = true;
+            txtName.IsEnabled = true;
+
+            dl = new DataLogic();
+            int nextId;
+            nextId = dl.getNextItemId();
+            //MessageBox.Show("" + nextId);
+            txtItemId.Text = nextId.ToString();
         }
     }
 }
