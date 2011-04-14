@@ -21,7 +21,7 @@
                     <MenuItem Name="BackupDb" Header="Backup Database"/>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Name="SupplierCustomerConfig" Header="Supplier/Customer Configuration">
+            <MenuItem Name="SupplierCustomerConfig" Header="Supplier/Customer Configuration" Click="SupplierCustomerConfig_Click">
                 <MenuItem Name="SupplierDetails" Header="Supplier Details"/>
                 <MenuItem Name="CustomerDetails" Header="Customer Details" Click="CustomerDetails_Click"/> 
             </MenuItem>
