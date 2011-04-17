@@ -103,7 +103,6 @@ namespace tradingSoftware
 
         private void Sale_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void Receipt_Click(object sender, RoutedEventArgs e)
@@ -121,6 +120,11 @@ namespace tradingSoftware
         {
             SupplierDetails sd = new SupplierDetails();
             sd.ShowDialog();
+        }
+
+        private void Transacton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
