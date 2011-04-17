@@ -26,7 +26,7 @@ namespace tradingSoftware
         private DataLogic dl = null;
         private string ItemCode;
         private string ItemName;
-        private Item Parent;
+        //private Item Parent;
 
         public ItemsFind(Item item)
         {
