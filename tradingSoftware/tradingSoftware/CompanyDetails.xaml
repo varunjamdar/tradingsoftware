@@ -12,10 +12,10 @@
                     <TextBox Height="23" Margin="96,85,0,0" Name="txtCompanyPrintName" VerticalAlignment="Top" HorizontalAlignment="Left" Width="229" />
                     <Label Height="28" HorizontalAlignment="Left" Margin="17,44,0,0" Name="label1" VerticalAlignment="Top" Width="46">Name</Label>
                     <Label Height="28" HorizontalAlignment="Left" Margin="17,82,0,0" Name="label2" VerticalAlignment="Top" Width="87">Print Name</Label>
-                    <TextBox Height="23" Margin="96,44,0,0" Name="txtCompanyName" VerticalAlignment="Top" HorizontalAlignment="Left" Width="229" />
+                    <TextBox Height="23" Margin="96,44,0,0" Name="txtCompanyName" VerticalAlignment="Top" HorizontalAlignment="Left" Width="229" TextChanged="txtCompanyName_TextChanged" />
                     <Label Margin="17,133,0,0" Name="label3" Height="28.04" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200">Financial Year Beginning From</Label>
                     <Label Height="28" HorizontalAlignment="Left" Margin="17,165.04,0,0" Name="label4" VerticalAlignment="Top" Width="176">Books Commencing From</Label>
-                    <my:DatePicker Margin="215,132,0,0" Name="dtFinancialYearBegin" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" Height="25.04" VerticalAlignment="Top" HorizontalAlignment="Left" Width="138" />
+                    <my:DatePicker Margin="215,132,0,0" Name="dtFinancialYearBegin" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" Height="25.04" VerticalAlignment="Top" HorizontalAlignment="Left" Width="138" TextInput="dtFinancialYearBegin_TextInput"/>
                     <my:DatePicker Height="25" Margin="215,166.04,0,0" Name="dtBooksCommencing" VerticalAlignment="Top" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" SelectedDateFormat="Short" HorizontalAlignment="Left" Width="138" />
                     <Label Height="28" Margin="413,39,380,0" Name="label5" VerticalAlignment="Top">Address</Label>
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="478,39,0,0" Name="txtCompanyAddLine1" VerticalAlignment="Top" Width="325" />
@@ -78,6 +78,6 @@
             </TabItem>
         </TabControl>
         <Button Height="23" HorizontalAlignment="Left" Margin="322,0,0,32" Name="btnCompanySave" VerticalAlignment="Bottom" Width="75" Click="btnCompanySave_Click">Save</Button>
-        <Button Height="23" Margin="525,0,0,32" Name="btnCompanyQuit" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75">Quit</Button>
+        <Button Height="23" Margin="525,0,0,32" Name="btnCompanyQuit" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75" Click="btnCompanyQuit_Click">Quit</Button>
    </Grid>
 </Window>

@@ -31,64 +31,173 @@ namespace tradingSoftware
             ds = new DataSet();
         }
 
-        //public void addCompanyDetails(CompanyObject company)
-        //{
-        //   // string CompName,string CompPrintName,DateTime FYStartDate, DateTime BooksCommFrom, string AddLine1, string AddLine2, string AddLine3, string City, int Pin, string State, string Country, int PhoneNo1, int PhoneNo2, string Website, string Email, int Fax, string VatGst, int TinNo, DateTime VatGstDate, int CstNo, DateTime CstDate, int PanNo, int ServiceTaxNo, string Image
+        public void addCompanyDetails(CompanyObject company)
+        {
+            //cmd.CommandText = "Select CompanyId from CompanyDetails where CompanyId=" + company.CompanyId;
+            cmd.CommandText = "Select CompanyId from CompanyDetails where CompanyId=1";
+            adpt.SelectCommand = cmd;
+            ds.Clear();
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
 
-        //    conn.Open();
-        //    cmd.CommandText = "Insert into CompanyDetails (CompanyId, CompanyName, CompanyPrintName, FYStartDate, BooksCommencingFrom, AddressLine1, Addressline2, AddressLine3, City, Pin, State, Country, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, Image) values (1,@CompanyName, @CompanyPrintName, @FYStartDate, @BooksCommencingFrom, @AddressLine1, @Addressline2, @AddressLine3, @City, @Pin, @State, @Country, @PhoneNo1, @PhoneNo2, @Website, @EmailId, @Fax, @VatGst, @TinNo, @VatGstDate, @CstNo, @CstDate, @PanNo, @ServiceTaxNo, @Image);";
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                cmd.CommandText = "Insert into CompanyDetails (CompanyId, CompanyName, CompanyPrintName, FYStartDate, BooksCommencingFrom, AddressLine1, Addressline2, AddressLine3, City, Pin, State, Country, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, Image) values (1,@CompanyName, @CompanyPrintName, @FYStartDate, @BooksCommencingFrom, @AddressLine1, @Addressline2, @AddressLine3, @City, @Pin, @State, @Country, @PhoneNo1, @PhoneNo2, @Website, @EmailId, @Fax, @VatGst, @TinNo, @VatGstDate, @CstNo, @CstDate, @PanNo, @ServiceTaxNo, @Image);";
 
-        //    cmd.Parameters.Add("@CompanyName",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@CompanyPrintName",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@FYStartDate",SqlDbType.DateTime);
-        //    cmd.Parameters.Add("@BooksCommencingFrom",SqlDbType.DateTime);
-        //    cmd.Parameters.Add("@AddressLine1",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@AddressLine2",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@AddressLine3",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@City",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@Pin",SqlDbType.Int);
-        //    cmd.Parameters.Add("@State",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@Country",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@PhoneNo1",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@PhoneNo2",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@Website",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@EmailId",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@Fax",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@VatGst",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@TinNo",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("VatGstDate",SqlDbType.DateTime);
-        //    cmd.Parameters.Add("@CstNo",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@PanNo",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@ServiceTaxNo",SqlDbType.VarChar);
-        //    cmd.Parameters.Add("@Image",SqlDbType.VarChar);
-            
-        //    cmd.Parameters["@CompanyName"].Value=company.CompanyName;
-        //    cmd.Parameters["@CompanyPrintName"].Value=company.CompanyPrintName;
-        //    cmd.Parameters["@FYStartDate"].Value=company.FyStartDate;
-        //    cmd.Parameters["@BooksCommencingFrom"].Value=company.BooksCommencing;
-        //    cmd.Parameters["@AddressLine1"].Value=company.AddLine1;
-        //    cmd.Parameters["@AddressLine2"].Value=company.AddLine2;
-        //    cmd.Parameters["@AddressLine3"].Value=company.AddLine3;
-        //    cmd.Parameters["@City"].Value=company.City;
-        //    cmd.Parameters["@Pin"].Value=company.Pin;
-        //    cmd.Parameters["@State"].Value=company.State;
-        //    cmd.Parameters["@Country"].Value=company.Country;
-        //    cmd.Parameters["@PhoneNo1"].Value=company.PhoneNo1;
-        //    cmd.Parameters["@PhoneNo2"].Value=company.PhoneNo2;
-        //    cmd.Parameters["@Website"].Value=company.Website;
-        //    cmd.Parameters["@EmailId"].Value=company.EmailId;
-        //    cmd.Parameters["@Fax"].Value=company.Fax;
-        //    cmd.Parameters["@VatGst"].Value=company.VatGst;
-        //    cmd.Parameters["@TinNo"].Value=company.TinNo;
-        //    cmd.Parameters["@VatGstDate"].Value=company.VatGstDate;
-        //    cmd.Parameters["@CstNo"].Value=company.CstNo;
-        //    cmd.Parameters["@PanNo"].Value=company.PanNo;
-        //    cmd.Parameters["@ServiceTaxNo"].Value=company.ServiceTaxNo;
-        //    cmd.Parameters["@Image"].Value=company.ImagePath;
-            
-        //    cmd.ExecuteNonQuery();
-        //    conn.Close();
-        //}
+                cmd.Parameters.Add("@CompanyName", SqlDbType.VarChar);
+                cmd.Parameters.Add("@CompanyPrintName", SqlDbType.VarChar);
+                cmd.Parameters.Add("@FYStartDate", SqlDbType.DateTime);
+                cmd.Parameters.Add("@BooksCommencingFrom", SqlDbType.DateTime);
+                cmd.Parameters.Add("@AddressLine1", SqlDbType.VarChar);
+                cmd.Parameters.Add("@AddressLine2", SqlDbType.VarChar);
+                cmd.Parameters.Add("@AddressLine3", SqlDbType.VarChar);
+                cmd.Parameters.Add("@City", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Pin", SqlDbType.Int);
+                cmd.Parameters.Add("@State", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Country", SqlDbType.VarChar);
+                cmd.Parameters.Add("@PhoneNo1", SqlDbType.VarChar);
+                cmd.Parameters.Add("@PhoneNo2", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Website", SqlDbType.VarChar);
+                cmd.Parameters.Add("@EmailId", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Fax", SqlDbType.VarChar);
+                cmd.Parameters.Add("@VatGst", SqlDbType.VarChar);
+                cmd.Parameters.Add("@TinNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@VatGstDate", SqlDbType.DateTime);
+                cmd.Parameters.Add("@CstNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@CstDate", SqlDbType.DateTime);
+                cmd.Parameters.Add("@PanNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@ServiceTaxNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Image", SqlDbType.VarChar);
+
+                cmd.Parameters["@CompanyName"].Value = company.CompanyName;
+                cmd.Parameters["@CompanyPrintName"].Value = company.CompanyPrintName;
+                cmd.Parameters["@FYStartDate"].Value = company.FyStartDate;
+                cmd.Parameters["@BooksCommencingFrom"].Value = company.BooksCommencing;
+                cmd.Parameters["@AddressLine1"].Value = company.AddLine1;
+                cmd.Parameters["@AddressLine2"].Value = company.AddLine2;
+                cmd.Parameters["@AddressLine3"].Value = company.AddLine3;
+                cmd.Parameters["@City"].Value = company.City;
+                cmd.Parameters["@Pin"].Value = company.Pin;
+                cmd.Parameters["@State"].Value = company.State;
+                cmd.Parameters["@Country"].Value = company.Country;
+                cmd.Parameters["@PhoneNo1"].Value = company.PhoneNo1;
+                cmd.Parameters["@PhoneNo2"].Value = company.PhoneNo2;
+                cmd.Parameters["@Website"].Value = company.Website;
+                cmd.Parameters["@EmailId"].Value = company.EmailId;
+                cmd.Parameters["@Fax"].Value = company.Fax;
+                cmd.Parameters["@VatGst"].Value = company.VatGst;
+                cmd.Parameters["@TinNo"].Value = company.TinNo;
+                cmd.Parameters["@VatGstDate"].Value = company.VatGstDate;
+                cmd.Parameters["@CstNo"].Value = company.CstNo;
+                cmd.Parameters["@CstDate"].Value = company.CstDate;
+                cmd.Parameters["@PanNo"].Value = company.PanNo;
+                cmd.Parameters["@ServiceTaxNo"].Value = company.ServiceTaxNo;
+                cmd.Parameters["@Image"].Value = company.ImagePath;
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            else
+            {
+                //financial year can never b editted...
+                cmd.CommandText="Update CompanyDetails SET  CompanyName=@CompanyName, CompanyPrintName=@CompanyPrintName, BooksCommencingFrom=@BooksCommencingFrom, AddressLine1=@AddressLine1, Addressline2=@Addressline2, AddressLine3= @AddressLine3, City=@City, Pin=@Pin, State=@State, Country=@Country, PhoneNo1=@PhoneNo1, PhoneNo2=@PhoneNo2, Website=@Website, EmailId=@EmailId, Fax=@Fax, VatGst=@VatGst, TinNo=@TinNo, VatGstDate=@VatGstDate, CstNo=@CstNo, CstDate=@CstDate, PanNo=@PanNo, ServiceTaxNo=@ServiceTaxNo, Image=@Image where CompanyId=1";
+
+                cmd.Parameters.Add("@CompanyName", SqlDbType.VarChar);
+                cmd.Parameters.Add("@CompanyPrintName", SqlDbType.VarChar);
+                cmd.Parameters.Add("@BooksCommencingFrom", SqlDbType.DateTime);
+                cmd.Parameters.Add("@AddressLine1", SqlDbType.VarChar);
+                cmd.Parameters.Add("@AddressLine2", SqlDbType.VarChar);
+                cmd.Parameters.Add("@AddressLine3", SqlDbType.VarChar);
+                cmd.Parameters.Add("@City", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Pin", SqlDbType.Int);
+                cmd.Parameters.Add("@State", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Country", SqlDbType.VarChar);
+                cmd.Parameters.Add("@PhoneNo1", SqlDbType.VarChar);
+                cmd.Parameters.Add("@PhoneNo2", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Website", SqlDbType.VarChar);
+                cmd.Parameters.Add("@EmailId", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Fax", SqlDbType.VarChar);
+                cmd.Parameters.Add("@VatGst", SqlDbType.VarChar);
+                cmd.Parameters.Add("@TinNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@VatGstDate", SqlDbType.DateTime);
+                cmd.Parameters.Add("@CstNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@CstDate", SqlDbType.DateTime);
+                cmd.Parameters.Add("@PanNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@ServiceTaxNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Image", SqlDbType.VarChar);
+
+                cmd.Parameters["@CompanyName"].Value = company.CompanyName;
+                cmd.Parameters["@CompanyPrintName"].Value = company.CompanyPrintName;
+                cmd.Parameters["@BooksCommencingFrom"].Value = company.BooksCommencing;
+                cmd.Parameters["@AddressLine1"].Value = company.AddLine1;
+                cmd.Parameters["@AddressLine2"].Value = company.AddLine2;
+                cmd.Parameters["@AddressLine3"].Value = company.AddLine3;
+                cmd.Parameters["@City"].Value = company.City;
+                cmd.Parameters["@Pin"].Value = company.Pin;
+                cmd.Parameters["@State"].Value = company.State;
+                cmd.Parameters["@Country"].Value = company.Country;
+                cmd.Parameters["@PhoneNo1"].Value = company.PhoneNo1;
+                cmd.Parameters["@PhoneNo2"].Value = company.PhoneNo2;
+                cmd.Parameters["@Website"].Value = company.Website;
+                cmd.Parameters["@EmailId"].Value = company.EmailId;
+                cmd.Parameters["@Fax"].Value = company.Fax;
+                cmd.Parameters["@VatGst"].Value = company.VatGst;
+                cmd.Parameters["@TinNo"].Value = company.TinNo;
+                cmd.Parameters["@VatGstDate"].Value = company.VatGstDate;
+                cmd.Parameters["@CstNo"].Value = company.CstNo;
+                cmd.Parameters["@CstDate"].Value = company.CstDate;
+                cmd.Parameters["@PanNo"].Value = company.PanNo;
+                cmd.Parameters["@ServiceTaxNo"].Value = company.ServiceTaxNo;
+                cmd.Parameters["@Image"].Value = company.ImagePath;
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
+
+        public CompanyObject retrieveCompanyDetails()
+        {
+            cmd.CommandText = "Select * from CompanyDetails";
+            ds.Tables.Clear();
+            adpt.SelectCommand = cmd;
+
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            CompanyObject company = new CompanyObject();
+
+            company.CompanyId =int.Parse(ds.Tables[0].Rows[0]["CompanyId"].ToString());
+            company.CompanyName = ds.Tables[0].Rows[0]["CompanyName"].ToString();
+            company.CompanyPrintName = ds.Tables[0].Rows[0]["CompanyPrintName"].ToString();
+            company.FyStartDate = DateTime.Parse(ds.Tables[0].Rows[0]["FYStartDate"].ToString());
+            company.BooksCommencing = DateTime.Parse(ds.Tables[0].Rows[0]["BooksCommencingFrom"].ToString());
+            company.AddLine1 = ds.Tables[0].Rows[0]["AddressLine1"].ToString();
+            company.AddLine2 = ds.Tables[0].Rows[0]["AddressLine2"].ToString();
+            company.AddLine3 = ds.Tables[0].Rows[0]["AddressLine3"].ToString();
+            company.City = ds.Tables[0].Rows[0]["City"].ToString();
+            company.Pin = int.Parse(ds.Tables[0].Rows[0]["Pin"].ToString());
+            company.State = ds.Tables[0].Rows[0]["State"].ToString();
+            company.Country = ds.Tables[0].Rows[0]["Country"].ToString();
+            company.PhoneNo1 = ds.Tables[0].Rows[0]["PhoneNo1"].ToString();
+            company.PhoneNo2 = ds.Tables[0].Rows[0]["PhoneNo2"].ToString();
+            company.Website = ds.Tables[0].Rows[0]["Website"].ToString();
+            company.EmailId = ds.Tables[0].Rows[0]["EmailId"].ToString();
+            company.Fax = ds.Tables[0].Rows[0]["Fax"].ToString();
+            company.VatGst = ds.Tables[0].Rows[0]["VatGst"].ToString();
+            company.TinNo = ds.Tables[0].Rows[0]["TinNo"].ToString();
+            company.VatGstDate=DateTime.Parse(ds.Tables[0].Rows[0]["VatGstDate"].ToString());
+            company.CstNo = ds.Tables[0].Rows[0]["CstNo"].ToString();
+            company.CstDate = DateTime.Parse(ds.Tables[0].Rows[0]["CstDate"].ToString());
+            company.PanNo = ds.Tables[0].Rows[0]["PanNo"].ToString();
+            company.ServiceTaxNo = ds.Tables[0].Rows[0]["ServiceTaxNo"].ToString();
+            company.ImagePath = ds.Tables[0].Rows[0]["Image"].ToString();
+
+            return company;
+        }
 
 
         public DataTable getTransactions()
@@ -907,5 +1016,59 @@ namespace tradingSoftware
             int itemId= int.Parse(ds.Tables[0].Rows[0][0].ToString());
             return ++itemId;
         }
+
+        public String DeleteItem(int ItemId)
+        {
+            cmd.CommandText = "Select ItemId from Item where ItemId=" + ItemId;
+            adpt.SelectCommand = cmd;
+            ds.Clear();
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                string str = "No such Item in the database";
+                return str;
+            }
+            else
+            {
+                cmd.CommandText = "Select ItemName from Item where ItemId=" + ItemId;
+                adpt.SelectCommand = cmd;
+                ds.Tables.Clear();
+
+                conn.Open();
+                adpt.Fill(ds);
+                conn.Close();
+
+                string Itemname = ds.Tables[0].Rows[0][0].ToString();
+
+                cmd.CommandText = "Delete From Item Where ItemId=" + ItemId;
+                adpt.SelectCommand = cmd;
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                string str = "Your Item : "+Itemname+" has beed deleted from the database";
+                return str;            
+            }
+        }
+
+        public bool checkFinancialyearSetup()
+        {
+            cmd.CommandText="Select FYStartDate from CompanyDetails where CompanyId=1";
+            adpt.SelectCommand=cmd;
+
+            ds.Tables.Clear();
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            if(ds.Tables[0].Rows.Count==0)
+                return false;
+                else return true;
+        }
+        
     }
 }

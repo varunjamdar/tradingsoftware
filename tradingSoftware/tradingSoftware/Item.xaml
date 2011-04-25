@@ -45,9 +45,9 @@
                     <TextBox FontSize="14" Height="23" HorizontalAlignment="Right" Margin="0,0,186,93" Name="txtCasNo" VerticalAlignment="Bottom" Width="132" />
                     <Button FontSize="14" Height="29" HorizontalAlignment="Left" Margin="106,0,0,33" Name="btnNew" VerticalAlignment="Bottom" Width="108" Click="btnNew_Click">New</Button>
                     <Button FontSize="14" Height="29" HorizontalAlignment="Left" Margin="253,0,0,33" Name="btnSave" VerticalAlignment="Bottom" Width="108" Click="btnSave_Click">Save</Button>
-                    <Button FontSize="14" Height="29" Margin="395,0,375,33" Name="btnDelete" VerticalAlignment="Bottom">Delete</Button>
-                    <Button FontSize="14" Height="29" Margin="0,0,223,33" Name="btnFind" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="108" Click="btnFind_Click">Find</Button>
-                    <Button FontSize="14" Height="29" HorizontalAlignment="Right" Margin="0,0,85,33" Name="btnClose" VerticalAlignment="Bottom" Width="108" Click="btnClose_Click">Close</Button>
+                    <Button FontSize="14" Height="29" Margin="395,0,375,33" Name="btnDelete" VerticalAlignment="Bottom" Click="btnDelete_Click">Delete</Button>
+                    <Button FontSize="14" Height="29" Margin="0,0,223,33" Name="btnFind" VerticalAlignment="Bottom" Click="btnFind_Click" HorizontalAlignment="Right" Width="108">Find</Button>
+                    <Button FontSize="14" Height="29" Margin="0,0,85,33" Name="btnClose" VerticalAlignment="Bottom" Click="btnClose_Click" HorizontalAlignment="Right" Width="108">Close</Button>
                     
                 </Grid>
             </TabItem>

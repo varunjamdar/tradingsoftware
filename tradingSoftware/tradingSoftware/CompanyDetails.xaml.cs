@@ -21,6 +21,9 @@ namespace tradingSoftware
     /// </summary>
     public partial class CompanyDetails : Window
     {
+        CompanyObject company;
+        DataLogic dl;
+
         public CompanyDetails()
         {
             InitializeComponent();
@@ -36,7 +39,68 @@ namespace tradingSoftware
             cityadpt.Fill(tds.City);
             
             this.BasicInformationGrid.DataContext = tds.State;
-            
+
+            cmbVatGst.SelectedIndex = 1;
+
+            dl = new DataLogic();
+            if (dl.checkFinancialyearSetup())
+            {
+                company=new CompanyObject();
+                company = dl.retrieveCompanyDetails();
+
+                txtCompanyName.Text = company.CompanyName;
+                txtCompanyPrintName.Text = company.CompanyPrintName;
+                dtFinancialYearBegin.SelectedDate = company.FyStartDate;
+
+                dtFinancialYearBegin.IsEnabled = false;
+
+                dtBooksCommencing.SelectedDate = company.BooksCommencing;
+                txtCompanyAddLine1.Text = company.AddLine1;
+                txtCompanyAddLine2.Text = company.AddLine2;
+                txtCompanyAddLine3.Text = company.AddLine3;
+                cmbCompanyCity.SelectedValue = company.City.ToString();
+                txtCompanyPin.Text = company.Pin.ToString();
+                cmbCompanyState.SelectedValue = company.State.ToString();
+                txtCompanyCountry.Text = company.Country;
+                txtCompanyPhone1.Text = company.PhoneNo1;
+                txtCompanyPhone2.Text = company.PhoneNo2;
+                txtCompanyWebsite.Text = company.Website;
+                txtCompanyEmailId.Text = company.EmailId;
+                txtCompanyFax.Text = company.Fax;
+                cmbVatGst.Text = company.VatGst.ToString();
+                //txtCompanyTinNo.Text = company.TinNo;
+                if (company.TinNo == int.Parse("0").ToString())
+                {
+                    txtCompanyTinNo.Text = "";
+                }
+                else
+                {
+                    txtCompanyTinNo.Text = company.TinNo;
+                }
+                if (company.VatGstDate == DateTime.Parse("1/1/1800"))
+                {
+                    dtVatGstDate.SelectedDate = DateTime.MinValue;
+                }
+                else
+                {
+                    dtVatGstDate.SelectedDate = company.VatGstDate;
+                }
+
+                txtCstNo.Text = company.CstNo;
+
+                if (company.CstDate == DateTime.Parse("1/1/1800"))
+                {
+                    dtCstDate.SelectedDate = DateTime.MinValue;
+                }
+                else
+                {
+                    dtCstDate.SelectedDate = company.CstDate;
+                }
+
+                TxtPanNo.Text = company.PanNo;
+                TxtServiceTaxNo.Text = company.ServiceTaxNo;
+                txtcompanylogo.Text = company.ImagePath;
+            }
         }
 
         private void textBox6_TextChanged(object sender, TextChangedEventArgs e)
@@ -78,6 +142,7 @@ namespace tradingSoftware
                 txtCompanyTinNo.IsEnabled = true;
                 
                 dtVatGstDate.IsEnabled = true;
+                dtVatGstDate.SelectedDate = DateTime.Today;
             }
             else
             {
@@ -94,11 +159,102 @@ namespace tradingSoftware
             }
         }
 
-        DataLogic dl = new DataLogic();
+        
 
-        //private void btnCompanySave_Click(object sender, RoutedEventArgs e)
-        //{
-        //    dl.addCompanyDetails(txtCompanyName.Text, txtCompanyPrintName.Text, (DateTime)dtFinancialYearBegin.SelectedDate, (DateTime)dtBooksCommencing.SelectedDate, txtCompanyAddLine1.Text, txtCompanyAddLine2.Text, txtCompanyAddLine3.Text, cmbCompanyCity.Text, int.Parse(txtCompanyPin.Text), cmbCompanyState.Text, txtCompanyCountry.Text, int.Parse(txtCompanyPhone1.Text), int.Parse(txtCompanyPhone2.Text), txtCompanyWebsite.Text, txtCompanyEmailId.Text, int.Parse(txtCompanyFax.Text), cmbVatGstType.Text, int.Parse(txtCompanyTinNo.Text), (DateTime)dtVatGstDate.SelectedDate, int.Parse(txtCstNo.Text), (DateTime)dtCstDate.SelectedDate, int.Parse(TxtPanNo.Text), int.Parse(TxtServiceTaxNo.Text), txtcompanylogo.Text);
-        //}       
+        private void btnCompanySave_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtCompanyName.Text == "")
+            {
+                MessageBox.Show("Enter the Company Name", "WARNING");
+                return;
+            }
+
+            if (txtCompanyPrintName.Text == "")
+            {
+                MessageBox.Show("Enter Company Print Name before proceeding", "WARNING");
+                return;
+            }
+
+            if (TxtPanNo.Text == "")
+            {
+                MessageBox.Show("Enter PAN NO of the Company before proceeding", "WARNING");
+                return;
+            }
+
+            if (txtcompanylogo.Text == "")
+            {
+                MessageBox.Show("Browse Path of Company Logo", "WARNING");
+                return;
+            }
+
+            company = new CompanyObject();
+
+            company.CompanyName = txtCompanyName.Text.ToString();
+            company.CompanyPrintName = txtCompanyPrintName.Text;
+            company.FyStartDate = (DateTime) dtFinancialYearBegin.SelectedDate;
+            company.BooksCommencing = (DateTime)dtBooksCommencing.SelectedDate;
+            company.AddLine1 = txtCompanyAddLine1.Text;
+            company.AddLine2 = txtCompanyAddLine2.Text;
+            company.AddLine3 = txtCompanyAddLine3.Text;
+            company.City = cmbCompanyCity.Text;
+            company.Pin = int.Parse(txtCompanyPin.Text);
+            company.State = cmbCompanyState.Text;
+            company.Country = txtCompanyCountry.Text;
+            company.PhoneNo1 = txtCompanyPhone1.Text;
+            company.PhoneNo2 = txtCompanyPhone2.Text;
+            company.Website = txtCompanyWebsite.Text;
+            company.EmailId = txtCompanyEmailId.Text;
+            company.Fax = txtCompanyFax.Text;
+            company.VatGst = cmbVatGst.Text;
+            company.TinNo = txtCompanyTinNo.Text;
+
+            if (cmbVatGst.SelectedIndex==1)
+            {
+                company.VatGstDate = DateTime.Parse("1/1/1800");
+            }
+            else
+            {
+                company.VatGstDate = (DateTime)dtVatGstDate.SelectedDate;
+            }
+            company.CstNo = txtCstNo.Text;
+
+            if (cmbVatGst.SelectedValue == null)
+            {
+                company.CstDate = DateTime.Parse("1/1/1800");
+            }
+            else
+            {
+                company.CstDate = (DateTime)dtCstDate.SelectedDate;
+            }
+            
+            company.PanNo = TxtPanNo.Text;
+            company.ServiceTaxNo = TxtServiceTaxNo.Text;
+            company.ImagePath = txtcompanylogo.Text;
+
+            dl = new DataLogic();
+            dl.addCompanyDetails(company);
+
+            MessageBox.Show("Your Data has been saved", "Message");
+        }
+
+        private void txtCompanyName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtCompanyPrintName.Text = txtCompanyName.Text;
+        }
+
+        private void btnCompanyQuit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dtFinancialYearBegin_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            dl = new DataLogic();
+
+            if (dl.checkFinancialyearSetup())
+            {
+                dtFinancialYearBegin.IsEnabled = false;
+            }
+        }       
     }
 }

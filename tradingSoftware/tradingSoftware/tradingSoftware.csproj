@@ -189,6 +189,7 @@
     <Compile Include="CompanyDetails.xaml.cs">
       <DependentUpon>CompanyDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CompanyObject.cs" />
     <Compile Include="CustomerDetails.xaml.cs">
       <DependentUpon>CustomerDetails.xaml</DependentUpon>
     </Compile>

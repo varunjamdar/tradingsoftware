@@ -169,6 +169,24 @@ namespace tradingSoftware
 
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
+            txtItemId.Text = "";
+            txtItemCode.Text = "";
+            cbxItemGroup.SelectedIndex = -1;
+            txtName.Text = "";
+            txtDesc.Text = "";
+            cbxUnitUsed.SelectedIndex = -1;
+            dtOpenDate.SelectedDate = null;
+            txtOpenStockQty.Text = "";
+            txtOpenStockValue.Text = "";
+            txtPurchasePrice.Text = "";
+            txtSalePrice.Text = "";
+            txtMrp.Text = "";
+            txtMinSalePrice.Text = "";
+            txtInsuranceAmt.Text = "";
+            txtHsnCode.Text = "";
+            txtImcoClass.Text = "";
+            txtCasNo.Text = "";
+
             txtItemCode.IsEnabled = true;
             txtName.IsEnabled = true;
 
@@ -177,6 +195,22 @@ namespace tradingSoftware
             nextId = dl.getNextItemId();
             //MessageBox.Show("" + nextId);
             txtItemId.Text = nextId.ToString();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtItemId.Text == "")
+            {
+                MessageBox.Show("Select an Item that Has to be deleted", "WARNING");
+                return;
+            }
+
+            int Itemid = int.Parse(txtItemId.Text);
+
+            dl = new DataLogic();
+            string str = dl.DeleteItem(Itemid);
+
+            MessageBox.Show("" + str);
         }
     }
 }
