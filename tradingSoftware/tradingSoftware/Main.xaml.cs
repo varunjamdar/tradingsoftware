@@ -93,7 +93,8 @@ namespace tradingSoftware
 
         private void Payment_Click(object sender, RoutedEventArgs e)
         {
-
+            Payment paymentForm = new Payment();
+            paymentForm.ShowDialog();
         }
 
         private void SaleOrder_Click(object sender, RoutedEventArgs e)
