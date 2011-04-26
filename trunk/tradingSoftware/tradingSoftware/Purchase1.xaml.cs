@@ -48,6 +48,11 @@ namespace tradingSoftware
 
             //--Max Purchase Id
             txtPurchaseNo.Text= dl.getPurchaseNo().ToString();
+
+            //purchase order
+            TradeDataSetTableAdapters.PurchaseOrderTableAdapter purchaseOrderAdpt = new tradingSoftware.TradeDataSetTableAdapters.PurchaseOrderTableAdapter();
+            purchaseOrderAdpt.Fill(ds.PurchaseOrder);
+            cbRefPO.DataContext = ds.PurchaseOrder;
         }
 
         public void refreshTaxes()

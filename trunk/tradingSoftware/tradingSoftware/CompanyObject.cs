@@ -289,7 +289,7 @@ namespace tradingSoftware
             {
                 if (value == null)
                 {
-                    this.vstgstdate = DateTime.Parse("1/1/1800");
+                    this.vstgstdate = DateTime.MinValue;
                 }
                 else
                 {
@@ -316,7 +316,7 @@ namespace tradingSoftware
             {
                 if (value==null)
                 {
-                    this.cstdate = DateTime.Parse("1/1/1800");
+                    this.cstdate = DateTime.MinValue;
                 }
                 else
                 {

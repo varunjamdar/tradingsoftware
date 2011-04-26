@@ -9,7 +9,7 @@
             <TabItem Header="Purchase Form" FontSize="14" IsSelected="True">
                 <Grid Name="PurchaseOrder2Grid">
                     <Label Height="28" HorizontalAlignment="Left" Margin="9.235,8,0,0" Name="lblPONo" VerticalAlignment="Top" Width="159">Ref. Purchase Order No.</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="164,10,0,0" Name="txt_PurchaseOrderNo" VerticalAlignment="Top" Width="96" TabIndex="1001" IsEnabled="True" TextChanged="txt_PurchaseOrderNo_TextChanged" />
+                    <TextBox Height="23" Margin="346,10,426,0" Name="txt_PurchaseOrderNo" VerticalAlignment="Top" TabIndex="1001" IsEnabled="True" TextChanged="txt_PurchaseOrderNo_TextChanged" />
                     <Label Height="28" Margin="69,104,0,0" Name="lblSupplier" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68.558">Supplier</Label>
                     <ComboBox Height="23" HorizontalAlignment="Left" Margin="140,104,0,0" Name="cb_Supplier" VerticalAlignment="Top" Width="220" IsEditable="False" TabIndex="1003" 
                               ItemsSource="{Binding}" DisplayMemberPath="SupplierName"
@@ -63,6 +63,9 @@
                     <Button Height="23" HorizontalAlignment="Left" Margin="262,10,0,0" Name="btnViewPO" VerticalAlignment="Top" Width="75" Click="btnViewPO_Click">View PO</Button>
                     <Label Height="28" HorizontalAlignment="Left" Margin="73.235,36,0,0" Name="label3" VerticalAlignment="Top" Width="95">Purchase No.</Label>
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="164,38,0,0" Name="txtPurchaseNo" VerticalAlignment="Top" Width="96" IsEnabled="False" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="164,10,0,0" Name="cbRefPO" VerticalAlignment="Top" Width="96" 
+                              DisplayMemberPath="PurchaseOrderId"
+                              ItemsSource="{Binding}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="TaxDetails" FontSize="14" IsSelected="True">
