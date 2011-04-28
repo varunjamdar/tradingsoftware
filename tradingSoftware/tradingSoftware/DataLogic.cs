@@ -704,11 +704,11 @@ namespace tradingSoftware
         }
 
         //purchase item
-        public void placePurchase_PurchaseTable(int PurchaeId,int PurchaseOrderId, DateTime PurchaseDate, int SupplierId, float AmountItems,string Note)
+        public void placePurchase_PurchaseTable(int PurchaeId,int PurchaseOrderId, DateTime PurchaseDate, int SupplierId, float AmountItems,float AmountTaxes,string Note)
         {
             //Purchase table
             conn.Open();
-            cmd.CommandText = "Insert into Purchase (PurchaseId,PurchaseOrderId, PurchaseDate, SupplierId, AmountItems,Note) values ("+PurchaeId+"," + PurchaseOrderId + ",'" + PurchaseDate + "'," + SupplierId + "," + AmountItems + ",'"+Note+"')";
+            cmd.CommandText = "Insert into Purchase (PurchaseId,PurchaseOrderId, PurchaseDate, SupplierId, AmountItems,AmountTaxes,Note) values ("+PurchaeId+"," + PurchaseOrderId + ",'" + PurchaseDate + "'," + SupplierId + "," + AmountItems + ","+AmountTaxes+",'"+Note+"')";
             cmd.ExecuteNonQuery();
             conn.Close();
         }

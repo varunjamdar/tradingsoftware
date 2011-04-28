@@ -77,7 +77,7 @@ namespace tradingSoftware
         }
         private void btn_AddPurchaseItem_Click(object sender, RoutedEventArgs e)
         {
-            int IPONO = Int32.Parse(txt_PurchaseOrderNo.Text);
+            int IPONO = Int32.Parse(cbRefPO.Text);
             int IQuantity = Int32.Parse(txt_Quantity.Text);
             float FPPU = float.Parse(txt_PPU.Text);
             addRow(cb_ItemGroup.Text,cb_Item.Text,IQuantity,FPPU);
@@ -362,7 +362,7 @@ namespace tradingSoftware
                 string supplierName = (string)cb_Supplier.Text;
                 
                 int supplierId = dl.getSupplierId(supplierName);
-                dl.placePurchase_PurchaseTable(Int32.Parse(txtPurchaseNo.Text), Int32.Parse(txt_PurchaseOrderNo.Text), DateTime.Parse(dtPick_PODate.Text), supplierId, float.Parse(lblTotalAmount.Content.ToString()),txtNote.Text);
+                dl.placePurchase_PurchaseTable(Int32.Parse(txtPurchaseNo.Text), Int32.Parse(cbRefPO.Text), DateTime.Parse(dtPick_PODate.Text), supplierId, float.Parse(lblTotalAmount.Content.ToString()), float.Parse(lblTotalAmountTax.Content.ToString()), txtNote.Text);
 
 
                 //For Each and Every Item place to the PurchaseOrderItems table
@@ -401,6 +401,8 @@ namespace tradingSoftware
             lblItemTaxAmount.Content = 0;
 
             listViewTaxDetails.Items.Clear();
+
+            txtPurchaseNo.Text = dl.getPurchaseNo().ToString();
 
         }
 
