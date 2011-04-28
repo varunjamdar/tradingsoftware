@@ -4,7 +4,8 @@
     StartupUri="Main.xaml">
     <Application.Resources><!--
         <ResourceDictionary Source="/ReuxablesLegacy;component/inc.xaml" />
-                                                                candy (0k)
+        
+        candy (0k)
                                                                 edge
                                                                 frog
                                                                 inc (ok)
