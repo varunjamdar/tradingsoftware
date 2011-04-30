@@ -403,7 +403,8 @@ namespace tradingSoftware
             listViewTaxDetails.Items.Clear();
 
             txtPurchaseNo.Text = dl.getPurchaseNo().ToString();
-
+            tabControl1.SelectedIndex = 0;
+            cbRefPO.SelectedIndex = -1;
         }
 
         private void btnViewPO_Click(object sender, RoutedEventArgs e)

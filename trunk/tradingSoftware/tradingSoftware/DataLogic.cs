@@ -708,7 +708,7 @@ namespace tradingSoftware
         {
             //Purchase table
             conn.Open();
-            cmd.CommandText = "Insert into Purchase (PurchaseId,PurchaseOrderId, PurchaseDate, SupplierId, AmountItems,AmountTaxes,Note) values ("+PurchaeId+"," + PurchaseOrderId + ",'" + PurchaseDate + "'," + SupplierId + "," + AmountItems + ","+AmountTaxes+",'"+Note+"')";
+            cmd.CommandText = "Insert into Purchase (PurchaseId,PurchaseOrderId, PurchaseDate, SupplierId, AmountItems,AmountTaxes,Note,PaymentArrived) values (" + PurchaeId + "," + PurchaseOrderId + ",'" + PurchaseDate + "'," + SupplierId + "," + AmountItems + "," + AmountTaxes + ",'" + Note + "','"+false+"')";
             cmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -736,6 +736,7 @@ namespace tradingSoftware
         public int getPurchaseNo()
         {
             conn.Open();
+            ds = new DataSet();
             cmd.CommandText = "SELECT Max(PurchaseId) From Purchase";
             adpt.SelectCommand = cmd;
             adpt.Fill(ds, "Purchase");
@@ -743,7 +744,110 @@ namespace tradingSoftware
             return Int32.Parse(ds.Tables["Purchase"].Rows[0][0].ToString()) + 1;
 
         }
-        //
+            //payment code
+        public int getPaymentId()
+        {
+            conn.Open();
+            cmd.CommandText = "SELECT Max(PaymentId) From Payment";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Payment");
+            conn.Close();
+            if (ds.Tables["Payment"].Rows[0][0].ToString() == "")
+            {
+                return 1;
+            }
+            else
+            {
+                return Int32.Parse(ds.Tables["Payment"].Rows[0][0].ToString()) + 1;
+            }
+        }
+
+        public List<string> getPurchaseItemIdForPayment()
+        {
+            
+            conn.Open();
+            cmd.CommandText = "SELECT PurchaseId From Purchase where PaymentArrived='" + false+"'";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "PurchaseIdPurchase");
+            conn.Close();
+            List<string> purchseIdList = new List<string>();
+
+            foreach (DataRow i in ds.Tables["PurchaseIdPurchase"].Rows)
+            {
+                purchseIdList.Add(i[0].ToString());
+            }
+            
+            return purchseIdList;
+        }
+
+        public Dictionary<string,string> getPurchaseDetailsForPayment(int purchaseId)
+        {
+            
+            Dictionary<string,string> pd=new Dictionary<string,string>();
+            conn.Open();
+            ds = new DataSet();
+            cmd.CommandText = "Select SupplierId from Purchase where PurchaseId="+purchaseId;
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Purchase");
+
+            DataSet ds2 = new DataSet();
+            cmd.CommandText = "SELECT SupplierName From Supplier where SupplierId="+Int32.Parse(ds.Tables["Purchase"].Rows[0][0].ToString());
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds2, "Supplier");
+            
+            pd.Add("SupplierName",ds2.Tables["Supplier"].Rows[0][0].ToString());
+
+            ds = new DataSet();
+            cmd.CommandText = "Select AmountItems,AmountTaxes from Purchase where PurchaseId="+purchaseId;
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "AmountPurchase");
+            conn.Close();
+
+            pd.Add("AmountItems", ds.Tables["AmountPurchase"].Rows[0]["AmountItems"].ToString());
+            pd.Add("AmountTaxes", ds.Tables["AmountPurchase"].Rows[0]["AmountTaxes"].ToString());
+
+            return pd;
+        }
+
+        public List<string> getPaymentModeAccounts()
+        {
+            List<string> paymentModeAccounts = new List<string>();
+            conn.Open();
+            ds = new DataSet();                         //2 for Assert Accounts
+            cmd.CommandText = "Select AccountName from Account where AccountGroupID=2";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Account");
+            conn.Close();
+            foreach (DataRow i in ds.Tables["Account"].Rows)
+            {
+                paymentModeAccounts.Add(i[0].ToString());
+            }
+
+            return paymentModeAccounts;
+        }
+
+        public void makePayment(int PaymentId,int PurchaseId, string PaymentMode, DateTime PaymentDate, float TotalAmount,string Note)
+        {
+            //Get PaymentMode = Account , so Account Id
+            conn.Open();
+            ds = new DataSet();                        
+            cmd.CommandText = "Select AccountID from Account where Accountname='"+PaymentMode+"'";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Account");
+            
+            cmd.CommandText = "Insert into Payment (PaymentId,PurchaseId, PaymentDate, TotalAmount, Note,PaymentMode) values (" + PaymentId + "," + PurchaseId + ",'" +PaymentDate +"'," + TotalAmount + ",'" + Note + "'," + Int32.Parse(ds.Tables["Account"].Rows[0][0].ToString()) + ")";
+            adpt.SelectCommand = cmd;
+            cmd.ExecuteNonQuery();
+
+            //Modify value in Purchase Table, Field PaymaentArrive=true
+            cmd.CommandText="UPDATE Purchase SET PaymentArrived = '" + true + "' Where PurchaseId=" + PurchaseId + "";
+            adpt.SelectCommand = cmd;
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            MessageBox.Show("Payment Made Successfully.","Succeed",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
+        //----
         
         public DataSet getItemTable()
         {
