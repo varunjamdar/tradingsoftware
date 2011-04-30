@@ -3,23 +3,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Payment" Height="533" Width="749">
     <Grid>
-        <Label Height="28" HorizontalAlignment="Left" Margin="125,69,0,0" Name="label1" VerticalAlignment="Top" Width="82" FontSize="14">Payment Id</Label>
-        <TextBox Height="23" Margin="224,71,0,0" Name="txtPaymentId" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" IsEnabled="False" FontSize="14" />
-        <Label Height="28" HorizontalAlignment="Left" Margin="167,140,0,0" Name="label2" VerticalAlignment="Top" Width="40" FontSize="14">Date</Label>
-        <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="223,143,0,0" Name="datePickerPayment" VerticalAlignment="Top" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" FontSize="14" />
-        <Label Height="28" HorizontalAlignment="Left" Margin="143.442,174,0,0" Name="lblSupplier" VerticalAlignment="Top" Width="60.558" FontSize="14">Supplier</Label>
-        <ComboBox DisplayMemberPath="SupplierName" Height="23" IsEditable="False" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" Margin="224,179,307,0" Name="cbSupplier" TabIndex="1003" VerticalAlignment="Top" FontSize="14" />
-        <Label Height="28" HorizontalAlignment="Left" Margin="100,101,0,0" Name="label3" VerticalAlignment="Top" Width="104" FontSize="14">Ref Purchase Id</Label>
-        <ComboBox Height="23" HorizontalAlignment="Left" Margin="224,106,0,0" Name="cbRefPurchaseId" VerticalAlignment="Top" Width="120" FontSize="14" />
+        <Label Height="28" HorizontalAlignment="Left" Margin="122,73,0,0" Name="label1" VerticalAlignment="Top" Width="90" FontSize="14">Payment Id :</Label>
+        <Label Height="28" HorizontalAlignment="Left" Margin="164,140,0,0" Name="label2" VerticalAlignment="Top" Width="40" FontSize="14">Date</Label>
+        <my:DatePicker Height="25" Margin="210,143,0,0" Name="datePickerPayment" VerticalAlignment="Top" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" FontSize="14" HorizontalAlignment="Left" Width="115" />
+        <Label HorizontalAlignment="Left" Margin="130,232,0,235" Name="lbl8" Width="60.558" FontSize="14">Supplier</Label>
+        <Label Height="28" Margin="90,205,0,0" Name="label3" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="104">Ref Purchase Id</Label>
+        <ComboBox Height="23" Margin="201,205,0,0" Name="cbRefPurchaseId" VerticalAlignment="Top" FontSize="14" SelectionChanged="cbRefPurchaseId_SelectionChanged" HorizontalAlignment="Left" Width="120" />
         <Label HorizontalAlignment="Left" Margin="207,0,0,162" Name="label4" Width="105" FontSize="14" Height="32" VerticalAlignment="Bottom">Items Amount</Label>
         <Label Margin="353,0,271,166" Name="label5" FontSize="14" Height="28" VerticalAlignment="Bottom">Taxes Amount</Label>
         <Label Margin="0,0,189,162" Name="label6" FontSize="14" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="55">Total</Label>
         <TextBox Height="23" Margin="0,0,168,136" Name="txtTotal" VerticalAlignment="Bottom" FontSize="14" HorizontalAlignment="Right" Width="90" />
-        <Button Height="63" Margin="114,0,58,21" Name="btnPayment" VerticalAlignment="Bottom" FontSize="20">Payment</Button>
+        <Button Height="63" Margin="88,0,97,9" Name="btnPayment" VerticalAlignment="Bottom" FontSize="20" Click="btnPayment_Click">Payment</Button>
         <Label Height="28" HorizontalAlignment="Left" Margin="247,0,0,133" Name="lblItemAmount" VerticalAlignment="Bottom" Width="47" FontSize="14">Label</Label>
         <Label Height="28" Margin="362,0,320,134" Name="lblTaxeAmount" VerticalAlignment="Bottom" FontSize="14">Label</Label>
-        <Label HorizontalAlignment="Left" Margin="100,214,0,0" Name="label9" Width="104" FontSize="14" Height="28" VerticalAlignment="Top">Payment Mode</Label>
-        <ComboBox Margin="224,219,307,0" Name="cbFrom" Height="23" VerticalAlignment="Top" />
-        <GroupBox Header="Payment Amount" Height="131" Margin="176,0,133,96" Name="groupBox1" VerticalAlignment="Bottom" />
+        <Label HorizontalAlignment="Left" Margin="100,106,0,0" Name="label9" Width="104" FontSize="14" Height="28" VerticalAlignment="Top">Payment Mode</Label>
+        <ComboBox Margin="211,110,320,0" Name="cbPaymentMode" Height="23" VerticalAlignment="Top" FontSize="14" />
+        <GroupBox Header="Payment Amount" Height="131" Margin="200,0,109,96" Name="groupBox1" VerticalAlignment="Bottom" />
+        <Label Margin="198,232,332,235" Name="lblSupplier" FontSize="14"></Label>
+        <!----><GroupBox Header="Purchase Information" Margin="88,185,97,83" Name="groupBox2" /><Label Height="28" Margin="0,72,466,0" Name="lblPaymentId" VerticalAlignment="Top" FontSize="15" HorizontalAlignment="Right" Width="48">Label</Label><TextBox Height="58" HorizontalAlignment="Right" Margin="0,110,97,0" Name="txtNote" VerticalAlignment="Top" Width="147"  FontSize="14" MinLines="3" Grid.RowSpan="1"/><Label Height="28" HorizontalAlignment="Right" Margin="0,105,239,0" Name="label7" VerticalAlignment="Top" Width="45" FontSize="14">Note</Label>
     </Grid>
 </Window>
