@@ -22,11 +22,11 @@ namespace tradingSoftware
         public Purchase1()
         {
             InitializeComponent();
+            //set default date - today
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
             txt_PurchaseOrderNo.Focus();
 
             //-------tax detail--
-
             TradeDataSet ds = new TradeDataSet();
             TradeDataSetTableAdapters.TaxTableAdapter taxApdt = new tradingSoftware.TradeDataSetTableAdapters.TaxTableAdapter();
             taxApdt.Fill(ds.Tax);
@@ -154,14 +154,11 @@ namespace tradingSoftware
 
             txt_PurchaseOrderNo.Text = "";
             //refresh the Both Amount Label
-            //lblTotalAmount.Content = getTotalAmountOFListViewPurchase();
-            //lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
             lblTotalAmount.Content = 0;
             lblTotalAmountTax.Content = 0;
             lblItemTaxAmount.Content = 0;
 
             listViewTaxDetails.Items.Clear();
-
         }
 
         private void btn_Clear_Click(object sender, RoutedEventArgs e)
@@ -205,8 +202,6 @@ namespace tradingSoftware
             lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
 
             refreshTaxes();
-
-
         }
 
         private void btn_RemoveItem_Click(object sender, RoutedEventArgs e)
@@ -218,8 +213,6 @@ namespace tradingSoftware
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
             listViewPurchse.SelectedIndex = -1;
-
-            
 
             //refresh the Both Amount Label
             lblTotalAmount.Content = getTotalAmountOFListViewPurchase();
@@ -292,7 +285,6 @@ namespace tradingSoftware
             float p=0, a=0;
             if(rbPercentage.IsChecked==true)
             {
-            //    MessageBox.Show(lblPercentageTax.Content.ToString());
                 p = float.Parse( lblPercentageTax.Content.ToString());//txtPercentage.Text;
             }
             else
@@ -334,23 +326,6 @@ namespace tradingSoftware
 
         private void cb_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //if (cb_Type.Text == "Inclusive")
-            //{
-                
-
-            //    rbPercentage.Visibility = Visibility.Visible;
-            //    rbValue.Visibility = Visibility.Visible;
-            //    lblPercentageTax.Visibility = Visibility.Visible;
-            //    txtAmount.Visibility = Visibility.Visible;
-            //}
-
-            //if (cb_Type.Text == "Exclusive")
-            //{
-            //    rbPercentage.Visibility = Visibility.Hidden;
-            //    rbValue.Visibility = Visibility.Hidden;
-            //    lblPercentageTax.Visibility = Visibility.Hidden;
-            //    txtAmount.Visibility = Visibility.Hidden;
-            //}
         }
 
         private void btnPlacePurchase_Click(object sender, RoutedEventArgs e)
@@ -394,8 +369,6 @@ namespace tradingSoftware
 
             txt_PurchaseOrderNo.Text = "";
             //refresh the Both Amount Label
-            //lblTotalAmount.Content = getTotalAmountOFListViewPurchase();
-            //lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
             lblTotalAmount.Content = 0;
             lblTotalAmountTax.Content = 0;
             lblItemTaxAmount.Content = 0;
