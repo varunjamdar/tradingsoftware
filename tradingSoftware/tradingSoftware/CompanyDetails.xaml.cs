@@ -159,82 +159,240 @@ namespace tradingSoftware
             }
         }
 
-        
+
 
         private void btnCompanySave_Click(object sender, RoutedEventArgs e)
         {
-            if (txtCompanyName.Text == "")
+            try
             {
-                MessageBox.Show("Enter the Company Name", "WARNING");
+                if (txtCompanyName.Text == "")
+                {
+                    MessageBox.Show("Enter the Company Name", "WARNING");
+                    return;
+                }
+
+                if (txtCompanyPrintName.Text == "")
+                {
+                    MessageBox.Show("Enter Company Print Name before proceeding", "WARNING");
+                    return;
+                }
+
+                if (TxtPanNo.Text == "")
+                {
+                    MessageBox.Show("Enter PAN NO of the Company before proceeding", "WARNING");
+                    return;
+                }
+
+                if (txtcompanylogo.Text == "")
+                {
+                    MessageBox.Show("Browse Path of Company Logo", "WARNING");
+                    return;
+                }
+
+                company = new CompanyObject();
+
+                company.CompanyName = txtCompanyName.Text.ToString();
+                company.CompanyPrintName = txtCompanyPrintName.Text;
+
+                try
+                {
+                    // Validations.DateValidator(dtFinancialYearBegin.SelectedDate);
+                    company.FyStartDate = (DateTime)dtFinancialYearBegin.SelectedDate;
+                }
+                catch (NullValueException nve)
+                {
+
+                    MessageBox.Show("Error in Financial Year : Null Value cannot be entered");
+                    return;
+                }
+                catch (FormatException fe)
+                {
+                    string str = fe.Message;
+                    MessageBox.Show("Error in Financial Year : " + str);
+                    return;
+                }
+                catch (InvalidOperationException ioe)
+                {
+                    string str = ioe.Message;
+                    MessageBox.Show("Error in Financial Year : " + str);
+                    return;
+                }
+
+                try
+                {
+                    //Validations.DateValidator(dtBooksCommencing.SelectedDate);
+                    company.BooksCommencing = (DateTime)dtBooksCommencing.SelectedDate;
+                }
+                catch (NullValueException nve)
+                {
+
+                    MessageBox.Show("Error in Books Commencing Date : Null Value cannot be entered");
+                    return;
+                }
+                catch (FormatException fe)
+                {
+                    string str = fe.Message;
+                    MessageBox.Show("Error in Books Commencing Date : " + str);
+                    return;
+                }
+                catch (InvalidOperationException ioe)
+                {
+                    string str = ioe.Message;
+                    MessageBox.Show("Error in Books Commencing Date : " + str);
+                    return;
+                }
+
+                try
+                {
+                    Validations.NullValidator(txtCompanyAddLine1.Text);
+                    company.AddLine1 = txtCompanyAddLine1.Text;
+                }
+                catch (NullValueException nve)
+                {
+                    string str = nve.Message;
+                    MessageBox.Show("Error in Address : " + str);
+                    return;
+                }
+                company.AddLine2 = txtCompanyAddLine2.Text;
+                company.AddLine3 = txtCompanyAddLine3.Text;
+                company.City = cmbCompanyCity.Text;
+                try
+                {
+                    Validations.NumberValidator(txtCompanyPin.Text);
+                    company.Pin = int.Parse(txtCompanyPin.Text);
+                }
+                catch (FormatException fe)
+                {
+                    string str = fe.Message;
+                    MessageBox.Show("Error in Pin Code : " + str, "WARNING");
+                    return;
+                }
+                company.State = cmbCompanyState.Text;
+                company.Country = txtCompanyCountry.Text;
+                try
+                {
+                    Validations.PhoneNoValidator(txtCompanyPhone1.Text);
+                    company.PhoneNo1 = txtCompanyPhone1.Text;
+                }
+                catch (PhoneNoErrorException phe)
+                {
+                    string str = phe.Message;
+                    MessageBox.Show("Error in Phone No 1 : " + str, "Warning");
+                    return;
+                }
+                try
+                {
+                    Validations.PhoneNoValidator(txtCompanyPhone2.Text);
+                    company.PhoneNo2 = txtCompanyPhone2.Text;
+                }
+                catch (PhoneNoErrorException phe)
+                {
+                    string str = phe.Message;
+                    MessageBox.Show("Error in Phone No 2 : " + str, "Warning");
+                    return;
+                }
+                company.Website = txtCompanyWebsite.Text;
+                company.EmailId = txtCompanyEmailId.Text;
+                try
+                {
+                    Validations.PhoneNoValidator(txtCompanyFax.Text);
+                    company.Fax = txtCompanyFax.Text;
+                }
+                catch (PhoneNoErrorException phe)
+                {
+                    string str = phe.Message;
+                    MessageBox.Show("Error in Fax : " + str, "Warning");
+                    return;
+                }
+                company.VatGst = cmbVatGst.Text;
+                try
+                {
+                    Validations.NumberValidator(txtCompanyTinNo.Text);
+                    company.TinNo = txtCompanyTinNo.Text;
+                }
+                catch (FormatException fe)
+                {
+                    string str = fe.Message;
+                    MessageBox.Show("Error in Tin No : " + str, "WARNING");
+                    return;
+                }
+                if (cmbVatGst.SelectedIndex == 1)
+                {
+                    company.VatGstDate = DateTime.Parse("1/1/1800");
+                }
+                else
+                {
+                    company.VatGstDate = (DateTime)dtVatGstDate.SelectedDate;
+                }
+                try
+                {
+                    Validations.NumberValidator(txtCstNo.Text);
+                    company.CstNo = txtCstNo.Text;
+                }
+                catch (FormatException fe)
+                {
+                    string str = fe.Message;
+                    MessageBox.Show("Error in CST Number : " + str, "WARNING");
+                    return;
+                }
+                if (cmbVatGst.SelectedValue == null)
+                {
+                    company.CstDate = DateTime.Parse("1/1/1800");
+                }
+                else
+                {
+                    company.CstDate = (DateTime)dtCstDate.SelectedDate;
+                }
+
+                try
+                {
+                    Validations.NumberValidator(TxtPanNo.Text);
+                    company.PanNo = TxtPanNo.Text;
+                }
+                catch (FormatException fe)
+                {
+                    string str = fe.Message;
+                    MessageBox.Show("Error in PAN Number : " + str, "WARNING");
+                    return;
+                }
+
+                try
+                {
+                    Validations.NumberValidator(TxtServiceTaxNo.Text);
+                    company.ServiceTaxNo = TxtServiceTaxNo.Text;
+                }
+                catch (FormatException fe)
+                {
+                    string str = fe.Message;
+                    MessageBox.Show("Error in Service Tax Number : " + str, "WARNING");
+                    return;
+                }
+
+                try
+                {
+                    Validations.NullValidator(txtcompanylogo.Text);
+                    company.ImagePath = txtcompanylogo.Text;
+                }
+                catch (NullValueException nve)
+                {
+                    string str = nve.Message;
+                    MessageBox.Show("Error in Image Path : " + str);
+                    return;
+                }
+
+            }
+            catch (Exception exception)
+            {
+                string str = exception.Message;
+                MessageBox.Show("Error in Company Details : " + str);
                 return;
             }
 
-            if (txtCompanyPrintName.Text == "")
-            {
-                MessageBox.Show("Enter Company Print Name before proceeding", "WARNING");
-                return;
-            }
+                dl = new DataLogic();
+                dl.addCompanyDetails(company);
 
-            if (TxtPanNo.Text == "")
-            {
-                MessageBox.Show("Enter PAN NO of the Company before proceeding", "WARNING");
-                return;
-            }
-
-            if (txtcompanylogo.Text == "")
-            {
-                MessageBox.Show("Browse Path of Company Logo", "WARNING");
-                return;
-            }
-
-            company = new CompanyObject();
-
-            company.CompanyName = txtCompanyName.Text.ToString();
-            company.CompanyPrintName = txtCompanyPrintName.Text;
-            company.FyStartDate = (DateTime) dtFinancialYearBegin.SelectedDate;
-            company.BooksCommencing = (DateTime)dtBooksCommencing.SelectedDate;
-            company.AddLine1 = txtCompanyAddLine1.Text;
-            company.AddLine2 = txtCompanyAddLine2.Text;
-            company.AddLine3 = txtCompanyAddLine3.Text;
-            company.City = cmbCompanyCity.Text;
-            company.Pin = int.Parse(txtCompanyPin.Text);
-            company.State = cmbCompanyState.Text;
-            company.Country = txtCompanyCountry.Text;
-            company.PhoneNo1 = txtCompanyPhone1.Text;
-            company.PhoneNo2 = txtCompanyPhone2.Text;
-            company.Website = txtCompanyWebsite.Text;
-            company.EmailId = txtCompanyEmailId.Text;
-            company.Fax = txtCompanyFax.Text;
-            company.VatGst = cmbVatGst.Text;
-            company.TinNo = txtCompanyTinNo.Text;
-
-            if (cmbVatGst.SelectedIndex==1)
-            {
-                company.VatGstDate = DateTime.Parse("1/1/1800");
-            }
-            else
-            {
-                company.VatGstDate = (DateTime)dtVatGstDate.SelectedDate;
-            }
-            company.CstNo = txtCstNo.Text;
-
-            if (cmbVatGst.SelectedValue == null)
-            {
-                company.CstDate = DateTime.Parse("1/1/1800");
-            }
-            else
-            {
-                company.CstDate = (DateTime)dtCstDate.SelectedDate;
-            }
+                MessageBox.Show("Your Data has been saved", "Message");
             
-            company.PanNo = TxtPanNo.Text;
-            company.ServiceTaxNo = TxtServiceTaxNo.Text;
-            company.ImagePath = txtcompanylogo.Text;
-
-            dl = new DataLogic();
-            dl.addCompanyDetails(company);
-
-            MessageBox.Show("Your Data has been saved", "Message");
         }
 
         private void txtCompanyName_TextChanged(object sender, TextChangedEventArgs e)
