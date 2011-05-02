@@ -228,6 +228,7 @@
     <Compile Include="Payment.xaml.cs">
       <DependentUpon>Payment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PhoneNoErrorException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -273,6 +274,7 @@
       <DependentUpon>Unit.xaml</DependentUpon>
     </Compile>
     <Compile Include="UnitObject.cs" />
+    <Compile Include="Validations.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

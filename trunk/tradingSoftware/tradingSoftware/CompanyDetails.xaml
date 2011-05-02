@@ -15,7 +15,7 @@
                     <TextBox Height="23" Margin="96,44,0,0" Name="txtCompanyName" VerticalAlignment="Top" HorizontalAlignment="Left" Width="229" TextChanged="txtCompanyName_TextChanged" />
                     <Label Margin="17,133,0,0" Name="label3" Height="28.04" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200">Financial Year Beginning From</Label>
                     <Label Height="28" HorizontalAlignment="Left" Margin="17,165.04,0,0" Name="label4" VerticalAlignment="Top" Width="176">Books Commencing From</Label>
-                    <my:DatePicker Margin="215,132,0,0" Name="dtFinancialYearBegin" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" Height="25.04" VerticalAlignment="Top" HorizontalAlignment="Left" Width="138" TextInput="dtFinancialYearBegin_TextInput"/>
+                    <my:DatePicker Margin="215,132,0,0" Name="dtFinancialYearBegin" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" Height="25.04" VerticalAlignment="Top" HorizontalAlignment="Left" Width="138" TextInput="dtFinancialYearBegin_TextInput" />
                     <my:DatePicker Height="25" Margin="215,166.04,0,0" Name="dtBooksCommencing" VerticalAlignment="Top" xmlns:my="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit" SelectedDateFormat="Short" HorizontalAlignment="Left" Width="138" />
                     <Label Height="28" Margin="413,39,380,0" Name="label5" VerticalAlignment="Top">Address</Label>
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="478,39,0,0" Name="txtCompanyAddLine1" VerticalAlignment="Top" Width="325" />
