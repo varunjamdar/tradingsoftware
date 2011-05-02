@@ -28,7 +28,6 @@ namespace tradingSoftware
             dl = new DataLogic();
             lblPaymentId.Content = dl.getPaymentId().ToString();
             //set Purchase Id
-            purchaseIdList = new List<string>();
             purchaseIdList = dl.getPurchaseItemIdForPayment();
             foreach (string pid in purchaseIdList)
             {
@@ -37,7 +36,6 @@ namespace tradingSoftware
 
             //set Payment Mode
             //get the AccountName of Group Assert
-            paymentModeAccounts = new List<string>();
             paymentModeAccounts = dl.getPaymentModeAccounts();
             foreach (string pma in paymentModeAccounts)
             {
@@ -67,9 +65,9 @@ namespace tradingSoftware
         private void btnPayment_Click(object sender, RoutedEventArgs e)
         {
             int PaymentId = Int32.Parse(lblPaymentId.Content.ToString());
-            int PurchaseId=Int32.Parse(cbRefPurchaseId.SelectedValue.ToString());
+            
             float TotalAmount=0;
-            DateTime paymaentDate = DateTime.Parse( DateTime.Today.Date.ToShortDateString());
+            DateTime paymaentDate = DateTime.Parse(DateTime.Today.Date.ToShortDateString());
 
             //Validation
             bool isError = false;
@@ -123,12 +121,14 @@ namespace tradingSoftware
                     }
                 }
             }
-            if (isError == true)
+
+            if (isError)
             {
                 MessageBox.Show(errorString,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
             }
             else
             {
+                int PurchaseId = Int32.Parse(cbRefPurchaseId.SelectedValue.ToString());
                 MessageBoxResult mbr = MessageBox.Show("Are You Sure to Make Payment ?", "Varifiacation", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (mbr == MessageBoxResult.Yes)
@@ -145,6 +145,15 @@ namespace tradingSoftware
                     lblItemAmount.Content = "";
                     lblTaxeAmount.Content = "";
                     txtTotal.Text = "";
+
+                    cbRefPurchaseId.Items.Clear();
+                    //set Purchase Id
+                    purchaseIdList = new List<string>();
+                    purchaseIdList = dl.getPurchaseItemIdForPayment();
+                    foreach (string pid in purchaseIdList)
+                    {
+                        cbRefPurchaseId.Items.Add(pid);
+                    }
 
                 }
                 else
