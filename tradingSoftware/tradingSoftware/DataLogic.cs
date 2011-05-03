@@ -661,17 +661,43 @@ namespace tradingSoftware
             conn.Close();
             return Int32.Parse(ds.Tables["Tax"].Rows[0][0].ToString());
         }
-
+        //update Purchae Order Table PO Completed = true
+        public void setPOCompletedTrue(int purchaseOrderId)
+        {
+            conn.Open();
+            cmd.CommandText = "UPDATE PurchaseOrder SET POCompleted = '" + true + "' Where PurchaseOrderId=" + purchaseOrderId + "";
+            adpt.SelectCommand = cmd;
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
         //--get SupplierId
         public int getSupplierId(string SupplierName)
         {
             conn.Open();
+            ds = new DataSet();
             cmd.CommandText = "SELECT SupplierId From Supplier Where SupplierName='" + SupplierName + "'";
             adpt.SelectCommand = cmd;
             adpt.Fill(ds, "Supplier");
             conn.Close();
-
             return Int32.Parse(ds.Tables["Supplier"].Rows[0][0].ToString());
+        }
+
+        public List<string> getSupplierName()
+        {
+            conn.Open();
+            ds = new DataSet();
+            cmd.CommandText = "SELECT SupplierName From Supplier";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Supplier");
+            conn.Close();
+
+            List<string> supplierNameList = new List<string>();
+            foreach (DataRow i in ds.Tables["Supplier"].Rows)
+            {
+                supplierNameList.Add(i[0].ToString());
+            }
+
+            return supplierNameList;
         }
 
         public void placePurchaseOrder_PurchaseOrderTable(int PurchaseOrderId,DateTime PurchaseOrderDate,int SupplierId,float AmountItems)
@@ -704,6 +730,48 @@ namespace tradingSoftware
         }
 
         //purchase item
+        public List<int> getPurchaseOrderIdForSupplier(string supplierName)
+        {
+            int supplierId= this.getSupplierId(supplierName);
+
+            conn.Open();
+            ds = new DataSet();
+            cmd.CommandText = "SELECT PurchaseOrderId From PurchaseOrder where SupplierId='" + supplierId + "' and POCompleted='"+false+"'";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "PurchaseOrderSupplier");
+            conn.Close();
+
+            List<int> purchaseOrderIdList = new List<int>();
+            foreach (DataRow i in ds.Tables["PurchaseOrderSupplier"].Rows)
+            {
+                purchaseOrderIdList.Add(Int32.Parse( i[0].ToString()));
+            }
+
+            return purchaseOrderIdList;
+            
+        }
+
+        public List<int> getPurchaseIdForSupplier(string supplierName)
+        {
+            int supplierId = this.getSupplierId(supplierName);
+
+            conn.Open();
+            ds = new DataSet();
+            cmd.CommandText = "SELECT PurchaseId From Purchase where SupplierId='" + supplierId + "' and PaymentArrived='" + false + "'";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "PurchaseSupplier");
+            conn.Close();
+
+            List<int> purchaseIdList = new List<int>();
+            foreach (DataRow i in ds.Tables["PurchaseSupplier"].Rows)
+            {
+                purchaseIdList.Add(Int32.Parse(i[0].ToString()));
+            }
+
+            return purchaseIdList;
+
+        }
+
         public void placePurchase_PurchaseTable(int PurchaeId,int PurchaseOrderId, DateTime PurchaseDate, int SupplierId, float AmountItems,float AmountTaxes,string Note)
         {
             //Purchase table
@@ -785,17 +853,6 @@ namespace tradingSoftware
             
             Dictionary<string,string> pd=new Dictionary<string,string>();
             conn.Open();
-            ds = new DataSet();
-            cmd.CommandText = "Select SupplierId from Purchase where PurchaseId="+purchaseId;
-            adpt.SelectCommand = cmd;
-            adpt.Fill(ds, "Purchase");
-
-            DataSet ds2 = new DataSet();
-            cmd.CommandText = "SELECT SupplierName From Supplier where SupplierId="+Int32.Parse(ds.Tables["Purchase"].Rows[0][0].ToString());
-            adpt.SelectCommand = cmd;
-            adpt.Fill(ds2, "Supplier");
-            
-            pd.Add("SupplierName",ds2.Tables["Supplier"].Rows[0][0].ToString());
 
             ds = new DataSet();
             cmd.CommandText = "Select AmountItems,AmountTaxes from Purchase where PurchaseId="+purchaseId;

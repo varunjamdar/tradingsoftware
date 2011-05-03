@@ -19,6 +19,8 @@ namespace tradingSoftware
     public partial class Purchase1 : Window
     {
         DataLogic dl = new DataLogic();
+
+        List<int> poIdList;
         public Purchase1()
         {
             InitializeComponent();
@@ -34,9 +36,14 @@ namespace tradingSoftware
 
 
             //---Supplier
-            TradeDataSetTableAdapters.SupplierTableAdapter supplierApdt = new tradingSoftware.TradeDataSetTableAdapters.SupplierTableAdapter();
-            supplierApdt.Fill(ds.Supplier);
-            cb_Supplier.DataContext = ds.Supplier;
+            
+            cb_Supplier.Items.Clear();
+            List<string> supplierNameList = new List<string>();
+            supplierNameList = dl.getSupplierName();
+            foreach (string sn in supplierNameList)
+            {
+                cb_Supplier.Items.Add(sn.ToString());
+            }
 
             //---Item Group
             TradeDataSetTableAdapters.ItemGroupTableAdapter itemGroupAdpt = new tradingSoftware.TradeDataSetTableAdapters.ItemGroupTableAdapter();
@@ -50,9 +57,12 @@ namespace tradingSoftware
             txtPurchaseNo.Text= dl.getPurchaseNo().ToString();
 
             //purchase order
-            TradeDataSetTableAdapters.PurchaseOrderTableAdapter purchaseOrderAdpt = new tradingSoftware.TradeDataSetTableAdapters.PurchaseOrderTableAdapter();
-            purchaseOrderAdpt.Fill(ds.PurchaseOrder);
-            cbRefPO.DataContext = ds.PurchaseOrder;
+            //TradeDataSetTableAdapters.PurchaseOrderTableAdapter purchaseOrderAdpt = new tradingSoftware.TradeDataSetTableAdapters.PurchaseOrderTableAdapter();
+            //purchaseOrderAdpt.Fill(ds.PurchaseOrder);
+            //cbRefPO.DataContext = ds.PurchaseOrder;
+
+            cb_Supplier.SelectedIndex = -1;
+            
         }
 
         public void refreshTaxes()
@@ -354,30 +364,39 @@ namespace tradingSoftware
                     ListViewPurchaseTaxDetails lvc = (ListViewPurchaseTaxDetails)listViewTaxDetails.Items[i];
                     dl.placePurchase_PurchaseTaxesTable(Int32.Parse(txtPurchaseNo.Text), dl.getTaxId(lvc.TaxName), lvc.TaxType, lvc.TaxAmount);
                 }
-
+                
+                if (cbIsPurchaseOrderCompleted.IsChecked==true)
+                {
+                    dl.setPOCompletedTrue(Int32.Parse(cbRefPO.SelectedValue.ToString()));
+                }
+                
                 MessageBox.Show("Purchase Placed Successfully","Succeeded",MessageBoxButton.OK,MessageBoxImage.Information);
+            
+                //
+                //clear All
+                dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
+                cb_Supplier.Text = "";
+                cb_ItemGroup.Text = "";
+                cb_Item.Text = "";
+                txt_Quantity.Text = "";
+                txt_PPU.Text = "";
+                listViewPurchse.Items.Clear();
+
+                txt_PurchaseOrderNo.Text = "";
+                //refresh the Both Amount Label
+                lblTotalAmount.Content = 0;
+                lblTotalAmountTax.Content = 0;
+                lblItemTaxAmount.Content = 0;
+
+                listViewTaxDetails.Items.Clear();
+
+                txtPurchaseNo.Text = dl.getPurchaseNo().ToString();
+                tabControl1.SelectedIndex = 0;
+                cbRefPO.Items.Clear();
+
             }
 
-            //clear All
-            dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            cb_Supplier.Text = "";
-            cb_ItemGroup.Text = "";
-            cb_Item.Text = "";
-            txt_Quantity.Text = "";
-            txt_PPU.Text = "";
-            listViewPurchse.Items.Clear();
-
-            txt_PurchaseOrderNo.Text = "";
-            //refresh the Both Amount Label
-            lblTotalAmount.Content = 0;
-            lblTotalAmountTax.Content = 0;
-            lblItemTaxAmount.Content = 0;
-
-            listViewTaxDetails.Items.Clear();
-
-            txtPurchaseNo.Text = dl.getPurchaseNo().ToString();
-            tabControl1.SelectedIndex = 0;
-            cbRefPO.SelectedIndex = -1;
+            
         }
 
         private void btnViewPO_Click(object sender, RoutedEventArgs e)
@@ -405,6 +424,23 @@ namespace tradingSoftware
             {
                 MessageBox.Show("Invalid Purchase Order No.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 btnViewPO.IsEnabled = false;
+            }
+        }
+
+        private void cb_Supplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+          
+            //filter the purchase order as per supplier
+            if (cb_Supplier.SelectedIndex != -1)
+            {
+                poIdList = new List<int>();
+                poIdList = dl.getPurchaseOrderIdForSupplier(cb_Supplier.SelectedValue.ToString());
+
+                cbRefPO.Items.Clear();
+                foreach (int poid in poIdList)
+                {
+                    cbRefPO.Items.Add(poid.ToString());
+                }
             }
         }
     }

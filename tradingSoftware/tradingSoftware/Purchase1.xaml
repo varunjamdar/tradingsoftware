@@ -9,12 +9,11 @@
                     ">
             <TabItem Header="Purchase Form" FontSize="14" IsSelected="True">
                 <Grid Name="PurchaseOrder2Grid">
-                    <Label Height="28" HorizontalAlignment="Left" Margin="9.235,8,0,0" Name="lblPONo" VerticalAlignment="Top" Width="159">Ref. Purchase Order No.</Label>
-                    <TextBox Height="23" Margin="346,10,426,0" Name="txt_PurchaseOrderNo" VerticalAlignment="Top" TabIndex="1001" IsEnabled="True" TextChanged="txt_PurchaseOrderNo_TextChanged" />
-                    <Label Height="28" Margin="69,104,0,0" Name="lblSupplier" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68.558">Supplier</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="140,104,0,0" Name="cb_Supplier" VerticalAlignment="Top" Width="220" IsEditable="False" TabIndex="1003" 
-                              ItemsSource="{Binding}" DisplayMemberPath="SupplierName"
-                             IsSynchronizedWithCurrentItem="True" />
+                    <Label Height="28" Margin="423,11,286,0" Name="lblPONo" VerticalAlignment="Top">Ref. Purchase Order No.</Label>
+                    <TextBox Height="23" Margin="0,13,12,0" Name="txt_PurchaseOrderNo" VerticalAlignment="Top" TabIndex="1001" IsEnabled="True" TextChanged="txt_PurchaseOrderNo_TextChanged" HorizontalAlignment="Right" Width="96" />
+                    <Label Height="28" Margin="93,11,0,0" Name="lblSupplier" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68.558">Supplier</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="164,11,0,0" Name="cb_Supplier" VerticalAlignment="Top" Width="220" IsEditable="False" TabIndex="1003" 
+                              SelectionChanged="cb_Supplier_SelectionChanged" />
                     <Label Height="28" Margin="73,68,0,0" Name="lblPODate" VerticalAlignment="Top" HorizontalAlignment="Left" Width="64">PO  Date</Label>
                     <my:DatePicker Height="25" Margin="140,68,0,0" Name="dtPick_PODate" VerticalAlignment="Top" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" HorizontalAlignment="Left" Width="115" TabIndex="1002" />
                     <Label Height="28" Margin="53,144,0,0" Name="lblItemGroup" VerticalAlignment="Top" HorizontalAlignment="Left" Width="85">Item Group</Label>
@@ -61,12 +60,12 @@
                     <Label Height="35" HorizontalAlignment="Right" Margin="0,0,12,43" Name="lblTotalAmount" VerticalAlignment="Bottom" Width="99" FontSize="18">0</Label>
                     <TextBox Height="56" Margin="0,70,151,0" Name="txtNote" VerticalAlignment="Top" HorizontalAlignment="Right" Width="239.396" MinLines="3" />
                     <Label Height="28" Margin="426,69,393,0" Name="lblNote" VerticalAlignment="Top">Note</Label>
-                    <Button Height="23" HorizontalAlignment="Left" Margin="262,10,0,0" Name="btnViewPO" VerticalAlignment="Top" Width="75" Click="btnViewPO_Click">View PO</Button>
+                    <Button Height="23" HorizontalAlignment="Right" Margin="0,13,117,0" Name="btnViewPO" VerticalAlignment="Top" Width="75" Click="btnViewPO_Click">View PO</Button>
                     <Label Height="28" HorizontalAlignment="Left" Margin="73.235,36,0,0" Name="label3" VerticalAlignment="Top" Width="95">Purchase No.</Label>
                     <TextBox Height="23" HorizontalAlignment="Left" Margin="164,38,0,0" Name="txtPurchaseNo" VerticalAlignment="Top" Width="96" IsEnabled="False" />
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="164,10,0,0" Name="cbRefPO" VerticalAlignment="Top" Width="96" 
-                              DisplayMemberPath="PurchaseOrderId"
-                              ItemsSource="{Binding}"/>
+                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,13,194,0" Name="cbRefPO" VerticalAlignment="Top" Width="96" 
+                             />
+                    <CheckBox Height="21" Margin="280,0,382,20" Name="cbIsPurchaseOrderCompleted" VerticalAlignment="Bottom">Purchase Order Completed</CheckBox>
                 </Grid>
             </TabItem>
             <TabItem Header="TaxDetails" FontSize="14" IsSelected="True">
