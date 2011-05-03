@@ -41,6 +41,16 @@ namespace tradingSoftware
             {
                 cbPaymentMode.Items.Add(pma);
             }
+
+            //---Supplier
+
+            cbSupplier.Items.Clear();
+            List<string> supplierNameList = new List<string>();
+            supplierNameList = dl.getSupplierName();
+            foreach (string sn in supplierNameList)
+            {
+                cbSupplier.Items.Add(sn.ToString());
+            }
         }
 
         private void cbRefPurchaseId_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -53,8 +63,6 @@ namespace tradingSoftware
                 Dictionary<string, string> purchaseD = new Dictionary<string, string>();
 
                 purchaseD = dl.getPurchaseDetailsForPayment(Int32.Parse(cbRefPurchaseId.SelectedValue.ToString()));
-                lblSupplier.Content = purchaseD["SupplierName"];
-
                 lblItemAmount.Content = purchaseD["AmountItems"];
                 lblTaxeAmount.Content = purchaseD["AmountTaxes"];
                 txtTotal.Text = (float.Parse(purchaseD["AmountItems"]) + float.Parse(purchaseD["AmountTaxes"])).ToString();
@@ -158,6 +166,22 @@ namespace tradingSoftware
                 }
                 else
                 {
+                }
+            }
+        }
+
+        private void cbSupplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //filter the purchase order as per supplier
+            if (cbSupplier.SelectedIndex != -1)
+            {
+                List<int> pIdList = new List<int>();
+                pIdList = dl.getPurchaseIdForSupplier(cbSupplier.SelectedValue.ToString());
+
+                cbRefPurchaseId.Items.Clear();
+                foreach (int pid in pIdList)
+                {
+                    cbRefPurchaseId.Items.Add(pid.ToString());
                 }
             }
         }
