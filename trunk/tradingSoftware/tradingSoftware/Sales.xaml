@@ -3,18 +3,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Sales" Height="728" Width="900">
    
-        <Grid Name="SalesOrderGridMain">
-            <TabControl Name="TabCont1" Margin="0,-5,0,62" SelectedIndex="0">
+        <Grid Name="GridMainSalesOrder">
+            <TabControl Name="tabCtrlSales" Margin="0,-5,0,62" SelectedIndex="0">
                 <TabItem Header="Sales Form" FontSize="14">
-                    <Grid Margin="0,21,0,62" Name="SalesOrderGrid">
+                    <Grid Margin="0,21,0,62" Name="GridSalesOrder">
                         <Label Height="28" HorizontalAlignment="Left" Margin="33,12,0,0" Name="lblSalesOrderNo" VerticalAlignment="Top" Width="120" FlowDirection="RightToLeft" FontSize="14">Sales Order No</Label>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="33,99,0,0" Name="lblCustomerName" VerticalAlignment="Top" Width="120" FlowDirection="RightToLeft" FontSize="14">Customer</Label>
+                        <Label Height="28" HorizontalAlignment="Left" Margin="33,99,0,0" Name="lblCustomerName" VerticalAlignment="Top" Width="120" FlowDirection="RightToLeft" FontSize="14">Customer</Label>
                         <Label FlowDirection="RightToLeft" FontSize="14" Height="28" Margin="55,162,0,0" Name="lblItemGroup" VerticalAlignment="Top" HorizontalAlignment="Left" Width="98">Item Group</Label>
                         <Label FlowDirection="RightToLeft" FontSize="14" Height="28" Margin="396,162,381,0" Name="lblItem" VerticalAlignment="Top">Item</Label>
                         <Label FlowDirection="RightToLeft" FontSize="14" Height="28" Margin="393,198,381,0" Name="lblPricePerUnit" VerticalAlignment="Top">Price Per Unit</Label>
                         <Label FlowDirection="RightToLeft" FontSize="14" Height="28" HorizontalAlignment="Left" Margin="33,198,0,0" Name="lblQuantity" VerticalAlignment="Top" Width="120">Quantity</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="167,200,0,0" Name="txtQuantity" VerticalAlignment="Top" Width="120" />
-                    <TextBox Height="23" Margin="0,200,245,0" Name="txtPricePerUnit" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" />
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="167,200,0,0" Name="txtQuantity" VerticalAlignment="Top" Width="120" />
+                        <TextBox Height="23" Margin="0,200,245,0" Name="txtPricePerUnit" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" />
                         <Button Height="27" HorizontalAlignment="Left" Margin="86,236,0,0" Name="btnAddItem" VerticalAlignment="Top" Width="104">Add</Button>
                         <Button Height="27" HorizontalAlignment="Left" Margin="243,236,0,0" Name="btnRemoveItem" VerticalAlignment="Top" Width="104">Remove</Button>
                         <Button Margin="393,236,381,252.38" Name="btnClearSales">Clear</Button>
@@ -24,21 +24,21 @@
                         <Label Height="28" HorizontalAlignment="Right" Margin="0,0,-11,56" Name="lblTotalAmount" VerticalAlignment="Bottom" Width="120" FontSize="16">0</Label>
                         <Button Height="31" HorizontalAlignment="Left" Margin="651,0,0,12.19" Name="btnResetItems" VerticalAlignment="Bottom" Width="98" FontSize="14">Reset All</Button>
                         <Button Height="31" HorizontalAlignment="Right" Margin="0,0,8,12.19" Name="btnClose" VerticalAlignment="Bottom" Width="99" FontSize="14">Close</Button>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="167,99,0,0" Name="cBCustomer" VerticalAlignment="Top" Width="180" />
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="167,162,0,0" Name="cBItemGroup" VerticalAlignment="Top" Width="180" />
-                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,162,198,0" Name="cBItem" VerticalAlignment="Top" Width="167" />
-                    <Label Height="28" Margin="402,12,381,0" Name="lblSalesDate" VerticalAlignment="Top" FlowDirection="RightToLeft">Sales Date</Label>
-                    <my:DatePicker Height="25" HorizontalAlignment="Right" Margin="0,11,245,0" Name="dtPickSalesDate" VerticalAlignment="Top" Width="120" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="167,16,0,0" Name="txtSalesNo" VerticalAlignment="Top" Width="120" IsEnabled="False" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="55,47,0,0" Name="lblRefPONo" VerticalAlignment="Top" Width="98" FlowDirection="RightToLeft">Ref PO No.</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="167,52,0,0" Name="txtRefPONo" VerticalAlignment="Top" Width="120" />
-                    <Label Height="28" Margin="393,0,381,415" Name="lblNote" VerticalAlignment="Bottom" FlowDirection="RightToLeft">Note</Label>
-                    <TextBox Height="71" HorizontalAlignment="Right" Margin="0,74.38,119,0" Name="txtNote" VerticalAlignment="Top" Width="246" AcceptsReturn="True" />
-                </Grid>
+                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="167,99,0,0" Name="cBCustomer" VerticalAlignment="Top" Width="180" />
+                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="167,162,0,0" Name="cBItemGroup" VerticalAlignment="Top" Width="180" />
+                        <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,162,198,0" Name="cBItem" VerticalAlignment="Top" Width="167" />
+                        <Label Height="28" Margin="402,12,381,0" Name="lblSalesDate" VerticalAlignment="Top" FlowDirection="RightToLeft">Sales Date</Label>
+                        <my:DatePicker Height="25" HorizontalAlignment="Right" Margin="0,11,245,0" Name="dtPickSalesDate" VerticalAlignment="Top" Width="120" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="167,16,0,0" Name="txtSalesNo" VerticalAlignment="Top" Width="120" IsEnabled="False" />
+                        <Label Height="28" HorizontalAlignment="Left" Margin="55,47,0,0" Name="lblRefPONo" VerticalAlignment="Top" Width="98" FlowDirection="RightToLeft">Ref PO No.</Label>
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="167,52,0,0" Name="txtRefPONo" VerticalAlignment="Top" Width="120" />
+                        <Label Height="28" Margin="393,0,381,415" Name="lblNote" VerticalAlignment="Bottom" FlowDirection="RightToLeft">Note</Label>
+                        <TextBox Height="71" HorizontalAlignment="Right" Margin="0,74.38,119,0" Name="txtNote" VerticalAlignment="Top" Width="246" AcceptsReturn="True" />
+                    </Grid>
                 </TabItem>
                 
-                <TabItem Header="Tax Details" FontSize="14" IsSelected="True" IsEnabled="True">
-                    <Grid>
+                <TabItem Header="tabCtrlTaxDetails" FontSize="14" IsSelected="True" IsEnabled="True">
+                    <Grid Name="GridTaxDetails">
                         <Label Height="28" HorizontalAlignment="Left" Margin="11,50,0,0" Name="lblTaxName" VerticalAlignment="Top" Width="120" FontSize="14" FlowDirection="RightToLeft">Tax Name</Label>
                         <ComboBox Height="23" HorizontalAlignment="Left" Margin="136,55,0,0" Name="cBTaxName" VerticalAlignment="Top" Width="120" />
                         <Label FlowDirection="RightToLeft" FontSize="14" Height="28" HorizontalAlignment="Left" Margin="6,92,0,0" Name="lblTaxType" VerticalAlignment="Top" Width="120">Type</Label>
@@ -61,8 +61,8 @@
                         <Label FontSize="17" Height="38" HorizontalAlignment="Right" Margin="0,0,99,99" Name="lblTotalTaxAmount" VerticalAlignment="Bottom" Width="66">0</Label>
                     </Grid>
                 </TabItem>
-            <TabItem Header="Delivery Challan Details" FontSize="14" IsSelected="True" IsEnabled="True">
-                <Grid>
+            <TabItem Header="tabCtrlChallan" FontSize="14">
+                <Grid Name="GridChallan">
                     <Label Height="28" HorizontalAlignment="Left" Margin="30,157,0,0" Name="label3" VerticalAlignment="Top" Width="120">LR/RR/RRp No.</Label>
                     <TextBox Height="28" HorizontalAlignment="Left" Margin="180,157,0,0" Name="challanNo" VerticalAlignment="Top" Width="120" />
                     <Label Height="28" HorizontalAlignment="Left" Margin="30,207,0,0" Name="label6" VerticalAlignment="Top" Width="129">Dispathed Through</Label>
