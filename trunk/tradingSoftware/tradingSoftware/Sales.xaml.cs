@@ -23,7 +23,12 @@ namespace tradingSoftware
             InitializeComponent();
         }
 
-        private void challanno_TextChanged(object sender, TextChangedEventArgs e)
+        private void rbPercent_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void rbValue_Checked(object sender, RoutedEventArgs e)
         {
 
         }
