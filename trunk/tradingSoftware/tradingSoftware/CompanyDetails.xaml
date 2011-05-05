@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="CompanyDetails" Height="600" Width="900" Background="FloralWhite">
     <Grid Name="CompanyDetailsMain" >    
-    <TabControl Name="tabControl1" Background="FloralWhite" FontSize="14" SelectedIndex="0">
+    <TabControl Name="tabControl1" Background="FloralWhite" FontSize="14" SelectedIndex="1">
             <TabItem Header="Basic Information" Background="DarkKhaki">
                 <Grid Name="BasicInformationGrid" ShowGridLines="True" Margin="1,0,9,32">
                     <GroupBox Header="Address Details" Name="groupBox3" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" Margin="383,17,33,218.06" />
