@@ -19,8 +19,15 @@
                         <Button Height="27" HorizontalAlignment="Left" Margin="243,236,0,0" Name="btnRemoveItem" VerticalAlignment="Top" Width="104">Remove</Button>
                         <Button Margin="393,236,381,252.38" Name="btnClearSales">Clear</Button>
                         <Button Height="27" Margin="0,236,229,0" Name="btnSaveItem" VerticalAlignment="Top" HorizontalAlignment="Right" Width="104">Save</Button>
-                        <ListView Margin="33,287,25,94" Name="listViewSalesItems" />
-                        <Label Height="28" HorizontalAlignment="Right" Margin="0,0,43,56" Name="lblTotal" VerticalAlignment="Bottom" Width="120" FontSize="16">Total :</Label>
+                    <ListView Margin="33,287,25,94" Name="listViewSalesItems" SelectionChanged="listViewSalesItems_SelectionChanged" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Item Group" Width="160" 
+                                    DisplayMemberBinding="{Binding ItemGroup}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,0,43,56" Name="lblTotal" VerticalAlignment="Bottom" Width="120" FontSize="16">Total :</Label>
                         <Label Height="28" HorizontalAlignment="Right" Margin="0,0,-11,56" Name="lblTotalAmount" VerticalAlignment="Bottom" Width="120" FontSize="16">0</Label>
                         <Button Height="31" HorizontalAlignment="Left" Margin="651,0,0,12.19" Name="btnResetItems" VerticalAlignment="Bottom" Width="98" FontSize="14">Reset All</Button>
                         <Button Height="31" HorizontalAlignment="Right" Margin="0,0,8,12.19" Name="btnClose" VerticalAlignment="Bottom" Width="99" FontSize="14">Close</Button>
