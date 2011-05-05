@@ -113,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AccountsFind.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CompanyDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -187,8 +191,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountObject.cs" />
     <Compile Include="AccountSetup.xaml.cs">
       <DependentUpon>AccountSetup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountsFind.xaml.cs">
+      <DependentUpon>AccountsFind.xaml</DependentUpon>
     </Compile>
     <Compile Include="CompanyDetails.xaml.cs">
       <DependentUpon>CompanyDetails.xaml</DependentUpon>
