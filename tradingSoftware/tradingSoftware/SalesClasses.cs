@@ -6,17 +6,17 @@ using System.Text;
 
 namespace tradingSoftware
 {
-    public class Sale
-    {
-        public List<SaleItem> SaleItems;
-        public List<SaleTax> SaleTaxes;
+    //public class Sale
+    //{
+    //    public List<SaleItem> SaleItems;
+    //    public List<SaleTax> SaleTaxes;
         
 
-        public Sale()
-        {
+    //    public Sale()
+    //    {
 
-        }
-    }
+    //    }
+    //}
 
     public class SaleItem
     {

@@ -56,9 +56,6 @@ namespace tradingSoftware
 
         }
 
-        private void listViewSalesItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
     }
 }
