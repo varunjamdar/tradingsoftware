@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 namespace tradingSoftware
 {
     /// <summary>
-    /// Interaction logic for Purchase1.xaml
+    /// Interaction logic for Sales.xaml
     /// </summary>
     public partial class Sales : Window
     {

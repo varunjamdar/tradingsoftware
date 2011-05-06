@@ -18,8 +18,8 @@
                     <MenuItem.BitmapEffect>
                         <OuterGlowBitmapEffect GlowColor="LightGray" />
                     </MenuItem.BitmapEffect>
-                    <MenuItem Name="RestoreDb" Header="Restore Database"/>
-                    <MenuItem Name="BackupDb" Header="Backup Database"/>
+                    <MenuItem Name="RestoreDb" Header="Restore Database" Click="RestoreDb_Click"/>
+                    <MenuItem Name="BackupDb" Header="Backup Database" Click="BackupDb_Click"/>
                 </MenuItem>
                 <Separator/>
                 <MenuItem Name="Upgrade" Header="Upgrade" Click="Upgrade_Click" />
@@ -33,7 +33,7 @@
                 <MenuItem Name="ItemGroup" Header="Item Group" Click="ItemGroup_Click"/>
                 <MenuItem Name="Item" Header="Item" Click="Item_Click"/>
             </MenuItem>
-            <MenuItem Name="Transacton" Header="Transaction" Click="Transacton_Click">
+            <MenuItem Name="Transacton" Header="Transaction">
                 <MenuItem Name="Journal" Header="Journal" Click="Journal_Click"/>
                 <MenuItem Name="Ledger" Header="Ledger" Click="Ledger_Click" />
                 <MenuItem Name="TrialBalance" Header="Trial Balance" Click="TrialBalance_Click" />

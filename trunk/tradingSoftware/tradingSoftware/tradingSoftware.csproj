@@ -125,6 +125,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Backup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CompanyDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -168,6 +172,10 @@
     <Page Include="PurchaseOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Restore.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Sales.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -217,6 +225,9 @@
     </Compile>
     <Compile Include="AuthenticationForm.xaml.cs">
       <DependentUpon>AuthenticationForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Backup.xaml.cs">
+      <DependentUpon>Backup.xaml</DependentUpon>
     </Compile>
     <Compile Include="BusinessLogic.cs" />
     <Compile Include="AccountsFind.xaml.cs">
@@ -284,6 +295,9 @@
     </Compile>
     <Compile Include="PurchaseOrder.xaml.cs">
       <DependentUpon>PurchaseOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Restore.xaml.cs">
+      <DependentUpon>Restore.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sales.xaml.cs" />
     <Compile Include="SalesClasses.cs" />

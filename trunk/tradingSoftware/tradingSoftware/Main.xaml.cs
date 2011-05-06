@@ -77,7 +77,6 @@ namespace tradingSoftware
             tradingSoftware.ItemGroup itemGroupForm = new ItemGroup();
             itemGroupForm.ShowDialog();
         }
-
       
         private void PurchaseOrder_Click(object sender, RoutedEventArgs e)
         {
@@ -120,11 +119,6 @@ namespace tradingSoftware
             sd.ShowDialog();
         }
 
-        private void Transacton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Tax_Click(object sender, RoutedEventArgs e)
         {
             Taxsetup taxform = new Taxsetup();
@@ -135,6 +129,18 @@ namespace tradingSoftware
         {
             tradingSoftware.Upgrade upgradeform = new Upgrade();
             upgradeform.ShowDialog();
+        }
+
+        private void RestoreDb_Click(object sender, RoutedEventArgs e)
+        {
+            Restore restoreDbForm = new Restore();
+            restoreDbForm.ShowDialog();
+        }
+
+        private void BackupDb_Click(object sender, RoutedEventArgs e)
+        {
+            Backup backupDbForm = new Backup();
+            backupDbForm.ShowDialog();
         }
     }
 }
