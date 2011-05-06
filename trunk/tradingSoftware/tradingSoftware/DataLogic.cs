@@ -200,7 +200,6 @@ namespace tradingSoftware
             return company;
         }
 
-
         public DataTable getTransactions()
         {
             ds.Clear();
@@ -651,7 +650,6 @@ namespace tradingSoftware
             return Int32.Parse(ds.Tables["Item"].Rows[0][0].ToString());
         }
 
-             
         //--get taxId
         public int getTaxId(string TaxName)
         {
@@ -1506,6 +1504,27 @@ namespace tradingSoftware
 
             }
         }
-        
+
+        #region Sales
+
+        public List<string> getCustomerName()
+        {
+            conn.Open();
+            ds = new DataSet();
+            cmd.CommandText = "SELECT CustomerCompany From Customer";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Customer");
+            conn.Close();
+
+            List<string> customerNameList = new List<string>();
+            foreach (DataRow dr in ds.Tables["Customer"].Rows)
+            {
+                customerNameList.Add(dr[0].ToString());
+            }
+
+            return supplierNameList;
+        }
+        #endregion
+
     }
 }

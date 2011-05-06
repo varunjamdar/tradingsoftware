@@ -25,17 +25,19 @@ namespace tradingSoftware
             
         }
 
-        public SaleItem( int q, float ppu, decimal rs)
+        public SaleItem(string ig, string i, int q, float ppu, decimal rs)
         {
-            Quantity = q;
-            PricePerUnit = ppu;
-            this.Rs = rs;
+            this.ItemGroup = ig;
+            this.ItemName = i;
+            this.Quantity = q;
+            this.PricePerUnit = ppu;
+            this.Amount = rs;
         }
         public string ItemGroup { get; set; }
         public string ItemName { get; set; }
         public int Quantity { get; set; }
         public float PricePerUnit { get; set; }
-        public decimal Rs { get; set; }
+        public decimal Amount { get; set; }
     }
 
     public class SaleTax
@@ -44,5 +46,10 @@ namespace tradingSoftware
         {
 
         }
+
+        public string TaxName { get; set; }
+        public float TaxPercentage { get; set; }
+        public float TaxAmount { get; set; }
+        public string TaxType { get; set; }
     }
 }
