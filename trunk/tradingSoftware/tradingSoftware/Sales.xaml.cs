@@ -40,29 +40,23 @@ namespace tradingSoftware
             //cb_Supplier.Items.Clear();
             List<string> customerNameList;// = new List<string>();
             customerNameList = dl.getCustomerName();
-            foreach (string sn in supplierNameList)
+            foreach (string sn in customerNameList)
             {
-                cb_Supplier.Items.Add(sn.ToString());
+                cb_Customer.Items.Add(sn.ToString());
             }
 
             //---Item Group
             TradeDataSetTableAdapters.ItemGroupTableAdapter itemGroupAdpt = new tradingSoftware.TradeDataSetTableAdapters.ItemGroupTableAdapter();
             itemGroupAdpt.Fill(ds.ItemGroup);
-            PurchaseOrder2Grid.DataContext = ds.ItemGroup;
+            GridSales.DataContext = ds.ItemGroup;
             //----Item
             TradeDataSetTableAdapters.ItemTableAdapter itemAdpt = new tradingSoftware.TradeDataSetTableAdapters.ItemTableAdapter();
             itemAdpt.Fill(ds.Item);
 
-            //--Max Purchase Id
-            txtPurchaseNo.Text= dl.getPurchaseNo().ToString();
+            //--Max Sales Id
+            txtSalesNo.Text = dl.getSaleNo().ToString();
 
-            //purchase order
-            //TradeDataSetTableAdapters.PurchaseOrderTableAdapter purchaseOrderAdpt = new tradingSoftware.TradeDataSetTableAdapters.PurchaseOrderTableAdapter();
-            //purchaseOrderAdpt.Fill(ds.PurchaseOrder);
-            //cbRefPO.DataContext = ds.PurchaseOrder;
-
-            cb_Supplier.SelectedIndex = -1;
-            
+            cb_Customer.SelectedIndex = -1;
         }
 
         public void refreshTaxes()
