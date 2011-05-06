@@ -26,7 +26,6 @@ namespace tradingSoftware
             InitializeComponent();
             //set default date - today
             dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            txt_PurchaseOrderNo.Focus();
 
             //-------tax detail--
             TradeDataSet ds = new TradeDataSet();
@@ -251,7 +250,6 @@ namespace tradingSoftware
             txt_PPU.Text = "";
             listViewPurchse.Items.Clear();
 
-            txt_PurchaseOrderNo.Text = "";
             //refresh the Both Amount Label
             lblTotalAmount.Content = 0;
             lblTotalAmountTax.Content = 0;
@@ -269,7 +267,6 @@ namespace tradingSoftware
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
 
-            txt_PurchaseOrderNo.Text = "";
             listViewPurchse.SelectedIndex = -1;
         }
 
@@ -549,7 +546,6 @@ namespace tradingSoftware
                 txt_PPU.Text = "";
                 listViewPurchse.Items.Clear();
 
-                txt_PurchaseOrderNo.Text = "";
                 //refresh the Both Amount Label
                 lblTotalAmount.Content = 0;
                 lblTotalAmountTax.Content = 0;
@@ -568,29 +564,9 @@ namespace tradingSoftware
 
         private void btnViewPO_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                int po = Int32.Parse(txt_PurchaseOrderNo.Text);
-
-
-            }
-            catch (FormatException fe)
+            if(cbRefPO.SelectedIndex==-1)
             {
                 MessageBox.Show("Invalid Purchase Order No.","Error",MessageBoxButton.OK,MessageBoxImage.Error);
-            }
-        }
-
-        private void txt_PurchaseOrderNo_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                int po = Int32.Parse(txt_PurchaseOrderNo.Text);
-                btnViewPO.IsEnabled = true;
-            }
-            catch (FormatException fe)
-            {
-                MessageBox.Show("Invalid Purchase Order No.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                btnViewPO.IsEnabled = false;
             }
         }
 

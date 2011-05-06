@@ -1,4 +1,4 @@
-﻿<Window x:Class="tradingSoftware.Window1"
+﻿<Window x:Class="tradingSoftware.Sale"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Sales" Height="728" Width="900">
@@ -19,7 +19,7 @@
                         <Button Height="27" HorizontalAlignment="Left" Margin="243,236,0,0" Name="btnRemoveItem" VerticalAlignment="Top" Width="104">Remove</Button>
                         <Button Margin="393,236,381,252.38" Name="btnClearSales">Clear</Button>
                         <Button Height="27" Margin="0,236,229,0" Name="btnSaveItem" VerticalAlignment="Top" HorizontalAlignment="Right" Width="104">Save</Button>
-                    <ListView Margin="33,287,25,94" Name="listViewSalesItems" SelectionChanged="listViewSalesItems_SelectionChanged" >
+                    <ListView Margin="33,287,25,94" Name="listViewSalesItems" >
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Item Group" Width="160" 
