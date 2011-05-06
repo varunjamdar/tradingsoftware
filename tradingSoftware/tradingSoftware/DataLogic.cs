@@ -1527,13 +1527,21 @@ namespace tradingSoftware
 
         public int getSaleNo()
         {
-            conn.Open();
-            ds = new DataSet();
-            cmd.CommandText = "SELECT Max(SaleId) From Sale";
-            adpt.SelectCommand = cmd;
-            adpt.Fill(ds, "Sale");
-            conn.Close();
-            return (Int32.Parse(ds.Tables["Sale"].Rows[0][0].ToString()) + 1);
+            try
+            {
+                conn.Open();
+                ds = new DataSet();
+                cmd.CommandText = "SELECT Max(SaleId) From Sale";
+                adpt.SelectCommand = cmd;
+                adpt.Fill(ds, "Sale");
+                conn.Close();
+                DataRow dr = ds.Tables["Sale"].Rows[0];
+                return ((dr != null) ? (Int32.Parse(dr[0].ToString()) + 1) : 1);
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
 
         }
         #endregion

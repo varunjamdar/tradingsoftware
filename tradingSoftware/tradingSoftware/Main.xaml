@@ -12,6 +12,7 @@
                 <Separator />
                 <MenuItem Name="Location" Header="Location Setup" Click="Location_Click"/>
                 <MenuItem Name="Unit" Header="Unit Setup" Click="Unit_Click"/>
+                <MenuItem Name="Tax" Header="Tax Configuration" Click="Tax_Click"/>
                 <Separator />
                 <MenuItem Name="Database" Header="Database">
                     <MenuItem.BitmapEffect>
@@ -20,6 +21,8 @@
                     <MenuItem Name="RestoreDb" Header="Restore Database"/>
                     <MenuItem Name="BackupDb" Header="Backup Database"/>
                 </MenuItem>
+                <Separator/>
+                <MenuItem Name="Upgrade" Header="Upgrade" Click="Upgrade_Click" />
             </MenuItem>
             <MenuItem Name="SupplierCustomerConfig" Header="Supplier/Customer Configuration" Click="SupplierCustomerConfig_Click">
                 <MenuItem Name="SupplierDetails" Header="Supplier Details"/>
@@ -39,7 +42,6 @@
                 <MenuItem Name="GoodsReceipt" Header="Goods Receipt" Click="GoodsReceipt_Click"/>
                 <MenuItem Name="Payment" Header="Payment" Click="Payment_Click"/>
                 <Separator />
-                <MenuItem Name="SaleOrder" Header="Sale Order" Click="SaleOrder_Click"/>
                 <MenuItem Name="Sale" Header="Sale" Click="Sale_Click"/>
                 <MenuItem Name="Receipt" Header="Receipt" Click="Receipt_Click"/>
             </MenuItem>

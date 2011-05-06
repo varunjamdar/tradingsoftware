@@ -97,13 +97,10 @@ namespace tradingSoftware
             paymentForm.ShowDialog();
         }
 
-        private void SaleOrder_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Sale_Click(object sender, RoutedEventArgs e)
         {
+            Sales salesform = new Sales();
+            salesform.ShowDialog();
         }
 
         private void Receipt_Click(object sender, RoutedEventArgs e)
@@ -126,6 +123,18 @@ namespace tradingSoftware
         private void Transacton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Tax_Click(object sender, RoutedEventArgs e)
+        {
+            Taxsetup taxform = new Taxsetup();
+            taxform.ShowDialog();
+        }
+
+        private void Upgrade_Click(object sender, RoutedEventArgs e)
+        {
+            tradingSoftware.Upgrade upgradeform = new Upgrade();
+            upgradeform.ShowDialog();
         }
     }
 }
