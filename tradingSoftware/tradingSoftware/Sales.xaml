@@ -1,95 +1,119 @@
-﻿<Window x:Class="tradingSoftware.Sale"
+﻿<Window x:Class="tradingSoftware.Sales"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Sales" Height="728" Width="900">
-   
-        <Grid Name="GridMainSalesOrder">
-            <TabControl Name="tabCtrlSales" Margin="0,-5,0,62" SelectedIndex="0">
-                <TabItem Header="Sales Form" FontSize="14">
-                    <Grid Margin="0,21,0,62" Name="GridSalesOrder">
-                        <Label Height="28" HorizontalAlignment="Left" Margin="33,12,0,0" Name="lblSalesOrderNo" VerticalAlignment="Top" Width="120" FlowDirection="RightToLeft" FontSize="14">Sales Order No</Label>
-                        <Label Height="28" HorizontalAlignment="Left" Margin="33,99,0,0" Name="lblCustomerName" VerticalAlignment="Top" Width="120" FlowDirection="RightToLeft" FontSize="14">Customer</Label>
-                        <Label FlowDirection="RightToLeft" FontSize="14" Height="28" Margin="55,162,0,0" Name="lblItemGroup" VerticalAlignment="Top" HorizontalAlignment="Left" Width="98">Item Group</Label>
-                        <Label FlowDirection="RightToLeft" FontSize="14" Height="28" Margin="396,162,381,0" Name="lblItem" VerticalAlignment="Top">Item</Label>
-                        <Label FlowDirection="RightToLeft" FontSize="14" Height="28" Margin="393,198,381,0" Name="lblPricePerUnit" VerticalAlignment="Top">Price Per Unit</Label>
-                        <Label FlowDirection="RightToLeft" FontSize="14" Height="28" HorizontalAlignment="Left" Margin="33,198,0,0" Name="lblQuantity" VerticalAlignment="Top" Width="120">Quantity</Label>
-                        <TextBox Height="23" HorizontalAlignment="Left" Margin="167,200,0,0" Name="txtQuantity" VerticalAlignment="Top" Width="120" />
-                        <TextBox Height="23" Margin="0,200,245,0" Name="txtPricePerUnit" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" />
-                        <Button Height="27" HorizontalAlignment="Left" Margin="86,236,0,0" Name="btnAddItem" VerticalAlignment="Top" Width="104">Add</Button>
-                        <Button Height="27" HorizontalAlignment="Left" Margin="243,236,0,0" Name="btnRemoveItem" VerticalAlignment="Top" Width="104">Remove</Button>
-                        <Button Margin="393,236,381,252.38" Name="btnClearSales">Clear</Button>
-                        <Button Height="27" Margin="0,236,229,0" Name="btnSaveItem" VerticalAlignment="Top" HorizontalAlignment="Right" Width="104">Save</Button>
-                    <ListView Margin="33,287,25,94" Name="listViewSalesItems" >
+    xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit"
+    Title="Sales Invoice" Height="728" Width="900" >
+    <Grid Name="GridSalesMain">
+
+        <TabControl Name="tabControlSalesItems" Margin="0,-5,0,56" SelectedIndex="1">
+            <TabItem Header="Sales Form" FontSize="14" IsSelected="True">
+                <Grid Name="GridSales">
+                    <Label Height="28" Margin="423,11,0,0" Name="lblPONo" VerticalAlignment="Top" HorizontalAlignment="Left" Width="159">Ref. Purchase Order No.</Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,11,151,0" Name="txtPONo" VerticalAlignment="Top" Width="120" />
+                    <Label Height="28" Margin="93,11,0,0" Name="lblCustomer" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68.558">Customer</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="164,11,0,0" Name="cb_Customer" VerticalAlignment="Top" Width="220" IsEditable="False" TabIndex="1003" SelectionChanged="cb_Supplier_SelectionChanged" />
+                    <Label Height="28" Margin="88.558,68,0,0" Name="lblSalesDate" VerticalAlignment="Top" HorizontalAlignment="Left" Width="73">Sales Date</Label>
+                    <my:DatePicker Height="25" Margin="0,68,589,0" Name="dtPick_SalesDate" VerticalAlignment="Top" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" HorizontalAlignment="Right" Width="115" TabIndex="1002" />
+                    <Label Height="28" Margin="53,144,0,0" Name="lblItemGroup" VerticalAlignment="Top" HorizontalAlignment="Left" Width="85">Item Group</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="140,144,0,0" Name="cb_ItemGroup" VerticalAlignment="Top" Width="220" IsEditable="False" TabIndex="1004" 
+                               ItemsSource="{Binding}" DisplayMemberPath="ItemGroupName"
+                             IsSynchronizedWithCurrentItem="True"/>
+                    <Button Margin="68.765,216,0,0" Name="btn_AddSalesItem" HorizontalAlignment="Left" Width="136" Height="23" VerticalAlignment="Top" Click="btn_AddSalesItem_Click">Add</Button>
+                    <Button Margin="0,0,102,11" Name="btn_ResetItems" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="144" Click="btn_ResetItems_Click">Reset All</Button>
+                    <Button HorizontalAlignment="Right" Margin="0,0,12,11" Name="btn_Close" Width="80" Height="32" VerticalAlignment="Bottom" Click="btn_Close_Click">Close</Button>
+                    <Label HorizontalAlignment="Left" Margin="69,182,0,0" Name="label5" Width="69" Height="28.04" VerticalAlignment="Top">Quantity</Label>
+                    <TextBox HorizontalAlignment="Left" Margin="140,182,0,0" Name="txt_Quantity" Width="120" Height="23.04" VerticalAlignment="Top" TabIndex="1006" />
+                    <Label Margin="371,182,402,0" Name="label6" Height="28" VerticalAlignment="Top">Price Per Unit</Label>
+                    <TextBox Margin="0,182,295,0" Name="txt_PPU" Height="23" VerticalAlignment="Top" TabIndex="1007" HorizontalAlignment="Right" Width="95.855" 
+                             Text="{Binding Path=ItemGroup_Item/PurchasePrice}"/>
+                    <Label Height="28" Margin="432,144,393,0" Name="lblItem" VerticalAlignment="Top">Item</Label>
+                    <ComboBox Height="23" Margin="0,144,149,0" Name="cb_Item" VerticalAlignment="Top" IsEditable="False" TabIndex="1005" 
+                               ItemsSource="{Binding Path=ItemGroup_Item}" DisplayMemberPath="ItemName"
+                             IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Right" Width="241.396" />
+                    <Button Height="23" HorizontalAlignment="Left" Margin="222,216,0,0" Name="btn_RemoveItem" VerticalAlignment="Top" Width="147" Click="btn_RemoveItem_Click">Remove</Button>
+                    <ListView Margin="11.149,249,12,88" Name="listViewSales" SelectionChanged="listViewSales_SelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Item Group" Width="160" 
-                                    DisplayMemberBinding="{Binding ItemGroup}" />
+                                <GridViewColumn Header="ItemGroup" Width="160" 
+                        DisplayMemberBinding="{Binding ItemGroup}" />
+                                
+                                <GridViewColumn Header="Item" Width="170" 
+                        DisplayMemberBinding="{Binding ItemName}" />
+                                
+                                <GridViewColumn Header="Quantity" Width="70" 
+                        DisplayMemberBinding="{Binding Quantity}" />
+                                
+                                <GridViewColumn Header="PricePerUnit" Width="100" 
+                        DisplayMemberBinding="{Binding PricePerUnit}" />
+                                
+                                <GridViewColumn Header="Rs" Width="50" 
+                        DisplayMemberBinding="{Binding Amount}" />
+                                
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Label Height="28" HorizontalAlignment="Right" Margin="0,0,43,56" Name="lblTotal" VerticalAlignment="Bottom" Width="120" FontSize="16">Total :</Label>
-                        <Label Height="28" HorizontalAlignment="Right" Margin="0,0,-11,56" Name="lblTotalAmount" VerticalAlignment="Bottom" Width="120" FontSize="16">0</Label>
-                        <Button Height="31" HorizontalAlignment="Left" Margin="651,0,0,12.19" Name="btnResetItems" VerticalAlignment="Bottom" Width="98" FontSize="14">Reset All</Button>
-                        <Button Height="31" HorizontalAlignment="Right" Margin="0,0,8,12.19" Name="btnClose" VerticalAlignment="Bottom" Width="99" FontSize="14">Close</Button>
-                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="167,99,0,0" Name="cBCustomer" VerticalAlignment="Top" Width="180" />
-                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="167,162,0,0" Name="cBItemGroup" VerticalAlignment="Top" Width="180" />
-                        <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,162,198,0" Name="cBItem" VerticalAlignment="Top" Width="167" />
-                        <Label Height="28" Margin="402,12,381,0" Name="lblSalesDate" VerticalAlignment="Top" FlowDirection="RightToLeft">Sales Date</Label>
-                        <my:DatePicker Height="25" HorizontalAlignment="Right" Margin="0,11,245,0" Name="dtPickSalesDate" VerticalAlignment="Top" Width="120" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-                        <TextBox Height="23" HorizontalAlignment="Left" Margin="167,16,0,0" Name="txtSalesNo" VerticalAlignment="Top" Width="120" IsEnabled="False" />
-                        <Label Height="28" HorizontalAlignment="Left" Margin="55,47,0,0" Name="lblRefPONo" VerticalAlignment="Top" Width="98" FlowDirection="RightToLeft">Ref PO No.</Label>
-                        <TextBox Height="23" HorizontalAlignment="Left" Margin="167,52,0,0" Name="txtRefPONo" VerticalAlignment="Top" Width="120" />
-                        <Label Height="28" Margin="393,0,381,415" Name="lblNote" VerticalAlignment="Bottom" FlowDirection="RightToLeft">Note</Label>
-                        <TextBox Height="71" HorizontalAlignment="Right" Margin="0,74.38,119,0" Name="txtNote" VerticalAlignment="Top" Width="246" AcceptsReturn="True" />
-                    </Grid>
-                </TabItem>
-                
-                <TabItem Header="tabCtrlTaxDetails" FontSize="14" IsSelected="True" IsEnabled="True">
-                    <Grid Name="GridTaxDetails">
-                        <Label Height="28" HorizontalAlignment="Left" Margin="11,50,0,0" Name="lblTaxName" VerticalAlignment="Top" Width="120" FontSize="14" FlowDirection="RightToLeft">Tax Name</Label>
-                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="136,55,0,0" Name="cBTaxName" VerticalAlignment="Top" Width="120" />
-                        <Label FlowDirection="RightToLeft" FontSize="14" Height="28" HorizontalAlignment="Left" Margin="6,92,0,0" Name="lblTaxType" VerticalAlignment="Top" Width="120">Type</Label>
-                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="136,97,0,0" Name="cBTaxType" VerticalAlignment="Top" Width="120" SelectedIndex="0" >
-                            <ComboBoxItem Name="Exclusive">Exclusive</ComboBoxItem>
-                            <ComboBoxItem Name="Inclusive">Inclusive</ComboBoxItem>
-                        </ComboBox>
-                        <RadioButton Height="16" HorizontalAlignment="Left" Margin="69,139,0,0" Name="rbPercent" GroupName="TaxValuePer" IsChecked="True" VerticalAlignment="Top" Width="62" FlowDirection="LeftToRight" FontSize="14" Checked="rbPercent_Checked">%</RadioButton>
-                        <RadioButton Height="16" HorizontalAlignment="Left" Margin="69,169,0,0" Name="rbValue" GroupName="TaxValuePer" VerticalAlignment="Top" Width="62" FontSize="14" Checked="rbValue_Checked">Value</RadioButton>
-                        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,169,612,0" Name="txtTaxValue" VerticalAlignment="Top" Width="120" />
-                        <Button Height="32" HorizontalAlignment="Left" Margin="136,226,0,0" Name="btnAddTax" VerticalAlignment="Top" Width="101" FontSize="14">Add</Button>
-                        <Button Height="32" HorizontalAlignment="Left" Margin="266,226,0,0" Name="btnRemoveTax" VerticalAlignment="Top" Width="91" FontSize="14">Remove</Button>
-                        <Button Height="32" Margin="410,226,371,0" Name="btnClearTax" VerticalAlignment="Top" FontSize="14">Clear</Button>
-                        <ListView Margin="33,278,22,139" Name="listViewTaxes" >
+                    <Button Height="23" Margin="394,216,349.965,0" Name="btn_Clear" VerticalAlignment="Top" Click="btn_Clear_Click">Clear</Button>
+                    <Button Height="23" HorizontalAlignment="Right" Margin="0,216,204.424,0" Name="btn_Save" VerticalAlignment="Top" Width="127.576" Click="btn_Save_Click">Save</Button>
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,0,115,49" Name="label1" VerticalAlignment="Bottom" Width="54" FontSize="16">Total :</Label>
+                    <Label Height="35" HorizontalAlignment="Right" Margin="0,0,12,43" Name="lblTotalAmount" VerticalAlignment="Bottom" Width="99" FontSize="18">0</Label>
+                    <TextBox Height="56" Margin="0,70,151,0" Name="txtNote" VerticalAlignment="Top" HorizontalAlignment="Right" Width="239.396" MinLines="3" />
+                    <Label Height="28" Margin="426,69,393,0" Name="lblNote" VerticalAlignment="Top">Note</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="93,38,0,0" Name="label3" VerticalAlignment="Top" Width="69">Sales No.</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="164,38,0,0" Name="txtSalesNo" VerticalAlignment="Top" Width="96" IsEnabled="False" />                
+                </Grid>
+            </TabItem>
+            <TabItem Header="TaxDetails" FontSize="14" IsSelected="True">
+                <Grid Name="TaxDetailsGrid" Height="605">
+                    <Label Height="28" HorizontalAlignment="Left" Margin="27,26,0,0" Name="label8" VerticalAlignment="Top" Width="76">Tax Name</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="107,31,0,0" Name="cb_TaxName" VerticalAlignment="Top" Width="169"
+                              ItemsSource="{Binding}"
+                              DisplayMemberPath="TaxName"
+                              IsSynchronizedWithCurrentItem="True">
+                    </ComboBox>
+                    <TextBox Height="23" Margin="0,141,663,0" Name="txtTaxAmount" VerticalAlignment="Top"
+                              AllowDrop="True" OverridesDefaultStyle="False" IsEnabled="True" HorizontalAlignment="Right" Width="98" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="51,74,0,0" Name="label13" VerticalAlignment="Top" Width="43">Type</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="107,71,0,0" Name="cb_Type" VerticalAlignment="Top" Width="128" SelectedIndex="0" SelectionChanged="cb_Type_SelectionChanged">
                         
-                        </ListView>
-                        <Button Height="32" HorizontalAlignment="Right" Margin="0,0,122,70" Name="btnResetTax" VerticalAlignment="Bottom" Width="104" FontSize="16">Reset All</Button>
-                        <Button Height="32" HorizontalAlignment="Right" Margin="0,0,22,70" Name="btnCloseTax" VerticalAlignment="Bottom" Width="83" FontSize="16">Close</Button>
-                        <Label FontSize="17" Height="38" Margin="642,0,0,99" Name="lblTotalTax" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="66">Total :</Label>
-                        <Label FontSize="17" Height="38" HorizontalAlignment="Right" Margin="0,0,99,99" Name="lblTotalTaxAmount" VerticalAlignment="Bottom" Width="66">0</Label>
-                    </Grid>
-                </TabItem>
-            <TabItem Header="tabCtrlChallan" FontSize="14">
-                <Grid Name="GridChallan">
-                    <Label Height="28" HorizontalAlignment="Left" Margin="30,157,0,0" Name="label3" VerticalAlignment="Top" Width="120">LR/RR/RRp No.</Label>
-                    <TextBox Height="28" HorizontalAlignment="Left" Margin="180,157,0,0" Name="challanNo" VerticalAlignment="Top" Width="120" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="30,207,0,0" Name="label6" VerticalAlignment="Top" Width="129">Dispathed Through</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="175,207,0,0" Name="textBox5" VerticalAlignment="Top" Width="120" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="30,253,0,0" Name="label7" VerticalAlignment="Top" Width="120">Date</Label>
-                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="175,256,0,0" Name="datePicker2" VerticalAlignment="Top" Width="115" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-                    <Grid Height="176" Margin="15,0,13,10" Name="grid2" VerticalAlignment="Bottom">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="835*" />
-                            <ColumnDefinition Width="2*" />
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                    <Button Height="23" HorizontalAlignment="Left" Margin="147,0,0,207" Name="button1" VerticalAlignment="Bottom" Width="75">Add</Button>
-                    <Button Height="23" HorizontalAlignment="Left" Margin="326,0,0,207" Name="button2" VerticalAlignment="Bottom" Width="75">Edit</Button>
-                    <Button Height="23" HorizontalAlignment="Right" Margin="0,0,283,207" Name="button3" VerticalAlignment="Bottom" Width="75">Save</Button>
+                        <ComboBoxItem Name="Exclusive">Exclusive</ComboBoxItem>
+                        <ComboBoxItem Name="Inclusive">Inclusive</ComboBoxItem>
+                    </ComboBox>
+                    <Button Height="38" HorizontalAlignment="Right" Margin="0,0,12,9" Name="btnCloseTax" VerticalAlignment="Bottom" Width="88" Click="btnCloseTax_Click">Close</Button>
+                    <ListView Margin="11.149,249,12,88" Name="listViewTaxDetails" SelectionChanged="listViewTaxDetails_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Tax" Width="160" 
+                        DisplayMemberBinding="{Binding TaxName}" />
+
+                                <GridViewColumn Header="Percentage" Width="100" 
+                        DisplayMemberBinding="{Binding TaxPercentage}" />
+
+                                <GridViewColumn Header="Type" Width="110" 
+                        DisplayMemberBinding="{Binding TaxType}" />
+
+
+                                <GridViewColumn Header="Amount" Width="100" 
+                        DisplayMemberBinding="{Binding TaxAmount}" />
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Height="23" Margin="279,203,0,0" Name="btnRemoveTax" VerticalAlignment="Top" Click="btnRemoveTax_Click" HorizontalAlignment="Left" Width="96">Remove</Button>
+                    <Button Height="23" Margin="390,203,390,0" Name="btnClearTax" VerticalAlignment="Top" Click="btnClearTax_Click">Clear</Button>
+                    <Button Height="23" HorizontalAlignment="Left" Margin="170,203,0,0" Name="btnAddTax" VerticalAlignment="Top" Width="95" Click="btnAddTax_Click">Add</Button>
+                    <Button Height="38" Margin="0,0,113,9" Name="btnResetAllTax" VerticalAlignment="Bottom" Click="btnResetAllTax_Click" HorizontalAlignment="Right" Width="125">Reset All</Button>
+                    <RadioButton Height="16" HorizontalAlignment="Left" Margin="51,120,0,0" Name="rbPercentage" VerticalAlignment="Top" Width="33" GroupName="TaxValuePer" IsChecked="True" Checked="rbPercentage_Checked">%</RadioButton>
+                    <RadioButton Height="16" HorizontalAlignment="Left" Margin="51,144,0,0" Name="rbValue" VerticalAlignment="Top" Width="55" GroupName="TaxValuePer" Checked="rbValue_Checked">Value</RadioButton>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="107,108,0,0" Name="lblPercentageTax" VerticalAlignment="Top" Width="41" Content="{Binding Path=Percentage}"></Label>
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,0,115,52.843" Name="label19" VerticalAlignment="Bottom" Width="54" FontSize="16">Total :</Label>
+                    <Label Height="35" HorizontalAlignment="Right" Margin="0,0,12,48" Name="lblTotalAmountTax" VerticalAlignment="Bottom" Width="99" FontSize="18">0</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="279,26,0,0" Name="lblTaxId" VerticalAlignment="Top" Width="46"
+                           Content="{Binding Path=TaxID}"></Label>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Height="43" Margin="426,0,5,11" Name="button4" VerticalAlignment="Bottom">Place Sales</Button>
+        <Button Height="43" Margin="433,0,5,6" Name="btnPlaceSale" VerticalAlignment="Bottom" Click="btnPlacePurchase_Click" FontSize="20" Foreground="Green">Sale Items</Button>
+        <Label Height="34.48" Margin="16.149,0,637,9" Name="label2" VerticalAlignment="Bottom" FontSize="16">Item Amount + Tax Amount :</Label>
+        <Label Height="28" HorizontalAlignment="Left" Margin="238,0,0,14" Name="lblItemTaxAmount" VerticalAlignment="Bottom" Width="104" FontSize="17">0</Label>
     </Grid>
 </Window>
-
