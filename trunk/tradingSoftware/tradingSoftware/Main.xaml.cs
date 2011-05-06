@@ -142,5 +142,15 @@ namespace tradingSoftware
             Backup backupDbForm = new Backup();
             backupDbForm.ShowDialog();
         }
+
+        private void NewFinancialYear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ChangeFinancialYear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

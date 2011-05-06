@@ -22,6 +22,14 @@
                     <MenuItem Name="BackupDb" Header="Backup Database" Click="BackupDb_Click"/>
                 </MenuItem>
                 <Separator/>
+                <MenuItem Name="FinancialYear" Header="Financial Year" >
+                    <MenuItem.BitmapEffect>
+                        <OuterGlowBitmapEffect GlowColor="LightGray" />
+                    </MenuItem.BitmapEffect>
+                    <MenuItem Name="NewFinancialYear" Header="New Financial Year" Click="NewFinancialYear_Click" />
+                    <MenuItem Name="ChangeFinancialYear" Header="Change Financial Year" Click="ChangeFinancialYear_Click" />
+                </MenuItem>
+                <Separator />
                 <MenuItem Name="Upgrade" Header="Upgrade" Click="Upgrade_Click" />
             </MenuItem>
             <MenuItem Name="SupplierCustomerConfig" Header="Supplier/Customer Configuration" Click="SupplierCustomerConfig_Click">
