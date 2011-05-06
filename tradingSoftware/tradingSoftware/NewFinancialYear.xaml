@@ -1,0 +1,8 @@
+﻿<Window x:Class="tradingSoftware.NewFinancialYear"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="NewFinancialYear" Height="407" Width="613">
+    <Grid>
+        
+    </Grid>
+</Window>
