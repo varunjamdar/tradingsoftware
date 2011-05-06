@@ -56,6 +56,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="ReuxablesLegacy, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\SYS\Dropbox\VI Sem Project- Trading Software\Theme dll\ReuxablesLegacy.dll</HintPath>
@@ -116,10 +117,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AuthenticationForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AccountsFind.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
     <Page Include="CompanyDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -188,6 +194,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="VersionInfomation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -198,6 +208,10 @@
     <Compile Include="AccountSetup.xaml.cs">
       <DependentUpon>AccountSetup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AuthenticationForm.xaml.cs">
+      <DependentUpon>AuthenticationForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessLogic.cs" />
     <Compile Include="AccountsFind.xaml.cs">
       <DependentUpon>AccountsFind.xaml</DependentUpon>
     </Compile>
@@ -210,6 +224,7 @@
     </Compile>
     <Compile Include="DataLogic.cs" />
     <Compile Include="DateTimeConverter.cs" />
+    <Compile Include="EncryptionDecryption.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Item.xaml.cs">
       <DependentUpon>Item.xaml</DependentUpon>
@@ -287,6 +302,9 @@
     </Compile>
     <Compile Include="UnitObject.cs" />
     <Compile Include="Validations.cs" />
+    <Compile Include="VersionInfomation.xaml.cs">
+      <DependentUpon>VersionInfomation.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

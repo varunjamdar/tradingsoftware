@@ -102,6 +102,11 @@ namespace tradingSoftware
             try
             {
                 float p = float.Parse(txt_PPU.Text);
+                if (p <= 0)
+                {
+                    error[count++] = "Invalid Nagative 'Price'";
+                    Boolerror = true;
+                }
             }
             catch (FormatException)
             {
@@ -130,8 +135,6 @@ namespace tradingSoftware
 
             //refresh the Both Amount Label
             lblTotalAmount.Content = getTotalAmountOFListViewPurchaseOrder();
-
-            //lblItemTaxAmount.Content = getTotalAmountOFListViewPurchaseOrder() + getTotalAmountTax();
         }
 
         //get Total Amount of Only ListView

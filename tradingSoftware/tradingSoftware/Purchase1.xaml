@@ -5,7 +5,10 @@
     Title="Purchase Items (Goods Receipt Note)" Height="728" Width="900" >
     <Grid Name="PurchaseOrderGrid">
 
+
+
         <TabControl Name="tabControl1" Margin="0,-5,0,56" SelectedIndex="0">
+
             <TabItem Header="Purchase Form" FontSize="14" IsSelected="True">
                 <Grid Name="PurchaseOrder2Grid">
                     <Label Height="28" Margin="423,11,286,0" Name="lblPONo" VerticalAlignment="Top">Ref. Purchase Order No.</Label>
@@ -75,8 +78,8 @@
                               DisplayMemberPath="TaxName"
                               IsSynchronizedWithCurrentItem="True">
                     </ComboBox>
-                    <TextBox Height="23" Margin="107,141,0,0" Name="txtAmount" VerticalAlignment="Top"
-                              AllowDrop="True" OverridesDefaultStyle="False" IsEnabled="True" HorizontalAlignment="Left" Width="98" />
+                    <TextBox Height="23" Margin="0,141,663,0" Name="txtAmount" VerticalAlignment="Top"
+                              AllowDrop="True" OverridesDefaultStyle="False" IsEnabled="True" HorizontalAlignment="Right" Width="98" />
                     <Label Height="28" HorizontalAlignment="Left" Margin="49,66,0,0" Name="label13" VerticalAlignment="Top" Width="43">Type</Label>
                     <ComboBox Height="23" HorizontalAlignment="Left" Margin="107,71,0,0" Name="cb_Type" VerticalAlignment="Top" Width="128" SelectedIndex="0" SelectionChanged="cb_Type_SelectionChanged">
                         

@@ -87,6 +87,95 @@ namespace tradingSoftware
         }
         private void btn_AddPurchaseItem_Click(object sender, RoutedEventArgs e)
         {
+            //
+            //Validation
+            bool Boolerror = false;
+            Dictionary<int, string> error = new Dictionary<int, string>();
+            int count = 0;
+
+            //Date Validation
+            try
+            {
+                DateTime dt = DateTime.Parse(dtPick_PODate.Text);
+            }
+            catch (FormatException)
+            {
+                error[count++] = "Invalid Date";
+                Boolerror = true;
+            }
+
+            //
+            if (cb_Supplier.Text == "")
+            {
+                error[count++] = "Select 'Supplier'";
+                Boolerror = true;
+            }
+            else if (cb_ItemGroup.Text == "")
+            {
+                error[count++] = "Select 'Item Group'";
+                Boolerror = true;
+            }
+            //
+            if (cbRefPO.SelectedIndex==-1)
+            {
+                error[count++] = "Select 'Purchase Order'";
+                Boolerror = true;
+            }
+
+
+            if (cb_Item.Text == "")
+            {
+                error[count++] = "Select 'Item'";
+                Boolerror = true;
+            }
+
+            try
+            {
+                int q = Int32.Parse(txt_Quantity.Text);
+                if (q <= 0)
+                {
+                    error[count++] = "Quantity must be greater than 0";
+                    Boolerror = true;
+                }
+
+            }
+            catch (FormatException)
+            {
+                error[count++] = "Invalid 'Quantity'";
+                Boolerror = true;
+            }
+
+
+
+            try
+            {
+                float p = float.Parse(txt_PPU.Text);
+                if (p <= 0)
+                {
+                    error[count++] = "Invalid Nagative 'Price'";
+                    Boolerror = true;
+                }
+            }
+            catch (FormatException)
+            {
+                error[count++] = "Invalid 'Price'";
+                Boolerror = true;
+            }
+
+
+            if (Boolerror == true)
+            {
+                string errorMsg = "";
+                for (int i = 0; i < error.Count; i++)
+                {
+                    errorMsg += (i + 1) + ". " + error[i] + "\n";
+                }
+
+                MessageBox.Show(@errorMsg, "Error !", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            //
+            //
             int IPONO = Int32.Parse(cbRefPO.Text);
             int IQuantity = Int32.Parse(txt_Quantity.Text);
             float FPPU = float.Parse(txt_PPU.Text);
@@ -292,6 +381,57 @@ namespace tradingSoftware
 
         private void btnAddTax_Click(object sender, RoutedEventArgs e)
         {
+            bool BoolerrorTax = false;
+            Dictionary<int, string> errorTax = new Dictionary<int, string>();
+            int countTax = 0;
+
+            //
+            //Validation
+
+            if (cb_TaxName.SelectedIndex == -1)
+            {
+                errorTax[countTax++] = "Select 'Purchase Order'";
+                BoolerrorTax = true;
+            }
+
+            if (cb_Type.SelectedIndex == -1)
+            {
+                errorTax[countTax++] = "Select Tax Type";
+                BoolerrorTax = true;
+            }
+
+            if (rbValue.IsChecked==true)
+            {
+                try
+                {
+                    int q = Int32.Parse(txtAmount.Text);
+                    if (q <= 0)
+                    {
+                        errorTax[countTax++] = "Price must be greater than 0";
+                        BoolerrorTax = true;
+                    }
+
+                }
+                catch (FormatException)
+                {
+                    errorTax[countTax++] = "Invalid Tax Amount";
+                    BoolerrorTax = true;
+                }
+            }
+
+            if (BoolerrorTax == true)
+            {
+                string errorMsgTax = "";
+                for (int i = 0; i < errorTax.Count; i++)
+                {
+                    errorMsgTax += (i + 1) + ". " + errorTax[i] + "\n";
+                }
+
+                MessageBox.Show(@errorMsgTax, "Error !", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            //
+
             float p=0, a=0;
             if(rbPercentage.IsChecked==true)
             {
@@ -340,6 +480,33 @@ namespace tradingSoftware
 
         private void btnPlacePurchase_Click(object sender, RoutedEventArgs e)
         {
+            bool BoolerrorPO = false;
+            Dictionary<int, string> errorPO = new Dictionary<int, string>();
+            int countPO = 0;
+            //
+            //validation
+            if (listViewPurchse.Items.Count == 0)
+            {
+                errorPO[countPO++] = "Select 'Add Items'";
+                BoolerrorPO = true;
+            }
+            if (listViewTaxDetails.Items.Count == 0)
+            {
+                errorPO[countPO++] = "Select 'Add Taxes'";
+                BoolerrorPO = true;
+            }
+            if (BoolerrorPO == true)
+            {
+                string errorMsgPO = "";
+                for (int i = 0; i < errorPO.Count; i++)
+                {
+                    errorMsgPO += (i + 1) + ". " + errorPO[i] + "\n";
+                }
+
+                MessageBox.Show(@errorMsgPO, "Error !", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            //
             MessageBoxResult mbr = MessageBox.Show("Are You Sure to place purchase Items ?", "Varifiacation", MessageBoxButton.YesNo,MessageBoxImage.Question);
 
             if (mbr == MessageBoxResult.Yes)

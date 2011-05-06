@@ -32,5 +32,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=.\SQLEXPRESS;Initial Catalog=TRADE.MDF;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="RunFirstTime" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
