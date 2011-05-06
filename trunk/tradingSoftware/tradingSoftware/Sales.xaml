@@ -5,7 +5,7 @@
     Title="Sales Invoice" Height="728" Width="900" >
     <Grid Name="GridSalesMain">
 
-        <TabControl Name="tabControlSalesItems" Margin="0,-5,0,56" SelectedIndex="2">
+        <TabControl Name="tabControlSalesItems" Margin="0,-5,0,56" SelectedIndex="0">
             <TabItem Header="Sales Form" FontSize="14" IsSelected="True">
                 <Grid Name="GridSales">
                     <Label Height="28" Margin="423,11,0,0" Name="lblPONo" VerticalAlignment="Top" HorizontalAlignment="Left" Width="159">Ref. Purchase Order No.</Label>
@@ -34,7 +34,7 @@
                     <ListView Margin="11.149,249,12,88" Name="listViewSales" SelectionChanged="listViewSales_SelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="ItemGroup" Width="160" 
+                                <GridViewColumn Header="Item Group" Width="160" 
                         DisplayMemberBinding="{Binding ItemGroup}" />
                                 
                                 <GridViewColumn Header="Item" Width="170" 
@@ -43,7 +43,7 @@
                                 <GridViewColumn Header="Quantity" Width="70" 
                         DisplayMemberBinding="{Binding Quantity}" />
                                 
-                                <GridViewColumn Header="PricePerUnit" Width="100" 
+                                <GridViewColumn Header="Price Per Unit" Width="110" 
                         DisplayMemberBinding="{Binding PricePerUnit}" />
                                 
                                 <GridViewColumn Header="Rs" Width="50" 

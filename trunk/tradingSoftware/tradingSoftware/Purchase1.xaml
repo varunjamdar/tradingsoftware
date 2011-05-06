@@ -35,7 +35,7 @@
                     <ListView Margin="11.149,249,12,88" Name="listViewPurchse" SelectionChanged="listViewPurchse_SelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="ItemGroup" Width="160" 
+                                <GridViewColumn Header="Item Group" Width="160" 
                         DisplayMemberBinding="{Binding ItemGroup}" />
                                 
                                 <GridViewColumn Header="Item" Width="170" 
