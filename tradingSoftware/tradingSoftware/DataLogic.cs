@@ -1522,7 +1522,7 @@ namespace tradingSoftware
                 customerNameList.Add(dr[0].ToString());
             }
 
-            return supplierNameList;
+            return customerNameList;
         }
 
         public int getSaleNo()
