@@ -5,7 +5,7 @@
     <Grid>
         <Label Height="28" HorizontalAlignment="Left" Margin="29,20,0,0" Name="label1" VerticalAlignment="Top" Width="120" FontSize="16">Select Version</Label>
         <Label Height="28" Margin="137,93,0,0" Name="label2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"></Label>
-        <RadioButton Height="16" HorizontalAlignment="Left" Margin="46,78,0,0" Name="radioButtonTrailVersion" VerticalAlignment="Top" Width="120">Trial Verison 30 days</RadioButton>
+        <RadioButton Height="16" HorizontalAlignment="Left" Margin="46,78,0,0" Name="radioButtonTrailVersion" VerticalAlignment="Top" Width="137">Trial Verison 30 days</RadioButton>
         <RadioButton Height="16" HorizontalAlignment="Left" Margin="46,105,0,0" Name="radioButtonSecurityKey" VerticalAlignment="Top" Width="198">Provide Security Key</RadioButton>
         <Button Height="23" Margin="228,0,222,65" Name="btnNext" VerticalAlignment="Bottom" Click="btnNext_Click">Next</Button>
         <Button Height="23" HorizontalAlignment="Right" Margin="0,0,131,65" Name="btnCancel" VerticalAlignment="Bottom" Width="76" Click="btnCancel_Click">Cancel</Button>
