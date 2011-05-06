@@ -59,7 +59,7 @@
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="ReuxablesLegacy, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SYS\Dropbox\VI Sem Project- Trading Software\Theme dll\ReuxablesLegacy.dll</HintPath>
+      <HintPath>..\..\..\Dropbox\VI Sem Project- Trading Software\Theme dll\ReuxablesLegacy.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -125,7 +125,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
     <Page Include="CompanyDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -222,6 +221,7 @@
     <Compile Include="CustomerDetails.xaml.cs">
       <DependentUpon>CustomerDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomerObject.cs" />
     <Compile Include="DataLogic.cs" />
     <Compile Include="DateTimeConverter.cs" />
     <Compile Include="EncryptionDecryption.cs" />
@@ -284,6 +284,8 @@
     <Compile Include="SupplierDetails.xaml.cs">
       <DependentUpon>SupplierDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SupplierObject.cs" />
+    <Compile Include="TaxObject.cs" />
     <Compile Include="Taxsetup.xaml.cs">
       <DependentUpon>Taxsetup.xaml</DependentUpon>
     </Compile>

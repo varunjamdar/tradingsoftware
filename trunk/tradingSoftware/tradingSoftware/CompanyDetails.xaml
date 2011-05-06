@@ -3,12 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="CompanyDetails" Height="600" Width="900" Background="FloralWhite">
     <Grid Name="CompanyDetailsMain" >    
-    <TabControl Name="tabControl1" Background="FloralWhite" FontSize="14" SelectedIndex="1">
+    <TabControl Name="tabControl1" Background="FloralWhite" FontSize="14" SelectedIndex="0">
             <TabItem Header="Basic Information" Background="DarkKhaki">
                 <Grid Name="BasicInformationGrid" ShowGridLines="True" Margin="1,0,9,32">
                     <GroupBox Header="Address Details" Name="groupBox3" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" Margin="383,17,33,218.06" />
                     <GroupBox Header="Contacts" Height="180" Margin="14,0,0,24" Name="groupBox4" VerticalAlignment="Bottom" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" Opacity="1" HorizontalAlignment="Left" Width="829"></GroupBox>
-                    <GroupBox Header="Basic" Height="223" HorizontalAlignment="Left" Margin="14,20,0,0" Name="groupBox2" VerticalAlignment="Top" Width="345" BorderBrush="DarkOliveGreen" BorderThickness="2" FontSize="11" Foreground="BlueViolet" />
+                    <GroupBox Header="Basic" Height="223" HorizontalAlignment="Left" Margin="14,20,0,0" Name="groupBox2" VerticalAlignment="Top" Width="345" BorderBrush="DarkOliveGreen" BorderThickness="2" FontSize="14" Foreground="BlueViolet" />
                     <TextBox Height="23" Margin="96,85,0,0" Name="txtCompanyPrintName" VerticalAlignment="Top" HorizontalAlignment="Left" Width="229" />
                     <Label Height="28" HorizontalAlignment="Left" Margin="17,44,0,0" Name="label1" VerticalAlignment="Top" Width="46">Name</Label>
                     <Label Height="28" HorizontalAlignment="Left" Margin="17,82,0,0" Name="label2" VerticalAlignment="Top" Width="87">Print Name</Label>

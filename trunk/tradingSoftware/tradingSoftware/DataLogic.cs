@@ -676,7 +676,7 @@ namespace tradingSoftware
         {
             conn.Open();
             ds = new DataSet();
-            cmd.CommandText = "SELECT SupplierId From Supplier Where SupplierName='" + SupplierName + "'";
+            cmd.CommandText = "SELECT SupplierId From Supplier Where SupplierCompany='" + SupplierName + "'";
             adpt.SelectCommand = cmd;
             adpt.Fill(ds, "Supplier");
             conn.Close();
@@ -687,7 +687,7 @@ namespace tradingSoftware
         {
             conn.Open();
             ds = new DataSet();
-            cmd.CommandText = "SELECT SupplierName From Supplier";
+            cmd.CommandText = "SELECT SupplierCompany From Supplier";
             adpt.SelectCommand = cmd;
             adpt.Fill(ds, "Supplier");
             conn.Close();
@@ -1283,15 +1283,7 @@ namespace tradingSoftware
                 conn.Close();
 
                 return ++i;
-                //try
-                //{
-                //    int accountId = int.Parse(ds.Tables[0].Rows[0][0].ToString());
-                //    return ++accountId;
-                //}
-                //catch (Exception e)
-                //{
-                //    return 1;
-                //}
+                
             }
         }
 
@@ -1485,6 +1477,34 @@ namespace tradingSoftware
             ao.ItPanNo=ds.Tables[0].Rows[0]["PANNo"].ToString();
 
             return ao;
+        }
+
+        public int getNextSupplierId()
+        {
+            ds.Clear();
+            cmd.CommandText = "Select * from Supplier";
+            adpt.SelectCommand = cmd;
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return 1;
+            }
+
+            else
+            {
+                ds.Clear();
+                cmd.CommandText = "Select Max(SupplierId) from Supplier";
+                adpt.SelectCommand = cmd;
+                conn.Open();
+                int i = int.Parse(cmd.ExecuteScalar().ToString());
+                conn.Close();
+
+                return ++i;
+
+            }
         }
         
     }
