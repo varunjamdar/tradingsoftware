@@ -1524,6 +1524,18 @@ namespace tradingSoftware
 
             return supplierNameList;
         }
+
+        public int getSaleNo()
+        {
+            conn.Open();
+            ds = new DataSet();
+            cmd.CommandText = "SELECT Max(SaleId) From Sale";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Sale");
+            conn.Close();
+            return (Int32.Parse(ds.Tables["Sale"].Rows[0][0].ToString()) + 1);
+
+        }
         #endregion
 
     }
