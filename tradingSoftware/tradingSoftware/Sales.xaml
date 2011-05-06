@@ -5,7 +5,7 @@
     Title="Sales Invoice" Height="728" Width="900" >
     <Grid Name="GridSalesMain">
 
-        <TabControl Name="tabControlSalesItems" Margin="0,-5,0,56" SelectedIndex="1">
+        <TabControl Name="tabControlSalesItems" Margin="0,-5,0,56" SelectedIndex="2">
             <TabItem Header="Sales Form" FontSize="14" IsSelected="True">
                 <Grid Name="GridSales">
                     <Label Height="28" Margin="423,11,0,0" Name="lblPONo" VerticalAlignment="Top" HorizontalAlignment="Left" Width="159">Ref. Purchase Order No.</Label>
@@ -109,6 +109,21 @@
                     <Label Height="35" HorizontalAlignment="Right" Margin="0,0,12,48" Name="lblTotalAmountTax" VerticalAlignment="Bottom" Width="99" FontSize="18">0</Label>
                     <Label Height="28" HorizontalAlignment="Left" Margin="279,26,0,0" Name="lblTaxId" VerticalAlignment="Top" Width="46"
                            Content="{Binding Path=TaxID}"></Label>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Chalan Details" FontSize="14" IsSelected="True">
+                <Grid Name="GridChallanDetails">
+                    <Label Height="28" HorizontalAlignment="Left" Margin="226,86,0,0" Name="label4" VerticalAlignment="Top" Width="111">Delivery Note No</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="229,155,0,0" Name="label7" VerticalAlignment="Top" Width="108">Lorry Receipt No</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="204,195,0,0" Name="label9" VerticalAlignment="Top" Width="133">Despatched Through</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="261,231,0,0" Name="label10" VerticalAlignment="Top" Width="76">Destination</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="255,121,0,0" Name="label11" VerticalAlignment="Top" Width="82">Challan Date</Label>
+                    <TextBox Height="23" Margin="367,86,381,0" Name="txtDeliveryNoteNo" VerticalAlignment="Top" />
+                    <TextBox Height="23" Margin="367,155,381,0" Name="txtLRNo" VerticalAlignment="Top" />
+                    <TextBox Height="23" Margin="367,195,227,0" Name="yxyDespatchThru" VerticalAlignment="Top" />
+                    <TextBox Height="23" Margin="367,231,317,0" Name="txtDestination" VerticalAlignment="Top" />
+                    <my:DatePicker Height="25" Margin="367,121,386,0" Name="dtPick_ChallanDate" VerticalAlignment="Top" />
                 </Grid>
             </TabItem>
         </TabControl>
