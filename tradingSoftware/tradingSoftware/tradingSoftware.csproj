@@ -169,6 +169,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Sales.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StockView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SupplierDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -279,6 +287,9 @@
     </Compile>
     <Compile Include="Sales.xaml.cs" />
     <Compile Include="SalesClasses.cs" />
+    <Compile Include="StockView.xaml.cs">
+      <DependentUpon>StockView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SupplierDetails.xaml.cs">
       <DependentUpon>SupplierDetails.xaml</DependentUpon>
     </Compile>
