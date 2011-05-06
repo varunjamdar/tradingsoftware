@@ -22,7 +22,7 @@
         <TextBox HorizontalAlignment="Left" Margin="140,171,0,0" Name="txt_Quantity" Width="120" Height="23.04" VerticalAlignment="Top" TabIndex="1006" FontSize="14" />
         <Label Margin="0,171,402.396,0" Name="label6" Height="28" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Right" Width="105">Price Per Unit</Label>
         <TextBox Margin="0,171,294.541,0" Name="txt_PPU" Height="23" VerticalAlignment="Top" TabIndex="1007" HorizontalAlignment="Right" Width="95.855" 
-                             Text="{Binding Path=ItemGroup_Item/PurchasePrice}" FontSize="14" />
+                             Text="{Binding Path=ItemGroup_Item/PurchasePrice}" FontSize="14"  />
         <Label Height="28" Margin="432,133,393,0" Name="lblItem" VerticalAlignment="Top" FontSize="14">Item</Label>
         <ComboBox Height="23" Margin="0,133,149,0" Name="cb_Item" VerticalAlignment="Top" IsEditable="False" TabIndex="1005" 
                                ItemsSource="{Binding Path=ItemGroup_Item}" DisplayMemberPath="ItemName"
