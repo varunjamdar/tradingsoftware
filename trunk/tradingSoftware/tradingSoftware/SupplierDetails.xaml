@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Supplier Details" Height="641" Width="900" FontSize="14">
     <Grid Name="CustomerDetailsMain" Height="596">
-        <TabControl Name="tabControl1" SelectedIndex="2
+        <TabControl Name="tabControl1" SelectedIndex="0
+                    
                     " Background="FloralWhite" SelectionChanged="tabControl1_SelectionChanged">
             <TabItem Header="Personal Information" Background="DarkKhaki">
                 <Grid ShowGridLines="False" Margin="1,0,9,32" Height="514">

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="tradingSoftware.Unit"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Unit" Height="600" Width="900">
+    Title="Unit" Height="600" Width="900" FontSize="14">
     <Grid Name="UnitGrid1">
         <TabControl Name="tabControlUnit" SelectedIndex="0" Background="FloralWhite">
             <TabItem Name="UnitTab" Header="Unit" Background="DarkKhaki">

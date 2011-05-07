@@ -1,9 +1,9 @@
 ﻿<Window x:Class="tradingSoftware.CompanyDetails"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="CompanyDetails" Height="600" Width="900" Background="FloralWhite">
+    Title="CompanyDetails" Height="600" Width="900" Background="White">
     <Grid Name="CompanyDetailsMain" >    
-    <TabControl Name="tabControl1" Background="FloralWhite" FontSize="14" SelectedIndex="0
+    <TabControl Name="tabControl1" Background="White" FontSize="14" SelectedIndex="1
                 
                 
                 ">

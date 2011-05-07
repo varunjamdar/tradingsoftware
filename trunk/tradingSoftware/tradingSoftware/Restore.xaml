@@ -5,9 +5,10 @@
 	xmlns:my1="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
 	Title="Restore" Height="332" Width="539" >
     <Grid>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,70,61,0" Name="btnBrowse" VerticalAlignment="Top" Width="75" Click="btnBrowse_Click">Browse</Button>
-        <TextBox Height="23" Margin="39,70,0,0" Name="textBox1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="319" />
-        <Button HorizontalAlignment="Left" Margin="141,0,0,110" Name="btnRestore" Width="75" Height="23" VerticalAlignment="Bottom" Click="btnBackup_Click">Restore</Button>
-        <Button Margin="255,0,187,110" Name="btnClose" Height="23" VerticalAlignment="Bottom" Click="btnClose_Click">Close</Button>
+        <Button Height="32" HorizontalAlignment="Right" Margin="0,108,34,0" Name="btnBrowse" VerticalAlignment="Top" Width="95" Click="btnBrowse_Click" FontSize="14">Browse</Button>
+        <TextBox Height="23" Margin="50,112,148,0" Name="textBox1" VerticalAlignment="Top" FontSize="14" />
+        <Button HorizontalAlignment="Left" Margin="109,0,0,72" Name="btnRestore" Width="98" Height="33" VerticalAlignment="Bottom" Click="btnBackup_Click" FontSize="14">Restore</Button>
+        <Button Margin="222,0,192,72" Name="btnClose" Height="33" VerticalAlignment="Bottom" Click="btnClose_Click" FontSize="14">Close</Button>
+        <Label FontSize="25" Foreground="Blue" Height="47" Margin="22,16,0,0" Name="label11" VerticalAlignment="Top" HorizontalAlignment="Left" Width="206">Restore Database</Label>
     </Grid>
 </Window>

@@ -6,13 +6,13 @@
         <TabControl Name="tabCtrlStockView">
             <TabItem Header="Stock View" IsSelected="True">
                 <Grid Name="GridStockView">
-                    <Label Height="28" HorizontalAlignment="Left" Margin="106,56,0,0" Name="label1" VerticalAlignment="Top" Width="78">Item Group</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="210,56,0,0" Name="comboBox1" VerticalAlignment="Top" Width="194" />
-                    <Label Height="28" Margin="148,119.38,0,0" Name="label2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="36">Item</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="210,119.38,0,0" Name="comboBox2" VerticalAlignment="Top" Width="194" />
-                    <Button Height="23" HorizontalAlignment="Left" Margin="501,89,0,0" Name="btnViewStock" VerticalAlignment="Top" Width="75" Click="btnViewStock_Click">View</Button>
-                    <Button Height="23" HorizontalAlignment="Right" Margin="0,89,153,0" Name="btnClose" VerticalAlignment="Top" Width="75" Click="btnClose_Click">Close</Button>
-                    <ListView Margin="106,208,111,105" Name="listViewStock" >
+                    <Label Height="28" HorizontalAlignment="Left" Margin="106,67,0,0" Name="label1" VerticalAlignment="Top" Width="94">Item Group</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="210,72,0,0" Name="comboBox1" VerticalAlignment="Top" Width="194" />
+                    <Label Height="28" Margin="148,108,0,0" Name="label2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="52">Item</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="210,108,0,0" Name="comboBox2" VerticalAlignment="Top" Width="194" />
+                    <Button Height="32" HorizontalAlignment="Left" Margin="278,163,0,0" Name="btnViewStock" VerticalAlignment="Top" Width="102" Click="btnViewStock_Click">View</Button>
+                    <Button Height="32" Margin="417,163,359,0" Name="btnClose" VerticalAlignment="Top" Click="btnClose_Click">Close</Button>
+                    <ListView Margin="106,220,111,93" Name="listViewStock" >
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Item Group" Width="190" 
@@ -26,6 +26,7 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
+                    <Label FontSize="25" Foreground="Blue" Height="43" HorizontalAlignment="Left" Margin="30,15,0,0" Name="label12" VerticalAlignment="Top" Width="140">Stock View</Label>
                 </Grid>
             </TabItem>
         </TabControl>

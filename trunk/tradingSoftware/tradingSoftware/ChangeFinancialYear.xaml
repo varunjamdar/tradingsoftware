@@ -1,16 +1,17 @@
 ﻿<Window x:Class="tradingSoftware.ChangeFinancialYear"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="ChangeFinancialYear" Height="418" Width="656">
+    Title="ChangeFinancialYear" Height="302" Width="552">
     <Grid Name="GridChangeFinancialYearMain">
-        <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,83,182,0" Name="cBYears" VerticalAlignment="Top" Width="120">
+        <ComboBox Margin="261,119.1,150,125.1" Name="cBYears" FontSize="14">
             <ComboBoxItem>2008-2009</ComboBoxItem>
             <ComboBoxItem>2009-2010</ComboBoxItem>
         </ComboBox>
-        <RadioButton GroupName="changeType" Height="16" HorizontalAlignment="Left" Margin="78,58,0,0" Name="rBtnLatest" VerticalAlignment="Top" Width="196" Checked="rBtnLatest_Checked" >Latest Financial Year</RadioButton>
-        <RadioButton GroupName="changeType" Height="16" HorizontalAlignment="Left" Margin="78,83,0,0" Name="rBtnPrevious" VerticalAlignment="Top" Width="196" IsChecked="True" Checked="rBtnPrevious_Checked">Other Financial Year</RadioButton>
+        <RadioButton GroupName="changeType" Height="16" HorizontalAlignment="Left" Margin="78,94,0,0" Name="rBtnLatest" VerticalAlignment="Top" Width="196" Checked="rBtnLatest_Checked" FontSize="14">Latest Financial Year</RadioButton>
+        <RadioButton GroupName="changeType" HorizontalAlignment="Left" Margin="78,119,0,129" Name="rBtnPrevious" Width="152" IsChecked="True" Checked="rBtnPrevious_Checked" FontSize="14">Other Financial Year</RadioButton>
         
-        <Button Height="36" HorizontalAlignment="Left" Margin="128,0,0,148" Name="btnChangeFinancialYear" VerticalAlignment="Bottom" Width="131" Click="btnChangeFinancialYear_Click">Change Financial Year</Button>
-        <Button Height="36" HorizontalAlignment="Right" Margin="0,0,212,148" Name="btnClose" VerticalAlignment="Bottom" Width="102" Click="btnClose_Click">Close</Button>
+        <Button Height="36" Margin="108,0,0,33" Name="btnChangeFinancialYear" VerticalAlignment="Bottom" Click="btnChangeFinancialYear_Click" FontSize="14" HorizontalAlignment="Left" Width="152">Change Financial Year</Button>
+        <Button Height="36" Margin="0,0,160,33" Name="btnClose" VerticalAlignment="Bottom" Click="btnClose_Click" FontSize="14" HorizontalAlignment="Right" Width="102">Close</Button>
+        <Label FontSize="20" Foreground="Blue" Height="43" Margin="20,19,0,0" Name="label1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="218">Change Financial Year</Label>
     </Grid>
 </Window>
