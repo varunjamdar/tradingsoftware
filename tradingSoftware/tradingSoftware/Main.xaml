@@ -18,8 +18,8 @@
                     <MenuItem.BitmapEffect>
                         <OuterGlowBitmapEffect GlowColor="LightGray" />
                     </MenuItem.BitmapEffect>
-                    <MenuItem Name="RestoreDb" Header="Restore Database" Click="RestoreDb_Click"/>
                     <MenuItem Name="BackupDb" Header="Backup Database" Click="BackupDb_Click"/>
+                    <MenuItem Name="RestoreDb" Header="Restore Database" Click="RestoreDb_Click"/>
                 </MenuItem>
                 <Separator/>
                 <MenuItem Name="FinancialYear" Header="Financial Year" >
