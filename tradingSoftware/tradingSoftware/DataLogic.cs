@@ -1544,7 +1544,109 @@ namespace tradingSoftware
             }
 
         }
+
+
+        public List<int> getSaleIdForCustomer(string supplierName)
+        {
+            int supplierId = this.getSupplierId(supplierName);
+
+            conn.Open();
+            ds = new DataSet();
+            cmd.CommandText = "SELECT PurchaseId From Purchase where SupplierId='" + supplierId + "' and PaymentArrived='" + false + "'";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "PurchaseSupplier");
+            conn.Close();
+
+            List<int> purchaseIdList = new List<int>();
+            foreach (DataRow i in ds.Tables["PurchaseSupplier"].Rows)
+            {
+                purchaseIdList.Add(Int32.Parse(i[0].ToString()));
+            }
+
+            return purchaseIdList;
+
+        }
+
         #endregion
 
+        #region Receipt
+
+        public int getReceiptId()
+        {
+            conn.Open();
+            cmd.CommandText = "SELECT Max(PaymentId) From Payment";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Payment");
+            conn.Close();
+            if (ds.Tables["Payment"].Rows[0][0].ToString() == "")
+            {
+                return 1;
+            }
+            else
+            {
+                return Int32.Parse(ds.Tables["Payment"].Rows[0][0].ToString()) + 1;
+            }
+        }
+
+        public List<string> getSaleItemIdForReceipt()
+        {
+
+            conn.Open();
+            cmd.CommandText = "SELECT PurchaseId From Purchase where PaymentArrived='" + false + "'";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "PurchaseIdPurchase");
+            conn.Close();
+            List<string> purchseIdList = new List<string>();
+
+            foreach (DataRow i in ds.Tables["PurchaseIdPurchase"].Rows)
+            {
+                purchseIdList.Add(i[0].ToString());
+            }
+
+            return purchseIdList;
+        }
+
+        public Dictionary<string, string> getSaleDetailsForReceipt(int purchaseId)
+        {
+
+            Dictionary<string, string> pd = new Dictionary<string, string>();
+            conn.Open();
+
+            ds = new DataSet();
+            cmd.CommandText = "Select AmountItems,AmountTaxes from Purchase where PurchaseId=" + purchaseId;
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "AmountPurchase");
+            conn.Close();
+
+            pd.Add("AmountItems", ds.Tables["AmountPurchase"].Rows[0]["AmountItems"].ToString());
+            pd.Add("AmountTaxes", ds.Tables["AmountPurchase"].Rows[0]["AmountTaxes"].ToString());
+
+            return pd;
+        }
+
+        public void makeReceipt(int PaymentId, int PurchaseId, string PaymentMode, DateTime PaymentDate, float TotalAmount, string Note)
+        {
+            //Get PaymentMode = Account , so Account Id
+            conn.Open();
+            ds = new DataSet();
+            cmd.CommandText = "Select AccountID from Account where Accountname='" + PaymentMode + "'";
+            adpt.SelectCommand = cmd;
+            adpt.Fill(ds, "Account");
+
+            cmd.CommandText = "Insert into Payment (PaymentId,PurchaseId, PaymentDate, TotalAmount, Note,PaymentMode) values (" + PaymentId + "," + PurchaseId + ",'" + PaymentDate + "'," + TotalAmount + ",'" + Note + "'," + Int32.Parse(ds.Tables["Account"].Rows[0][0].ToString()) + ")";
+            adpt.SelectCommand = cmd;
+            cmd.ExecuteNonQuery();
+
+            //Modify value in Purchase Table, Field PaymaentArrive=true
+            cmd.CommandText = "UPDATE Purchase SET PaymentArrived = '" + true + "' Where PurchaseId=" + PurchaseId + "";
+            adpt.SelectCommand = cmd;
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            MessageBox.Show("Payment Made Successfully.", "Succeed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+        #endregion
     }
 }
