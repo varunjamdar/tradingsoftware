@@ -4,7 +4,7 @@
     Title="Trial Balance" Height="500" Width="685" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid Name="GridTrialBalanceMain">
         <TabControl Name="tabControlTrialBalance">
-            <TabItem Name="TabItemTrialBalance" Header="Trial Balance">
+            <TabItem Name="TabItemTrialBalance" Header="Trial Balance" FontSize="14">
                 <Grid Name="GridTrialBalance">
                     <my:DataGrid AutoGenerateColumns="False" Name="dataGridTrialBalance" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Margin="0,69,0,37" FontSize="14">
                         <my:DataGrid.Columns>

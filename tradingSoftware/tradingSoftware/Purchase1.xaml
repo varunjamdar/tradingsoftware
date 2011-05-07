@@ -67,7 +67,7 @@
                     <CheckBox Height="21" Margin="286,0,376,22" Name="cbIsPurchaseOrderCompleted" VerticalAlignment="Bottom">Purchase Order Completed</CheckBox>
                     <GroupBox BorderBrush="DarkOliveGreen" BorderThickness="2" Foreground="BlueViolet" Header="Item Details" Height="94" Margin="48,236,140,0" Name="groupBox1" VerticalAlignment="Top" />
                     <GroupBox BorderBrush="DarkOliveGreen" BorderThickness="2" Foreground="BlueViolet" Header="Supplier And Purchase Order" Height="73" Margin="48,151,140,0" Name="groupBox2" VerticalAlignment="Top" />
-                    <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="19.952,13,0,0" Name="label25" VerticalAlignment="Top" Width="240.048">Purchase Items</Label>
+                    <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="19.952,13,0,0" Name="label25" VerticalAlignment="Top" Width="294">Purchase - Item Details</Label>
                 </Grid>
             </TabItem>
             <TabItem Header="Tax Details" FontSize="14" IsSelected="True">
@@ -117,7 +117,7 @@
                     <Label Height="35" HorizontalAlignment="Right" Margin="0,0,12,14" Name="lblTotalAmountTax" VerticalAlignment="Bottom" Width="99" FontSize="18">0</Label>
                     <Label Height="28" HorizontalAlignment="Left" Margin="340,111,0,0" Name="lblTaxId" VerticalAlignment="Top" Width="46"
                            Content="{Binding Path=TaxID}" Visibility="Hidden"></Label>
-                    <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="30,0,0,0" Name="label4" VerticalAlignment="Top" Width="136">Tax Details</Label>
+                    <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="34,31,0,0" Name="label4" VerticalAlignment="Top" Width="266">Purchase - Tax Details</Label>
                 </Grid>
             </TabItem>
         </TabControl>

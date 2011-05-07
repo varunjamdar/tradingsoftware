@@ -1,30 +1,28 @@
 ﻿<Window x:Class="tradingSoftware.Taxsetup"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Tax Setup" Height="383" Width="428.75" Loaded="Window_Loaded">
-    <Grid Height="342" Width="397.5">
+    Title="Tax Setup" Height="433" Width="652" Loaded="Window_Loaded">
+    <Grid Height="391" Width="621">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="254*" />
             <ColumnDefinition Width="529*" />
         </Grid.ColumnDefinitions>
-
-        <Label Height="28" Margin="4.853,0,0,0" Name="label5" VerticalAlignment="Top" FontSize="16" Grid.Column="2">Tax Details</Label>
-        <Button Height="23" Margin="101,125,104,0" Name="btnSavetax" VerticalAlignment="Top" Grid.Column="3">Save</Button>
-        <Button Height="23" Margin="8,125,0,0" Name="btnEditTax" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Left" Width="63.75">Edit</Button>
-        <Button Height="23" Margin="0,125,38,0" Name="btnClose" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Right" Width="43.958">Close</Button>
-        <my:DataGrid AutoGenerateColumns="False" Margin="69.331,0,130.626,26" Name="dataGrid1" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Grid.Column="2" Grid.ColumnSpan="2" Height="117.5" VerticalAlignment="Bottom">
+        <Button Height="23" Margin="101,163,0,0" Name="btnSavetax" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Left" Width="96" FontSize="14">Save</Button>
+        <Button Height="23" Margin="8,163,0,0" Name="btnEditTax" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Left" Width="74" FontSize="14">Edit</Button>
+        <Button Height="23" Margin="0,163,130.626,0" Name="btnClose" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Right" Width="75" FontSize="14">Close</Button>
+        <my:DataGrid AutoGenerateColumns="False" Margin="69.331,0,91,20" Name="dataGrid1" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" Grid.Column="2" Grid.ColumnSpan="2" Height="170" VerticalAlignment="Bottom" FontSize="14">
             <my:DataGrid.Columns>
                 <my:DataGridTextColumn Header="Tax Name" MinWidth="35" />
                 <my:DataGridTextColumn Header="Tax Rate" />
             </my:DataGrid.Columns>
         </my:DataGrid>
-        <Label FontSize="25" Foreground="Blue" Grid.Column="2" Height="47" Margin="30,-8,0,0" Name="label25" VerticalAlignment="Top">Taxes Information</Label>
-        <TextBox Grid.Column="3" Height="23" Margin="16.563,40,130.626,0" Name="txtTaxName" VerticalAlignment="Top" />
-        <TextBox Grid.Column="3" Height="23" Margin="16.563,77,130.626,0" Name="txtTaxPercentage" VerticalAlignment="Top" />
-        <Label Grid.Column="2" Height="28" Margin="48.853,38,11.438,0" Name="label1" VerticalAlignment="Top">Tax Name</Label>
-        <Label Grid.Column="2" Height="28" Margin="48.853,75,11.438,0" Name="label2" VerticalAlignment="Top">Percentage</Label>
-        <Button Grid.Column="2" Height="23" Margin="0,125,6.522,0" Name="btnAddTax" VerticalAlignment="Top" HorizontalAlignment="Right" Width="52.438">Add</Button>
+        <Label FontSize="25" Foreground="Blue" Grid.Column="2" Height="47" Margin="25,18,0,0" Name="label25" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="215">Taxes Information</Label>
+        <TextBox Grid.Column="3" Height="23" Margin="16.563,79,0,0" Name="txtTaxName" VerticalAlignment="Top" HorizontalAlignment="Left" Width="148" FontSize="14" />
+        <TextBox Grid.Column="3" Height="23" Margin="16.563,116,0,0" Name="txtTaxPercentage" VerticalAlignment="Top" HorizontalAlignment="Left" Width="97" FontSize="14" />
+        <Label Grid.Column="2" Height="28" Margin="48.853,77,11.438,0" Name="label1" VerticalAlignment="Top" FontSize="14">Tax Name</Label>
+        <Label Grid.Column="2" Height="28" Margin="48.853,114,11.438,0" Name="label2" VerticalAlignment="Top" FontSize="14">Percentage</Label>
+        <Button Grid.Column="2" Height="23" Margin="0,163,6.522,0" Name="btnAddTax" VerticalAlignment="Top" HorizontalAlignment="Right" Width="74" FontSize="14">Add</Button>
     </Grid>
 </Window>

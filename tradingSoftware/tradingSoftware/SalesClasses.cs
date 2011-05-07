@@ -6,17 +6,7 @@ using System.Text;
 
 namespace tradingSoftware
 {
-    //public class Sale
-    //{
-    //    public List<SaleItem> SaleItems;
-    //    public List<SaleTax> SaleTaxes;
-        
-
-    //    public Sale()
-    //    {
-
-    //    }
-    //}
+    
 
     public class SaleItem
     {
@@ -47,9 +37,33 @@ namespace tradingSoftware
 
         }
 
+        public SaleTax(string name, float percentage, float amount, string type)
+        {
+            TaxName = name;
+            this.TaxPercentage = percentage;
+            this.TaxAmount = amount;
+            this.TaxType = type;
+        }
+
         public string TaxName { get; set; }
         public float TaxPercentage { get; set; }
         public float TaxAmount { get; set; }
         public string TaxType { get; set; }
+    }
+
+    public class Challan
+    {
+        public Challan()
+        {
+
+        }
+
+        public int SaleId { get; set; }
+        public DateTime DateOfChallan { get; set; }
+        public string PaymentMode { get; set; }
+        public int LorryReceiptNo { get; set; }
+        public string Transporter { get; set; }
+        public string Destination { get; set; }
+
     }
 }

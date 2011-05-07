@@ -3,9 +3,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Upgrade" Height="424" Width="532">
     <Grid>
-        <TextBox Height="23" Margin="61,149,119,0" Name="txtLicenseKey" VerticalAlignment="Top" />
-        <Label Height="28" HorizontalAlignment="Left" Margin="61,101,0,0" Name="label1" VerticalAlignment="Top" Width="120">Enter License Key</Label>
-        <Button Height="23" HorizontalAlignment="Left" Margin="131,0,0,145" Name="btnUpgrade" VerticalAlignment="Bottom" Width="75" Click="btnUpgrade_Click">Upgrade</Button>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,176,145" Name="btnClose" VerticalAlignment="Bottom" Width="75" Click="btnClose_Click">Close</Button>
+        <TextBox Margin="61,176,119,187" Name="txtLicenseKey" FontSize="14" />
+        <Label Height="36" HorizontalAlignment="Left" Margin="61,132,0,0" Name="label1" VerticalAlignment="Top" Width="156" FontSize="19" Foreground="BlueViolet">Enter License Key</Label>
+        <Button Height="31" HorizontalAlignment="Left" Margin="131,0,0,142" Name="btnUpgrade" VerticalAlignment="Bottom" Width="100" Click="btnUpgrade_Click" FontSize="14">Upgrade</Button>
+        <Button Height="31" Margin="243,0,184,142" Name="btnClose" VerticalAlignment="Bottom" Click="btnClose_Click" FontSize="14">Close</Button>
+        <Label FontSize="25" Foreground="Blue" Height="43" Margin="10,10,242,0" Name="label12" VerticalAlignment="Top">Upgrade the Software</Label>
+        <Label Height="28" HorizontalAlignment="Left" Margin="51,0,0,71" Name="label2" VerticalAlignment="Bottom" Width="120" Foreground="Brown">Contact Information</Label>
+        <Label Height="28" Margin="156,0,0,45" Name="label3" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="38">Mo :</Label>
+        <Label Height="28" Margin="156,0,158,20" Name="label4" VerticalAlignment="Bottom">E-mail :</Label>
+        <Label Height="28" Margin="206,0,145,20" Name="label5" VerticalAlignment="Bottom" Foreground="Blue">support@gksolution.co.in</Label>
+        <Label Height="28" Margin="206,0,222,45" Name="label6" VerticalAlignment="Bottom">09879313011</Label>
+        <Label Height="28" Margin="51,90,222,0" Name="label7" VerticalAlignment="Top" Foreground="Blue">-- To get Licence key contact Company --</Label>
     </Grid>
 </Window>

@@ -10,6 +10,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace tradingSoftware
 {
@@ -18,9 +20,24 @@ namespace tradingSoftware
     /// </summary>
     public partial class Window2 : Window
     {
+        private DispatcherTimer timer;
+        //public System.Timers.Timer timer = new System.Timers.Timer(1000);
+
+        
         public Window2()
         {
             InitializeComponent();
+
+            string hr = "";
+            string hrstatus = "am";
+            if (Int32.Parse(DateTime.Now.Hour.ToString()) > 12)
+            {
+                hr = (Int32.Parse(DateTime.Now.Hour.ToString()) - 12).ToString();
+                hrstatus = "pm";
+            }
+            labelTime.Content = hr + " : " + DateTime.Now.Minute.ToString() + " : " + DateTime.Now.Second.ToString() + "  " + hrstatus;
+            labelDate.Content = DateTime.Today.Date;
+            Loaded += new RoutedEventHandler(Window_Loaded);
         }
 
         private void CompanyConfig_Click(object sender, RoutedEventArgs e)
@@ -154,6 +171,35 @@ namespace tradingSoftware
         {
             tradingSoftware.ChangeFinancialYear changeFY = new ChangeFinancialYear();
             changeFY.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            timer = new DispatcherTimer();
+
+            timer.Interval = TimeSpan.FromSeconds(1);
+
+            timer.Tick += timer1_Tick;
+
+
+
+            timer.Start();
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            string hr = "";
+            string hrstatus="am";
+            if (Int32.Parse(DateTime.Now.Hour.ToString()) > 12)
+            {
+                hr = (Int32.Parse(DateTime.Now.Hour.ToString())-12).ToString();
+                hrstatus = "pm";
+            }
+            labelTime.Content = hr +" : " + DateTime.Now.Minute.ToString() + " : " + DateTime.Now.Second.ToString()+"  "+hrstatus;
+            labelDate.Content = DateTime.Today.Date;
         }
     }
 }

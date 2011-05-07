@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Customer Details" Height="600" Width="900" FontSize="14">
     <Grid Name="CustomerDetailsMain">
-        <TabControl Name="tabControl1" SelectedIndex="2
+        <TabControl Name="tabControl1" SelectedIndex="0
                     
                     " Background="FloralWhite">
             <TabItem Header="Personal Information" IsSelected="True" Background="DarkKhaki">

@@ -23,7 +23,7 @@
         <Label Height="28" HorizontalAlignment="Left" Margin="204,70,0,0" Name="lblPaymentId" VerticalAlignment="Top" Width="120" FontSize="15">Label</Label>
         <Label Height="28" HorizontalAlignment="Right" Margin="0,141,139,0" Name="label7" VerticalAlignment="Top" Width="120" FontSize="14">Note</Label>
         <TextBox Height="23" HorizontalAlignment="Right" Margin="0,145,97,0" Name="txtNote" VerticalAlignment="Top" Width="120" />
-        <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="43,23,0,0" Name="label11" VerticalAlignment="Top" Width="114">Payment</Label>
+        <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="23,19,0,0" Name="label11" VerticalAlignment="Top" Width="114">Payment</Label>
         <GroupBox Header="Supplier " Margin="69,175,97,77" Name="groupBox2" BorderThickness="2" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" />
         <!--<GroupBox Header="Purchase Information" Margin="88,185,97,83" Name="groupBox2" /><Label Height="28" Margin="0,72,466,0" Name="lblPaymentId" VerticalAlignment="Top" FontSize="15" HorizontalAlignment="Right" Width="48">Label</Label><TextBox Height="58" HorizontalAlignment="Right" Margin="0,110,97,0" Name="txtNote" VerticalAlignment="Top" Width="147"  FontSize="14" MinLines="3" Grid.RowSpan="1"/><Label Height="28" HorizontalAlignment="Right" Margin="0,105,239,0" Name="label7" VerticalAlignment="Top" Width="45" FontSize="14">Note</Label>
     --></Grid>

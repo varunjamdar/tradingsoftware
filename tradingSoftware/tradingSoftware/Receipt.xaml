@@ -20,9 +20,10 @@
         <ComboBox Margin="211,110,320,0" Name="cbReceiptMode" Height="23" VerticalAlignment="Top" FontSize="14" />
         <GroupBox Header="Receipt Amount" Height="131" Margin="200,0,109,96" Name="groupBox1" VerticalAlignment="Bottom" />
         <ComboBox Height="23" HorizontalAlignment="Left" Margin="201,207,0,0" Name="cbCustomer" VerticalAlignment="Top" Width="120" FontSize="14" SelectionChanged="cbCustomer_SelectionChanged" />
-        <Label Height="28" HorizontalAlignment="Left" Margin="212,74,0,0" Name="lblReceiptId" VerticalAlignment="Top" Width="120" FontSize="15">Label</Label>
+        <Label Height="28" HorizontalAlignment="Left" Margin="212,74,0,0" Name="lblReceiptId" VerticalAlignment="Top" Width="55" FontSize="15"></Label>
         <Label Height="28" HorizontalAlignment="Right" Margin="0,145,131,0" Name="label7" VerticalAlignment="Top" Width="120" FontSize="14">Note</Label>
         <TextBox Height="23" HorizontalAlignment="Right" Margin="0,149.156,89,0" Name="txtNote" VerticalAlignment="Top" Width="120" />
+        <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="29,17,0,0" Name="label11" VerticalAlignment="Top" Width="104">Receipt</Label>
         <!--<GroupBox Header="Sale Information" Margin="88,185,97,83" Name="groupBox2" /><Label Height="28" Margin="0,72,466,0" Name="lblSaleId" VerticalAlignment="Top" FontSize="15" HorizontalAlignment="Right" Width="48">Label</Label><TextBox Height="58" HorizontalAlignment="Right" Margin="0,110,97,0" Name="txtNote" VerticalAlignment="Top" Width="147"  FontSize="14" MinLines="3" Grid.RowSpan="1"/><Label Height="28" HorizontalAlignment="Right" Margin="0,105,239,0" Name="label7" VerticalAlignment="Top" Width="45" FontSize="14">Note</Label>-->
 	</Grid>
 </Window>

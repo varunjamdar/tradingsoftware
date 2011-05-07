@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Item" Height="700" Width="900" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid Name="ItemSetup">
-        <TabControl Name="tabControl1" FontSize="14" Margin="0,-4,0,-10" SelectedIndex="1
+        <TabControl Name="tabControl1" FontSize="14" Margin="0,-4,0,-10" SelectedIndex="0
                     ">
             <TabItem Name="ItemConf" Header="Item">
                 <Grid Name="ItemConfGrid" Height="646" Width="873">

@@ -1,11 +1,11 @@
 ﻿<Window x:Class="tradingSoftware.Window2"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Trading Software" Height="700" Width="1000" Background="FloralWhite" ResizeMode="CanMinimize" SizeToContent="Manual" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    Title="Trading Software" Height="700" Width="1000" Background="FloralWhite" ResizeMode="CanMinimize" SizeToContent="Manual" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded">
     <Grid Name="MainGrid">
         <Menu Height="29" Name="menu1" VerticalAlignment="Top" Background="DarkKhaki" FontSize="14">
             <Menu.BitmapEffect>
-                <DropShadowBitmapEffect Color="Indigo" />
+                <DropShadowBitmapEffect Color="Gray" />
             </Menu.BitmapEffect>
             <MenuItem Name="BasicConfiguration" Header="Basic Configuration">
                 <MenuItem Name="CompanyConfig" Header="Company Configuration" Click="CompanyConfig_Click"/>
@@ -54,5 +54,11 @@
                 <MenuItem Name="Receipt" Header="Receipt" Click="Receipt_Click"/>
             </MenuItem>
         </Menu>
+        <Image Margin="0,36.663,0,0" Name="imageTrade" Stretch="Fill" Source="/tradingSoftware;component/Background Image/Trade of india.png" />
+        <Label Height="35.007" Margin="0,0,19,237" Name="labelTime" VerticalAlignment="Bottom" FontSize="20" FontFamily="Algerian" Foreground="DarkKhaki" HorizontalAlignment="Right" Width="142">Label Time</Label>
+        <Label Height="28" Margin="0,0,171,240" Name="label1" VerticalAlignment="Bottom" Foreground="DarkKhaki" FontSize="15" HorizontalAlignment="Right" Width="54">Time :</Label>
+        <Label Height="28" Margin="0,0,171,194" Name="label2" VerticalAlignment="Bottom" Foreground="DarkKhaki" FontSize="15" HorizontalAlignment="Right" Width="53">Date :</Label>
+        <Label FontFamily="Algerian" FontSize="20" Foreground="DarkKhaki" Height="35.007" Margin="0,0,19,191" Name="labelDate" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="142">Label Time</Label>
+        <Label Margin="472,111,50,0" Name="label3" FontSize="55" FontFamily="Copperplate Gothic Bold" Foreground="Olive" Height="67" VerticalAlignment="Top">Trade of India</Label>
     </Grid>
 </Window>

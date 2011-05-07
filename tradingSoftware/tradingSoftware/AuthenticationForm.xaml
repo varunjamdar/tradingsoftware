@@ -3,11 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="AuthenticationForm" Height="283" Width="571">
     <Grid>
-        <Label Height="43" Margin="19,29,29,0" Name="label1" VerticalAlignment="Top" FontSize="20" Foreground="Blue">Enter User Name and Password For Login Into Software</Label>
+        <Label Height="43" Margin="21,14,27,0" Name="label1" VerticalAlignment="Top" FontSize="20" Foreground="Blue">Enter User Name and Password For Login Into Software</Label>
         <Label HorizontalAlignment="Left" Margin="154,94,0,0" Name="label2" Width="81" Height="28" VerticalAlignment="Top" FontSize="14">User Name</Label>
         <Label Margin="165,0,314,82" Name="label3" FontSize="14" Height="28" VerticalAlignment="Bottom">Password</Label>
-        <Button Height="23" HorizontalAlignment="Left" Margin="191,0,0,23" Name="btnLogin" VerticalAlignment="Bottom" Width="75" Click="btnLogin_Click" FontSize="14">Login</Button>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,178,23" Name="btnExit" VerticalAlignment="Bottom" Width="75" Click="btnExit_Click" FontSize="14">Exit</Button>
+        <Button Height="31" Margin="168,0,0,16" Name="btnLogin" VerticalAlignment="Bottom" Click="btnLogin_Click" FontSize="14" HorizontalAlignment="Left" Width="91">Login</Button>
+        <Button Height="31" Margin="273,0,181,16" Name="btnExit" VerticalAlignment="Bottom" Click="btnExit_Click" FontSize="14">Exit</Button>
         <TextBox Height="23" Margin="239,99,143,0" Name="textBox1" VerticalAlignment="Top" FontSize="14" />
         <PasswordBox Margin="238,0,143,82" Name="passwordBox1" FontSize="14" Height="23" VerticalAlignment="Bottom" />
     </Grid>

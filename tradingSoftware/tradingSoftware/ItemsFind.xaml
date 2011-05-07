@@ -4,7 +4,7 @@
     Title="ItemsFind" Height="600" Width="900" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid Name="ItemListingGrid">
         <my:DataGrid AutoGenerateColumns="False" Margin="26,62,30,114" Name="ItemGrid" 
-                     ItemsSource="{Binding}" MouseDoubleClick="ItemGrid_MouseDoubleClick">
+                     ItemsSource="{Binding}" MouseDoubleClick="ItemGrid_MouseDoubleClick" FontSize="14">
             <my:DataGrid.Columns>
                 <my:DataGridTextColumn Header="Item Code" IsReadOnly="True" Width="100" Binding="{Binding Path=ItemCode}"/>
                 <my:DataGridTextColumn Header="Item Name" IsReadOnly="True" Width="150" Binding="{Binding Path=ItemName}"/>
