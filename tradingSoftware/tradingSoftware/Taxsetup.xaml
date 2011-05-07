@@ -9,6 +9,7 @@
             <ColumnDefinition Width="254*" />
             <ColumnDefinition Width="529*" />
         </Grid.ColumnDefinitions>
+
         <Label Height="28" Margin="4.853,0,0,0" Name="label5" VerticalAlignment="Top" FontSize="16" Grid.Column="2">Tax Details</Label>
         <Button Height="23" Margin="101,125,104,0" Name="btnSavetax" VerticalAlignment="Top" Grid.Column="3">Save</Button>
         <Button Height="23" Margin="8,125,0,0" Name="btnEditTax" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Left" Width="63.75">Edit</Button>
@@ -19,6 +20,7 @@
                 <my:DataGridTextColumn Header="Tax Rate" />
             </my:DataGrid.Columns>
         </my:DataGrid>
+        <Label FontSize="25" Foreground="Blue" Grid.Column="2" Height="47" Margin="30,-8,0,0" Name="label25" VerticalAlignment="Top">Taxes Information</Label>
         <TextBox Grid.Column="3" Height="23" Margin="16.563,40,130.626,0" Name="txtTaxName" VerticalAlignment="Top" />
         <TextBox Grid.Column="3" Height="23" Margin="16.563,77,130.626,0" Name="txtTaxPercentage" VerticalAlignment="Top" />
         <Label Grid.Column="2" Height="28" Margin="48.853,38,11.438,0" Name="label1" VerticalAlignment="Top">Tax Name</Label>

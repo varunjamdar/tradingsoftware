@@ -344,17 +344,17 @@ namespace tradingSoftware
                     company.CstDate = (DateTime)dtCstDate.SelectedDate;
                 }
 
-                //try
-                //{
-                //    Validations.NumberValidator(TxtPanNo.Text);
+                try
+                {
+                    Validations.NumberValidator(TxtPanNo.Text);
                     company.PanNo = TxtPanNo.Text;
-                //}
-                //catch (FormatException fe)
-                //{
-                //    string str = fe.Message;
-                //    MessageBox.Show("Error in PAN Number : " + str, "WARNING");
-                //    return;
-                //}
+                }
+                catch (FormatException fe)
+                {
+                    string str = fe.Message;
+                    MessageBox.Show("Error in PAN Number : " + str, "WARNING");
+                    return;
+                }
 
                 try
                 {

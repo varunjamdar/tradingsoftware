@@ -1305,23 +1305,30 @@ namespace tradingSoftware
 
                 int AccountGroupId = int.Parse(ds.Tables["AccountGroup"].Rows[0]["AccountGroupId"].ToString());
 
+                //
                 ds.Tables.Clear();
                 cmd = conn.CreateCommand();
                 string cityName = account.City;
                 adpt.SelectCommand = cmd;
-                cmd.CommandText = "Select CityId from City where CityName='" + cityName + "';";
+                cmd.CommandText = "Select CityID from City where CityName='" + cityName + "';";
                 adpt.Fill(ds, "City");
 
-                int CityId = int.Parse(ds.Tables["City"].Rows[0]["CityId"].ToString());
+
+                
+                
+                int CityId = int.Parse(ds.Tables["City"].Rows[0]["CityID"].ToString());
 
                 ds.Tables.Clear();
                 cmd = conn.CreateCommand();
                 string stateName = account.State;
                 adpt.SelectCommand = cmd;
-                cmd.CommandText = "Select StateId from State where StateName='" + stateName + "';";
+                cmd.CommandText = "Select StateID from State where StateName='" + stateName + "';";
                 adpt.Fill(ds, "State");
 
-                int StateId = int.Parse(ds.Tables["State"].Rows[0]["StateId"].ToString());
+                
+                
+                int StateId = int.Parse(ds.Tables["State"].Rows[0]["StateID"].ToString());
+
 
                 cmd.CommandText = "Insert into Account(AccountName,AccountPrintName,AccountGroupId,AddressLine1,AddressLine2,AddressLine3,CityId,StateId,Pincode,Email,ContactPerson,TelephoneNo,PANNo) values (@AccountName,@AccountPrintName,@AccountGroupId,@AddressLine1,@AddressLine2,@AddressLine3,@CityId,@StateId,@Pincode,@Email,@ContactPerson,@TelephoneNo,@PANNo)";
 

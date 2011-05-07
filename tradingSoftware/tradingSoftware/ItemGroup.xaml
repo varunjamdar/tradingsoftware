@@ -3,13 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Item Group" Height="300" Width="600">
     <Grid Background="FloralWhite">
-        <Label Height="33" HorizontalAlignment="Left" Margin="25,16,0,0" Name="label1" VerticalAlignment="Top" Width="110" Foreground="Teal" FontSize="16" FontWeight="Bold">Item Group</Label>
-        <Label Height="28" HorizontalAlignment="Left" Margin="69,74,0,0" Name="label2" VerticalAlignment="Top" Width="87">Group Name</Label>
-        <TextBox Height="23" Margin="184,79,0,0" Name="txtGroupName" VerticalAlignment="Top" HorizontalAlignment="Left" Width="233" />
-        <TextBox Margin="184,130,73,109" Name="txtGroupDesc" Grid.Row="2" />
-        <Button Height="23" HorizontalAlignment="Left" Margin="141,0,0,29" Name="btnSave" VerticalAlignment="Bottom" Width="75" Click="btnSave_Click">Save</Button>
-        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,213,29" Name="btnClose" VerticalAlignment="Bottom" Width="75" Click="btnClose_Click">Close</Button>
-        <Label HorizontalAlignment="Left" Margin="69,125,0,109" Name="label3" Width="107">Group Description</Label>
-        
+        <Label Height="28" HorizontalAlignment="Left" Margin="82,76.19,0,0" Name="label2" VerticalAlignment="Top" Width="94" FontSize="14">Group Name</Label>
+        <TextBox Height="23" Margin="184,79,0,0" Name="txtGroupName" VerticalAlignment="Top" HorizontalAlignment="Left" Width="233" FontSize="14" />
+        <TextBox Margin="184,130,73,109" Name="txtGroupDesc" Grid.Row="2" FontSize="14" />
+        <Button Height="23" HorizontalAlignment="Left" Margin="141,0,0,29" Name="btnSave" VerticalAlignment="Bottom" Width="75" Click="btnSave_Click" FontSize="14">Save</Button>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,213,29" Name="btnClose" VerticalAlignment="Bottom" Width="75" Click="btnClose_Click" FontSize="14">Close</Button>
+        <Label HorizontalAlignment="Left" Margin="54,125,0,109" Name="label3" Width="122" FontSize="14">Group Description</Label>
+        <Label FontSize="25" Foreground="Blue" Height="47" Margin="21,12,0,0" Name="label11" VerticalAlignment="Top" HorizontalAlignment="Left" Width="203">Item Group</Label>
     </Grid>
 </Window>

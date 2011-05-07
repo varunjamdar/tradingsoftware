@@ -3,8 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="ItemsFind" Height="600" Width="900" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid Name="ItemListingGrid">
-        <Label Height="28" HorizontalAlignment="Left" Margin="36,9,0,0" Name="label1" VerticalAlignment="Top" Width="120" FontSize="14">Items Listing</Label>
-        <my:DataGrid AutoGenerateColumns="False" Margin="26,41,30,135" Name="ItemGrid" 
+        <my:DataGrid AutoGenerateColumns="False" Margin="26,62,30,114" Name="ItemGrid" 
                      ItemsSource="{Binding}" MouseDoubleClick="ItemGrid_MouseDoubleClick">
             <my:DataGrid.Columns>
                 <my:DataGridTextColumn Header="Item Code" IsReadOnly="True" Width="100" Binding="{Binding Path=ItemCode}"/>
@@ -15,6 +14,6 @@
         </my:DataGrid>
         <Button Height="28" HorizontalAlignment="Left" Margin="246,0,0,49" Name="btnSelect" VerticalAlignment="Bottom" Width="107" Click="btnSelect_Click">Select</Button>
         <Button Margin="458,0,0,49" Name="btnCancel" Height="28" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="107" Click="btnCancel_Click">Cancel</Button>
-        
+        <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Right" Margin="0,7,649,0" Name="label11" VerticalAlignment="Top" Width="203">Item List</Label>
     </Grid>
 </Window>

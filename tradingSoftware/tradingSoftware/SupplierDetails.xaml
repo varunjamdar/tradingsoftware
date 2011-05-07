@@ -3,24 +3,25 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Supplier Details" Height="641" Width="900" FontSize="14">
     <Grid Name="CustomerDetailsMain" Height="596">
-        <TabControl Name="tabControl1" SelectedIndex="0" Background="FloralWhite" SelectionChanged="tabControl1_SelectionChanged">
+        <TabControl Name="tabControl1" SelectedIndex="2
+                    " Background="FloralWhite" SelectionChanged="tabControl1_SelectionChanged">
             <TabItem Header="Personal Information" Background="DarkKhaki">
-                <Grid ShowGridLines="False" Margin="1,0,9,32" Height="517">
+                <Grid ShowGridLines="False" Margin="1,0,9,32" Height="514">
                     
-                    <Label Height="28" HorizontalAlignment="Left" Margin="46,43,0,0" Name="label1" VerticalAlignment="Top" Width="94">Supplier ID</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="144,43,0,0" Name="txtSupplierId" VerticalAlignment="Top" Width="62" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="46,81,0,0" Name="label1" VerticalAlignment="Top" Width="94">Supplier ID</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="144,81,0,0" Name="txtSupplierId" VerticalAlignment="Top" Width="62" />
                     
-                    <TextBox Height="23" Margin="149,135,0,0" Name="txtSupplierCompany" VerticalAlignment="Top" HorizontalAlignment="Left" Width="189" Grid.Column="4" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="149,192,0,0" Name="txtContactPerson" VerticalAlignment="Top" Width="189" Grid.Column="4" />
-                    <Label Height="28" Margin="12,133,0,0" Name="label2" VerticalAlignment="Top" Grid.Column="4" HorizontalAlignment="Left" Width="128">Supplier Company</Label>
-                    <Label Height="28" Margin="0,100,378,0" Name="label5" VerticalAlignment="Top" Grid.Column="4" HorizontalAlignment="Right" Width="64.002">Address</Label>
-                    <TextBox Height="23" Margin="0,100,45,0" Name="txtAddLine1" VerticalAlignment="Top" Grid.Column="4" HorizontalAlignment="Right" Width="325" />
-                    <TextBox Height="23" Margin="0,128,45,0" Name="txtAddLine2" VerticalAlignment="Top" Grid.Column="4" HorizontalAlignment="Right" Width="325" />
-                    <TextBox Height="23" Margin="0,156,45,0" Name="txtAddLine3" VerticalAlignment="Top" Grid.Column="4" HorizontalAlignment="Right" Width="325" />
-                    <ComboBox Grid.Column="4" Height="23" HorizontalAlignment="Right" Margin="0,191,120,0" Name="cmbState" VerticalAlignment="Top" Width="250" />
-                    <ComboBox Grid.Column="4" Height="23" HorizontalAlignment="Right" Margin="0,234,201,0" Name="cmbCity" VerticalAlignment="Top" Width="169" />
-                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,231,39,0" Name="txtPin" VerticalAlignment="Top" Width="131" Grid.Column="4" />
-                    <Label Height="28" Margin="0,186,386,0" Name="label7" VerticalAlignment="Top" Grid.Column="4" HorizontalAlignment="Right" Width="56.002">State</Label>
+                    <TextBox Height="23" Margin="149,173,0,0" Name="txtSupplierCompany" VerticalAlignment="Top" HorizontalAlignment="Left" Width="189" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="149,230,0,0" Name="txtContactPerson" VerticalAlignment="Top" Width="189" />
+                    <Label Height="28" Margin="12,171,0,0" Name="label2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="128">Supplier Company</Label>
+                    <Label Height="28" Margin="415.998,121,378,0" Name="label5" VerticalAlignment="Top">Address</Label>
+                    <TextBox Height="23" Margin="0,121,45,0" Name="txtAddLine1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="325" />
+                    <TextBox Height="23" Margin="0,149,45,0" Name="txtAddLine2" VerticalAlignment="Top" HorizontalAlignment="Right" Width="325" />
+                    <TextBox Height="23" Margin="0,177,45,0" Name="txtAddLine3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="325" />
+                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,212,120,0" Name="cmbState" VerticalAlignment="Top" Width="250" />
+                    <ComboBox HorizontalAlignment="Right" Margin="0,0,201,237" Name="cmbCity" Width="169" Height="19.8" VerticalAlignment="Bottom" />
+                    <TextBox HorizontalAlignment="Right" Margin="0,254,39,240" Name="txtPin" Width="131" />
+                    <Label Height="28" Margin="415.998,207,386,0" Name="label7" VerticalAlignment="Top">State</Label>
                     <Label Height="28" Margin="29,0,0,134" Name="label10" VerticalAlignment="Bottom" Grid.Column="4" HorizontalAlignment="Left" Width="63">Website</Label>
                     <Label Height="28" Margin="29,0,0,95" Name="label11" VerticalAlignment="Bottom" Grid.Column="4" HorizontalAlignment="Left" Width="63">Email ID</Label>
                     <Label Height="28" Margin="29,0,0,55" Name="label12" VerticalAlignment="Bottom" Grid.Column="4" HorizontalAlignment="Left" Width="63">Fax</Label>
@@ -31,62 +32,64 @@
                     <Label Height="28" Margin="390,0,378,97" Name="label14" VerticalAlignment="Bottom" Grid.Column="4">Phone No 2</Label>
                     <TextBox Height="23" Margin="0,0,164,139" Name="txtPhone1" VerticalAlignment="Bottom" Grid.Column="4" HorizontalAlignment="Right" Width="195" />
                     <TextBox Height="23" Margin="0,0,164,97" Name="txtPhone2" VerticalAlignment="Bottom" Grid.Column="4" HorizontalAlignment="Right" Width="195" />
-                    <Label Height="28" Margin="0,229,400,0" Name="label16" VerticalAlignment="Top" Grid.Column="4" HorizontalAlignment="Right" Width="42.002">City</Label>
-                    <Label Height="28" HorizontalAlignment="Right" Margin="0,229,162,0" Name="label17" VerticalAlignment="Top" Width="39" Grid.Column="4">Pin</Label>
+                    <Label Margin="415.998,250,400,236" Name="label16">City</Label>
+                    <Label HorizontalAlignment="Right" Margin="0,250,162,236" Name="label17" Width="39">Pin</Label>
                     
-                    <GroupBox Header="Address Details" Margin="0,59,29,229" Name="groupBox3" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" Grid.Column="4" HorizontalAlignment="Right" Width="427" />
+                    <GroupBox Header="Address Details" Margin="402,80,29,208" Name="groupBox3" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" />
                     <GroupBox Header="Contacts" Margin="12,0,15,39" Name="groupBox4" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" Opacity="1" Grid.Column="4" Height="159" VerticalAlignment="Bottom"></GroupBox>
-                    <Label Height="28" Margin="12,192,0,0" Name="label3" VerticalAlignment="Top" Grid.Column="4" HorizontalAlignment="Left" Width="120">Contact Person</Label>
+                    <Label Margin="12,230,0,256" Name="label3" HorizontalAlignment="Left" Width="120">Contact Person</Label>
                     
-                    <GroupBox BorderBrush="DarkOliveGreen" BorderThickness="2" FontSize="14" Foreground="BlueViolet" Grid.Column="4" Header="Basic" HorizontalAlignment="Left" Margin="12,77,0,249" Name="groupBox2" Width="357" />
-                    
+                    <GroupBox BorderBrush="DarkOliveGreen" BorderThickness="2" FontSize="14" Foreground="BlueViolet" Header="Basic" HorizontalAlignment="Left" Margin="12,115,0,211" Name="groupBox2" Width="357" />
+                    <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="10,18,0,0" Name="label25" VerticalAlignment="Top" Width="417">Supplie Detail - Pursonal Informtion</Label>
                 </Grid>
             </TabItem>
             <TabItem Header="Registration No." Background="DarkKhaki" IsHitTestVisible="True" IsTabStop="True" Focusable="True" IsEnabled="True" Visibility="Visible" IsSelected="True">
                 <Grid Name="gridCoregDet">
-                    <GroupBox Header="Other Details" Margin="0,67,10,0" Name="groupBox6" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" HorizontalAlignment="Right" Width="374" Height="239" VerticalAlignment="Top" />
-                    <GroupBox Header="VAT/GST and CST No." Margin="13,31,407,180" Name="groupBox5" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="25,69,0,0" Name="label8" VerticalAlignment="Top" Width="112">Enable VAT/GST</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="142,69,0,0" Name="cmbVatGst" VerticalAlignment="Top" Width="80" >
+                    <GroupBox Header="Other Details" Margin="0,141.471,10,178.625" Name="groupBox6" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" HorizontalAlignment="Right" Width="374" />
+                    <GroupBox Header="VAT/GST and CST No." Margin="13,105.746,407,105.746" Name="groupBox5" Foreground="BlueViolet" BorderBrush="DarkOliveGreen" BorderThickness="2" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="25,142.9,0,0" Name="label8" VerticalAlignment="Top" Width="112">Enable VAT/GST</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="142,142.9,0,0" Name="cmbVatGst" VerticalAlignment="Top" Width="80" >
                         <ComboBoxItem>Yes</ComboBoxItem>
                         <ComboBoxItem>No</ComboBoxItem>
                     </ComboBox>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="261,69,0,0" Name="label9" VerticalAlignment="Top" Width="56">Type</Label>
-                    <ComboBox Height="23" Margin="310,69,0,0" Name="cmbVatGstType" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74" IsHitTestVisible="False" IsEditable="False" IsEnabled="False">
+                    <Label Height="28" HorizontalAlignment="Left" Margin="261,142.9,0,0" Name="label9" VerticalAlignment="Top" Width="56">Type</Label>
+                    <ComboBox Height="23" Margin="310,142.9,0,0" Name="cmbVatGstType" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74" IsHitTestVisible="False" IsEditable="False" IsEnabled="False">
                         <ComboBoxItem>VAT</ComboBoxItem>
                         <ComboBoxItem>GST</ComboBoxItem>
                     </ComboBox>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="35,122,0,0" Name="label15" VerticalAlignment="Top" Width="66">TIN No.</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="142,127,0,0" Name="txtCompanyTinNo" VerticalAlignment="Top" Width="242" IsEnabled="False"/>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="35,161,0,0" Name="label18" VerticalAlignment="Top" Width="102">VAT/GST Date</Label>
-                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="142,164,0,0" Name="dtVatGstDate" VerticalAlignment="Top" Width="133" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" IsEnabled="False"/>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="35,232,0,0" Name="label19" VerticalAlignment="Top" Width="66">CST No.</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="142,237,0,0" Name="txtCstNo" VerticalAlignment="Top" Width="242" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="35,0,0,212" Name="label20" VerticalAlignment="Bottom" Width="89">CST Date</Label>
-                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="142,0,0,212" Name="dtCstDate" VerticalAlignment="Bottom" Width="133" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-                    <Label Height="28" HorizontalAlignment="Right" Margin="0,99,287,0" Name="label21" VerticalAlignment="Top" Width="70">PAN No.</Label>
-                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,99,68,0" Name="TxtPanNo" VerticalAlignment="Top" Width="195" />
-                    <Label Height="28" HorizontalAlignment="Right" Margin="0,167,262,0" Name="label22" VerticalAlignment="Top" Width="108">Service Tax No</Label>
-                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,169,68,0" Name="TxtServiceTaxNo" VerticalAlignment="Top" Width="195" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="35,195.773,0,0" Name="label15" VerticalAlignment="Top" Width="66">TIN No.</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="142,201.489,0,0" Name="txtCompanyTinNo" VerticalAlignment="Top" Width="242" IsEnabled="False"/>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="35,235.785,0,0" Name="label18" VerticalAlignment="Top" Width="102">VAT/GST Date</Label>
+                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="142,238.643,0,0" Name="dtVatGstDate" VerticalAlignment="Top" Width="133" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" IsEnabled="False"/>
+                    <Label HorizontalAlignment="Left" Margin="35,0,0,225.782" Name="label19" Width="66" Height="27.792" VerticalAlignment="Bottom">CST No.</Label>
+                    <TextBox HorizontalAlignment="Left" Margin="142,0,0,225.782" Name="txtCstNo" Width="242" Height="19.8" VerticalAlignment="Bottom" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="35,0,0,137.184" Name="label20" VerticalAlignment="Bottom" Width="89">CST Date</Label>
+                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="142,0,0,137.184" Name="dtCstDate" VerticalAlignment="Bottom" Width="133" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,172.909,287,0" Name="label21" VerticalAlignment="Top" Width="70">PAN No.</Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,172.909,68,0" Name="TxtPanNo" VerticalAlignment="Top" Width="195" />
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,241.501,262,0" Name="label22" VerticalAlignment="Top" Width="108">Service Tax No</Label>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,242.93,68,0" Name="TxtServiceTaxNo" VerticalAlignment="Top" Width="195" />
                     
-                    <Label HorizontalAlignment="Right" Margin="0,240,213,0" Name="label24" Width="157" Height="28.1" VerticalAlignment="Top">Credit Capacity Offered</Label>
-                    <TextBox HorizontalAlignment="Right" Margin="0,242,68,0" Name="textBox7" Width="135" Height="23" VerticalAlignment="Top" />
-                    <Label Height="28" HorizontalAlignment="Right" Margin="0,256.1,287,0" Name="label4" VerticalAlignment="Top" Width="54">(days)</Label>
+                    <Label HorizontalAlignment="Right" Margin="0,0,213,217.208" Name="label24" Width="157" Height="27.792" VerticalAlignment="Bottom">Credit Capacity Offered</Label>
+                    <TextBox HorizontalAlignment="Right" Margin="0,0,68,221.495" Name="textBox7" Width="135" Height="19.8" VerticalAlignment="Bottom" />
+                    <Label HorizontalAlignment="Right" Margin="0,0,287,201.489" Name="label4" Width="54" Height="27.792" VerticalAlignment="Bottom">(days)</Label>
+                    <Label FontSize="25" Foreground="Blue" Height="47" Margin="20.006,25.722,431.558,0" Name="label6" VerticalAlignment="Top">Supplie Detail - Registration No.</Label>
                 </Grid>
             </TabItem>
             <TabItem Header="Company Profile" IsSelected="True" Background="DarkKhaki">
                 <Grid Name="gridCoImg">
-                    <Label Height="28" HorizontalAlignment="Left" Margin="35,75,0,0" Name="label26" VerticalAlignment="Top" Width="208">Credit Rating (market value)</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="248,80,0,0" Name="comboBox6" VerticalAlignment="Top" Width="120" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="35,141,0,0" Name="label27" VerticalAlignment="Top" Width="120">Customer Type</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="248,146,0,0" Name="comboBox7" VerticalAlignment="Top" Width="120" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="113.322,164.428,0,0" Name="label26" VerticalAlignment="Top" Width="186.648">Credit Rating (market value)</Label>
+                    <ComboBox Height="23" Margin="301.081,171.094,428.846,0" Name="comboBox6" VerticalAlignment="Top" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="191.092,231.088,0,0" Name="label27" VerticalAlignment="Top" Width="108">Customer Type</Label>
+                    <ComboBox Height="23" Margin="301.081,236.643,428.846,0" Name="comboBox7" VerticalAlignment="Top" />
+                    <Button Height="29" Width="108" HorizontalAlignment="Left" Margin="131.468,0,0,194.344" Name="btnNew" VerticalAlignment="Bottom">New</Button>
+                    <Button Height="29" HorizontalAlignment="Left" Margin="285.8,0,0,194.344" Name="btnSave" VerticalAlignment="Bottom" Width="108">Save</Button>
+                    <Button Height="29" Margin="0,0,312.951,194.344" Name="btnFind" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="108">Find</Button>
+                    <Button Height="29" HorizontalAlignment="Right" Margin="0,0,158.619,194.344" Name="btnClose" VerticalAlignment="Bottom" Width="108">Close</Button>
+                    <Label FontSize="25" Foreground="Blue" Height="47" Margin="48.586,35.725,402.978,0" Name="label23" VerticalAlignment="Top">Supplie Detail - Compnay Profile</Label>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Height="29" Width="108" HorizontalAlignment="Left" Margin="140,0,0,18" Name="btnNew" VerticalAlignment="Bottom" >New</Button>
-        <Button Height="29" HorizontalAlignment="Left" Margin="294,0,0,18" Name="btnSave" VerticalAlignment="Bottom" Width="108">Save</Button>
-        <Button Height="29" Margin="0,0,315,18" Name="btnFind" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="108">Find</Button>
-        <Button Height="29" HorizontalAlignment="Right" Margin="0,0,161,18" Name="btnClose" VerticalAlignment="Bottom" Width="108">Close</Button>
     </Grid>
 </Window>
 

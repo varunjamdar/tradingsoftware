@@ -4,12 +4,12 @@
     Title="Ledger" Height="600" Width="860" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid Name="GridLedgerMain">
         <TabControl Name="tabControlLedger">
-            <TabItem Header="Ledger" Name="TabItemLedger">
+            <TabItem Header="Ledger" Name="TabItemLedger" FontSize="14">
                 <Grid Name="GridLedger">   
-                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,13,31,0" Name="comboBoxLedger" VerticalAlignment="Top" Width="200" ItemsSource="{Binding}" DisplayMemberPath="AccountName" IsSynchronizedWithCurrentItem="True" SelectionChanged="comboBoxLedger_SelectionChanged">
+                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,24,31,0" Name="comboBoxLedger" VerticalAlignment="Top" Width="200" ItemsSource="{Binding}" DisplayMemberPath="AccountName" IsSynchronizedWithCurrentItem="True" SelectionChanged="comboBoxLedger_SelectionChanged">
                     </ComboBox>
-                    <Label Height="28" Margin="0,13,267,0" Name="label1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="51">Ledger</Label>
-                    <my:DataGrid AutoGenerateColumns="False" Margin="25,52,31,30" Name="dataGridLedger">
+                    <Label Height="28" Margin="0,24,255,0" Name="label1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="63">Ledger</Label>
+                    <my:DataGrid AutoGenerateColumns="False" Margin="25,67,31,15" Name="dataGridLedger">
                         <my:DataGrid.Columns>
                             <my:DataGridTextColumn Header="Transaction Date" Binding="{Binding DateOfTransaction}" />
                             <my:DataGridTextColumn Header="Transaction Details" Binding="{Binding TransactionDetails}" Width="370" />
@@ -18,7 +18,8 @@
                             <my:DataGridTextColumn Header="Balance" Binding="{Binding Balance}" Width="100" />
                         </my:DataGrid.Columns>
                     </my:DataGrid>
-                    <TextBox Height="23" Margin="365,13,344,0" Name="textBox1" VerticalAlignment="Top"  Text="{Binding Path=AccountName}" Visibility="Hidden" />
+                    <TextBox Height="23" Margin="365,24,344,0" Name="textBox1" VerticalAlignment="Top"  Text="{Binding Path=AccountName}" Visibility="Hidden" />
+                    <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="25,9.974,0,0" Name="label11" VerticalAlignment="Top" Width="203">Ledger Details</Label>
                 </Grid>
             </TabItem>
         </TabControl>     
