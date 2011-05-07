@@ -146,12 +146,14 @@ namespace tradingSoftware
 
         private void NewFinancialYear_Click(object sender, RoutedEventArgs e)
         {
-
+            tradingSoftware.NewFinancialYear newFY = new NewFinancialYear();
+            newFY.ShowDialog();
         }
 
         private void ChangeFinancialYear_Click(object sender, RoutedEventArgs e)
         {
-
+            tradingSoftware.ChangeFinancialYear changeFY = new ChangeFinancialYear();
+            changeFY.ShowDialog();
         }
     }
 }

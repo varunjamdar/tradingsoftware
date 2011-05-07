@@ -14,21 +14,29 @@ using System.Windows.Shapes;
 namespace tradingSoftware
 {
     /// <summary>
-    /// Interaction logic for NewFinancialYear.xaml
+    /// Interaction logic for ChangeFinancialYear.xaml
     /// </summary>
-    public partial class NewFinancialYear : Window
+    public partial class ChangeFinancialYear : Window
     {
-        public NewFinancialYear()
+        public ChangeFinancialYear()
         {
             InitializeComponent();
         }
 
-        private void btnNewFY_Click(object sender, RoutedEventArgs e)
+        private void rBtnPrevious_Checked(object sender, RoutedEventArgs e)
         {
-            
-            MessageBoxResult result= MessageBox.Show("Are you sure you want to move to next Financial Year ?","Warning !!",MessageBoxButton.YesNo);
-            //if(result==MessageBoxResult.Yes)
-            //    MessageBox.Show("Yes");
+            cBYears.IsEnabled = true;
+        }
+
+        private void rBtnLatest_Checked(object sender, RoutedEventArgs e)
+        {
+            cBYears.SelectedIndex = -1;
+            cBYears.IsEnabled = false;
+        }
+
+        private void btnChangeFinancialYear_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
