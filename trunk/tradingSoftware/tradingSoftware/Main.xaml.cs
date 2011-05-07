@@ -104,7 +104,8 @@ namespace tradingSoftware
 
         private void Receipt_Click(object sender, RoutedEventArgs e)
         {
-
+            tradingSoftware.Receipt receiptForm = new Receipt();
+            receiptForm.ShowDialog();
         }
 
         private void Item_Click(object sender, RoutedEventArgs e)
