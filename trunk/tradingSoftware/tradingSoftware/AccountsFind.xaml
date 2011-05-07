@@ -12,7 +12,7 @@
                 <my:DataGridTextColumn Header="Account Group" IsReadOnly="True" Width="150" Binding="{Binding Path=AccountGroupName}"/>
             </my:DataGrid.Columns>
         </my:DataGrid>
-        <Label Height="28" HorizontalAlignment="Left" Margin="55,25,0,0" Name="label1" VerticalAlignment="Top" Width="120">Accounts List</Label>
         <Button Height="32" Margin="420,0,329,24" Name="btnClose" VerticalAlignment="Bottom" Click="btnClose_Click">Close</Button>
+        <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="55,16,0,0" Name="label11" VerticalAlignment="Top" Width="203">Account List</Label>
     </Grid>
 </Window>

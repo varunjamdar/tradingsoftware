@@ -3,23 +3,24 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Item" Height="700" Width="900" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
     <Grid Name="ItemSetup">
-        <TabControl Name="tabControl1" FontSize="14" Margin="0,-4,0,-10" SelectedIndex="0">
+        <TabControl Name="tabControl1" FontSize="14" Margin="0,-4,0,-10" SelectedIndex="1
+                    ">
             <TabItem Name="ItemConf" Header="Item">
                 <Grid Name="ItemConfGrid" Height="646" Width="873">
-                    <Label Height="28" HorizontalAlignment="Left" Margin="53,52,0,0" Name="lblItemId" VerticalAlignment="Top" Width="70">Item ID</Label>
-                    <TextBox Height="23" Margin="150,57,0,0" Name="txtItemId" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" />
-                    <Label Height="28" Margin="53,93,0,0" Name="label2" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="85">Item Code</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="150,98,0,0" Name="txtItemCode" VerticalAlignment="Top" Width="211" FontSize="14" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="53,142,0,0" Name="label3" VerticalAlignment="Top" Width="59" FontSize="14">Name</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="150,147,0,0" Name="txtName" VerticalAlignment="Top" Width="222" FontSize="14" />
-                    <Label Height="28" Margin="395,145,358,0" Name="label17" VerticalAlignment="Top">Item Group</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,147,162,0" Name="cbxItemGroup" VerticalAlignment="Top" Width="216" 
+                    <Label Height="28" HorizontalAlignment="Left" Margin="53,88,0,0" Name="lblItemId" VerticalAlignment="Top" Width="70">Item ID</Label>
+                    <TextBox Height="23" Margin="150,94,0,0" Name="txtItemId" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" />
+                    <Label Height="28" Margin="53,130,0,0" Name="label2" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="85">Item Code</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="150,134,0,0" Name="txtItemCode" VerticalAlignment="Top" Width="211" FontSize="14" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="53,178,0,0" Name="label3" VerticalAlignment="Top" Width="59" FontSize="14">Name</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="150,182,0,0" Name="txtName" VerticalAlignment="Top" Width="222" FontSize="14" />
+                    <Label Height="28" Margin="395,182,358,0" Name="label17" VerticalAlignment="Top">Item Group</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,182,162,0" Name="cbxItemGroup" VerticalAlignment="Top" Width="216" 
                               ItemsSource="{Binding}" DisplayMemberPath="ItemGroupName" IsSynchronizedWithCurrentItem="True"/>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="53,195,0,0" Name="label4" VerticalAlignment="Top" Width="85" FontSize="14">Description</Label>
-                    <TextBox Height="47" Margin="147,200,382,0" Name="txtDesc" VerticalAlignment="Top" MinLines="3"
+                    <Label Height="28" HorizontalAlignment="Left" Margin="53,230,0,0" Name="label4" VerticalAlignment="Top" Width="85" FontSize="14">Description</Label>
+                    <TextBox Height="47" Margin="147,236,382,0" Name="txtDesc" VerticalAlignment="Top" MinLines="3"
                  TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" FontSize="14"></TextBox>
-                    <Label Height="28" HorizontalAlignment="Right" Margin="0,195,278,0" Name="label5" VerticalAlignment="Top" Width="84" FontSize="14">Unit used</Label>
-                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,195,89,0" Name="cbxUnitUsed" VerticalAlignment="Top" Width="184" FontSize="14"
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,230,278,0" Name="label5" VerticalAlignment="Top" Width="84" FontSize="14">Unit used</Label>
+                    <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,230,89,0" Name="cbxUnitUsed" VerticalAlignment="Top" Width="184" FontSize="14"
                               ItemsSource="{Binding}" DisplayMemberPath="UnitName" IsSynchronizedWithCurrentItem="True"/>
                     <Label HorizontalAlignment="Left" Margin="53,301,0,317" Name="label6" Width="85" FontSize="14">Open Date</Label>
                     <my:DatePicker HorizontalAlignment="Left" Margin="213,302,0,320" Name="dtOpenDate" Width="132" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" FontSize="14" />
@@ -48,12 +49,13 @@
                     <Button FontSize="14" Height="29" Margin="395,0,375,33" Name="btnDelete" VerticalAlignment="Bottom" Click="btnDelete_Click">Delete</Button>
                     <Button FontSize="14" Height="29" Margin="0,0,223,33" Name="btnFind" VerticalAlignment="Bottom" Click="btnFind_Click" HorizontalAlignment="Right" Width="108">Find</Button>
                     <Button FontSize="14" Height="29" Margin="0,0,85,33" Name="btnClose" VerticalAlignment="Bottom" Click="btnClose_Click" HorizontalAlignment="Right" Width="108">Close</Button>
-                    
+                    <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="53,28,0,0" Name="label1" VerticalAlignment="Top" Width="203">Item Details</Label>
                 </Grid>
             </TabItem>
             <TabItem Name="ItemMonth" Header="Monthly Stock">
                 <Grid Name="ItemMonthGrid">
-                    <my:DataGrid AutoGenerateColumns="False" Margin="26,29,31,152" Name="dataGrid1" />
+                    <my:DataGrid AutoGenerateColumns="False" Margin="26,96,31,86" Name="dataGrid1" />
+                    <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="26,26,0,0" Name="label18" VerticalAlignment="Top" Width="203">Monthly Stock</Label>
                 </Grid>
             </TabItem>
         </TabControl>

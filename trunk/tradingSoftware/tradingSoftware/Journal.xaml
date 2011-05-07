@@ -9,34 +9,34 @@
             <local:DateTimeConverter x:Name="DateConverter" />
         </UserControl.Resources-->
         
-        <TabControl Name="tabControlJournal" Margin="0,0,0,8" SelectedIndex="1">
-            <TabItem Header="Add" Name="TabItemAdd">
+        <TabControl Name="tabControlJournal" Margin="0,0,0,8" SelectedIndex="0">
+            <TabItem Header="Add" Name="TabItemAdd" FontSize="14">
                 <Grid Name="dgAddJournalEntry">
-                    <Label Height="28" HorizontalAlignment="Left" Margin="84,88,0,0" Name="label1" VerticalAlignment="Top" Width="58">Date</Label>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="176,88,0,0" Name="label2" VerticalAlignment="Top" Width="38">C/D</Label>
-                    <Label Height="28" Margin="278,88,0,0" Name="label3" VerticalAlignment="Top" HorizontalAlignment="Left" Width="116">Particulars</Label>
-                    <Label Height="28" Margin="429,88,0,0" Name="label4" VerticalAlignment="Top" HorizontalAlignment="Left" Width="65">Debit</Label>
-                    <Label Height="28" HorizontalAlignment="Right" Margin="0,88,18,0" Name="label5" VerticalAlignment="Top" Width="89">Credit</Label>
-                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="57,115,0,0" Name="datePickerAdd" VerticalAlignment="Top" Width="107" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" />
-                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="173,115,0,0" Name="comboBoxCD1" VerticalAlignment="Top" Width="41" IsEditable="True" SelectionChanged="comboBoxCD1_SelectionChanged" SelectedIndex="0">
+                    <Label Height="28" HorizontalAlignment="Left" Margin="84,88,0,0" Name="label1" VerticalAlignment="Top" Width="58" FontSize="14">Date</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="176,88,0,0" Name="label2" VerticalAlignment="Top" Width="38" FontSize="14">C/D</Label>
+                    <Label Height="28" Margin="278,88,0,0" Name="label3" VerticalAlignment="Top" HorizontalAlignment="Left" Width="116" FontSize="14">Particulars</Label>
+                    <Label Height="28" Margin="429,88,0,0" Name="label4" VerticalAlignment="Top" HorizontalAlignment="Left" Width="65" FontSize="14">Debit</Label>
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,88,18,0" Name="label5" VerticalAlignment="Top" Width="89" FontSize="14">Credit</Label>
+                    <my:DatePicker Height="25" HorizontalAlignment="Left" Margin="57,115,0,0" Name="datePickerAdd" VerticalAlignment="Top" Width="107" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" FontSize="14" />
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="173,115,0,0" Name="comboBoxCD1" VerticalAlignment="Top" Width="41" IsEditable="True" SelectionChanged="comboBoxCD1_SelectionChanged" SelectedIndex="0" FontSize="14">
                         <ComboBoxItem>C</ComboBoxItem>
                         <ComboBoxItem>D</ComboBoxItem>
                     </ComboBox>
-                    <ComboBox Height="23" Margin="225,117,234,0" Name="comboBoxParticulars1" VerticalAlignment="Top" IsEditable="False" ItemsSource="{Binding}" DisplayMemberPath="AccountName" IsSynchronizedWithCurrentItem="False"></ComboBox>
-                    <TextBox HorizontalAlignment="Right" Margin="0,118,134,0" Name="textBoxDebit1" Width="89" Height="23" VerticalAlignment="Top" IsEnabled="False" TextChanged="textBoxDebit1_TextChanged" />
-                    <TextBox HorizontalAlignment="Right" Margin="0,118,33,0" Name="textBoxCredit1" Width="89" Height="23" VerticalAlignment="Top" TextChanged="textBoxCredit1_TextChanged" />
-                    <TextBox HorizontalAlignment="Right" Margin="0,159.08,134,163.96" Name="textBoxDebit2" Width="89"></TextBox>
-                    <TextBox HorizontalAlignment="Right" Margin="0,159.08,33,163.96" Name="textBoxCredit2" Width="89" IsEnabled="False" />
-                    <TextBox HorizontalAlignment="Left" Margin="173,0,0,164" Name="textBoxCD2" Width="41" IsEnabled="False" Height="23" VerticalAlignment="Bottom">D</TextBox>
-                    <Button Height="23" HorizontalAlignment="Left" Margin="67,0,0,69" Name="btnSave" VerticalAlignment="Bottom" Width="124" Click="btnSave_Click">Add</Button>
-                    <Button Height="23" Margin="225,0,279,69" Name="btnExit" VerticalAlignment="Bottom">Exit</Button>
-                    <ComboBox Margin="225,159.04,234,164" Name="comboBoxParticulars2" IsEditable="False" ItemsSource="{Binding}" DisplayMemberPath="AccountName" IsSynchronizedWithCurrentItem="False"></ComboBox>
-                    <Label Height="38" HorizontalAlignment="Left" Margin="8,9,0,0" Name="label6" VerticalAlignment="Top" Width="206" FontSize="22">Add Journal</Label>
+                    <ComboBox Height="23" Margin="225,117,234,0" Name="comboBoxParticulars1" VerticalAlignment="Top" IsEditable="False" ItemsSource="{Binding}" DisplayMemberPath="AccountName" IsSynchronizedWithCurrentItem="False" FontSize="14"></ComboBox>
+                    <TextBox HorizontalAlignment="Right" Margin="0,118,134,0" Name="textBoxDebit1" Width="89" Height="23" VerticalAlignment="Top" IsEnabled="False" TextChanged="textBoxDebit1_TextChanged" FontSize="14" />
+                    <TextBox HorizontalAlignment="Right" Margin="0,118,33,0" Name="textBoxCredit1" Width="89" Height="23" VerticalAlignment="Top" TextChanged="textBoxCredit1_TextChanged" FontSize="14" />
+                    <TextBox HorizontalAlignment="Right" Margin="0,159.08,134,163.96" Name="textBoxDebit2" Width="89" FontSize="14"></TextBox>
+                    <TextBox HorizontalAlignment="Right" Margin="0,159.08,33,163.96" Name="textBoxCredit2" Width="89" IsEnabled="False" FontSize="14" />
+                    <TextBox HorizontalAlignment="Left" Margin="173,0,0,164" Name="textBoxCD2" Width="41" IsEnabled="False" Height="23" VerticalAlignment="Bottom" FontSize="14">D</TextBox>
+                    <Button Height="23" HorizontalAlignment="Left" Margin="168.622,0,0,68.592" Name="btnSave" VerticalAlignment="Bottom" Width="124" Click="btnSave_Click" FontSize="14">Add</Button>
+                    <Button Height="23" Margin="0,0,177.196,68.592" Name="btnExit" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="124" FontSize="14">Exit</Button>
+                    <ComboBox Margin="225,159.04,234,164" Name="comboBoxParticulars2" IsEditable="False" ItemsSource="{Binding}" DisplayMemberPath="AccountName" IsSynchronizedWithCurrentItem="False" FontSize="14"></ComboBox>
+                    <Label FontSize="25" Foreground="Blue" Height="47" Margin="57,21.435,0,0" Name="label7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="203.587">Add Journal</Label>
                 </Grid>
             </TabItem>
-            <TabItem Header="View/Edit" Name="TabItemViewEdit">
+            <TabItem Header="View/Edit" Name="TabItemViewEdit" FontSize="14">
                 <Grid>
-                    <my:DataGrid AutoGenerateColumns="False" Margin="24,19,21,19" Name="dgViewEditJournal" >
+                    <my:DataGrid AutoGenerateColumns="False" Margin="24,54.302,21,5.716" Name="dgViewEditJournal" >
                         <my:DataGrid.Columns>
                             <my:DataGridTextColumn Header="Transaction Date" Binding="{Binding DateOfTransaction}" />
                             <my:DataGridTextColumn Header="D/C" Binding="{Binding DebitOrCredit}" />
@@ -45,6 +45,7 @@
                             <my:DataGridTextColumn Header="Credit" Binding="{Binding Credit}" Width="100" />
                         </my:DataGrid.Columns>
                     </my:DataGrid>
+                    <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="24.293,4.287,0,0" Name="label11" VerticalAlignment="Top" Width="252.933">View and Edit Journal</Label>
                 </Grid>
             </TabItem>
         </TabControl>
