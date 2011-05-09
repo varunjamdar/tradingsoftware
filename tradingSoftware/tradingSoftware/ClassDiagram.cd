@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Entity Classes">
+    <Position X="0.711" Y="0.5" Height="0.429" Width="10.236" />
+  </Comment>
+  <Comment CommentText="Purchase Classes">
+    <Position X="12.039" Y="0.5" Height="0.479" Width="1.981" />
+  </Comment>
+  <Comment CommentText="Sales Classes">
+    <Position X="15.264" Y="0.6" Height="0.479" Width="1.5" />
+  </Comment>
+  <Comment CommentText="Accounting Classes">
+    <Position X="17.969" Y="0.66" Height="0.479" Width="1.56" />
+  </Comment>
+  <Comment CommentText="Utility Classes">
+    <Position X="20.745" Y="0.7" Height="0.479" Width="1.777" />
+  </Comment>
+  <Comment CommentText="Custom Exception Classes">
+    <Position X="23.44" Y="0.7" Height="0.479" Width="2.055" />
+  </Comment>
+  <Comment CommentText="Datalogic Class">
+    <Position X="29.224" Y="0.75" Height="0.449" Width="3.275" />
+  </Comment>
+  <Comment CommentText="Businesslogic Class">
+    <Position X="26.512" Y="0.714" Height="0.439" Width="1.748" />
+  </Comment>
+  <Class Name="tradingSoftware.AccountObject">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAACAGACIoBgAiCAgAAAAYgEAEEAQABgAEAAI=</HashCode>
+      <FileName>AccountObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.Challan">
+    <Position X="15.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAACAAAAIAAAAAAAAAAAAEAAAAAAAAEQA=</HashCode>
+      <FileName>SalesClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.CompanyObject">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASUQgAAgAIAgAoIgoAKGIqABhIIgEImAAIGDAAEAEI=</HashCode>
+      <FileName>CompanyObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.CustomerObject">
+    <Position X="0.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAS0AAAAgIIGgAKIBoACGAIABxAAoFMkACIUDAAEIAI=</HashCode>
+      <FileName>CustomerObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.EncryptionDecryption">
+    <Position X="20.75" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EncryptionDecryption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.Helper">
+    <Position X="20.75" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>RBAAAAAAAAAAAAAAAAAAACAAAAAAEAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Helper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.ItemGroupObject">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>ItemGroupObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.ItemObject">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASAEAAEBDACgAUogoABAIAAAAAgCIACIQpEAhAAQAAA=</HashCode>
+      <FileName>ItemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.JournalRow">
+    <Position X="18" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAABAABAAAAgECAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>JournalRow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.LedgerRow">
+    <Position X="18" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAgAAAAgECAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>LedgerRow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.ListViewPurchase">
+    <Position X="12" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAIAAAAAgAAAAAAAAAgAAEAAA=</HashCode>
+      <FileName>ListViewClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.ListViewPurchaseOrder">
+    <Position X="12" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAIAAAAAgAAAAAAAAAgAAEAAA=</HashCode>
+      <FileName>ListViewClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.ListViewPurchaseTaxDetails">
+    <Position X="12" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAQAAAAAAABAAAAAAAAAACAA=</HashCode>
+      <FileName>ListViewClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.NegativeValueException">
+    <Position X="23.5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NegativeValueException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.NullValueException">
+    <Position X="23.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NullValueException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.PhoneNoErrorException">
+    <Position X="23.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PhoneNoErrorException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.SaleItem">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAIACAAAAAAAAAAAAAgAAEAAA=</HashCode>
+      <FileName>SalesClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.SaleTax">
+    <Position X="15.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAQAAAAAAABAAAAAAAAAACAA=</HashCode>
+      <FileName>SalesClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.SupplierObject">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACS0AAAAgAIGgAIIBoACGAIABxAAoEMkACIEDAAkJAI=</HashCode>
+      <FileName>SupplierObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.TaxObject">
+    <Position X="9.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAACAgAAAAIAAAAAAAACAE=</HashCode>
+      <FileName>TaxObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.Transaction">
+    <Position X="18" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAGAAAAAAAAAACgACAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Transaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.TrialBalanceRow">
+    <Position X="18" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAgAAAAAAEAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>TrialBalanceRow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.UnitObject">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAEAAAAAAA=</HashCode>
+      <FileName>UnitObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.Validations">
+    <Position X="20.75" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Validations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.DataLogic">
+    <Position X="29.25" Y="1.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>QAKAABVAgAgQCCwIIZDA40KE0iRBEEHIQAoSCAErAgA=</HashCode>
+      <FileName>DataLogic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.BusinessLogic">
+    <Position X="26.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BusinessLogic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tradingSoftware.DateTimeConverter">
+    <Position X="20.75" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DateTimeConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
