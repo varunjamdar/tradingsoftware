@@ -28,16 +28,33 @@ namespace tradingSoftware
         {
             InitializeComponent();
 
-            string hr = "";
+            //string hr = "";
+            //string hrstatus = "am";
+            //if (Int32.Parse(DateTime.Now.Hour.ToString()) > 12)
+            //{
+            //    hr = (Int32.Parse(DateTime.Now.Hour.ToString()) - 12).ToString();
+            //    hrstatus = "pm";
+            //}
+            //labelTime.Content = hr + " : " + DateTime.Now.Minute.ToString() + " : " + DateTime.Now.Second.ToString() + "  " + hrstatus;
+            //labelDate.Content = DateTime.Today.Date;
+            //Loaded += new RoutedEventHandler(Window_Loaded);
+
+
+
+            //--vj updated
+            int hr = DateTime.Now.Hour, min = DateTime.Now.Minute, sec = DateTime.Now.Second;
             string hrstatus = "am";
-            if (Int32.Parse(DateTime.Now.Hour.ToString()) > 12)
+
+            if (hr > 12)
             {
-                hr = (Int32.Parse(DateTime.Now.Hour.ToString()) - 12).ToString();
+                hr -=  12;
                 hrstatus = "pm";
             }
-            labelTime.Content = hr + " : " + DateTime.Now.Minute.ToString() + " : " + DateTime.Now.Second.ToString() + "  " + hrstatus;
+
+            labelTime.Content = (hr > 9 ? hr.ToString() : "0" + hr.ToString()) + " : " + (min > 9 ? min.ToString() : "0" + min.ToString()) + " : " + (sec > 9 ? sec.ToString() : "0" + sec.ToString()) + "  " + hrstatus;
             labelDate.Content = DateTime.Today.Date;
             Loaded += new RoutedEventHandler(Window_Loaded);
+
         }
 
         private void CompanyConfig_Click(object sender, RoutedEventArgs e)
@@ -191,14 +208,29 @@ namespace tradingSoftware
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer.Stop();
-            string hr = "";
-            string hrstatus="am";
-            if (Int32.Parse(DateTime.Now.Hour.ToString()) > 12)
+            //string hr = "";
+            //string hrstatus="am";
+            //if (Int32.Parse(DateTime.Now.Hour.ToString()) > 12)
+            //{
+            //    hr = (Int32.Parse(DateTime.Now.Hour.ToString())-12).ToString();
+            //    hrstatus = "pm";
+            //}
+            //labelTime.Content = hr +" : " + DateTime.Now.Minute.ToString() + " : " + DateTime.Now.Second.ToString()+"  "+hrstatus;
+            //labelDate.Content = DateTime.Today.Date;
+
+
+
+            //--vj updated
+            int hr = DateTime.Now.Hour, min = DateTime.Now.Minute, sec = DateTime.Now.Second;
+            string hrstatus = "am";
+
+            if (hr > 12)
             {
-                hr = (Int32.Parse(DateTime.Now.Hour.ToString())-12).ToString();
+                hr -= 12;
                 hrstatus = "pm";
             }
-            labelTime.Content = hr +" : " + DateTime.Now.Minute.ToString() + " : " + DateTime.Now.Second.ToString()+"  "+hrstatus;
+
+            labelTime.Content = (hr > 9 ? hr.ToString() : "0" + hr.ToString()) + " : " + (min > 9 ? min.ToString() : "0" + min.ToString()) + " : " + (sec > 9 ? sec.ToString() : "0" + sec.ToString()) + "  " + hrstatus;
             labelDate.Content = DateTime.Today.Date;
         }
     }
