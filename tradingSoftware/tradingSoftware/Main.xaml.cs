@@ -52,7 +52,8 @@ namespace tradingSoftware
             }
 
             labelTime.Content = (hr > 9 ? hr.ToString() : "0" + hr.ToString()) + " : " + (min > 9 ? min.ToString() : "0" + min.ToString()) + " : " + (sec > 9 ? sec.ToString() : "0" + sec.ToString()) + "  " + hrstatus;
-            labelDate.Content = DateTime.Today.Date;
+            int dd = DateTime.Today.Day, mm = DateTime.Today.Month, yy = DateTime.Today.Year;
+            labelDate.Content = (dd > 9 ? dd.ToString() : "0" + dd.ToString())+"/"+(mm>9?mm.ToString():"0"+mm.ToString())+"/"+yy;
             Loaded += new RoutedEventHandler(Window_Loaded);
 
         }
@@ -222,6 +223,7 @@ namespace tradingSoftware
 
             //--vj updated
             int hr = DateTime.Now.Hour, min = DateTime.Now.Minute, sec = DateTime.Now.Second;
+            int dd = DateTime.Today.Day, mm = DateTime.Today.Month, yy = DateTime.Today.Year;
             string hrstatus = "am";
 
             if (hr > 12)
@@ -231,7 +233,7 @@ namespace tradingSoftware
             }
 
             labelTime.Content = (hr > 9 ? hr.ToString() : "0" + hr.ToString()) + " : " + (min > 9 ? min.ToString() : "0" + min.ToString()) + " : " + (sec > 9 ? sec.ToString() : "0" + sec.ToString()) + "  " + hrstatus;
-            labelDate.Content = DateTime.Today.Date;
+            labelDate.Content = (dd > 9 ? dd.ToString() : "0" + dd.ToString()) + "/"+(mm > 9 ? mm.ToString() : "0" + mm.ToString()) + "/" + yy;
         }
     }
 }
