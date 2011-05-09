@@ -56,10 +56,10 @@
             <MenuItem Name="Reports" Header="Reports"></MenuItem>
         </Menu>
         <Image Margin="0,36.663,0,0" Name="imageTrade" Stretch="Fill" Source="/tradingSoftware;component/Background Image/Trade of india.png" />
-        <Label Height="35.007" Margin="0,0,19,237" Name="labelTime" VerticalAlignment="Bottom" FontSize="20" FontFamily="Algerian" Foreground="DarkGoldenrod" HorizontalAlignment="Right" Width="142">Label Time</Label>
+        <Label Height="35.007" Margin="0,0,8,237" Name="labelTime" VerticalAlignment="Bottom" FontSize="20" FontFamily="Algerian" Foreground="DarkGoldenrod" HorizontalAlignment="Right" Width="153">Label Time</Label>
         <Label Height="28" Margin="0,0,171,240" Name="label1" VerticalAlignment="Bottom" Foreground="DarkKhaki" FontSize="15" HorizontalAlignment="Right" Width="54">Time :</Label>
         <Label Height="28" Margin="0,0,171,194" Name="label2" VerticalAlignment="Bottom" Foreground="DarkKhaki" FontSize="15" HorizontalAlignment="Right" Width="53">Date :</Label>
-        <Label FontFamily="Algerian" FontSize="20" Foreground="DarkGoldenrod" Height="35.007" Margin="0,0,19,191" Name="labelDate" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="142">Label Time</Label>
+        <Label FontFamily="Algerian" FontSize="20" Foreground="DarkGoldenrod" Height="35.007" Margin="0,0,8,191" Name="labelDate" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="153">Label Time</Label>
         <Label Margin="414,199,33,0" Name="label3" FontSize="50" FontFamily="Copperplate Gothic Bold" Foreground="Olive" Height="67" VerticalAlignment="Top">Trading Software
         </Label>
     </Grid>
