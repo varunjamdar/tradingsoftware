@@ -21,6 +21,7 @@ namespace tradingSoftware
         DataLogic dl;
         List<string> saleIdList;
         List<string> paymentModeAccounts;
+
         public Receipt()
         {
             InitializeComponent();

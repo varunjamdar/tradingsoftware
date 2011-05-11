@@ -5,8 +5,7 @@
     Title="Purchase Items (Goods Receipt Note)" Height="795" Width="900" >
     <Grid Name="PurchaseOrderGrid" Height="750">
 
-        <TabControl Name="tabControl1" Margin="0,-10,0,61" SelectedIndex="1
-                    ">
+        <TabControl Name="tabControl1" Margin="0,-10,0,61" SelectedIndex="0">
             <TabItem Header="Items Details" FontSize="14" IsSelected="True">
                 <Grid Name="PurchaseOrder2Grid">
                     <Label Height="28" Margin="389,178,320,0" Name="lblPONo" VerticalAlignment="Top">Ref. Purchase Order No.</Label>

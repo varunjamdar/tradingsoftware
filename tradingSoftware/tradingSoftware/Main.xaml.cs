@@ -133,7 +133,7 @@ namespace tradingSoftware
 
         private void Sale_Click(object sender, RoutedEventArgs e)
         {
-            Sales salesform = new Sales();
+            Sale salesform = new Sale();
             salesform.ShowDialog();
         }
 

@@ -1537,7 +1537,7 @@ namespace tradingSoftware
             try
             {
                 conn.Open();
-                ds = new DataSet();
+                ds.Clear();
                 cmd.CommandText = "SELECT Max(SaleId) From Sale";
                 adpt.SelectCommand = cmd;
                 adpt.Fill(ds, "Sale");
@@ -1547,11 +1547,66 @@ namespace tradingSoftware
             }
             catch (Exception ex)
             {
-                return -1;
+                return 1;
             }
 
         }
 
+        public int getCustomerId(string CustomerName)
+        {
+            ds = new DataSet();
+            cmd.CommandText = "SELECT CustomerId From Customer Where CustomerCompany='" + CustomerName + "'";
+            adpt.SelectCommand = cmd;
+            conn.Open();
+            adpt.Fill(ds, "Customer");
+            conn.Close();
+            if (ds.Tables["Customer"].Rows.Count > 0)
+                return Int32.Parse(ds.Tables["Customer"].Rows[0][0].ToString());
+            else
+                throw new Exception("No such Customer exists !!");
+        }
+
+        public void placeSale_SaleTable(int SaleId, int PurchaseOrderNo, DateTime SaleDate, int CustomerId, float AmountItems, float AmountTaxes, string Note)
+        {
+            //Purchase table
+            conn.Open();
+            cmd.CommandText = "Insert into Sale (SaleId, PurchaseOrderNumber, SaleDate, CustomerId, AmountItems, AmountTaxes, Note, ReceiptGenerated) values (" + SaleId + "," + PurchaseOrderNo + ",'" + SaleDate + "'," + CustomerId + "," + AmountItems + "," + AmountTaxes + ",'" + Note + "','" + false + "')";
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void placeSale_SaleItemsTable(int SaleId, int ItemId, int Quantity, float PricePerUnit)
+        {
+            //SaleItems table
+            cmd.CommandText = "Insert into SaleItems (SaleId, ItemId, Quantity, PricePerUnit) values (" + SaleId + "," + ItemId + "," + Quantity + ",'" + PricePerUnit + "')";
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void placeSale_SaleTaxesTable(int PurchaseId, int TaxId, string TaxType, float TaxAmount)
+        {
+            //SaleTaxes table
+            cmd.CommandText = "Insert into SaleTaxes (SaleId, TaxId, Type, Amount) values (" + PurchaseId + "," + TaxId + ",'" + TaxType + "','" + TaxAmount + "')";
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+
+        }
+
+        public void placeSale_ChallanTable(int challanId, int saleId, DateTime challanDate, string paymentMode, int LRNo, string transporter, string destination)
+        {
+            cmd.CommandText = "Insert into Challan (ChallanId, SaleId, ChallanDate, PaymentMode, LorryReceiptNumber, Transporter, Destination) values("+challanId+","+saleId+",'"+challanDate+"','"+paymentMode+"',"+LRNo+",'"+transporter+"','"+destination+"')";
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        #endregion
+
+
+        #region Receipt
 
         public List<int> getSaleIdForCustomer(string supplierName)
         {
@@ -1573,10 +1628,6 @@ namespace tradingSoftware
             return purchaseIdList;
 
         }
-
-        #endregion
-
-        #region Receipt
 
         public int getReceiptId()
         {
@@ -1652,7 +1703,6 @@ namespace tradingSoftware
 
             MessageBox.Show("Payment Made Successfully.", "Succeed", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
 
         #endregion
     }

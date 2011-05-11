@@ -25,42 +25,41 @@ namespace tradingSoftware
         {
             InitializeComponent();
             //set default date - today
-            dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
+            dtPick_SaleDate.Text = DateTime.Today.Date.ToShortDateString();
 
             //-------tax detail--
             TradeDataSet ds = new TradeDataSet();
             TradeDataSetTableAdapters.TaxTableAdapter taxApdt = new tradingSoftware.TradeDataSetTableAdapters.TaxTableAdapter();
             taxApdt.Fill(ds.Tax);
-            TaxDetailsGrid.DataContext = ds.Tax;
+            GridTaxDetails.DataContext = ds.Tax;
 
 
             //---Supplier
             
-            cb_Supplier.Items.Clear();
-            List<string> supplierNameList = new List<string>();
-            supplierNameList = dl.getSupplierName();
-            foreach (string sn in supplierNameList)
+            cb_Customer.Items.Clear();
+            List<string> customerNameList = dl.getCustomerName();
+            foreach (string sn in customerNameList)
             {
-                cb_Supplier.Items.Add(sn.ToString());
+                cb_Customer.Items.Add(sn.ToString());
             }
 
             //---Item Group
             TradeDataSetTableAdapters.ItemGroupTableAdapter itemGroupAdpt = new tradingSoftware.TradeDataSetTableAdapters.ItemGroupTableAdapter();
             itemGroupAdpt.Fill(ds.ItemGroup);
-            PurchaseOrder2Grid.DataContext = ds.ItemGroup;
+            GridSale.DataContext = ds.ItemGroup;
             //----Item
             TradeDataSetTableAdapters.ItemTableAdapter itemAdpt = new tradingSoftware.TradeDataSetTableAdapters.ItemTableAdapter();
             itemAdpt.Fill(ds.Item);
 
-            //--Max Purchase Id
-            txtPurchaseNo.Text= dl.getPurchaseNo().ToString();
+            //--Max Sale Id
+            txtSaleNo.Text= dl.getSaleNo().ToString();
 
             //purchase order
             //TradeDataSetTableAdapters.PurchaseOrderTableAdapter purchaseOrderAdpt = new tradingSoftware.TradeDataSetTableAdapters.PurchaseOrderTableAdapter();
             //purchaseOrderAdpt.Fill(ds.PurchaseOrder);
             //cbRefPO.DataContext = ds.PurchaseOrder;
 
-            cb_Supplier.SelectedIndex = -1;
+            cb_Customer.SelectedIndex = -1;
             
         }
 
@@ -69,7 +68,7 @@ namespace tradingSoftware
             //refresh the taxes
             for (int i = 0; i <= listViewTaxDetails.Items.Count - 1; i++)
             {
-                ListViewPurchaseTaxDetails lvc = (ListViewPurchaseTaxDetails)listViewTaxDetails.Items[i];
+                ListViewSaleTaxDetails lvc = (ListViewSaleTaxDetails)listViewTaxDetails.Items[i];
                 if (lvc != null)
                 {
                     if (lvc.TaxPercentage != 0)
@@ -82,9 +81,9 @@ namespace tradingSoftware
 
             //Display Total Amount Tax
             lblTotalAmountTax.Content = getTotalAmountTax();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewSale() + getTotalAmountTax();
         }
-        private void btn_AddPurchaseItem_Click(object sender, RoutedEventArgs e)
+        private void btn_AddSaleItem_Click(object sender, RoutedEventArgs e)
         {
             //
             //Validation
@@ -95,7 +94,7 @@ namespace tradingSoftware
             //Date Validation
             try
             {
-                DateTime dt = DateTime.Parse(dtPick_PODate.Text);
+                DateTime dt = DateTime.Parse(dtPick_SaleDate.Text);
             }
             catch (FormatException)
             {
@@ -104,7 +103,7 @@ namespace tradingSoftware
             }
 
             //
-            if (cb_Supplier.Text == "")
+            if (cb_Customer.Text == "")
             {
                 error[count++] = "Select 'Supplier'";
                 Boolerror = true;
@@ -115,9 +114,9 @@ namespace tradingSoftware
                 Boolerror = true;
             }
             //
-            if (cbRefPO.SelectedIndex==-1)
+            if (txtRefPO.Text=="")
             {
-                error[count++] = "Select 'Purchase Order'";
+                error[count++] = "Select 'Reference Purchase Order'";
                 Boolerror = true;
             }
 
@@ -175,15 +174,15 @@ namespace tradingSoftware
             }
             //
             //
-            int IPONO = Int32.Parse(cbRefPO.Text);
+            int IPONO = Int32.Parse(txtRefPO.Text);
             int IQuantity = Int32.Parse(txt_Quantity.Text);
             float FPPU = float.Parse(txt_PPU.Text);
             addRow(cb_ItemGroup.Text,cb_Item.Text,IQuantity,FPPU);
 
 
             //refresh the Both Amount Label
-            lblTotalAmount.Content = getTotalAmountOFListViewPurchase();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+            lblTotalAmount.Content = getTotalAmountOFListViewSale();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewSale() + getTotalAmountTax();
 
             refreshTaxes();
         }
@@ -191,13 +190,13 @@ namespace tradingSoftware
         
 
 
-        //get Total Amount Purchase Order
-        public float getTotalAmountOFListViewPurchase()
+        //get Total Amount Sale
+        public float getTotalAmountOFListViewSale()
         {
             float tAmount = 0;
-            for (int i = 0; i <= listViewPurchse.Items.Count - 1; i++)
+            for (int i = 0; i <= listViewSales.Items.Count - 1; i++)
             {
-                ListViewPurchase lvc = (ListViewPurchase)listViewPurchse.Items[i];
+                ListViewSale lvc = (ListViewSale)listViewSales.Items[i];
                 //MessageBox.Show(lvc.PONo + " " + lvc.PODate);
                 tAmount += lvc.Rs;
             }
@@ -211,20 +210,20 @@ namespace tradingSoftware
 
         public void addRow(string v4,string v5,int v6,float v7)
         {
-            listViewPurchse.Items.Add(new ListViewPurchase(v4,v5,v6,v7));
-            dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
+            listViewSales.Items.Add(new ListViewSale(v4,v5,v6,v7));
+            dtPick_SaleDate.Text = DateTime.Today.Date.ToShortDateString();
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
-            listViewPurchse.SelectedIndex = -1;
+            listViewSales.SelectedIndex = -1;
         }
 
-        private void listViewPurchse_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void listViewSales_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                ListViewPurchase lvpo = (ListViewPurchase)listViewPurchse.SelectedItem;
+                ListViewSale lvpo = (ListViewSale)listViewSales.SelectedItem;
                 cb_ItemGroup.Text = lvpo.ItemGroup;
                 cb_Item.Text = lvpo.Item1;
                 txt_Quantity.Text = lvpo.Quantity.ToString();
@@ -242,13 +241,13 @@ namespace tradingSoftware
 
         private void btn_ResetItems_Click(object sender, RoutedEventArgs e)
         {
-            dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            cb_Supplier.Text = "";
+            dtPick_SaleDate.Text = DateTime.Today.Date.ToShortDateString();
+            cb_Customer.Text = "";
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
-            listViewPurchse.Items.Clear();
+            listViewSales.Items.Clear();
 
             //refresh the Both Amount Label
             lblTotalAmount.Content = 0;
@@ -260,20 +259,20 @@ namespace tradingSoftware
 
         private void btn_Clear_Click(object sender, RoutedEventArgs e)
         {
-            dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-            cb_Supplier.Text = "";
+            dtPick_SaleDate.Text = DateTime.Today.Date.ToShortDateString();
+            cb_Customer.Text = "";
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
 
-            listViewPurchse.SelectedIndex = -1;
+            listViewSales.SelectedIndex = -1;
         }
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
             //
-            ListViewPurchase lvc = (ListViewPurchase)listViewPurchse.SelectedItem;
+            ListViewSale lvc = (ListViewSale)listViewSales.SelectedItem;
             if (lvc != null)
             {
                 lvc.ItemGroup = cb_ItemGroup.Text;
@@ -281,38 +280,38 @@ namespace tradingSoftware
                 lvc.Quantity = Int32.Parse(txt_Quantity.Text);
                 lvc.PricePerUnit = float.Parse(txt_PPU.Text);
                 lvc.Rs = Int32.Parse(txt_Quantity.Text) * float.Parse(txt_PPU.Text);
-                listViewPurchse.Items.Refresh();
+                listViewSales.Items.Refresh();
             }
             //
-            //RefreshListView(txt_PurchaseOrderNo.Text, dtPick_PODate.Text, cb_Supplier.Text, cb_ItemGroup.Text, cb_Item.Text, txt_Quantity.Text, txt_PPU.Text);
-            dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
+            //RefreshListView(txt_PurchaseOrderNo.Text, dtPick_SaleDate.Text, cb_Customer.Text, cb_ItemGroup.Text, cb_Item.Text, txt_Quantity.Text, txt_PPU.Text);
+            dtPick_SaleDate.Text = DateTime.Today.Date.ToShortDateString();
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
-            listViewPurchse.SelectedIndex = -1;
+            listViewSales.SelectedIndex = -1;
 
 
             //refresh the Both Amount Label
-            lblTotalAmount.Content = getTotalAmountOFListViewPurchase();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+            lblTotalAmount.Content = getTotalAmountOFListViewSale();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewSale() + getTotalAmountTax();
 
             refreshTaxes();
         }
 
         private void btn_RemoveItem_Click(object sender, RoutedEventArgs e)
         {
-            listViewPurchse.Items.Remove(listViewPurchse.SelectedItem);
-            dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
+            listViewSales.Items.Remove(listViewSales.SelectedItem);
+            dtPick_SaleDate.Text = DateTime.Today.Date.ToShortDateString();
             cb_ItemGroup.Text = "";
             cb_Item.Text = "";
             txt_Quantity.Text = "";
             txt_PPU.Text = "";
-            listViewPurchse.SelectedIndex = -1;
+            listViewSales.SelectedIndex = -1;
 
             //refresh the Both Amount Label
-            lblTotalAmount.Content = getTotalAmountOFListViewPurchase();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+            lblTotalAmount.Content = getTotalAmountOFListViewSale();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewSale() + getTotalAmountTax();
 
             refreshTaxes();
         }
@@ -346,7 +345,7 @@ namespace tradingSoftware
 
             //Displat Total Amount Tax
             lblTotalAmountTax.Content = getTotalAmountTax();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewSale() + getTotalAmountTax();
         }
 
         private void rbPercentage_Checked(object sender, RoutedEventArgs e)
@@ -366,7 +365,7 @@ namespace tradingSoftware
             float tAmountTax = 0;
             for (int i = 0; i <= listViewTaxDetails.Items.Count - 1; i++)
             {
-                ListViewPurchaseTaxDetails lvc = (ListViewPurchaseTaxDetails)listViewTaxDetails.Items[i];
+                ListViewSaleTaxDetails lvc = (ListViewSaleTaxDetails)listViewTaxDetails.Items[i];
                 if (lvc.TaxType == "Exclusive")
                 {
                     tAmountTax += lvc.TaxAmount;
@@ -442,7 +441,7 @@ namespace tradingSoftware
                 }
                 a=float.Parse(txtAmount.Text);
             }
-            listViewTaxDetails.Items.Add(new ListViewPurchaseTaxDetails(cb_TaxName.Text,p,a,cb_Type.Text,float.Parse(lblTotalAmount.Content.ToString())));
+            listViewTaxDetails.Items.Add(new ListViewSaleTaxDetails(cb_TaxName.Text,p,a,cb_Type.Text,float.Parse(lblTotalAmount.Content.ToString())));
             cb_TaxName.Text = "";
             rbPercentage.IsChecked = true;
             rbValue.IsChecked = false;
@@ -454,7 +453,7 @@ namespace tradingSoftware
 
             //Display Total Amount Tax
             lblTotalAmountTax.Content = getTotalAmountTax();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewSale() + getTotalAmountTax();
         }
 
         private void btnRemoveTax_Click(object sender, RoutedEventArgs e)
@@ -468,83 +467,130 @@ namespace tradingSoftware
 
             //Display Total Amount Tax
             lblTotalAmountTax.Content = getTotalAmountTax();
-            lblItemTaxAmount.Content = getTotalAmountOFListViewPurchase() + getTotalAmountTax();
+            lblItemTaxAmount.Content = getTotalAmountOFListViewSale() + getTotalAmountTax();
         }
 
         private void cb_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
 
-        private void btnPlacePurchase_Click(object sender, RoutedEventArgs e)
+        private void btnPlaceSale_Click(object sender, RoutedEventArgs e)
         {
-            bool BoolerrorPO = false;
-            Dictionary<int, string> errorPO = new Dictionary<int, string>();
-            int countPO = 0;
+            Dictionary<int, string> errorSales = new Dictionary<int, string>();
+            int countError = -1;
             //
             //validation
-            if (listViewPurchse.Items.Count == 0)
+            if (listViewSales.Items.Count == 0)
             {
-                errorPO[countPO++] = "Select 'Add Items'";
-                BoolerrorPO = true;
+                errorSales[++countError] = "Select 'Add Items'";
             }
             if (listViewTaxDetails.Items.Count == 0)
             {
-                errorPO[countPO++] = "Select 'Add Taxes'";
-                BoolerrorPO = true;
+                errorSales[++countError] = "Select 'Add Taxes'";
             }
-            if (BoolerrorPO == true)
+            if (chkBIsChallan.IsChecked.HasValue && chkBIsChallan.IsChecked.Value)
             {
-                string errorMsgPO = "";
-                for (int i = 0; i < errorPO.Count; i++)
+                int i;
+                try
                 {
-                    errorMsgPO += (i + 1) + ". " + errorPO[i] + "\n";
+                     i= Int32.Parse(txtDeliveryNoteNo.Text);
+                }
+                catch (ArgumentNullException ae)
+                {
+                    errorSales.Add(++countError, "Enter Delivery Note Number.");
+                }
+                catch (Exception fe)
+                {
+                    errorSales.Add(++countError, "Invalid Delivery Note Number.");
                 }
 
-                MessageBox.Show(@errorMsgPO, "Error !", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (dtPick_ChallanDate.Text == "")
+                {
+                    errorSales.Add(++countError, "Select Challan Date.");
+                }
+                else
+                {
+                    if (dtPick_ChallanDate.SelectedDate.Value.CompareTo(dtPick_SaleDate.SelectedDate.Value) < 0)
+                        errorSales.Add(++countError, "Challan cannot be created before Sale Date.");
+                }
+
+                if (cBPaymentMode.SelectedIndex < 0)
+                    errorSales.Add(++countError, "Select Mode of Payment.");
+
+                try
+                {
+                    i = Int32.Parse(txtLRNo.Text);
+                }
+                catch (ArgumentNullException ane)
+                {
+                    errorSales.Add(++countError, "Enter Lorry Receipt Number.");
+                }
+                catch (Exception ex)
+                {
+                    errorSales.Add(++countError, "Invalid Lorry Receipt Number.");
+                }
+                
+                if(txtDespatchThru.Text=="")
+                    errorSales.Add(++countError, "Enter Despatched Through Details.");
+
+                if(txtDestination.Text=="")
+                    errorSales.Add(++countError, "Enter Destination.");
+            }
+            
+            if (countError>=0)
+            {
+                string errorMsg = "";
+                for (int i = 0; i <= countError; i++)
+                {
+                    errorMsg += (i + 1) + ". " + errorSales[i] + "\n";
+                }
+
+                MessageBox.Show(errorMsg, "Error !", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             //
-            MessageBoxResult mbr = MessageBox.Show("Are You Sure to place purchase Items ?", "Varifiacation", MessageBoxButton.YesNo,MessageBoxImage.Question);
+            MessageBoxResult mbr = MessageBox.Show("Are You Sure to place sale ?", "Verification", MessageBoxButton.YesNo,MessageBoxImage.Question);
 
             if (mbr == MessageBoxResult.Yes)
             {
-                string supplierName = (string)cb_Supplier.Text;
+                string customerName = (string)cb_Customer.Text;
                 
-                int supplierId = dl.getSupplierId(supplierName);
-                dl.placePurchase_PurchaseTable(Int32.Parse(txtPurchaseNo.Text), Int32.Parse(cbRefPO.Text), DateTime.Parse(dtPick_PODate.Text), supplierId, float.Parse(lblTotalAmount.Content.ToString()), float.Parse(lblTotalAmountTax.Content.ToString()), txtNote.Text);
+                int customerId = dl.getCustomerId(customerName);
+                dl.placeSale_SaleTable(Int32.Parse(txtSaleNo.Text), Int32.Parse(txtRefPO.Text), DateTime.Parse(dtPick_SaleDate.Text), customerId, float.Parse(lblTotalAmount.Content.ToString()), float.Parse(lblTotalAmountTax.Content.ToString()), txtNote.Text);
 
 
                 //For Each and Every Item place to the PurchaseOrderItems table
-                for (int i = 0; i <= listViewPurchse.Items.Count - 1; i++)
+                for (int i = 0; i <= listViewSales.Items.Count - 1; i++)
                 {
-                    ListViewPurchase lvc = (ListViewPurchase)listViewPurchse.Items[i];
-                    dl.placePurchase_PurchaseItemsTable(Int32.Parse(txtPurchaseNo.Text),dl.getItemId(lvc.Item1), lvc.Quantity, lvc.PricePerUnit);
+                    ListViewSale lvc = (ListViewSale)listViewSales.Items[i];
+                    dl.placeSale_SaleItemsTable(Int32.Parse(txtSaleNo.Text),dl.getItemId(lvc.Item1), lvc.Quantity, lvc.PricePerUnit);
                 }
 
 
                 //For Each and Every Item Tax to the PurchaseOrderTaxes table
                 for (int i = 0; i <= listViewTaxDetails.Items.Count - 1; i++)
                 {
-                    ListViewPurchaseTaxDetails lvc = (ListViewPurchaseTaxDetails)listViewTaxDetails.Items[i];
-                    dl.placePurchase_PurchaseTaxesTable(Int32.Parse(txtPurchaseNo.Text), dl.getTaxId(lvc.TaxName), lvc.TaxType, lvc.TaxAmount);
+                    ListViewSaleTaxDetails lvc = (ListViewSaleTaxDetails)listViewTaxDetails.Items[i];
+                    dl.placeSale_SaleTaxesTable(Int32.Parse(txtSaleNo.Text), dl.getTaxId(lvc.TaxName), lvc.TaxType, lvc.TaxAmount);
                 }
                 
-                if (cbIsPurchaseOrderCompleted.IsChecked==true)
+                //Challan
+                if (chkBIsChallan.IsChecked.HasValue && chkBIsChallan.IsChecked.Value)
                 {
-                    dl.setPOCompletedTrue(Int32.Parse(cbRefPO.SelectedValue.ToString()));
+                    dl.placeSale_ChallanTable(Int32.Parse(txtDeliveryNoteNo.Text), Int32.Parse(txtSaleNo.Text), dtPick_ChallanDate.SelectedDate.Value, cBPaymentMode.Text, Int32.Parse(txtLRNo.Text), txtDespatchThru.Text, txtDestination.Text);
                 }
-                
-                MessageBox.Show("Purchase Placed Successfully","Succeeded",MessageBoxButton.OK,MessageBoxImage.Information);
+
+                MessageBox.Show("Sale Placed Successfully","Succeeded",MessageBoxButton.OK,MessageBoxImage.Information);
             
-                //
+                
                 //clear All
-                dtPick_PODate.Text = DateTime.Today.Date.ToShortDateString();
-                cb_Supplier.Text = "";
+                dtPick_SaleDate.Text = DateTime.Today.Date.ToShortDateString();
+                cb_Customer.Text = "";
                 cb_ItemGroup.Text = "";
                 cb_Item.Text = "";
                 txt_Quantity.Text = "";
                 txt_PPU.Text = "";
-                listViewPurchse.Items.Clear();
+                listViewSales.Items.Clear();
 
                 //refresh the Both Amount Label
                 lblTotalAmount.Content = 0;
@@ -553,38 +599,47 @@ namespace tradingSoftware
 
                 listViewTaxDetails.Items.Clear();
 
-                txtPurchaseNo.Text = dl.getPurchaseNo().ToString();
+                txtSaleNo.Text = dl.getSaleNo().ToString();
                 tabControl1.SelectedIndex = 0;
-                cbRefPO.Items.Clear();
+                txtRefPO.Text = "";
 
             }
 
             
         }
 
-        private void btnViewPO_Click(object sender, RoutedEventArgs e)
+        private void cb_Customer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(cbRefPO.SelectedIndex==-1)
-            {
-                MessageBox.Show("Invalid Purchase Order No.","Error",MessageBoxButton.OK,MessageBoxImage.Error);
-            }
+            //no need to filter purchase order as per customer, since we are not storing sales order
+            
         }
 
-        private void cb_Supplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void chkBIsChallan_Checked(object sender, RoutedEventArgs e)
         {
-          
-            //filter the purchase order as per supplier
-            if (cb_Supplier.SelectedIndex != -1)
-            {
-                poIdList = new List<int>();
-                poIdList = dl.getPurchaseOrderIdForSupplier(cb_Supplier.SelectedValue.ToString());
+            txtDeliveryNoteNo.IsEnabled = true;
+            dtPick_ChallanDate.IsEnabled = true;
+            cBPaymentMode.IsEnabled = true;
+            txtLRNo.IsEnabled = true;
+            txtDespatchThru.IsEnabled = true;
+            txtDestination.IsEnabled = true;
 
-                cbRefPO.Items.Clear();
-                foreach (int poid in poIdList)
-                {
-                    cbRefPO.Items.Add(poid.ToString());
-                }
-            }
+        }
+
+        private void chkBIsChallan_Unchecked(object sender, RoutedEventArgs e)
+        {
+            txtDeliveryNoteNo.Text = "";
+            dtPick_ChallanDate.Text = "";
+            cBPaymentMode.SelectedIndex = -1;
+            txtLRNo.Text = "";
+            txtDespatchThru.Text = "";
+            txtDestination.Text = "";
+
+            txtDeliveryNoteNo.IsEnabled = false;
+            dtPick_ChallanDate.IsEnabled = false;
+            cBPaymentMode.IsEnabled = false;
+            txtLRNo.IsEnabled = false;
+            txtDespatchThru.IsEnabled = false;
+            txtDestination.IsEnabled = false;
         }
     }
 }
