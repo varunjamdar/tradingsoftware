@@ -323,7 +323,9 @@
     <Compile Include="Restore.xaml.cs">
       <DependentUpon>Restore.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sales.xaml.cs" />
+    <Compile Include="Sales.xaml.cs">
+      <DependentUpon>Sales.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SalesClasses.cs" />
     <Compile Include="StockView.xaml.cs">
       <DependentUpon>StockView.xaml</DependentUpon>
