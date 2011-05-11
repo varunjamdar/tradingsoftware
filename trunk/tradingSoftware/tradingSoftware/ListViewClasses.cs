@@ -95,8 +95,5 @@ namespace tradingSoftware
         public float TaxPercentage { get; set; }
         public float TaxAmount { get; set; }
         public string TaxType { get; set; }
-
-
-
     }
 }

@@ -192,7 +192,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Sales.xaml">
+    <Page Include="Sale.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -323,8 +323,8 @@
     <Compile Include="Restore.xaml.cs">
       <DependentUpon>Restore.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sales.xaml.cs">
-      <DependentUpon>Sales.xaml</DependentUpon>
+    <Compile Include="Sale.xaml.cs">
+      <DependentUpon>Sale.xaml</DependentUpon>
     </Compile>
     <Compile Include="SalesClasses.cs" />
     <Compile Include="StockView.xaml.cs">
