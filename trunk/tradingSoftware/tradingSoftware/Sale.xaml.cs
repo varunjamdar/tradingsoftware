@@ -14,14 +14,14 @@ using System.Windows.Shapes;
 namespace tradingSoftware
 {
     /// <summary>
-    /// Interaction logic for Sales.xaml
+    /// Interaction logic for Sale.xaml
     /// </summary>
-    public partial class Sales : Window
+    public partial class Sale : Window
     {
         DataLogic dl = new DataLogic();
 
         List<int> poIdList;
-        public Sales()
+        public Sale()
         {
             InitializeComponent();
             //set default date - today
