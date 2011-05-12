@@ -869,7 +869,7 @@ namespace tradingSoftware
         {
             List<string> paymentModeAccounts = new List<string>();
             conn.Open();
-            ds = new DataSet();                         //2 for Assert Accounts
+            ds = new DataSet();                         //2 for Asset Accounts
             cmd.CommandText = "Select AccountName from Account where AccountGroupID=2";
             adpt.SelectCommand = cmd;
             adpt.Fill(ds, "Account");
@@ -1608,100 +1608,101 @@ namespace tradingSoftware
 
         #region Receipt
 
-        public List<int> getSaleIdForCustomer(string supplierName)
+        public List<int> getSaleIdForCustomer(string customerName)
         {
-            int supplierId = this.getSupplierId(supplierName);
+            int customerId = this.getCustomerId(customerName);
 
             conn.Open();
             ds = new DataSet();
-            cmd.CommandText = "SELECT PurchaseId From Purchase where SupplierId='" + supplierId + "' and PaymentArrived='" + false + "'";
+            cmd.CommandText = "SELECT SaleId From Sale where CustomerId='" + customerId + "' and ReceiptGenerated='" + false + "'";
             adpt.SelectCommand = cmd;
-            adpt.Fill(ds, "PurchaseSupplier");
+            adpt.Fill(ds, "SaleCustomer");
             conn.Close();
 
-            List<int> purchaseIdList = new List<int>();
-            foreach (DataRow i in ds.Tables["PurchaseSupplier"].Rows)
+            List<int> saleIdList = new List<int>();
+            foreach (DataRow i in ds.Tables["SaleCustomer"].Rows)
             {
-                purchaseIdList.Add(Int32.Parse(i[0].ToString()));
+                saleIdList.Add(Int32.Parse(i[0].ToString()));
             }
 
-            return purchaseIdList;
+            return saleIdList;
 
         }
 
         public int getReceiptId()
         {
-            conn.Open();
-            cmd.CommandText = "SELECT Max(PaymentId) From Payment";
-            adpt.SelectCommand = cmd;
-            adpt.Fill(ds, "Payment");
-            conn.Close();
-            if (ds.Tables["Payment"].Rows[0][0].ToString() == "")
+            try
+            {
+                ds.Clear();
+                cmd.CommandText = "SELECT Max(ReceiptId) From Receipt";
+                adpt.SelectCommand = cmd;
+                conn.Open();
+                adpt.Fill(ds, "Receipt");
+                conn.Close();
+                DataRow dr = ds.Tables["Receipt"].Rows[0];
+                return ((dr != null) ? (Int32.Parse(dr[0].ToString()) + 1) : 1);
+            }
+            catch (Exception ex)
             {
                 return 1;
-            }
-            else
-            {
-                return Int32.Parse(ds.Tables["Payment"].Rows[0][0].ToString()) + 1;
             }
         }
 
         public List<string> getSaleItemIdForReceipt()
         {
-
-            conn.Open();
-            cmd.CommandText = "SELECT PurchaseId From Purchase where PaymentArrived='" + false + "'";
+            ds.Clear();
+            
+            cmd.CommandText = "SELECT SaleId From Sale where ReceiptGenerated='" + false + "'";
             adpt.SelectCommand = cmd;
-            adpt.Fill(ds, "PurchaseIdPurchase");
+            conn.Open();
+            adpt.Fill(ds, "SaleId");
             conn.Close();
-            List<string> purchseIdList = new List<string>();
+            List<string> saleIdList = new List<string>();
 
-            foreach (DataRow i in ds.Tables["PurchaseIdPurchase"].Rows)
+            foreach (DataRow i in ds.Tables["SaleId"].Rows)
             {
-                purchseIdList.Add(i[0].ToString());
+                saleIdList.Add(i[0].ToString());
             }
 
-            return purchseIdList;
+            return saleIdList;
         }
 
-        public Dictionary<string, string> getSaleDetailsForReceipt(int purchaseId)
+        public Dictionary<string, string> getSaleDetailsForReceipt(int saleId)
         {
-
-            Dictionary<string, string> pd = new Dictionary<string, string>();
-            conn.Open();
-
+            Dictionary<string, string> sd = new Dictionary<string, string>();
             ds = new DataSet();
-            cmd.CommandText = "Select AmountItems,AmountTaxes from Purchase where PurchaseId=" + purchaseId;
+            cmd.CommandText = "Select AmountItems, AmountTaxes from Sale where SaleId=" + saleId;
             adpt.SelectCommand = cmd;
-            adpt.Fill(ds, "AmountPurchase");
+            conn.Open();
+            adpt.Fill(ds, "AmountSale");
             conn.Close();
 
-            pd.Add("AmountItems", ds.Tables["AmountPurchase"].Rows[0]["AmountItems"].ToString());
-            pd.Add("AmountTaxes", ds.Tables["AmountPurchase"].Rows[0]["AmountTaxes"].ToString());
+            sd.Add("AmountItems", ds.Tables["AmountSale"].Rows[0]["AmountItems"].ToString());
+            sd.Add("AmountTaxes", ds.Tables["AmountSale"].Rows[0]["AmountTaxes"].ToString());
 
-            return pd;
+            return sd;
         }
 
-        public void makeReceipt(int PaymentId, int PurchaseId, string PaymentMode, DateTime PaymentDate, float TotalAmount, string Note)
+        public void makeReceipt(int ReceiptId, int SaleId, string PaymentMode, DateTime ReceiptDate, float TotalAmount, string Note)
         {
             //Get PaymentMode = Account , so Account Id
             conn.Open();
             ds = new DataSet();
-            cmd.CommandText = "Select AccountID from Account where Accountname='" + PaymentMode + "'";
+            cmd.CommandText = "Select AccountID from Account where AccountName='" + PaymentMode + "'";
             adpt.SelectCommand = cmd;
             adpt.Fill(ds, "Account");
 
-            cmd.CommandText = "Insert into Payment (PaymentId,PurchaseId, PaymentDate, TotalAmount, Note,PaymentMode) values (" + PaymentId + "," + PurchaseId + ",'" + PaymentDate + "'," + TotalAmount + ",'" + Note + "'," + Int32.Parse(ds.Tables["Account"].Rows[0][0].ToString()) + ")";
+            cmd.CommandText = "Insert into Receipt (ReceiptId, SaleId, ReceiptDate, TotalAmount, Note, PaymentMode) values (" + ReceiptId + "," + SaleId + ",'" + ReceiptDate + "'," + TotalAmount + ",'" + Note + "'," + Int32.Parse(ds.Tables["Account"].Rows[0][0].ToString()) + ")";
             adpt.SelectCommand = cmd;
             cmd.ExecuteNonQuery();
 
-            //Modify value in Purchase Table, Field PaymaentArrive=true
-            cmd.CommandText = "UPDATE Purchase SET PaymentArrived = '" + true + "' Where PurchaseId=" + PurchaseId + "";
+            //Modify value in Sale Table, Field ReceiptGenerated=true
+            cmd.CommandText = "UPDATE Sale SET ReceiptGenerated = '" + true + "' Where SaleId=" + SaleId + "";
             adpt.SelectCommand = cmd;
             cmd.ExecuteNonQuery();
             conn.Close();
 
-            MessageBox.Show("Payment Made Successfully.", "Succeed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Receipt Entry made successfully.", "Succeed", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #endregion
