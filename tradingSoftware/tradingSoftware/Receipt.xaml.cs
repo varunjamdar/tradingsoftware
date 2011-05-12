@@ -46,8 +46,7 @@ namespace tradingSoftware
             //---Customer
 
             cbCustomer.Items.Clear();
-            List<string> customerNameList = new List<string>();
-            customerNameList = dl.getCustomerName();
+            List<string> customerNameList = dl.getCustomerName();
             foreach (string sn in customerNameList)
             {
                 cbCustomer.Items.Add(sn.ToString());
@@ -58,17 +57,14 @@ namespace tradingSoftware
         {
             if (cbRefSaleId.SelectedIndex != -1)
             {
-                //Sale(Goods receipt note) Details
+                //Sale Details
 
                 //get Customer Name  Amount of Items and Tax
-                Dictionary<string, string> saleD = new Dictionary<string, string>();
-
-                saleD = dl.getSaleDetailsForReceipt(Int32.Parse(cbRefSaleId.SelectedValue.ToString()));
+                Dictionary<string, string> saleD = dl.getSaleDetailsForReceipt(Int32.Parse(cbRefSaleId.SelectedValue.ToString()));
                 lblItemAmount.Content = saleD["AmountItems"];
                 lblTaxeAmount.Content = saleD["AmountTaxes"];
                 txtTotal.Text = (float.Parse(saleD["AmountItems"]) + float.Parse(saleD["AmountTaxes"])).ToString();
             }
-        
         }
 
         private void btnReceipt_Click(object sender, RoutedEventArgs e)
@@ -76,10 +72,9 @@ namespace tradingSoftware
             int ReceiptId = Int32.Parse(lblReceiptId.Content.ToString());
             
             float TotalAmount=0;
-            DateTime paymaentDate = DateTime.Parse(DateTime.Today.Date.ToShortDateString());
+            DateTime receiptDate = DateTime.Today;
 
             //Validation
-            bool isError = false;
             string errorString = "";
             int errorCount=1;
             
@@ -87,34 +82,36 @@ namespace tradingSoftware
             //1 Receipt Mod
             if (cbReceiptMode.SelectedIndex == -1)
             {
-                isError = true;
                 errorString += errorCount++ + ". Select Receipt Mode ! \n";
             }
             
             //2 DateTime
             try
             {
-                paymaentDate = DateTime.Parse(datePickerReceipt.Text);
+                receiptDate = DateTime.Parse(datePickerReceipt.Text);
             }
             catch(FormatException fe)
             {
-                isError = true;
-                errorString += errorCount++ + ". Invalid Date Formate ! \n";
+                errorString += errorCount++ + ". Invalid Date Format ! \n";
             }
 
-            //3 Sale Combobox
+            //3 Customer
+            if (cbCustomer.SelectedIndex==-1)
+            {
+                errorString += errorCount++ + ". Select Customer ! \n";
+            }
+
+            //4 Sale Combobox
             if (cbRefSaleId.SelectedIndex == -1)
             {
-                isError = true;
                 errorString += errorCount++ + ". Select Sale Id ! \n";
             }
             else
             {
 
-                //4 TotalAmount
+                //5 TotalAmount
                 if (txtTotal.Text == "")
                 {
-                    isError = true;
                     errorString += errorCount++ + ". Total Amount is Empty ! \n";
                 }
                 else
@@ -122,27 +119,28 @@ namespace tradingSoftware
                     try
                     {
                         TotalAmount = float.Parse(txtTotal.Text);
+                        if (TotalAmount <= 0)
+                            errorString += errorCount++ + ". Total Amount must be more than zero ! \n";
                     }
-                    catch (FormatException fe)
+                    catch (Exception fe)
                     {
-                        isError = true;
                         errorString += errorCount++ + ". Total Amount is not in correct Format ! \n";
                     }
                 }
             }
 
-            if (isError)
+            if (errorCount>1)
             {
                 MessageBox.Show(errorString,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
             }
             else
             {
                 int SaleId = Int32.Parse(cbRefSaleId.SelectedValue.ToString());
-                MessageBoxResult mbr = MessageBox.Show("Are You Sure to Make Receipt ?", "Varifiacation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult mbr = MessageBox.Show("Are You Sure to Make Receipt ?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (mbr == MessageBoxResult.Yes)
                 {
-                    dl.makeReceipt(ReceiptId, SaleId, cbReceiptMode.SelectedValue.ToString(), paymaentDate, TotalAmount, txtNote.Text);
+                    dl.makeReceipt(ReceiptId, SaleId, cbReceiptMode.SelectedValue.ToString(), receiptDate, TotalAmount, txtNote.Text);
 
                     //Clear All Field
                     lblReceiptId.Content = dl.getReceiptId().ToString();
@@ -157,7 +155,6 @@ namespace tradingSoftware
 
                     cbRefSaleId.Items.Clear();
                     //set Sale Id
-                    saleIdList = new List<string>();
                     saleIdList = dl.getSaleItemIdForReceipt();
                     foreach (string pid in saleIdList)
                     {
@@ -176,13 +173,12 @@ namespace tradingSoftware
             //filter the Sale order as per Customer
             if (cbCustomer.SelectedIndex != -1)
             {
-                List<int> pIdList = new List<int>();
-                pIdList = dl.getSaleIdForCustomer(cbCustomer.SelectedValue.ToString());
+                List<int> sIdList = dl.getSaleIdForCustomer(cbCustomer.SelectedValue.ToString());
 
                 cbRefSaleId.Items.Clear();
-                foreach (int pid in pIdList)
+                foreach (int sid in sIdList)
                 {
-                    cbRefSaleId.Items.Add(pid.ToString());
+                    cbRefSaleId.Items.Add(sid.ToString());
                 }
             }
         }
