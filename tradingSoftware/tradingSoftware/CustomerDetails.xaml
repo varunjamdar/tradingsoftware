@@ -78,25 +78,26 @@
                 <Grid Name="gridCoImg">
                     <Label Height="28" HorizontalAlignment="Left" Margin="212,126,0,0" Name="label26" VerticalAlignment="Top" Width="186">Credit Rating (market value)</Label>
                     <ComboBox Height="23" Margin="402,129,346,0" Name="comboBox6" VerticalAlignment="Top" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="23,230,0,0" Name="label27" VerticalAlignment="Top" Width="106">Payment Terms</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="101,233,0,0" Name="label27" VerticalAlignment="Top" Width="106">Payment Terms</Label>
                     <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="51,70,0,0" Name="label25" VerticalAlignment="Top" Width="203">Compnay Profile</Label>
                     <Button Height="29" Width="108" HorizontalAlignment="Left" Margin="161,0,0,52" Name="btnNew" VerticalAlignment="Bottom">New</Button>
                     <Button Height="29" HorizontalAlignment="Left" Margin="315,0,0,52" Name="btnSave" VerticalAlignment="Bottom" Width="108">Save</Button>
                     <Button Height="29" Margin="0,0,284,52" Name="btnFind" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="108">Find</Button>
                     <Button Height="29" HorizontalAlignment="Right" Margin="0,0,130,52" Name="btnClose" VerticalAlignment="Bottom" Width="108">Close</Button>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="23,0,0,230" Name="label28" VerticalAlignment="Bottom" Width="120">Delivery</Label>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="23,0,0,189" Name="label29" VerticalAlignment="Bottom" Width="120">Payment Mode</Label>
-                    <Label Height="28" HorizontalAlignment="Left" Margin="23,0,0,147" Name="label30" VerticalAlignment="Bottom" Width="120">Freight Terms</Label>
-                    <Label Height="28" Margin="418,227,330,0" Name="label31" VerticalAlignment="Top">Insurance</Label>
-                    <Label Height="28" Margin="418,0,330,228" Name="label32" VerticalAlignment="Bottom">Packing</Label>
-                    <Label Height="28" Margin="418,0,330,189" Name="label33" VerticalAlignment="Bottom">Penalty</Label>
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="161,232,0,0" Name="textBox8" VerticalAlignment="Top" Width="120" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="161,0,0,233" Name="textBox15" VerticalAlignment="Bottom" Width="120" />
-                    <TextBox Height="23" HorizontalAlignment="Left" Margin="161,0,0,194" Name="textBox16" VerticalAlignment="Bottom" Width="120" />
-                    <TextBox Height="23" Margin="161,0,0,147" Name="textBox17" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120" />
-                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,232,253,0" Name="textBox18" VerticalAlignment="Top" Width="120" />
-                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,253,230" Name="textBox19" VerticalAlignment="Bottom" Width="120" />
-                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,253,189" Name="textBox20" VerticalAlignment="Bottom" Width="120" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="101,0,0,227" Name="label28" VerticalAlignment="Bottom" Width="120">Delivery</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="101,0,0,186" Name="label29" VerticalAlignment="Bottom" Width="120">Payment Mode</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="101,0,0,144" Name="label30" VerticalAlignment="Bottom" Width="120">Freight Terms</Label>
+                    <Label Height="28" Margin="0,230,252,0" Name="label31" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120">Insurance</Label>
+                    <Label Height="28" Margin="0,0,252,225" Name="label32" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="120">Packing</Label>
+                    <Label Height="28" Margin="0,0,252,186" Name="label33" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="120">Penalty</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="239,235,0,0" Name="textBox8" VerticalAlignment="Top" Width="120" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="239,0,0,230" Name="textBox15" VerticalAlignment="Bottom" Width="120" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="239,0,0,191" Name="textBox16" VerticalAlignment="Bottom" Width="120" />
+                    <TextBox Height="23" Margin="239,0,0,144" Name="textBox17" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120" />
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,235,175,0" Name="textBox18" VerticalAlignment="Top" Width="120" />
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,175,227" Name="textBox19" VerticalAlignment="Bottom" Width="120" />
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,175,186" Name="textBox20" VerticalAlignment="Bottom" Width="120" />
+                    <Label FontSize="25" Foreground="Blue" Height="47" HorizontalAlignment="Left" Margin="51,171,0,0" Name="label34" VerticalAlignment="Top" Width="280">Terms and Conditions</Label>
                 </Grid>
             </TabItem>
         </TabControl>
