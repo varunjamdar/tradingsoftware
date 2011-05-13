@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Supplier Details" Height="641" Width="900" FontSize="14">
     <Grid Name="CustomerDetailsMain" Height="596">
-        <TabControl Name="tabControl1" SelectedIndex="0
+        <TabControl Name="tabControl1" SelectedIndex="2
                     
                     " Background="FloralWhite" SelectionChanged="tabControl1_SelectionChanged">
             <TabItem Header="Personal Information" Background="DarkKhaki">
@@ -79,15 +79,30 @@
             </TabItem>
             <TabItem Header="Company Profile" IsSelected="True" Background="DarkKhaki">
                 <Grid Name="gridCoImg">
-                    <Label Height="28" HorizontalAlignment="Left" Margin="113.322,164.428,0,0" Name="label26" VerticalAlignment="Top" Width="186.648">Credit Rating (market value)</Label>
-                    <ComboBox Height="23" Margin="301.081,171.094,428.846,0" Name="comboBox6" VerticalAlignment="Top" />
-                    <Label Height="28" HorizontalAlignment="Left" Margin="191.092,231.088,0,0" Name="label27" VerticalAlignment="Top" Width="108">Customer Type</Label>
-                    <ComboBox Height="23" Margin="301.081,236.643,428.846,0" Name="comboBox7" VerticalAlignment="Top" />
-                    <Button Height="29" Width="108" HorizontalAlignment="Left" Margin="131.468,0,0,194.344" Name="btnNew" VerticalAlignment="Bottom">New</Button>
-                    <Button Height="29" HorizontalAlignment="Left" Margin="285.8,0,0,194.344" Name="btnSave" VerticalAlignment="Bottom" Width="108">Save</Button>
-                    <Button Height="29" Margin="0,0,312.951,194.344" Name="btnFind" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="108">Find</Button>
-                    <Button Height="29" HorizontalAlignment="Right" Margin="0,0,158.619,194.344" Name="btnClose" VerticalAlignment="Bottom" Width="108">Close</Button>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="131.468,90,0,0" Name="label26" VerticalAlignment="Top" Width="186.648">Credit Rating (market value)</Label>
+                    <ComboBox Height="23" Margin="319.227,97,410.7,0" Name="comboBox6" VerticalAlignment="Top" />
+                    <Label Height="28" HorizontalAlignment="Left" Margin="209,131,0,0" Name="label27" VerticalAlignment="Top" Width="108">Customer Type</Label>
+                    <ComboBox Height="23" Margin="319.227,136,410.7,0" Name="comboBox7" VerticalAlignment="Top" />
+                    <Button Height="29" Width="108" HorizontalAlignment="Left" Margin="121,0,0,47" Name="btnNew" VerticalAlignment="Bottom">New</Button>
+                    <Button Height="29" HorizontalAlignment="Left" Margin="276,0,0,47" Name="btnSave" VerticalAlignment="Bottom" Width="108">Save</Button>
+                    <Button Height="29" Margin="0,0,323,47" Name="btnFind" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="108">Find</Button>
+                    <Button Height="29" HorizontalAlignment="Right" Margin="0,0,169,47" Name="btnClose" VerticalAlignment="Bottom" Width="108">Close</Button>
                     <Label FontSize="25" Foreground="Blue" Height="47" Margin="48.586,35.725,402.978,0" Name="label23" VerticalAlignment="Top">Supplie Detail - Compnay Profile</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="65,249,0,0" Name="label28" VerticalAlignment="Top" Width="108">Payment Terms</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="65,0,0,244" Name="label29" VerticalAlignment="Bottom" Width="120">Delivery</Label>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="65,0,0,208" Name="label30" VerticalAlignment="Bottom" Width="120">Payment Mode</Label>
+                    <Label HorizontalAlignment="Left" Margin="65,0,0,165" Name="label31" Width="120" Height="27.38" VerticalAlignment="Bottom">Freeight Terms</Label>
+                    <Label Height="28" Margin="382,249,366,0" Name="label32" VerticalAlignment="Top">Insurance</Label>
+                    <Label Margin="382,0,366,244" Name="label33" Height="28.38" VerticalAlignment="Bottom">Packing</Label>
+                    <Label Height="28" Margin="382,0,366,208" Name="label34" VerticalAlignment="Bottom">Penalty</Label>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="186,254,0,0" Name="textBox1" VerticalAlignment="Top" Width="120" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="186,0,0,244" Name="textBox2" VerticalAlignment="Bottom" Width="120" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="186,0,0,208" Name="textBox3" VerticalAlignment="Bottom" Width="120" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="186,0,0,165" Name="textBox4" VerticalAlignment="Bottom" Width="120" />
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,254,279,0" Name="textBox5" VerticalAlignment="Top" Width="120" />
+                    <TextBox HorizontalAlignment="Right" Margin="0,0,279,247" Name="textBox6" Width="120" Height="23.38" VerticalAlignment="Bottom" />
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,0,279,211" Name="textBox8" VerticalAlignment="Bottom" Width="120" />
+                    <Label FontSize="25" Foreground="Blue" Height="47" Margin="48.586,185,402.978,0" Name="label35" VerticalAlignment="Top">Terms and Conditions</Label>
                 </Grid>
             </TabItem>
         </TabControl>
