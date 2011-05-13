@@ -15,6 +15,7 @@ namespace tradingSoftware
 
         SqlDataAdapter adpt = null;
         DataSet ds = null;
+        DataSet ds1 = null;
 
         ItemObject io;
         AccountObject ao;
@@ -30,6 +31,7 @@ namespace tradingSoftware
 
             adpt = new SqlDataAdapter();
             ds = new DataSet();
+            ds1 = new DataSet();
         }
 
         public void addCompanyDetails(CompanyObject company)
@@ -1294,8 +1296,13 @@ namespace tradingSoftware
             adpt.Fill(ds);
             conn.Close();
 
+            
+
             if (ds.Tables[0].Rows.Count == 0)
             {
+                int CityId = 0; ;
+                int StateId = 0;
+
                 ds.Tables.Clear();
                 cmd = conn.CreateCommand();
                 string accGroup = account.AccountGroup;
@@ -1305,31 +1312,34 @@ namespace tradingSoftware
 
                 int AccountGroupId = int.Parse(ds.Tables["AccountGroup"].Rows[0]["AccountGroupId"].ToString());
 
-                //
-                ds.Tables.Clear();
-                cmd = conn.CreateCommand();
-                string cityName = account.City;
-                adpt.SelectCommand = cmd;
-                cmd.CommandText = "Select CityID from City where CityName='" + cityName + "';";
-                adpt.Fill(ds, "City");
+                if (account.City != "")
+                {
+                    ds.Tables.Clear();
+                    cmd = conn.CreateCommand();
+                    string cityName = account.City;
+                    adpt.SelectCommand = cmd;
+                    cmd.CommandText = "Select CityId from City where CityName='" + cityName + "';";
+                    adpt.Fill(ds, "City");
 
-
+                    CityId = int.Parse(ds.Tables["City"].Rows[0]["CityID"].ToString());
+                }                
                 
                 
-                int CityId = int.Parse(ds.Tables["City"].Rows[0]["CityID"].ToString());
 
-                ds.Tables.Clear();
-                cmd = conn.CreateCommand();
-                string stateName = account.State;
-                adpt.SelectCommand = cmd;
-                cmd.CommandText = "Select StateID from State where StateName='" + stateName + "';";
-                adpt.Fill(ds, "State");
 
+                if (account.State != "")
+                {
+                    ds.Tables.Clear();
+                    cmd = conn.CreateCommand();
+                    string stateName = account.State;
+                    adpt.SelectCommand = cmd;
+                    cmd.CommandText = "Select StateId from State where StateName='" + stateName + "';";
+                    adpt.Fill(ds, "State");
                 
                 
-                int StateId = int.Parse(ds.Tables["State"].Rows[0]["StateID"].ToString());
-
-
+                StateId = int.Parse(ds.Tables["State"].Rows[0]["StateID"].ToString());
+                    
+                }
                 cmd.CommandText = "Insert into Account(AccountName,AccountPrintName,AccountGroupId,AddressLine1,AddressLine2,AddressLine3,CityId,StateId,Pincode,Email,ContactPerson,TelephoneNo,PANNo) values (@AccountName,@AccountPrintName,@AccountGroupId,@AddressLine1,@AddressLine2,@AddressLine3,@CityId,@StateId,@Pincode,@Email,@ContactPerson,@TelephoneNo,@PANNo)";
 
                 
@@ -1354,8 +1364,23 @@ namespace tradingSoftware
                 cmd.Parameters["@AddressLine1"].Value = account.AddLine1;
                 cmd.Parameters["@AddressLine2"].Value = account.AddLine2;
                 cmd.Parameters["@AddressLine3"].Value = account.AddLine3;
-                cmd.Parameters["@CityId"].Value = CityId;
-                cmd.Parameters["@StateId"].Value = StateId;
+                if (account.City == "")
+                {
+                    cmd.Parameters["@CityId"].Value = -1;
+                }
+                else
+                {
+                    cmd.Parameters["@CityId"].Value = CityId;
+                }
+
+                if (account.State == "")
+                {
+                    cmd.Parameters["@StateId"].Value = -1;
+                }
+                else
+                {
+                    cmd.Parameters["@StateId"].Value = StateId;
+                }
                 cmd.Parameters["@Pincode"].Value = account.Pin;
                 cmd.Parameters["@Email"].Value = account.Email;
                 cmd.Parameters["@ContactPerson"].Value = account.ContactPerson;
@@ -1374,6 +1399,9 @@ namespace tradingSoftware
             }
             else
             {
+                int CityId = 0;
+                int StateId = 0;
+
                 ds.Tables.Clear();
                 cmd = conn.CreateCommand();
                 string accGroup = account.AccountGroup;
@@ -1383,24 +1411,30 @@ namespace tradingSoftware
 
                 int AccountGroupId = int.Parse(ds.Tables["AccountGroup"].Rows[0]["AccountGroupId"].ToString());
 
-                ds.Tables.Clear();
-                cmd = conn.CreateCommand();
-                string cityName = account.City;
-                adpt.SelectCommand = cmd;
-                cmd.CommandText = "Select CityId from City where CityName='" + cityName + "';";
-                adpt.Fill(ds, "City");
+                if (account.City != "")
+                {
+                    ds.Tables.Clear();
+                    cmd = conn.CreateCommand();
+                    string cityName = account.City;
+                    adpt.SelectCommand = cmd;
+                    cmd.CommandText = "Select CityId from City where CityName='" + cityName + "';";
+                    adpt.Fill(ds, "City");
 
-                int CityId = int.Parse(ds.Tables["City"].Rows[0]["CityId"].ToString());
+                    CityId = int.Parse(ds.Tables["City"].Rows[0]["CityId"].ToString());
 
-                ds.Tables.Clear();
-                cmd = conn.CreateCommand();
-                string stateName = account.State;
-                adpt.SelectCommand = cmd;
-                cmd.CommandText = "Select StateId from State where StateName='" + stateName + "';";
-                adpt.Fill(ds, "State");
+                }
 
-                int StateId = int.Parse(ds.Tables["State"].Rows[0]["StateId"].ToString());
+                if (account.State != "")
+                {
+                    ds.Tables.Clear();
+                    cmd = conn.CreateCommand();
+                    string stateName = account.State;
+                    adpt.SelectCommand = cmd;
+                    cmd.CommandText = "Select StateId from State where StateName='" + stateName + "';";
+                    adpt.Fill(ds, "State");
 
+                    StateId = int.Parse(ds.Tables["State"].Rows[0]["StateId"].ToString());
+                }
                 cmd.CommandText = "Update Account SET AccountName=@AccountName, AccountPrintName=@AccountPrintName,AccountGroupId=@AccountGroupId, AddressLine1=@AddressLine1, AddressLine2=@AddressLine2, AddressLine3=@AddressLine3, CityId=@CityId, StateId=@StateId, Pincode=@Pincode, Email=@Email, ContactPerson=@ContactPerson, TelephoneNo=@TelephoneNo,PANNo=@PANNo where AccountId=" + account.AccountId;
 
                 cmd.Parameters.Add("@AccountName", SqlDbType.VarChar);
@@ -1423,8 +1457,23 @@ namespace tradingSoftware
                 cmd.Parameters["@AddressLine1"].Value = account.AddLine1;
                 cmd.Parameters["@AddressLine2"].Value = account.AddLine2;
                 cmd.Parameters["@AddressLine3"].Value = account.AddLine3;
-                cmd.Parameters["@CityId"].Value = CityId;
-                cmd.Parameters["@StateId"].Value = StateId;
+                if (account.City == "")
+                {
+                    cmd.Parameters["@CityId"].Value = -1;
+                }
+                else
+                {
+                    cmd.Parameters["@CityId"].Value = CityId;
+                }
+
+                if (account.State == "")
+                {
+                    cmd.Parameters["@StateId"].Value = -1;
+                }
+                else
+                {
+                    cmd.Parameters["@StateId"].Value = StateId;
+                }
                 cmd.Parameters["@Pincode"].Value = account.Pin;
                 cmd.Parameters["@Email"].Value = account.Email;
                 cmd.Parameters["@ContactPerson"].Value = account.ContactPerson;
@@ -1458,7 +1507,9 @@ namespace tradingSoftware
         {
             ao = new AccountObject();
 
-            cmd.CommandText = "SELECT Account.AccountId, Account.AccountName, Account.AccountPrintName, AccountGroup.AccountGroupName, Account.AddressLine1, Account.AddressLine2, Account.AddressLine3, City.CityName, State.StateName, Account.Pincode, Account.Email, Account.ContactPerson, Account.TelephoneNo, Account.PANNo FROM Account INNER JOIN AccountGroup ON Account.AccountGroupId = AccountGroup.AccountGroupID INNER JOIN State ON Account.StateId = State.StateID INNER JOIN City ON Account.CityId = City.CityID WHERE AccountId="+accId;
+            //cmd.CommandText = "SELECT Account.AccountId, Account.AccountName, Account.AccountPrintName, AccountGroup.AccountGroupName, Account.AddressLine1, Account.AddressLine2, Account.AddressLine3, Account.CityId, City.CityName, Account.StateId, State.StateName, Account.Pincode, Account.Email, Account.ContactPerson, Account.TelephoneNo, Account.PANNo FROM Account INNER JOIN AccountGroup ON Account.AccountGroupId = AccountGroup.AccountGroupID INNER JOIN State ON Account.StateId = State.StateID INNER JOIN City ON Account.CityId = City.CityID WHERE AccountId="+accId;
+            //cmd.CommandText = "SELECT AccountId, AccountName, AccountPrintName, AccountGroupId, AddressLine1, AddressLine2, AddressLine3, CityId, StateId, Pincode, Email, ContactPerson, TelephoneNo, PANNo FROM Account WHERE AccountId=" + accId;
+            cmd.CommandText = "SELECT Account.AccountId, Account.AccountName, Account.AccountPrintName, Account.AddressLine1, Account.AddressLine2, Account.AddressLine3, Account.CityId, Account.StateId, Account.Pincode, Account.Email, Account.ContactPerson, Account.TelephoneNo, Account.PANNo, AccountGroup.AccountGroupName FROM Account INNER JOIN AccountGroup ON Account.AccountGroupId = AccountGroup.AccountGroupId WHERE AccountId=" + accId;
             adpt.SelectCommand = cmd;
             ds.Tables.Clear();
 
@@ -1469,12 +1520,47 @@ namespace tradingSoftware
             ao.AccountId = int.Parse(ds.Tables[0].Rows[0]["AccountId"].ToString());
             ao.AccountName = ds.Tables[0].Rows[0]["AccountName"].ToString();
             ao.AccountPrintName = ds.Tables[0].Rows[0]["AccountPrintName"].ToString();
+
             ao.AccountGroup=ds.Tables[0].Rows[0]["AccountGroupName"].ToString();
+            
             ao.AddLine1=ds.Tables[0].Rows[0]["AddressLine1"].ToString();
             ao.AddLine2=ds.Tables[0].Rows[0]["AddressLine2"].ToString();
             ao.AddLine3=ds.Tables[0].Rows[0]["AddressLine3"].ToString();
-            ao.City=ds.Tables[0].Rows[0]["CityName"].ToString();
-            ao.State=ds.Tables[0].Rows[0]["StateName"].ToString();
+            if (int.Parse(ds.Tables[0].Rows[0]["CityId"].ToString()) == -1)
+            {
+                ao.City = "";
+            }
+            else
+            {
+                int cityId = int.Parse(ds.Tables[0].Rows[0]["CityId"].ToString());
+                cmd.CommandText = "Select CityName From City Where CityId=" + cityId;
+                adpt.SelectCommand = cmd;
+                ds1.Tables.Clear();
+
+                conn.Open();
+                adpt.Fill(ds1);
+                conn.Close();
+
+                ao.City = ds1.Tables[0].Rows[0]["CityName"].ToString();
+            }
+
+            if (int.Parse(ds.Tables[0].Rows[0]["StateId"].ToString()) == -1)
+            {
+                ao.State = "";
+            }
+            else
+            {
+                int stateId = int.Parse(ds.Tables[0].Rows[0]["StateId"].ToString());
+                cmd.CommandText = "Select StateName From State Where StateId=" + stateId;
+                adpt.SelectCommand = cmd;
+                ds1.Tables.Clear();
+
+                conn.Open();
+                adpt.Fill(ds1);
+                conn.Close();
+
+                ao.State = ds1.Tables[0].Rows[0]["StateName"].ToString();
+            }
             ao.Pin=ds.Tables[0].Rows[0]["Pincode"].ToString();
             ao.Email=ds.Tables[0].Rows[0]["Email"].ToString();
             ao.ContactPerson=ds.Tables[0].Rows[0]["ContactPerson"].ToString();

@@ -96,7 +96,7 @@ namespace tradingSoftware
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("" + ex.Message);
             }
         }
 
