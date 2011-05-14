@@ -526,6 +526,9 @@ namespace tradingSoftware
                 {
                     ListViewPurchaseTaxDetails lvc = (ListViewPurchaseTaxDetails)listViewTaxDetails.Items[i];
                     dl.placePurchase_PurchaseTaxesTable(Int32.Parse(txtPurchaseNo.Text), dl.getTaxId(lvc.TaxName), lvc.TaxType, lvc.TaxAmount);
+                    
+                    //Accounting Entry
+                    dl.addJournalEntry(DateTime.Parse(dtPick_PODate.Text), supplierName, lvc.TaxName, decimal.Parse(lvc.TaxAmount.ToString()));
                 }
                 
                 if (cbIsPurchaseOrderCompleted.IsChecked==true)
@@ -533,6 +536,11 @@ namespace tradingSoftware
                     dl.setPOCompletedTrue(Int32.Parse(cbRefPO.SelectedValue.ToString()));
                 }
                 
+
+                //Accounting Entry
+                dl.addJournalEntry(DateTime.Parse(dtPick_PODate.Text), supplierName, "Goods", decimal.Parse(lblTotalAmount.Content.ToString()));
+                
+
                 MessageBox.Show("Purchase Placed Successfully","Succeeded",MessageBoxButton.OK,MessageBoxImage.Information);
             
                 //

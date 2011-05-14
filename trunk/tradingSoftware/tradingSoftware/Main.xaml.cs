@@ -30,11 +30,11 @@ namespace tradingSoftware
             InitializeComponent();
             //------code for setting the connection string to running directory----------
             //string dbPath = Environment.CurrentDirectory + @"\" + tradingSoftware.Properties.Settings.Default.DBFile;
-            //TradeDataSet ts=new TradeDataSet();
+            // TradeDataSet ts=new TradeDataSet();
             //MessageBox.Show(ts.DefaultViewManager.DataViewSettingCollectionString);
             //= @"Data Source=.\SQLEXPRESS;AttachDbFilename=" + dbPath + ";Integrated Security=True;User Instance=True";
 
-            MessageBox.Show(Properties.Settings.Default.DBFile);
+            //MessageBox.Show(Properties.Settings.Default.DBFile);
 
             //---------------------------------------------------------------------------
             //string hr = "";
