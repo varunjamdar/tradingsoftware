@@ -40,73 +40,81 @@ namespace tradingSoftware
         {
             if (textBoxBackupLocation.Text != "")
             {
-                string fileName = tradingSoftware.Properties.Settings.Default.DBFile;
-                string sourcePath =textBoxBackupLocation.Text;
-                
+                try
+                {
+                    string fileName = "Trade.mdf";//tradingSoftware.Properties.Settings.Default.DBFile;
+                    string sourcePath = textBoxBackupLocation.Text;
 
-                //**********************************--------------------------
-                string s = sourcePath;
-                char[] c = s.ToCharArray();
-                int count = 0;
-                //--------------------------------------------------------------------------------------------           //check how many : exist 
-                foreach (char ss in c)
-                {
-                    if (ss.ToString() == @"\")
+                    /*
+                    //**********************************--------------------------
+                    string s = sourcePath;
+                    char[] c = s.ToCharArray();
+                    int count = 0;
+                    //--------------------------------------------------------------------------------------------           //check how many : exist 
+                    foreach (char ss in c)
                     {
-                        count++;
-                    }
-                }
-                //-------------------------------------------------------------------------------------------
-                int i = 0;
-                bool createString = false;
-                string SFileName = "";
-                foreach (char ss in c)
-                {
-                    if (createString == false)
-                    {
-                        if (ss.ToString() == @"\" )
+                        if (ss.ToString() == @"\")
                         {
-                            i++;
-                            if (i == count)
-                            {
-                                createString = true;
-                            }
+                            count++;
                         }
                     }
-                    else
+                    //-------------------------------------------------------------------------------------------
+                    int i = 0;
+                    bool createString = false;
+                    string SFileName = "";
+                    foreach (char ss in c)
                     {
-                        SFileName += ss.ToString();
+                        if (createString == false)
+                        {
+                            if (ss.ToString() == @"\" )
+                            {
+                                i++;
+                                if (i == count)
+                                {
+                                    createString = true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            SFileName += ss.ToString();
+                        }
                     }
+
+                    //
+                    */
+                    string targetPath = Environment.CurrentDirectory + @"\Trade.mdf"; //with .mdf
+
+                    // Use Path class to manipulate file and directory paths.
+                    string destFile = targetPath;
+                    string sourceFile = sourcePath;
+
+
+                    // To copy a file to another location and 
+                    // overwrite the destination file if it already exists.
+
+                    //Delete the database from the Programme file.
+                    System.Windows.MessageBox.Show("To Delete File : " + Environment.CurrentDirectory + @"\" + fileName);
+                    System.IO.File.Delete(Environment.CurrentDirectory + @"\" + fileName);
+                    System.IO.File.Delete(Environment.CurrentDirectory + @"\" + fileName + "_log");
+                    System.Windows.MessageBox.Show("File Deleted Successfully");
+
+                    //Save database in the programme file.
+                    System.IO.File.Copy(sourceFile, destFile, true);
+                    System.Windows.MessageBox.Show("Restore done Successfully", "Succeed", MessageBoxButton.OK, MessageBoxImage.Information);
+                    textBoxBackupLocation.Text = "";
+
+
+                    /*
+                    //Save to Settings.Settings File
+                    Properties.Settings.Default.DBFile = SFileName;
+                    Properties.Settings.Default.Save();
+                    */
                 }
-
-                //
-
-                string targetPath = Environment.CurrentDirectory + @"\" + SFileName; //with .mdf
-
-                // Use Path class to manipulate file and directory paths.
-                string destFile = targetPath;
-                string sourceFile = sourcePath;
-
-
-                // To copy a file to another location and 
-                // overwrite the destination file if it already exists.
-
-                //Delete the database from the Programme file.
-                System.Windows.MessageBox.Show("To Delete File : "+ Environment.CurrentDirectory + @"\" + fileName);
-                System.IO.File.Delete(Environment.CurrentDirectory+@"\"+fileName);
-                System.IO.File.Delete(Environment.CurrentDirectory + @"\" + fileName+"_log");
-                System.Windows.MessageBox.Show("File Deleted Successfully");
-
-                //Save database in the programme file.
-                System.IO.File.Copy(sourceFile, destFile, true);
-                System.Windows.MessageBox.Show("Restore done Successfully","Succeed",MessageBoxButton.OK,MessageBoxImage.Information);
-                textBoxBackupLocation.Text = "";
-
-
-                //Save to Settings.Settings File
-                Properties.Settings.Default.DBFile = SFileName;
-                Properties.Settings.Default.Save();
-
+                catch (Exception ex)
+                {
+                    System.Windows.MessageBox.Show(ex.Message + "\n \n Restart the Application and then try.");
+                }
             }
             else
             {

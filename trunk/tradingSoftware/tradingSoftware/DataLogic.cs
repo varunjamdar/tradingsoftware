@@ -1842,5 +1842,11 @@ namespace tradingSoftware
         }
 
         #endregion
+
+        public void truncateDatabase()
+        {
+
+
+        }
     }
 }

@@ -39,24 +39,41 @@ namespace tradingSoftware
 
         private void btnBackup_Click(object sender, RoutedEventArgs e)
         {
+            TradeDataSet ds = new TradeDataSet();
+            ds.Dispose();
             if (textBoxBackupLocation.Text != "")
             {
-
-                string fileName = Properties.Settings.Default.DBFile;
-                string sourcePath = Environment.CurrentDirectory;
-                string targetPath = textBoxBackupLocation.Text;
-
-
-                // Use Path class to manipulate file and directory paths.
-                string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
-                string destFile = targetPath+@".mdf";
+                try
+                {
+                    //string fileName = Properties.Settings.Default.DBFile;
+                    string sourcePath = Environment.CurrentDirectory + @"/Trade.mdf";
+                    string targetPath = textBoxBackupLocation.Text;
 
 
-                // To copy a file to another location and 
-                // overwrite the destination file if it already exists.
-                System.IO.File.Copy(sourceFile, destFile, true);
-                System.Windows.MessageBox.Show("Backup done Successfully","Succeed",MessageBoxButton.OK,MessageBoxImage.Information);
-                textBoxBackupLocation.Text = "";
+                    // Use Path class to manipulate file and directory paths.
+                    string sourceFile = sourcePath;//System.IO.Path.Combine(sourcePath, fileName);
+                    string destFile = targetPath + @"/Trade.mdf";
+
+                    if (!System.IO.Directory.Exists(targetPath))
+                    {
+                        System.IO.Directory.CreateDirectory(targetPath);
+                    }
+                    // To copy a file to another location and 
+                    // overwrite the destination file if it already exists.
+
+                    System.IO.File.Copy(sourceFile, destFile, true);
+
+                    //for log file
+                    sourcePath = Environment.CurrentDirectory + @"/Trade_log.ldf";
+                    destFile = targetPath + @"/Trade_log.ldf";
+                    System.IO.File.Copy(sourceFile, destFile, true);
+                    System.Windows.MessageBox.Show("Backup done Successfully", "Succeed", MessageBoxButton.OK, MessageBoxImage.Information);
+                    textBoxBackupLocation.Text = "";
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.MessageBox.Show(ex.Message + "\n \n Restart the Application and then try.");
+                }
             }
             else
             {
