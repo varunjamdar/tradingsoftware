@@ -4,10 +4,10 @@
     Title="New Financial Year" Height="407" Width="613">
     <Grid Name="GridNewFYMain">
         <Button Margin="145,0,0,143" Name="btnNewFY" Height="31" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="135" Click="btnNewFY_Click" FontSize="14">New Financial Year</Button>
-        <Label Height="28" HorizontalAlignment="Left" Margin="86,78,0,0" Name="label1" VerticalAlignment="Top" Width="159" FontSize="14">Current Financial Year :</Label>
-        <Label Height="28" Margin="277,78,138,0" Name="label2" VerticalAlignment="Top" FontSize="14">April 2011 - March 2012</Label>
-        <Label Height="28" HorizontalAlignment="Left" Margin="103,125,0,0" Name="label3" VerticalAlignment="Top" Width="139" FontSize="14">New Financial Year :</Label>
-        <Label Height="28" Margin="277,125,138,0" Name="label4" VerticalAlignment="Top" FontSize="14">April 2012 - March 2013</Label>
+        <Label Height="28" HorizontalAlignment="Left" Margin="86,78,0,0" Name="lblCurrentFY1" VerticalAlignment="Top" Width="159" FontSize="14">Current Financial Year :</Label>
+        <Label Height="28" Margin="277,78,107,0" Name="lblCurrentFY" VerticalAlignment="Top" FontSize="14">April 2011 - March 2012</Label>
+        <Label Height="28" HorizontalAlignment="Left" Margin="103,125,0,0" Name="lblNewFY1" VerticalAlignment="Top" Width="139" FontSize="14">New Financial Year :</Label>
+        <Label Height="28" Margin="277,125,107,0" Name="lblNewFY" VerticalAlignment="Top" FontSize="14">April 2012 - March 2013</Label>
         <Button Height="31" HorizontalAlignment="Right" Margin="0,0,176,143" Name="btnClose" VerticalAlignment="Bottom" Width="75" Click="btnClose_Click" FontSize="14">Close</Button>
         <StackPanel Height="50" Name="stackPanel1" VerticalAlignment="Bottom" Margin="9,0,0,0">
             <TextBlock>Note :</TextBlock>
