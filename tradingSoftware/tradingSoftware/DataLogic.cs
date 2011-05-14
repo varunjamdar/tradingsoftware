@@ -666,6 +666,25 @@ namespace tradingSoftware
             conn.Close();
             return Int32.Parse(ds.Tables["Tax"].Rows[0][0].ToString());
         }
+
+        public Dictionary<string, float> getTaxesOfPurchase(int purchaseId)
+        {
+            ds.Clear();
+            cmd.CommandText = "SELECT T.TaxName, PT.Amount FROM PurchaseTaxes AS PT INNER JOIN Tax AS T ON PT.TaxId = T.TaxID WHERE (PT.PurchaseId = "+purchaseId+")";
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            Dictionary<string, float> taxes = new Dictionary<string, float>();
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                taxes.Add(dr[0].ToString(), float.Parse(dr[1].ToString()));
+            }
+
+            return taxes;
+        }
+
         //update Purchae Order Table PO Completed = true
         public void setPOCompletedTrue(int purchaseOrderId)
         {

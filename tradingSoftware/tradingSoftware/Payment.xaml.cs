@@ -143,6 +143,16 @@ namespace tradingSoftware
                 {
                     dl.makePayment(PaymentId, PurchaseId, cbPaymentMode.SelectedValue.ToString(), paymaentDate, TotalAmount, txtNote.Text);
 
+                    //Accounting Entry
+                    dl.addJournalEntry(paymaentDate, cbPaymentMode.SelectedValue.ToString(), cbSupplier.SelectedValue.ToString(), decimal.Parse(lblItemAmount.Content.ToString()));
+                    
+                    Dictionary<string, float> taxes = dl.getTaxesOfPurchase(PurchaseId);
+                    foreach (KeyValuePair<string,float> kvp in taxes)
+                    {
+                        dl.addJournalEntry(paymaentDate, kvp.Key, cbSupplier.SelectedValue.ToString(), decimal.Parse(kvp.Value.ToString()));
+                    }
+
+
                     //Clear All Field
                     lblPaymentId.Content = dl.getPaymentId().ToString();
                     cbPaymentMode.SelectedIndex = -1;
