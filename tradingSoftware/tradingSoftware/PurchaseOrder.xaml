@@ -6,9 +6,7 @@
         <Label Height="28" HorizontalAlignment="Left" Margin="10,70,0,0" Name="lblPONo" VerticalAlignment="Top" Width="127.765" FontSize="14">Purchase Order No.</Label>
         <TextBox Height="23" HorizontalAlignment="Left" Margin="140,74,0,0" Name="txt_PurchaseNo" VerticalAlignment="Top" Width="96" TabIndex="1001" IsEnabled="False" FontSize="14" />
         <Label Height="28" Margin="68.765,136,0,0" Name="lblSupplier" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68.558" FontSize="14">Supplier</Label>
-        <ComboBox Height="23" HorizontalAlignment="Left" Margin="140,136,0,0" Name="cb_Supplier" VerticalAlignment="Top" Width="220" IsEditable="False" TabIndex="1003" 
-                              ItemsSource="{Binding}" DisplayMemberPath="SupplierName"
-                             IsSynchronizedWithCurrentItem="True" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="140,136,0,0" Name="cb_Supplier" VerticalAlignment="Top" Width="220" IsEditable="False" TabIndex="1003" FontSize="14" />
         <Label Height="28" Margin="73,105,0,0" Name="lblPODate" VerticalAlignment="Top" HorizontalAlignment="Left" Width="64" FontSize="14">PO  Date</Label>
         <my:DatePicker Height="25" Margin="140,105,0,0" Name="dtPick_PODate" VerticalAlignment="Top" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit" HorizontalAlignment="Left" Width="115" TabIndex="1002" FontSize="14" />
         <Label Height="28" Margin="53.11,194,0,0" Name="lblItemGroup" VerticalAlignment="Top" HorizontalAlignment="Left" Width="85" FontSize="14">Item Group</Label>

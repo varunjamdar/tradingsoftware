@@ -35,7 +35,6 @@ namespace tradingSoftware
 
 
             //---Supplier
-            
             cb_Supplier.Items.Clear();
             List<string> supplierNameList = new List<string>();
             supplierNameList = dl.getSupplierName();
