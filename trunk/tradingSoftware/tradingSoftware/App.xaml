@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     StartupUri="AuthenticationForm.xaml">
     <Application.Resources>
-<<<<<<< .mine
+
         <ResourceDictionary Source="/ReuxablesLegacy;component/mercury.xaml" />
         <!--
         candy (0k)

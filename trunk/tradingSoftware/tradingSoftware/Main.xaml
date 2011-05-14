@@ -32,8 +32,8 @@
                 <Separator />
                 <MenuItem Name="Upgrade" Header="Upgrade" Click="Upgrade_Click" />
             </MenuItem>
-            <MenuItem Name="SupplierCustomerConfig" Header="Supplier/Customer Configuration" Click="SupplierCustomerConfig_Click">
-                <MenuItem Name="SupplierDetails" Header="Supplier Details"/>
+            <MenuItem Name="SupplierCustomerConfig" Header="Supplier/Customer Configuration">
+                <MenuItem Name="SupplierDetails" Header="Supplier Details" Click="SupplierDetails_Click"/>
                 <MenuItem Name="CustomerDetails" Header="Customer Details" Click="CustomerDetails_Click"/> 
             </MenuItem>
             <MenuItem Name="Masters" Header="Masters">

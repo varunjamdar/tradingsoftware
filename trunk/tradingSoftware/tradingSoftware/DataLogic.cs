@@ -1291,6 +1291,7 @@ namespace tradingSoftware
 
         public string AddAccount(AccountObject account)
         {
+            
             cmd.CommandText = "Select AccountId from Account where AccountId=" + account.AccountId;
             adpt.SelectCommand = cmd;
             ds.Clear();
@@ -1302,101 +1303,121 @@ namespace tradingSoftware
 
             if (ds.Tables[0].Rows.Count == 0)
             {
-                int CityId = 0; ;
-                int StateId = 0;
 
-                ds.Tables.Clear();
-                cmd = conn.CreateCommand();
-                string accGroup = account.AccountGroup;
-                adpt.SelectCommand = cmd;
-                cmd.CommandText = "Select AccountGroupId from AccountGroup where AccountGroupName='" + accGroup + "';";
-                adpt.Fill(ds, "AccountGroup");
+                cmd.CommandText = "Select * from Account where AccountName=@AccName";
 
-                int AccountGroupId = int.Parse(ds.Tables["AccountGroup"].Rows[0]["AccountGroupId"].ToString());
-
-                if (account.City != "")
-                {
-                    ds.Tables.Clear();
-                    cmd = conn.CreateCommand();
-                    string cityName = account.City;
-                    adpt.SelectCommand = cmd;
-                    cmd.CommandText = "Select CityId from City where CityName='" + cityName + "';";
-                    adpt.Fill(ds, "City");
-
-                    CityId = int.Parse(ds.Tables["City"].Rows[0]["CityID"].ToString());
-                }                
-                
-                
-
-
-                if (account.State != "")
-                {
-                    ds.Tables.Clear();
-                    cmd = conn.CreateCommand();
-                    string stateName = account.State;
-                    adpt.SelectCommand = cmd;
-                    cmd.CommandText = "Select StateId from State where StateName='" + stateName + "';";
-                    adpt.Fill(ds, "State");
-                
-                
-                StateId = int.Parse(ds.Tables["State"].Rows[0]["StateID"].ToString());
-                    
-                }
-                cmd.CommandText = "Insert into Account(AccountName,AccountPrintName,AccountGroupId,AddressLine1,AddressLine2,AddressLine3,CityId,StateId,Pincode,Email,ContactPerson,TelephoneNo,PANNo) values (@AccountName,@AccountPrintName,@AccountGroupId,@AddressLine1,@AddressLine2,@AddressLine3,@CityId,@StateId,@Pincode,@Email,@ContactPerson,@TelephoneNo,@PANNo)";
-
-                
-                cmd.Parameters.Add("@AccountName", SqlDbType.VarChar);
-                cmd.Parameters.Add("@AccountPrintName", SqlDbType.VarChar);
-                cmd.Parameters.Add("@AccountGroupId", SqlDbType.Int);
-                cmd.Parameters.Add("@AddressLine1", SqlDbType.VarChar);
-                cmd.Parameters.Add("@AddressLine2", SqlDbType.VarChar);
-                cmd.Parameters.Add("@AddressLine3", SqlDbType.VarChar);
-                cmd.Parameters.Add("@CityId", SqlDbType.Int);
-                cmd.Parameters.Add("@StateId", SqlDbType.Int);
-                cmd.Parameters.Add("@Pincode", SqlDbType.VarChar);
-                cmd.Parameters.Add("@Email", SqlDbType.VarChar);
-                cmd.Parameters.Add("@ContactPerson", SqlDbType.VarChar);
-                cmd.Parameters.Add("@TelephoneNo", SqlDbType.VarChar);
-                cmd.Parameters.Add("@PANNo", SqlDbType.VarChar);
-
-                
-                cmd.Parameters["@AccountName"].Value = account.AccountName;
-                cmd.Parameters["@AccountPrintName"].Value = account.AccountPrintName;
-                cmd.Parameters["@AccountGroupId"].Value = AccountGroupId;
-                cmd.Parameters["@AddressLine1"].Value = account.AddLine1;
-                cmd.Parameters["@AddressLine2"].Value = account.AddLine2;
-                cmd.Parameters["@AddressLine3"].Value = account.AddLine3;
-                if (account.City == "")
-                {
-                    cmd.Parameters["@CityId"].Value = -1;
-                }
-                else
-                {
-                    cmd.Parameters["@CityId"].Value = CityId;
-                }
-
-                if (account.State == "")
-                {
-                    cmd.Parameters["@StateId"].Value = -1;
-                }
-                else
-                {
-                    cmd.Parameters["@StateId"].Value = StateId;
-                }
-                cmd.Parameters["@Pincode"].Value = account.Pin;
-                cmd.Parameters["@Email"].Value = account.Email;
-                cmd.Parameters["@ContactPerson"].Value = account.ContactPerson;
-                cmd.Parameters["@TelephoneNo"].Value = account.PhoneNo;
-                cmd.Parameters["@PANNo"].Value = account.ItPanNo;
-
+                cmd.Parameters.Add("@AccName", SqlDbType.VarChar);
+                cmd.Parameters["@AccName"].Value = account.AccountName;
                 adpt.SelectCommand = cmd;
 
+                ds.Clear();
                 conn.Open();
-                cmd.ExecuteNonQuery();
+                adpt.Fill(ds);
                 conn.Close();
 
-                string str = "Your Account namely, \" " + account.AccountName + "\" has been Added to the database";
-                return str;
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    int CityId = 0; ;
+                    int StateId = 0;
+
+                    ds.Tables.Clear();
+                    cmd = conn.CreateCommand();
+                    string accGroup = account.AccountGroup;
+                    adpt.SelectCommand = cmd;
+                    cmd.CommandText = "Select AccountGroupId from AccountGroup where AccountGroupName='" + accGroup + "';";
+                    adpt.Fill(ds, "AccountGroup");
+
+                    int AccountGroupId = int.Parse(ds.Tables["AccountGroup"].Rows[0]["AccountGroupId"].ToString());
+
+                    if (account.City != "")
+                    {
+                        ds.Tables.Clear();
+                        cmd = conn.CreateCommand();
+                        string cityName = account.City;
+                        adpt.SelectCommand = cmd;
+                        cmd.CommandText = "Select CityId from City where CityName='" + cityName + "';";
+                        adpt.Fill(ds, "City");
+
+                        CityId = int.Parse(ds.Tables["City"].Rows[0]["CityID"].ToString());
+                    }
+
+
+
+
+                    if (account.State != "")
+                    {
+                        ds.Tables.Clear();
+                        cmd = conn.CreateCommand();
+                        string stateName = account.State;
+                        adpt.SelectCommand = cmd;
+                        cmd.CommandText = "Select StateId from State where StateName='" + stateName + "';";
+                        adpt.Fill(ds, "State");
+
+
+                        StateId = int.Parse(ds.Tables["State"].Rows[0]["StateID"].ToString());
+
+                    }
+                    cmd.CommandText = "Insert into Account(AccountName,AccountPrintName,AccountGroupId,AddressLine1,AddressLine2,AddressLine3,CityId,StateId,Pincode,Email,ContactPerson,TelephoneNo,PANNo) values (@AccountName,@AccountPrintName,@AccountGroupId,@AddressLine1,@AddressLine2,@AddressLine3,@CityId,@StateId,@Pincode,@Email,@ContactPerson,@TelephoneNo,@PANNo)";
+
+
+                    cmd.Parameters.Add("@AccountName", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AccountPrintName", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AccountGroupId", SqlDbType.Int);
+                    cmd.Parameters.Add("@AddressLine1", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AddressLine2", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AddressLine3", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@CityId", SqlDbType.Int);
+                    cmd.Parameters.Add("@StateId", SqlDbType.Int);
+                    cmd.Parameters.Add("@Pincode", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Email", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@ContactPerson", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@TelephoneNo", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@PANNo", SqlDbType.VarChar);
+
+
+                    cmd.Parameters["@AccountName"].Value = account.AccountName;
+                    cmd.Parameters["@AccountPrintName"].Value = account.AccountPrintName;
+                    cmd.Parameters["@AccountGroupId"].Value = AccountGroupId;
+                    cmd.Parameters["@AddressLine1"].Value = account.AddLine1;
+                    cmd.Parameters["@AddressLine2"].Value = account.AddLine2;
+                    cmd.Parameters["@AddressLine3"].Value = account.AddLine3;
+                    if (account.City == "")
+                    {
+                        cmd.Parameters["@CityId"].Value = -1;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@CityId"].Value = CityId;
+                    }
+
+                    if (account.State == "")
+                    {
+                        cmd.Parameters["@StateId"].Value = -1;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@StateId"].Value = StateId;
+                    }
+                    cmd.Parameters["@Pincode"].Value = account.Pin;
+                    cmd.Parameters["@Email"].Value = account.Email;
+                    cmd.Parameters["@ContactPerson"].Value = account.ContactPerson;
+                    cmd.Parameters["@TelephoneNo"].Value = account.PhoneNo;
+                    cmd.Parameters["@PANNo"].Value = account.ItPanNo;
+
+                    adpt.SelectCommand = cmd;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    string str = "Your Account namely, \" " + account.AccountName + "\" has been Added to the database";
+                    return str;
+                }
+                else
+                {
+                    string str = "Account with the same Name Already exists, cannot add the account";
+                    return str;
+                }
 
             }
             else
@@ -1572,33 +1593,7 @@ namespace tradingSoftware
             return ao;
         }
 
-        public int getNextSupplierId()
-        {
-            ds.Clear();
-            cmd.CommandText = "Select * from Supplier";
-            adpt.SelectCommand = cmd;
-            conn.Open();
-            adpt.Fill(ds);
-            conn.Close();
-
-            if (ds.Tables[0].Rows.Count == 0)
-            {
-                return 1;
-            }
-
-            else
-            {
-                ds.Clear();
-                cmd.CommandText = "Select Max(SupplierId) from Supplier";
-                adpt.SelectCommand = cmd;
-                conn.Open();
-                int i = int.Parse(cmd.ExecuteScalar().ToString());
-                conn.Close();
-
-                return ++i;
-
-            }
-        }
+        
 
         #region Sales
 
@@ -1791,6 +1786,38 @@ namespace tradingSoftware
             conn.Close();
 
             MessageBox.Show("Receipt Entry made successfully.", "Succeed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        #endregion
+
+        #region Supplier
+
+        public int getNextSupplierId()
+        {
+            ds.Clear();
+            cmd.CommandText = "Select * from Supplier";
+            adpt.SelectCommand = cmd;
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return 1;
+            }
+
+            else
+            {
+                ds.Clear();
+                cmd.CommandText = "Select Max(SupplierId) from Supplier";
+                adpt.SelectCommand = cmd;
+                conn.Open();
+                int i = int.Parse(cmd.ExecuteScalar().ToString());
+                conn.Close();
+
+                return ++i;
+
+            }
         }
 
         #endregion

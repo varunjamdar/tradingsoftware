@@ -21,9 +21,25 @@ namespace tradingSoftware
         public SupplierDetails()
         {
             InitializeComponent();
+
+            TradeDataSet tds = new TradeDataSet();
+
+            TradeDataSetTableAdapters.StateTableAdapter stateadpt = new tradingSoftware.TradeDataSetTableAdapters.StateTableAdapter();
+            stateadpt.Fill(tds.State);
+
+            TradeDataSetTableAdapters.CityTableAdapter cityadpt = new tradingSoftware.TradeDataSetTableAdapters.CityTableAdapter();
+            cityadpt.Fill(tds.City);
+
+            this.SupplierInformationGrid.DataContext = tds.State;
+
         }
 
         private void tabControl1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnNew_Click(object sender, RoutedEventArgs e)
         {
 
         }
