@@ -149,11 +149,6 @@ namespace tradingSoftware
             itemForm.ShowDialog();
         }
 
-        private void SupplierCustomerConfig_Click(object sender, RoutedEventArgs e)
-        {
-            SupplierDetails sd = new SupplierDetails();
-            sd.ShowDialog();
-        }
 
         private void Tax_Click(object sender, RoutedEventArgs e)
         {
@@ -234,6 +229,12 @@ namespace tradingSoftware
 
             labelTime.Content = (hr > 9 ? hr.ToString() : "0" + hr.ToString()) + " : " + (min > 9 ? min.ToString() : "0" + min.ToString()) + " : " + (sec > 9 ? sec.ToString() : "0" + sec.ToString()) + "  " + hrstatus;
             labelDate.Content = (dd > 9 ? dd.ToString() : "0" + dd.ToString()) + "/"+(mm > 9 ? mm.ToString() : "0" + mm.ToString()) + "/" + yy;
+        }
+
+        private void SupplierDetails_Click(object sender, RoutedEventArgs e)
+        {
+            SupplierDetails suppdetails = new SupplierDetails();
+            suppdetails.ShowDialog();
         }
     }
 }

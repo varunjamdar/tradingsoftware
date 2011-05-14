@@ -61,6 +61,7 @@ namespace tradingSoftware
             txtItPan.Text = "";
 
             txtName.IsEnabled = true;
+            txtPrintName.IsEnabled = true;
 
             dl = new DataLogic();
 
@@ -170,6 +171,7 @@ namespace tradingSoftware
             txtItPan.Text = account.ItPanNo.ToString();
 
             txtName.IsEnabled = false;
+            txtPrintName.IsEnabled = false;
 
         }
 
