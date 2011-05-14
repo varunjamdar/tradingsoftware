@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Threading;
 using System.Windows.Threading;
+using System.Configuration;
 
 namespace tradingSoftware
 {
@@ -33,6 +34,7 @@ namespace tradingSoftware
             //MessageBox.Show(ts.DefaultViewManager.DataViewSettingCollectionString);
             //= @"Data Source=.\SQLEXPRESS;AttachDbFilename=" + dbPath + ";Integrated Security=True;User Instance=True";
 
+            MessageBox.Show(Properties.Settings.Default.DBFile);
 
             //---------------------------------------------------------------------------
             //string hr = "";
@@ -65,6 +67,8 @@ namespace tradingSoftware
 
             //Properties.Settings.Default.DBFile = "TradeDB";
             //Properties.Settings.Default.Save();
+
+            
 
         }
 
