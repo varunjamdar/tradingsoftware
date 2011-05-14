@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace tradingSoftware
         public DataLogic()
         {
             conn = new SqlConnection();
+			
             conn.ConnectionString = tradingSoftware.Properties.Settings.Default.TradeConnectionString;
 
             //string dbPath = Environment.CurrentDirectory + @"\" + tradingSoftware.Properties.Settings.Default.DBFile;
