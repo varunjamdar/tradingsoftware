@@ -18,6 +18,8 @@ namespace tradingSoftware
     /// </summary>
     public partial class SupplierDetails : Window
     {
+        DataLogic dl;
+        SupplierObject so;
         public SupplierDetails()
         {
             InitializeComponent();
@@ -41,6 +43,43 @@ namespace tradingSoftware
 
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
+            txtSupplierId.Text = "";
+            txtSupplierCompany.Text = "";
+            txtContactPerson.Text = "";
+            txtAddLine1.Text = "";
+            txtAddLine2.Text = "";
+            txtAddLine3.Text = "";
+            cmbCity.Text = "";
+            txtPin.Text = "";
+            cmbState.Text = "";
+            txtPhone1.Text = "";
+            txtPhone2.Text = "";
+            txtWebsite.Text = "";
+            txtEmail.Text = "";
+            txtFax.Text = "";
+            cmbVatGst.Text = "";
+            txtCompanyTinNo.Text = "";
+            dtVatGstDate.SelectedDate = null;
+            txtCstNo.Text = "";
+            dtCstDate.SelectedDate = null;
+            TxtPanNo.Text = "";
+            TxtServiceTaxNo.Text = "";
+            txtCreditCapacity.Text = "";
+            cmbCreditRating.Text = "";
+            txtPaymentTerms.Text = "";
+            txtDelivery.Text = "";
+            txtPaymentMode.Text = "";
+            txtFreightTerms.Text = "";
+            txtInsurance.Text = "";
+            txtPacking.Text = "";
+            txtPenalty.Text = "";
+
+
+            txtSupplierCompany.IsEnabled = true;
+
+            dl = new DataLogic();
+            int suppId = dl.getNextSupplierId();
+            txtSupplierId.Text = suppId.ToString();
 
         }
     }
