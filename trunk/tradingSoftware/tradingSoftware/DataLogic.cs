@@ -23,8 +23,10 @@ namespace tradingSoftware
         public DataLogic()
         {
             conn = new SqlConnection();
-            conn.ConnectionString = tradingSoftware.Properties.Settings.Default.TradeConnectionString;
+            //conn.ConnectionString = tradingSoftware.Properties.Settings.Default.TradeConnectionString;
 
+            string dbPath = Environment.CurrentDirectory + @"\" + tradingSoftware.Properties.Settings.Default.DBFile;
+            conn.ConnectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename="+dbPath+";Integrated Security=True;User Instance=True";
             cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.Text;
