@@ -3,10 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Database Backup" Height="230" Width="539" xmlns:my="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit" xmlns:my1="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit">
     <Grid>
-        <Button HorizontalAlignment="Right" Margin="0,67,53,94" Name="btnBrowse" Width="86" Click="btnBrowse_Click" FontSize="14">Browse</Button>
-        <TextBox Height="23" Margin="45,70,153,0" Name="textBox1" VerticalAlignment="Top" FontSize="14" />
-        <Button HorizontalAlignment="Left" Margin="106,0,0,28" Name="btnBackup" Width="94" Height="31" VerticalAlignment="Bottom" Click="btnBackup_Click" FontSize="14">Backup</Button>
-        <Button Margin="220,0,196,28" Name="btnClose" Height="31" VerticalAlignment="Bottom" Click="btnClose_Click" FontSize="14">Close</Button>
+        <Button HorizontalAlignment="Right" Margin="0,0,12,61.5" Name="btnBrowse" Width="86" Click="btnBrowse_Click" FontSize="14" Height="31" VerticalAlignment="Bottom">Browse</Button>
+        <TextBox Margin="10,0,106,63" Name="textBoxBackupLocation" FontSize="14" Height="28" VerticalAlignment="Bottom" IsEnabled="False" />
+        <Button HorizontalAlignment="Left" Margin="111,0,0,14" Name="btnBackup" Width="94" Height="31" VerticalAlignment="Bottom" Click="btnBackup_Click" FontSize="14">Backup</Button>
+        <Button Margin="215,0,201,14" Name="btnClose" Height="31" VerticalAlignment="Bottom" Click="btnClose_Click" FontSize="14">Close</Button>
         <Label FontSize="25" Foreground="Blue" Height="43" Margin="10,10,0,0" Name="label1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="212">Backup Database</Label>
+        <Label FontSize="14" HorizontalAlignment="Left" Margin="10,68,0,96" Name="label2" Width="177">Select Destination Folder</Label>
     </Grid>
 </Window>

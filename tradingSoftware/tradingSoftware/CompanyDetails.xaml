@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="CompanyDetails" Height="600" Width="900" Background="White">
     <Grid Name="CompanyDetailsMain" >    
-    <TabControl Name="tabControl1" Background="White" FontSize="14" SelectedIndex="1
+    <TabControl Name="tabControl1" Background="White" FontSize="14" SelectedIndex="2
                 
                 
                 ">
