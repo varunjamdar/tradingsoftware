@@ -27,11 +27,16 @@ namespace tradingSoftware
 
             TradeDataSet ds = new TradeDataSet();
 
+            
             //---Supplier
-            TradeDataSetTableAdapters.SupplierTableAdapter supplierApdt = new tradingSoftware.TradeDataSetTableAdapters.SupplierTableAdapter();
-            supplierApdt.Fill(ds.Supplier);
-            cb_Supplier.DataContext = ds.Supplier;
-
+            cb_Supplier.Items.Clear();
+            List<string> supplierNameList = new List<string>();
+            supplierNameList = dl.getSupplierName();
+            foreach (string sn in supplierNameList)
+            {
+                cb_Supplier.Items.Add(sn.ToString());
+            }
+            //
             //---Item Group
             TradeDataSetTableAdapters.ItemGroupTableAdapter itemGroupAdpt = new tradingSoftware.TradeDataSetTableAdapters.ItemGroupTableAdapter();
             itemGroupAdpt.Fill(ds.ItemGroup);

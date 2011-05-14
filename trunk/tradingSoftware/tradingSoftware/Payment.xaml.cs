@@ -162,6 +162,7 @@ namespace tradingSoftware
                     {
                         cbRefPurchaseId.Items.Add(pid);
                     }
+                    cbSupplier.SelectedIndex = -1;
 
                 }
                 else

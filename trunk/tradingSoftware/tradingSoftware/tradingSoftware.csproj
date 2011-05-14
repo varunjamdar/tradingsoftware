@@ -67,7 +67,7 @@
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="ReuxablesLegacy, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dropbox\VI Sem Project- Trading Software\Theme dll\ReuxablesLegacy.dll</HintPath>
+      <HintPath>C:\Users\Shailesh Kalsariya\Dropbox\VI Sem Project- Trading Software\Theme dll\ReuxablesLegacy.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -350,6 +350,11 @@
     <Compile Include="Taxsetup.xaml.cs">
       <DependentUpon>Taxsetup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TradeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TradeDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Transaction.cs" />
     <Compile Include="TrialBalance.xaml.cs">
       <DependentUpon>TrialBalance.xaml</DependentUpon>
@@ -379,6 +384,17 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TradeDataSet.xsc">
+      <DependentUpon>TradeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TradeDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TradeDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TradeDataSet.xss">
+      <DependentUpon>TradeDataSet.xsd</DependentUpon>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
