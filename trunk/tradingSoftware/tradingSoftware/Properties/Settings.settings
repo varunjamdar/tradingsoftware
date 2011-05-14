@@ -35,5 +35,8 @@
     <Setting Name="RunFirstTime" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="DBFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Trade</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
