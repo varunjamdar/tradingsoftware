@@ -56,6 +56,9 @@ namespace tradingSoftware
             labelDate.Content = (dd > 9 ? dd.ToString() : "0" + dd.ToString())+"/"+(mm>9?mm.ToString():"0"+mm.ToString())+"/"+yy;
             Loaded += new RoutedEventHandler(Window_Loaded);
 
+            //Properties.Settings.Default.DBFile = "TradeDB";
+            //Properties.Settings.Default.Save();
+
         }
 
         private void CompanyConfig_Click(object sender, RoutedEventArgs e)
