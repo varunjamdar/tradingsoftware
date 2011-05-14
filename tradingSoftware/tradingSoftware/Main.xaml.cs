@@ -27,7 +27,14 @@ namespace tradingSoftware
         public Window2()
         {
             InitializeComponent();
+            //------code for setting the connection string to running directory----------
+            //string dbPath = Environment.CurrentDirectory + @"\" + tradingSoftware.Properties.Settings.Default.DBFile;
+            //TradeDataSet ts=new TradeDataSet();
+            //MessageBox.Show(ts.DefaultViewManager.DataViewSettingCollectionString);
+            //= @"Data Source=.\SQLEXPRESS;AttachDbFilename=" + dbPath + ";Integrated Security=True;User Instance=True";
 
+
+            //---------------------------------------------------------------------------
             //string hr = "";
             //string hrstatus = "am";
             //if (Int32.Parse(DateTime.Now.Hour.ToString()) > 12)
