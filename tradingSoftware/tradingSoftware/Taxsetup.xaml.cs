@@ -21,6 +21,13 @@ namespace tradingSoftware
         public Taxsetup()
         {
             InitializeComponent();
+
+            TradeDataSet tds = new TradeDataSet();
+            TradeDataSetTableAdapters.TaxTableAdapter adpt = new tradingSoftware.TradeDataSetTableAdapters.TaxTableAdapter();
+            adpt.Fill(tds.Tax);
+
+            dataGrid1.DataContext = tds.Tax;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -29,6 +36,21 @@ namespace tradingSoftware
         }
 
         private void listBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnNewTax_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAddTax_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnUpdatetax_Click(object sender, RoutedEventArgs e)
         {
 
         }
