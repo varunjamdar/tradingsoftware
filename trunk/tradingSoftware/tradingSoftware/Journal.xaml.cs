@@ -124,28 +124,90 @@ namespace tradingSoftware
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             DataLogic dl = new DataLogic();
-            DateTime dt = (DateTime)datePickerAdd.SelectedDate;
-            string fromAccountname, toAccountName;
-            decimal amount;
+            DateTime dt=DateTime.Today;
+            string fromAccountname="", toAccountName="";
+            decimal amount=0;
+
+            string errorString = "";
+            int errorCount=0;
 
             if (comboBoxCD1.Text == "C")
             {
                 //Crediter
+
                 toAccountName = comboBoxParticulars1.Text;
                 fromAccountname = comboBoxParticulars2.Text;
-                
-                amount = decimal.Parse(textBoxCredit1.Text);
+
+                try
+                {
+                    amount = decimal.Parse(textBoxCredit1.Text);
+                }
+                catch (FormatException fe)
+                {
+                    errorCount++;
+                    errorString += "Invalid Amount !\n";
+                }
+                catch (Exception ex)
+                {
+                    errorCount++;
+                    errorString += "Invalid Input ! \n";
+                }
             }
             else
             {
                 //Debiter
                 fromAccountname = comboBoxParticulars1.Text;
                 toAccountName = comboBoxParticulars2.Text;
-                
-                amount = decimal.Parse(textBoxDebit1.Text);
+
+                try
+                {
+                    amount = decimal.Parse(textBoxDebit1.Text);
+                }
+                catch (FormatException fe1)
+                {
+                    errorCount++;
+                    errorString += "Invalid Amount !\n";
+                }
+                catch (Exception e1)
+                {
+                    errorCount++;
+                    errorString += "Invalid Input ! \n";
+                }
             }
 
-            dl.addJournalEntry(dt, fromAccountname, toAccountName, amount);
+            if (comboBoxParticulars1.SelectedIndex == -1)
+            {
+                errorCount++;
+                errorString += "Select Account !\n";
+            }
+
+            if (comboBoxParticulars2.SelectedIndex == -1)
+            {
+                errorCount++;
+                errorString += "Select Account !\n";
+            }
+
+            try
+            {
+                dt = DateTime.Parse(datePickerAdd.Text);
+            }
+            catch (Exception ex2)
+            {
+                errorCount++;
+                errorString += "Invalid Date ! \n";
+               
+            }
+
+
+            if (errorCount > 0)
+            {
+                MessageBox.Show(errorString,"Warning !");
+            }
+            else
+            {
+                dl.addJournalEntry(dt, fromAccountname, toAccountName, amount);
+                MessageBox.Show("Journal Entry made successfully !!");
+            }
         }
 
     }
