@@ -313,14 +313,7 @@ namespace tradingSoftware
             }
             set
             {
-                if (value.Length <= 0)
-                {
-                    throw new NullValueException("Service Tax No. cannot be null");
-                }
-                else
-                {
-                    this.servicetaxno = value;
-                }
+                this.servicetaxno = value;
             }
         }
 
@@ -424,7 +417,7 @@ namespace tradingSoftware
             }
             set
             {
-                packing = value;
+                penalty = value;
             }
         }
 

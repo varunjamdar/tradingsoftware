@@ -20,6 +20,8 @@ namespace tradingSoftware
 
         ItemObject io;
         AccountObject ao;
+        SupplierObject so;
+        CustomerObject co;
 
         public DataLogic()
         {
@@ -1355,7 +1357,7 @@ namespace tradingSoftware
 
                 if (ds.Tables[0].Rows.Count == 0)
                 {
-                    int CityId = 0; ;
+                    int CityId = 0; 
                     int StateId = 0;
 
                     ds.Tables.Clear();
@@ -1858,6 +1860,525 @@ namespace tradingSoftware
             }
         }
 
+        public string AddSupplier(SupplierObject so)
+        {
+            //cmd.CommandText = "Select SupplierId from Supplier where SupplierId=@suppid";
+            //cmd.Parameters.Add("@suppid", SqlDbType.Int);
+            //cmd.Parameters["@suppid"].Value = so.SupplierId;
+
+            cmd.CommandText = "Select SupplierId from Supplier where SupplierId=" + so.SupplierId;
+
+            adpt.SelectCommand = cmd;
+            ds.Clear();
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {//here new supplier is added..
+                //we need to ceck if account if same name is already created..
+
+                cmd.CommandText = "Select * from Account where AccountName=@suppname and AccountGroupId=10";
+                cmd.Parameters.Add("@suppname", SqlDbType.VarChar);
+                cmd.Parameters["@suppname"].Value = so.SupplierCompany;
+
+               // cmd.CommandText = "Select * from Account where AccountName='"+so.SupplierCompany+"' and AccountGroupId=10";
+
+                adpt.SelectCommand = cmd;
+                ds.Clear();
+                conn.Open();
+                adpt.Fill(ds);
+                conn.Close();
+
+                cmd.Parameters.Clear();
+
+                if (ds.Tables[0].Rows.Count == 0)
+                {//here new supplier is created and its account is created wid the same name..
+
+                    int CityId = 0;
+                    int StateId = 0;
+                    int accountId = this.getNextAccountId();
+
+                    if (so.City != "")
+                    {
+                        ds.Tables.Clear();
+                        cmd = conn.CreateCommand();
+                        string cityName = so.City;
+                        adpt.SelectCommand = cmd;
+                        cmd.CommandText = "Select CityId from City where CityName='" + cityName + "';";
+                        adpt.Fill(ds, "City");
+
+                        CityId = int.Parse(ds.Tables["City"].Rows[0]["CityID"].ToString());
+                    }
+
+                    if (so.State != "")
+                    {
+                        ds.Tables.Clear();
+                        cmd = conn.CreateCommand();
+                        string stateName = so.State;
+                        adpt.SelectCommand = cmd;
+                        cmd.CommandText = "Select StateId from State where StateName='" + stateName + "';";
+                        adpt.Fill(ds, "State");
+
+
+                        StateId = int.Parse(ds.Tables["State"].Rows[0]["StateID"].ToString());
+
+                    }
+
+                    cmd.CommandText = "Insert into Supplier(AccountId, SupplierCompany, ContactPerson, AddressLine1, AddressLine2, AddressLine3, CityId, Pin, StateId, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, CreditCapacity, Rating, PaymentTerms, Delivery, PaymentMode, FreightTerms, Insurance, Packing, Penalty) values (@AccountId, @SupplierCompany, @ContactPerson, @AddressLine1, @AddressLine2, @AddressLine3, @CityId, @Pin, @StateId, @PhoneNo1, @PhoneNo2, @Website, @EmailId, @Fax, @VatGst, @TinNo, @VatGstDate, @CstNo, @CstDate, @PanNo, @ServiceTaxNo, @CreditCapacity, @Rating, @PaymentTerms, @Delivery, @PaymentMode, @FreightTerms, @Insurance, @Packing, @Penalty)";
+
+                    cmd.Parameters.Add("@AccountId", SqlDbType.Int);
+                    cmd.Parameters.Add("@SupplierCompany", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@ContactPerson", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AddressLine1", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AddressLine2", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AddressLine3", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@CityId", SqlDbType.Int);
+                    cmd.Parameters.Add("@Pin", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@StateId", SqlDbType.Int);
+                    cmd.Parameters.Add("@PhoneNo1", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@PhoneNo2", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Website", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@EmailId", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Fax", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@VatGst", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@TinNo", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@VatGstDate", SqlDbType.DateTime);
+                    cmd.Parameters.Add("@CstNo", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@CstDate", SqlDbType.DateTime);
+                    cmd.Parameters.Add("@PanNo", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@ServiceTaxNo", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@CreditCapacity", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Rating", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@PaymentTerms", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Delivery", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@PaymentMode", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@FreightTerms", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Insurance", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Packing", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Penalty", SqlDbType.VarChar);
+
+                    cmd.Parameters["@AccountId"].Value = accountId;
+                    cmd.Parameters["@SupplierCompany"].Value = so.SupplierCompany;
+                    cmd.Parameters["@ContactPerson"].Value = so.ContactPerson;
+                    cmd.Parameters["@AddressLine1"].Value = so.AddLine1;
+                    cmd.Parameters["@AddressLine2"].Value = so.AddLine2;
+                    cmd.Parameters["@AddressLine3"].Value = so.AddLine3;
+                    if (so.City == "")
+                    {
+                        cmd.Parameters["@CityId"].Value = -1;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@CityId"].Value = CityId;
+                    }
+
+                    cmd.Parameters["@Pin"].Value = so.Pin;
+
+                    if (so.State == "")
+                    {
+                        cmd.Parameters["@StateId"].Value = -1;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@StateId"].Value = StateId;
+                    }
+
+                    cmd.Parameters["@PhoneNo1"].Value = so.PhoneNo1;
+                    cmd.Parameters["@PhoneNo2"].Value = so.PhoneNo2;
+                    cmd.Parameters["@Website"].Value = so.Website;
+                    cmd.Parameters["@EmailId"].Value = so.EmailId;
+                    cmd.Parameters["@Fax"].Value = so.Fax;
+                    cmd.Parameters["@VatGst"].Value = so.VatGst;
+                    cmd.Parameters["@TinNo"].Value = so.TinNo;
+                    cmd.Parameters["@VatGstDate"].Value = so.VatGstDate;
+                    cmd.Parameters["@CstNo"].Value = so.CstNo;
+                    cmd.Parameters["@CstDate"].Value = so.CstDate;
+                    cmd.Parameters["@PanNo"].Value = so.PanNo;
+                    cmd.Parameters["@ServiceTaxNo"].Value = so.ServiceTaxNo;
+                    cmd.Parameters["@CreditCapacity"].Value = so.CreditCapacity;
+                    //cmd.Parameters["@Rating"].Value = so.Rating;
+                    if (so.Rating == "")
+                    {
+                        cmd.Parameters["@Rating"].Value = -1;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@Rating"].Value = so.Rating;
+                    }
+                    cmd.Parameters["@PaymentTerms"].Value = so.PaymentTerms;
+                    cmd.Parameters["@Delivery"].Value = so.Delivery;
+                    cmd.Parameters["@PaymentMode"].Value = so.PaymentMode;
+                    cmd.Parameters["@FreightTerms"].Value = so.FreightTerms;
+                    cmd.Parameters["@Insurance"].Value = so.Insurance;
+                    cmd.Parameters["@Packing"].Value = so.Packing;
+                    cmd.Parameters["@Penalty"].Value = so.Penalty;
+
+                    adpt.SelectCommand = cmd;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    cmd.Parameters.Clear();
+                    //now entering the account...
+
+                    cmd.CommandText = "Insert into Account(AccountName,AccountPrintName,AccountGroupId,AddressLine1,AddressLine2,AddressLine3,CityId,StateId,Pincode,Email,ContactPerson,TelephoneNo,PANNo) values (@AccountName,@AccountPrintName,@AccountGroupId,@AddressLine1,@AddressLine2,@AddressLine3,@CityId,@StateId,@Pincode,@Email,@ContactPerson,@TelephoneNo,@PANNo)";
+
+
+                    cmd.Parameters.Add("@AccountName", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AccountPrintName", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AccountGroupId", SqlDbType.Int);
+                    cmd.Parameters.Add("@AddressLine1", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AddressLine2", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AddressLine3", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@CityId", SqlDbType.Int);
+                    cmd.Parameters.Add("@StateId", SqlDbType.Int);
+                    cmd.Parameters.Add("@Pincode", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Email", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@ContactPerson", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@TelephoneNo", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@PANNo", SqlDbType.VarChar);
+
+
+                    cmd.Parameters["@AccountName"].Value = so.SupplierCompany;
+                    cmd.Parameters["@AccountPrintName"].Value = so.SupplierCompany;
+                    cmd.Parameters["@AccountGroupId"].Value = 10;
+                    cmd.Parameters["@AddressLine1"].Value = so.AddLine1;
+                    cmd.Parameters["@AddressLine2"].Value = so.AddLine2;
+                    cmd.Parameters["@AddressLine3"].Value = so.AddLine3;
+                    if (so.City == "")
+                    {
+                        cmd.Parameters["@CityId"].Value = -1;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@CityId"].Value = CityId;
+                    }
+
+                    if (so.State == "")
+                    {
+                        cmd.Parameters["@StateId"].Value = -1;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@StateId"].Value = StateId;
+                    }
+                    cmd.Parameters["@Pincode"].Value = so.Pin;
+                    cmd.Parameters["@Email"].Value = so.EmailId;
+                    cmd.Parameters["@ContactPerson"].Value = so.ContactPerson;
+                    cmd.Parameters["@TelephoneNo"].Value = so.PhoneNo1;
+                    cmd.Parameters["@PANNo"].Value = so.PanNo;
+
+                    adpt.SelectCommand = cmd;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    cmd.Parameters.Clear();
+
+                    string str = "Supplier Company \"" + so.SupplierCompany + "\" has been added to the database, along with an ACCOUNT with Gruop DEBTOR";
+                    return str;
+                }
+                else
+                {//cannot create account of the type debtor..
+                    string str = "Account Of type DEBTOR already created Of this name, so cannot create SUPPLIER of the same name";
+                    return str;
+                }
+            }
+            else
+            {//update query
+                int CityId = 0;
+                int StateId = 0;
+                //int accountId = this.getNextAccountId();
+
+                if (so.City != "")
+                {
+                    ds.Tables.Clear();
+                    cmd = conn.CreateCommand();
+                    string cityName = so.City;
+                    adpt.SelectCommand = cmd;
+                    cmd.CommandText = "Select CityId from City where CityName='" + cityName + "';";
+                    adpt.Fill(ds, "City");
+
+                    CityId = int.Parse(ds.Tables["City"].Rows[0]["CityID"].ToString());
+                }
+
+                if (so.State != "")
+                {
+                    ds.Tables.Clear();
+                    cmd = conn.CreateCommand();
+                    string stateName = so.State;
+                    adpt.SelectCommand = cmd;
+                    cmd.CommandText = "Select StateId from State where StateName='" + stateName + "';";
+                    adpt.Fill(ds, "State");
+
+
+                    StateId = int.Parse(ds.Tables["State"].Rows[0]["StateID"].ToString());
+
+                }
+
+                cmd.CommandText = "Update Supplier SET SupplierCompany=@SupplierCompany, ContactPerson=@ContactPerson, AddressLine1=@AddressLine1, AddressLine2=@AddressLine2, AddressLine3=@AddressLine3, CityId=@CityId, Pin=@Pin, StateId=@StateId, PhoneNo1=@PhoneNo1, PhoneNo2=@PhoneNo2, Website=@Website, EmailId=@EmailId, Fax=@Fax, VatGst=@VatGst, TinNo=@TinNo, VatGstDate=@VatGstDate, CstNo=@CstNo, CstDate=@CstDate, PanNo=@PanNo, ServiceTaxNo=@ServiceTaxNo, CreditCapacity=@CreditCapacity, Rating=@Rating, PaymentTerms=@PaymentTerms, Delivery=@Delivery, PaymentMode=@PaymentMode, FreightTerms=@FreightTerms, Insurance=@Insurance, Packing=@Packing, Penalty=@Penalty WHERE SupplierId="+so.SupplierId;
+
+                
+                cmd.Parameters.Add("@SupplierCompany", SqlDbType.VarChar);
+                cmd.Parameters.Add("@ContactPerson", SqlDbType.VarChar);
+                cmd.Parameters.Add("@AddressLine1", SqlDbType.VarChar);
+                cmd.Parameters.Add("@AddressLine2", SqlDbType.VarChar);
+                cmd.Parameters.Add("@AddressLine3", SqlDbType.VarChar);
+                cmd.Parameters.Add("@CityId", SqlDbType.Int);
+                cmd.Parameters.Add("@Pin", SqlDbType.VarChar);
+                cmd.Parameters.Add("@StateId", SqlDbType.Int);
+                cmd.Parameters.Add("@PhoneNo1", SqlDbType.VarChar);
+                cmd.Parameters.Add("@PhoneNo2", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Website", SqlDbType.VarChar);
+                cmd.Parameters.Add("@EmailId", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Fax", SqlDbType.VarChar);
+                cmd.Parameters.Add("@VatGst", SqlDbType.VarChar);
+                cmd.Parameters.Add("@TinNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@VatGstDate", SqlDbType.DateTime);
+                cmd.Parameters.Add("@CstNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@CstDate", SqlDbType.DateTime);
+                cmd.Parameters.Add("@PanNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@ServiceTaxNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@CreditCapacity", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Rating", SqlDbType.VarChar);
+                cmd.Parameters.Add("@PaymentTerms", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Delivery", SqlDbType.VarChar);
+                cmd.Parameters.Add("@PaymentMode", SqlDbType.VarChar);
+                cmd.Parameters.Add("@FreightTerms", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Insurance", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Packing", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Penalty", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@suppid", SqlDbType.Int);
+                
+
+                
+                cmd.Parameters["@SupplierCompany"].Value = so.SupplierCompany;
+                cmd.Parameters["@ContactPerson"].Value = so.ContactPerson;
+                cmd.Parameters["@AddressLine1"].Value = so.AddLine1;
+                cmd.Parameters["@AddressLine2"].Value = so.AddLine2;
+                cmd.Parameters["@AddressLine3"].Value = so.AddLine3;
+                if (so.City == "")
+                {
+                    cmd.Parameters["@CityId"].Value = -1;
+                }
+                else
+                {
+                    cmd.Parameters["@CityId"].Value = CityId;
+                }
+
+                cmd.Parameters["@Pin"].Value = so.Pin;
+
+                if (so.State == "")
+                {
+                    cmd.Parameters["@StateId"].Value = -1;
+                }
+                else
+                {
+                    cmd.Parameters["@StateId"].Value = StateId;
+                }
+
+                cmd.Parameters["@PhoneNo1"].Value = so.PhoneNo1;
+                cmd.Parameters["@PhoneNo2"].Value = so.PhoneNo2;
+                cmd.Parameters["@Website"].Value = so.Website;
+                cmd.Parameters["@EmailId"].Value = so.EmailId;
+                cmd.Parameters["@Fax"].Value = so.Fax;
+                cmd.Parameters["@VatGst"].Value = so.VatGst;
+                cmd.Parameters["@TinNo"].Value = so.TinNo;
+                cmd.Parameters["@VatGstDate"].Value = so.VatGstDate;
+                cmd.Parameters["@CstNo"].Value = so.CstNo;
+                cmd.Parameters["@CstDate"].Value = so.CstDate;
+                cmd.Parameters["@PanNo"].Value = so.PanNo;
+                cmd.Parameters["@ServiceTaxNo"].Value = so.ServiceTaxNo;
+                cmd.Parameters["@CreditCapacity"].Value = so.CreditCapacity;
+                //cmd.Parameters["@Rating"].Value = so.Rating;
+                if (so.Rating == "")
+                {
+                    cmd.Parameters["@Rating"].Value = -1;
+                }
+                else
+                {
+                    cmd.Parameters["@Rating"].Value = so.Rating;
+                }
+                cmd.Parameters["@PaymentTerms"].Value = so.PaymentTerms;
+                cmd.Parameters["@Delivery"].Value = so.Delivery;
+                cmd.Parameters["@PaymentMode"].Value = so.PaymentMode;
+                cmd.Parameters["@FreightTerms"].Value = so.FreightTerms;
+                cmd.Parameters["@Insurance"].Value = so.Insurance;
+                cmd.Parameters["@Packing"].Value = so.Packing;
+                cmd.Parameters["@Penalty"].Value = so.Penalty;
+                //cmd.Parameters["@suppid"].Value = so.SupplierId;
+
+                adpt.SelectCommand = cmd;
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                cmd.Parameters.Clear();
+
+                //cmd.CommandText = "Update Account SET AccountName=@AccountName, AccountPrintName=@AccountPrintName,AccountGroupId=@AccountGroupId, AddressLine1=@AddressLine1, AddressLine2=@AddressLine2, AddressLine3=@AddressLine3, CityId=@CityId, StateId=@StateId, Pincode=@Pincode, Email=@Email, ContactPerson=@ContactPerson, TelephoneNo=@TelephoneNo,PANNo=@PANNo where AccountName=" + so.SupplierCompany+" and AccountGroup=10";
+                //cmd.CommandText = "Update Account SET AccountName=@AccountName, AccountPrintName=@AccountPrintName,AccountGroupId=@AccountGroupId, AddressLine1=@AddressLine1, AddressLine2=@AddressLine2, AddressLine3=@AddressLine3, CityId=@CityId, StateId=@StateId, Pincode=@Pincode, Email=@Email, ContactPerson=@ContactPerson, TelephoneNo=@TelephoneNo,PANNo=@PANNo where AccountId=" + so.AccountId;
+
+                //cmd.Parameters.Add("@AccountName", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@AccountPrintName", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@AccountGroupId", SqlDbType.Int);
+                //cmd.Parameters.Add("@AddressLine1", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@AddressLine2", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@AddressLine3", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@CityId", SqlDbType.Int);
+                //cmd.Parameters.Add("@StateId", SqlDbType.Int);
+                //cmd.Parameters.Add("@Pincode", SqlDbType.Float);
+                //cmd.Parameters.Add("@Email", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@ContactPerson", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@TelephoneNo", SqlDbType.Float);
+                //cmd.Parameters.Add("@PANNo", SqlDbType.Float);
+
+                //cmd.Parameters["@AccountName"].Value = so.SupplierCompany;
+                //cmd.Parameters["@AccountPrintName"].Value = so.SupplierCompany;
+                //cmd.Parameters["@AccountGroupId"].Value = 10;
+                //cmd.Parameters["@AddressLine1"].Value = so.AddLine1;
+                //cmd.Parameters["@AddressLine2"].Value = so.AddLine2;
+                //cmd.Parameters["@AddressLine3"].Value = so.AddLine3;
+                //if (so.City == "")
+                //{
+                //    cmd.Parameters["@CityId"].Value = -1;
+                //}
+                //else
+                //{
+                //    cmd.Parameters["@CityId"].Value = CityId;
+                //}
+
+                //if (so.State == "")
+                //{
+                //    cmd.Parameters["@StateId"].Value = -1;
+                //}
+                //else
+                //{
+                //    cmd.Parameters["@StateId"].Value = StateId;
+                //}
+                //cmd.Parameters["@Pincode"].Value = so.Pin;
+                //cmd.Parameters["@Email"].Value = so.EmailId;
+                //cmd.Parameters["@ContactPerson"].Value = so.ContactPerson;
+                //cmd.Parameters["@TelephoneNo"].Value = so.PhoneNo1;
+                //cmd.Parameters["@PANNo"].Value = so.PanNo;
+
+                //adpt.SelectCommand = cmd;
+
+                //conn.Open();
+                //cmd.ExecuteNonQuery();
+                //conn.Close();
+
+
+                string str = "Supplier Company namely, \" " + so.SupplierCompany + "\" has been Updated to the database";
+                return str;
+            }
+        }
+
+        public DataTable getSuppliers()
+        {
+            ds.Clear();
+            cmd.CommandText = "SELECT SupplierId, AccountId, SupplierCompany, ContactPerson FROM Supplier";
+            conn.Open();
+            adpt.SelectCommand = cmd;
+
+            adpt.Fill(ds, "Suppliers");
+            conn.Close();
+            return ds.Tables["Suppliers"];
+        }
+
+        public SupplierObject getDetailsOfSupplierId(int suppId)
+        {
+            cmd.CommandText = "SELECT SupplierId, SupplierCompany, ContactPerson, AddressLine1, AddressLine2, AddressLine3, CityId, Pin, StateId, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, CreditCapacity, Rating, PaymentTerms, Delivery, PaymentMode, FreightTerms, Insurance, Packing, Penalty FROM Supplier where SupplierId=@suppid";
+            cmd.Parameters.Add("@suppid", SqlDbType.Int);
+            cmd.Parameters["@suppid"].Value = suppId;
+
+            adpt.SelectCommand = cmd;
+            ds.Tables.Clear();
+
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            so = new SupplierObject();
+
+            so.SupplierId = int.Parse(ds.Tables[0].Rows[0]["SupplierId"].ToString());
+            so.SupplierCompany = ds.Tables[0].Rows[0]["SupplierCompany"].ToString();
+            so.ContactPerson = ds.Tables[0].Rows[0]["ContactPerson"].ToString();
+            so.AddLine1 = ds.Tables[0].Rows[0]["AddressLine1"].ToString();
+            so.AddLine2 = ds.Tables[0].Rows[0]["AddressLine2"].ToString();
+            so.AddLine3 = ds.Tables[0].Rows[0]["AddressLine3"].ToString();
+            if (int.Parse(ds.Tables[0].Rows[0]["CityId"].ToString()) == -1)
+            {
+                so.City = "";
+            }
+            else
+            {
+                int cityId = int.Parse(ds.Tables[0].Rows[0]["CityId"].ToString());
+                cmd.CommandText = "Select CityName From City Where CityId=" + cityId;
+                adpt.SelectCommand = cmd;
+                ds1.Tables.Clear();
+
+                conn.Open();
+                adpt.Fill(ds1);
+                conn.Close();
+
+                so.City = ds1.Tables[0].Rows[0]["CityName"].ToString();
+            }
+            so.Pin = ds.Tables[0].Rows[0]["Pin"].ToString();
+
+            if (int.Parse(ds.Tables[0].Rows[0]["StateId"].ToString()) == -1)
+            {
+                so.State = "";
+            }
+            else
+            {
+                int stateId = int.Parse(ds.Tables[0].Rows[0]["StateId"].ToString());
+                cmd.CommandText = "Select StateName From State Where StateId=" + stateId;
+                adpt.SelectCommand = cmd;
+                ds1.Tables.Clear();
+
+                conn.Open();
+                adpt.Fill(ds1);
+                conn.Close();
+
+                so.State = ds1.Tables[0].Rows[0]["StateName"].ToString();
+            }
+            so.PhoneNo1 = ds.Tables[0].Rows[0]["PhoneNo1"].ToString();
+            so.PhoneNo2 = ds.Tables[0].Rows[0]["PhoneNo2"].ToString();
+            so.Website = ds.Tables[0].Rows[0]["Website"].ToString();
+            so.EmailId = ds.Tables[0].Rows[0]["EmailId"].ToString();
+            so.Fax = ds.Tables[0].Rows[0]["Fax"].ToString();
+            so.VatGst = ds.Tables[0].Rows[0]["VatGst"].ToString();
+            so.TinNo = ds.Tables[0].Rows[0]["TinNo"].ToString();
+            so.VatGstDate = DateTime.Parse(ds.Tables[0].Rows[0]["VatGstDate"].ToString());
+            so.CstNo = ds.Tables[0].Rows[0]["CstNo"].ToString();
+            so.CstDate = DateTime.Parse(ds.Tables[0].Rows[0]["CstDate"].ToString());
+            so.PanNo = ds.Tables[0].Rows[0]["PanNo"].ToString();
+            so.ServiceTaxNo = ds.Tables[0].Rows[0]["ServiceTaxNo"].ToString();
+            so.CreditCapacity=ds.Tables[0].Rows[0]["CreditCapacity"].ToString();
+            //so.Rating=ds.Tables[0].Rows[0]["Rating"].ToString();
+            if (int.Parse(ds.Tables[0].Rows[0]["Rating"].ToString()) == -1)
+            {
+                so.Rating = "";
+            }
+            else
+            {
+                so.Rating = ds.Tables[0].Rows[0]["Rating"].ToString();
+            }
+            so.PaymentTerms=ds.Tables[0].Rows[0]["PaymentTerms"].ToString();
+            so.Delivery=ds.Tables[0].Rows[0]["Delivery"].ToString();
+            so.PaymentMode=ds.Tables[0].Rows[0]["PaymentMode"].ToString();
+            so.FreightTerms=ds.Tables[0].Rows[0]["FreightTerms"].ToString();
+            so.Insurance=ds.Tables[0].Rows[0]["Insurance"].ToString();
+            so.Packing=ds.Tables[0].Rows[0]["Packing"].ToString();
+            so.Penalty=ds.Tables[0].Rows[0]["Penalty"].ToString();
+
+            return so;
+
+        }
+
         #endregion
 
         public void truncateDatabase()
@@ -1911,6 +2432,557 @@ namespace tradingSoftware
             conn.Close();
         }
 
+        #region Customer
+
+        public int getNextCustomerId()
+        {
+            ds.Clear();
+            cmd.CommandText = "Select * from Customer";
+            adpt.SelectCommand = cmd;
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return 1;
+            }
+
+            else
+            {
+                ds.Clear();
+                cmd.CommandText = "Select Max(CustomerId) from Customer";
+                adpt.SelectCommand = cmd;
+                conn.Open();
+                int i = int.Parse(cmd.ExecuteScalar().ToString());
+                conn.Close();
+
+                return ++i;
+
+            }
+        }
+
+        public string AddCustomer(CustomerObject co)
+        {
+            //cmd.CommandText = "Select SupplierId from Supplier where SupplierId=@suppid";
+            //cmd.Parameters.Add("@suppid", SqlDbType.Int);
+            //cmd.Parameters["@suppid"].Value = so.SupplierId;
+
+            cmd.CommandText = "Select CustomerId from Customer where CustomerId=" + co.CustomerId;
+
+            adpt.SelectCommand = cmd;
+            ds.Clear();
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {//here new supplier is added..
+                //we need to ceck if account if same name is already created..
+
+                cmd.CommandText = "Select * from Account where AccountName=@custname and AccountGroupId=9";
+                cmd.Parameters.Add("@custname", SqlDbType.VarChar);
+                cmd.Parameters["@custname"].Value = co.CustomerCompany;
+
+                // cmd.CommandText = "Select * from Account where AccountName='"+so.SupplierCompany+"' and AccountGroupId=10";
+
+                adpt.SelectCommand = cmd;
+                ds.Clear();
+                conn.Open();
+                adpt.Fill(ds);
+                conn.Close();
+
+                cmd.Parameters.Clear();
+
+                if (ds.Tables[0].Rows.Count == 0)
+                {//here new supplier is created and its account is created wid the same name..
+
+                    int CityId = 0;
+                    int StateId = 0;
+                    int accountId = this.getNextAccountId();
+
+                    if (co.City != "")
+                    {
+                        ds.Tables.Clear();
+                        cmd = conn.CreateCommand();
+                        string cityName = co.City;
+                        adpt.SelectCommand = cmd;
+                        cmd.CommandText = "Select CityId from City where CityName='" + cityName + "';";
+                        adpt.Fill(ds, "City");
+
+                        CityId = int.Parse(ds.Tables["City"].Rows[0]["CityID"].ToString());
+                    }
+
+                    if (co.State != "")
+                    {
+                        ds.Tables.Clear();
+                        cmd = conn.CreateCommand();
+                        string stateName = co.State;
+                        adpt.SelectCommand = cmd;
+                        cmd.CommandText = "Select StateId from State where StateName='" + stateName + "';";
+                        adpt.Fill(ds, "State");
+
+
+                        StateId = int.Parse(ds.Tables["State"].Rows[0]["StateID"].ToString());
+
+                    }
+
+                    cmd.CommandText = "Insert into Customer(AccountId, CustomerCompany, ContactPerson, AddressLine1, AddressLine2, AddressLine3, CityId, Pin, StateId, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, CreditCapacity, Rating, PaymentTerms, Delivery, PaymentMode, FreightTerms, Insurance, Packing, Penalty) values (@AccountId, @CustomerCompany, @ContactPerson, @AddressLine1, @AddressLine2, @AddressLine3, @CityId, @Pin, @StateId, @PhoneNo1, @PhoneNo2, @Website, @EmailId, @Fax, @VatGst, @TinNo, @VatGstDate, @CstNo, @CstDate, @PanNo, @ServiceTaxNo, @CreditCapacity, @Rating, @PaymentTerms, @Delivery, @PaymentMode, @FreightTerms, @Insurance, @Packing, @Penalty)";
+
+                    cmd.Parameters.Add("@AccountId", SqlDbType.Int);
+                    cmd.Parameters.Add("@CustomerCompany", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@ContactPerson", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AddressLine1", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AddressLine2", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AddressLine3", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@CityId", SqlDbType.Int);
+                    cmd.Parameters.Add("@Pin", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@StateId", SqlDbType.Int);
+                    cmd.Parameters.Add("@PhoneNo1", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@PhoneNo2", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Website", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@EmailId", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Fax", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@VatGst", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@TinNo", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@VatGstDate", SqlDbType.DateTime);
+                    cmd.Parameters.Add("@CstNo", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@CstDate", SqlDbType.DateTime);
+                    cmd.Parameters.Add("@PanNo", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@ServiceTaxNo", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@CreditCapacity", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Rating", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@PaymentTerms", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Delivery", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@PaymentMode", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@FreightTerms", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Insurance", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Packing", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Penalty", SqlDbType.VarChar);
+
+                    cmd.Parameters["@AccountId"].Value = accountId;
+                    cmd.Parameters["@CustomerCompany"].Value = co.CustomerCompany;
+                    cmd.Parameters["@ContactPerson"].Value = co.ContactPerson;
+                    cmd.Parameters["@AddressLine1"].Value = co.AddLine1;
+                    cmd.Parameters["@AddressLine2"].Value = co.AddLine2;
+                    cmd.Parameters["@AddressLine3"].Value = co.AddLine3;
+                    if (co.City == "")
+                    {
+                        cmd.Parameters["@CityId"].Value = -1;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@CityId"].Value = CityId;
+                    }
+
+                    cmd.Parameters["@Pin"].Value = co.Pin;
+
+                    if (co.State == "")
+                    {
+                        cmd.Parameters["@StateId"].Value = -1;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@StateId"].Value = StateId;
+                    }
+
+                    cmd.Parameters["@PhoneNo1"].Value = co.PhoneNo1;
+                    cmd.Parameters["@PhoneNo2"].Value = co.PhoneNo2;
+                    cmd.Parameters["@Website"].Value = co.Website;
+                    cmd.Parameters["@EmailId"].Value = co.EmailId;
+                    cmd.Parameters["@Fax"].Value = co.Fax;
+                    cmd.Parameters["@VatGst"].Value = co.VatGst;
+                    cmd.Parameters["@TinNo"].Value = co.TinNo;
+                    cmd.Parameters["@VatGstDate"].Value = co.VatGstDate;
+                    cmd.Parameters["@CstNo"].Value = co.CstNo;
+                    cmd.Parameters["@CstDate"].Value = co.CstDate;
+                    cmd.Parameters["@PanNo"].Value = co.PanNo;
+                    cmd.Parameters["@ServiceTaxNo"].Value = co.ServiceTaxNo;
+                    cmd.Parameters["@CreditCapacity"].Value = co.CreditCapacity;
+                    //cmd.Parameters["@Rating"].Value = so.Rating;
+                    if (co.Rating == "")
+                    {
+                        cmd.Parameters["@Rating"].Value = -1;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@Rating"].Value = co.Rating;
+                    }
+                    cmd.Parameters["@PaymentTerms"].Value = co.PaymentTerms;
+                    cmd.Parameters["@Delivery"].Value = co.Delivery;
+                    cmd.Parameters["@PaymentMode"].Value = co.PaymentMode;
+                    cmd.Parameters["@FreightTerms"].Value = co.FreightTerms;
+                    cmd.Parameters["@Insurance"].Value = co.Insurance;
+                    cmd.Parameters["@Packing"].Value = co.Packing;
+                    cmd.Parameters["@Penalty"].Value = co.Penalty;
+
+                    adpt.SelectCommand = cmd;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    cmd.Parameters.Clear();
+                    //now entering the account...
+
+                    cmd.CommandText = "Insert into Account(AccountName,AccountPrintName,AccountGroupId,AddressLine1,AddressLine2,AddressLine3,CityId,StateId,Pincode,Email,ContactPerson,TelephoneNo,PANNo) values (@AccountName,@AccountPrintName,@AccountGroupId,@AddressLine1,@AddressLine2,@AddressLine3,@CityId,@StateId,@Pincode,@Email,@ContactPerson,@TelephoneNo,@PANNo)";
+
+
+                    cmd.Parameters.Add("@AccountName", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AccountPrintName", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AccountGroupId", SqlDbType.Int);
+                    cmd.Parameters.Add("@AddressLine1", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AddressLine2", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@AddressLine3", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@CityId", SqlDbType.Int);
+                    cmd.Parameters.Add("@StateId", SqlDbType.Int);
+                    cmd.Parameters.Add("@Pincode", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@Email", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@ContactPerson", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@TelephoneNo", SqlDbType.VarChar);
+                    cmd.Parameters.Add("@PANNo", SqlDbType.VarChar);
+
+
+                    cmd.Parameters["@AccountName"].Value = co.CustomerCompany;
+                    cmd.Parameters["@AccountPrintName"].Value = co.CustomerCompany;
+                    cmd.Parameters["@AccountGroupId"].Value = 9;
+                    cmd.Parameters["@AddressLine1"].Value = co.AddLine1;
+                    cmd.Parameters["@AddressLine2"].Value = co.AddLine2;
+                    cmd.Parameters["@AddressLine3"].Value = co.AddLine3;
+                    if (co.City == "")
+                    {
+                        cmd.Parameters["@CityId"].Value = -1;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@CityId"].Value = CityId;
+                    }
+
+                    if (co.State == "")
+                    {
+                        cmd.Parameters["@StateId"].Value = -1;
+                    }
+                    else
+                    {
+                        cmd.Parameters["@StateId"].Value = StateId;
+                    }
+                    cmd.Parameters["@Pincode"].Value = co.Pin;
+                    cmd.Parameters["@Email"].Value = co.EmailId;
+                    cmd.Parameters["@ContactPerson"].Value = co.ContactPerson;
+                    cmd.Parameters["@TelephoneNo"].Value = co.PhoneNo1;
+                    cmd.Parameters["@PANNo"].Value = co.PanNo;
+
+                    adpt.SelectCommand = cmd;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    cmd.Parameters.Clear();
+
+                    string str = "Customer Company \"" + co.CustomerCompany + "\" has been added to the database, along with an ACCOUNT with Group CREDITOR";
+                    return str;
+                }
+                else
+                {//cannot create account of the type debtor..
+                    string str = "Account Of type CREDITOR already created Of this name, so cannot create CUSTOMER of the same name";
+                    return str;
+                }
+            }
+            else
+            {//update query
+                int CityId = 0;
+                int StateId = 0;
+                //int accountId = this.getNextAccountId();
+
+                if (co.City != "")
+                {
+                    ds.Tables.Clear();
+                    cmd = conn.CreateCommand();
+                    string cityName = co.City;
+                    adpt.SelectCommand = cmd;
+                    cmd.CommandText = "Select CityId from City where CityName='" + cityName + "';";
+                    adpt.Fill(ds, "City");
+
+                    CityId = int.Parse(ds.Tables["City"].Rows[0]["CityID"].ToString());
+                }
+
+                if (co.State != "")
+                {
+                    ds.Tables.Clear();
+                    cmd = conn.CreateCommand();
+                    string stateName = co.State;
+                    adpt.SelectCommand = cmd;
+                    cmd.CommandText = "Select StateId from State where StateName='" + stateName + "';";
+                    adpt.Fill(ds, "State");
+
+
+                    StateId = int.Parse(ds.Tables["State"].Rows[0]["StateID"].ToString());
+
+                }
+
+                cmd.CommandText = "Update Customer SET CustomerCompany=@CustomerCompany, ContactPerson=@ContactPerson, AddressLine1=@AddressLine1, AddressLine2=@AddressLine2, AddressLine3=@AddressLine3, CityId=@CityId, Pin=@Pin, StateId=@StateId, PhoneNo1=@PhoneNo1, PhoneNo2=@PhoneNo2, Website=@Website, EmailId=@EmailId, Fax=@Fax, VatGst=@VatGst, TinNo=@TinNo, VatGstDate=@VatGstDate, CstNo=@CstNo, CstDate=@CstDate, PanNo=@PanNo, ServiceTaxNo=@ServiceTaxNo, CreditCapacity=@CreditCapacity, Rating=@Rating, PaymentTerms=@PaymentTerms, Delivery=@Delivery, PaymentMode=@PaymentMode, FreightTerms=@FreightTerms, Insurance=@Insurance, Packing=@Packing, Penalty=@Penalty WHERE CustomerId=" + co.CustomerId;
+
+
+                cmd.Parameters.Add("@CustomerCompany", SqlDbType.VarChar);
+                cmd.Parameters.Add("@ContactPerson", SqlDbType.VarChar);
+                cmd.Parameters.Add("@AddressLine1", SqlDbType.VarChar);
+                cmd.Parameters.Add("@AddressLine2", SqlDbType.VarChar);
+                cmd.Parameters.Add("@AddressLine3", SqlDbType.VarChar);
+                cmd.Parameters.Add("@CityId", SqlDbType.Int);
+                cmd.Parameters.Add("@Pin", SqlDbType.VarChar);
+                cmd.Parameters.Add("@StateId", SqlDbType.Int);
+                cmd.Parameters.Add("@PhoneNo1", SqlDbType.VarChar);
+                cmd.Parameters.Add("@PhoneNo2", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Website", SqlDbType.VarChar);
+                cmd.Parameters.Add("@EmailId", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Fax", SqlDbType.VarChar);
+                cmd.Parameters.Add("@VatGst", SqlDbType.VarChar);
+                cmd.Parameters.Add("@TinNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@VatGstDate", SqlDbType.DateTime);
+                cmd.Parameters.Add("@CstNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@CstDate", SqlDbType.DateTime);
+                cmd.Parameters.Add("@PanNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@ServiceTaxNo", SqlDbType.VarChar);
+                cmd.Parameters.Add("@CreditCapacity", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Rating", SqlDbType.VarChar);
+                cmd.Parameters.Add("@PaymentTerms", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Delivery", SqlDbType.VarChar);
+                cmd.Parameters.Add("@PaymentMode", SqlDbType.VarChar);
+                cmd.Parameters.Add("@FreightTerms", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Insurance", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Packing", SqlDbType.VarChar);
+                cmd.Parameters.Add("@Penalty", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@suppid", SqlDbType.Int);
+
+
+
+                cmd.Parameters["@CustomerCompany"].Value = co.CustomerCompany;
+                cmd.Parameters["@ContactPerson"].Value = co.ContactPerson;
+                cmd.Parameters["@AddressLine1"].Value = co.AddLine1;
+                cmd.Parameters["@AddressLine2"].Value = co.AddLine2;
+                cmd.Parameters["@AddressLine3"].Value = co.AddLine3;
+                if (co.City == "")
+                {
+                    cmd.Parameters["@CityId"].Value = -1;
+                }
+                else
+                {
+                    cmd.Parameters["@CityId"].Value = CityId;
+                }
+
+                cmd.Parameters["@Pin"].Value = co.Pin;
+
+                if (co.State == "")
+                {
+                    cmd.Parameters["@StateId"].Value = -1;
+                }
+                else
+                {
+                    cmd.Parameters["@StateId"].Value = StateId;
+                }
+
+                cmd.Parameters["@PhoneNo1"].Value = co.PhoneNo1;
+                cmd.Parameters["@PhoneNo2"].Value = co.PhoneNo2;
+                cmd.Parameters["@Website"].Value = co.Website;
+                cmd.Parameters["@EmailId"].Value = co.EmailId;
+                cmd.Parameters["@Fax"].Value = co.Fax;
+                cmd.Parameters["@VatGst"].Value = co.VatGst;
+                cmd.Parameters["@TinNo"].Value = co.TinNo;
+                cmd.Parameters["@VatGstDate"].Value = co.VatGstDate;
+                cmd.Parameters["@CstNo"].Value = co.CstNo;
+                cmd.Parameters["@CstDate"].Value = co.CstDate;
+                cmd.Parameters["@PanNo"].Value = co.PanNo;
+                cmd.Parameters["@ServiceTaxNo"].Value = co.ServiceTaxNo;
+                cmd.Parameters["@CreditCapacity"].Value = so.CreditCapacity;
+                //cmd.Parameters["@Rating"].Value = so.Rating;
+                if (co.Rating == "")
+                {
+                    cmd.Parameters["@Rating"].Value = -1;
+                }
+                else
+                {
+                    cmd.Parameters["@Rating"].Value = co.Rating;
+                }
+                cmd.Parameters["@PaymentTerms"].Value = co.PaymentTerms;
+                cmd.Parameters["@Delivery"].Value = co.Delivery;
+                cmd.Parameters["@PaymentMode"].Value = co.PaymentMode;
+                cmd.Parameters["@FreightTerms"].Value = co.FreightTerms;
+                cmd.Parameters["@Insurance"].Value = co.Insurance;
+                cmd.Parameters["@Packing"].Value = co.Packing;
+                cmd.Parameters["@Penalty"].Value = co.Penalty;
+                //cmd.Parameters["@suppid"].Value = so.SupplierId;
+
+                adpt.SelectCommand = cmd;
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                cmd.Parameters.Clear();
+
+                //cmd.CommandText = "Update Account SET AccountName=@AccountName, AccountPrintName=@AccountPrintName,AccountGroupId=@AccountGroupId, AddressLine1=@AddressLine1, AddressLine2=@AddressLine2, AddressLine3=@AddressLine3, CityId=@CityId, StateId=@StateId, Pincode=@Pincode, Email=@Email, ContactPerson=@ContactPerson, TelephoneNo=@TelephoneNo,PANNo=@PANNo where AccountName=" + so.SupplierCompany+" and AccountGroup=10";
+                //cmd.CommandText = "Update Account SET AccountName=@AccountName, AccountPrintName=@AccountPrintName,AccountGroupId=@AccountGroupId, AddressLine1=@AddressLine1, AddressLine2=@AddressLine2, AddressLine3=@AddressLine3, CityId=@CityId, StateId=@StateId, Pincode=@Pincode, Email=@Email, ContactPerson=@ContactPerson, TelephoneNo=@TelephoneNo,PANNo=@PANNo where AccountId=" + so.AccountId;
+
+                //cmd.Parameters.Add("@AccountName", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@AccountPrintName", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@AccountGroupId", SqlDbType.Int);
+                //cmd.Parameters.Add("@AddressLine1", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@AddressLine2", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@AddressLine3", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@CityId", SqlDbType.Int);
+                //cmd.Parameters.Add("@StateId", SqlDbType.Int);
+                //cmd.Parameters.Add("@Pincode", SqlDbType.Float);
+                //cmd.Parameters.Add("@Email", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@ContactPerson", SqlDbType.VarChar);
+                //cmd.Parameters.Add("@TelephoneNo", SqlDbType.Float);
+                //cmd.Parameters.Add("@PANNo", SqlDbType.Float);
+
+                //cmd.Parameters["@AccountName"].Value = so.SupplierCompany;
+                //cmd.Parameters["@AccountPrintName"].Value = so.SupplierCompany;
+                //cmd.Parameters["@AccountGroupId"].Value = 10;
+                //cmd.Parameters["@AddressLine1"].Value = so.AddLine1;
+                //cmd.Parameters["@AddressLine2"].Value = so.AddLine2;
+                //cmd.Parameters["@AddressLine3"].Value = so.AddLine3;
+                //if (so.City == "")
+                //{
+                //    cmd.Parameters["@CityId"].Value = -1;
+                //}
+                //else
+                //{
+                //    cmd.Parameters["@CityId"].Value = CityId;
+                //}
+
+                //if (so.State == "")
+                //{
+                //    cmd.Parameters["@StateId"].Value = -1;
+                //}
+                //else
+                //{
+                //    cmd.Parameters["@StateId"].Value = StateId;
+                //}
+                //cmd.Parameters["@Pincode"].Value = so.Pin;
+                //cmd.Parameters["@Email"].Value = so.EmailId;
+                //cmd.Parameters["@ContactPerson"].Value = so.ContactPerson;
+                //cmd.Parameters["@TelephoneNo"].Value = so.PhoneNo1;
+                //cmd.Parameters["@PANNo"].Value = so.PanNo;
+
+                //adpt.SelectCommand = cmd;
+
+                //conn.Open();
+                //cmd.ExecuteNonQuery();
+                //conn.Close();
+
+
+                string str = "Customer Company namely, \" " + co.CustomerCompany + "\" has been Updated to the database";
+                return str;
+            }
+        }
+
+        public DataTable getCustomers()
+        {
+            ds.Clear();
+            cmd.CommandText = "SELECT CustomerId, AccountId, CustomerCompany, ContactPerson FROM Customer";
+            conn.Open();
+            adpt.SelectCommand = cmd;
+
+            adpt.Fill(ds, "Customers");
+            conn.Close();
+            return ds.Tables["Customers"];
+        }
+
+        public CustomerObject getDetailsOfCustomerId(int custId)
+        {
+            cmd.CommandText = "SELECT CustomerId, CustomerCompany, ContactPerson, AddressLine1, AddressLine2, AddressLine3, CityId, Pin, StateId, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, CreditCapacity, Rating, PaymentTerms, Delivery, PaymentMode, FreightTerms, Insurance, Packing, Penalty FROM Supplier where CustomerId=@custid";
+            cmd.Parameters.Add("@custid", SqlDbType.Int);
+            cmd.Parameters["@custid"].Value = custId;
+
+            adpt.SelectCommand = cmd;
+            ds.Tables.Clear();
+
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            co = new CustomerObject();
+
+            co.CustomerId = int.Parse(ds.Tables[0].Rows[0]["CustomerId"].ToString());
+            co.CustomerCompany = ds.Tables[0].Rows[0]["CustomerCompany"].ToString();
+            co.ContactPerson = ds.Tables[0].Rows[0]["ContactPerson"].ToString();
+            co.AddLine1 = ds.Tables[0].Rows[0]["AddressLine1"].ToString();
+            co.AddLine2 = ds.Tables[0].Rows[0]["AddressLine2"].ToString();
+            co.AddLine3 = ds.Tables[0].Rows[0]["AddressLine3"].ToString();
+            if (int.Parse(ds.Tables[0].Rows[0]["CityId"].ToString()) == -1)
+            {
+                co.City = "";
+            }
+            else
+            {
+                int cityId = int.Parse(ds.Tables[0].Rows[0]["CityId"].ToString());
+                cmd.CommandText = "Select CityName From City Where CityId=" + cityId;
+                adpt.SelectCommand = cmd;
+                ds1.Tables.Clear();
+
+                conn.Open();
+                adpt.Fill(ds1);
+                conn.Close();
+
+                co.City = ds1.Tables[0].Rows[0]["CityName"].ToString();
+            }
+            co.Pin = ds.Tables[0].Rows[0]["Pin"].ToString();
+
+            if (int.Parse(ds.Tables[0].Rows[0]["StateId"].ToString()) == -1)
+            {
+                co.State = "";
+            }
+            else
+            {
+                int stateId = int.Parse(ds.Tables[0].Rows[0]["StateId"].ToString());
+                cmd.CommandText = "Select StateName From State Where StateId=" + stateId;
+                adpt.SelectCommand = cmd;
+                ds1.Tables.Clear();
+
+                conn.Open();
+                adpt.Fill(ds1);
+                conn.Close();
+
+                co.State = ds1.Tables[0].Rows[0]["StateName"].ToString();
+            }
+            co.PhoneNo1 = ds.Tables[0].Rows[0]["PhoneNo1"].ToString();
+            co.PhoneNo2 = ds.Tables[0].Rows[0]["PhoneNo2"].ToString();
+            co.Website = ds.Tables[0].Rows[0]["Website"].ToString();
+            co.EmailId = ds.Tables[0].Rows[0]["EmailId"].ToString();
+            co.Fax = ds.Tables[0].Rows[0]["Fax"].ToString();
+            co.VatGst = ds.Tables[0].Rows[0]["VatGst"].ToString();
+            co.TinNo = ds.Tables[0].Rows[0]["TinNo"].ToString();
+            co.VatGstDate = DateTime.Parse(ds.Tables[0].Rows[0]["VatGstDate"].ToString());
+            co.CstNo = ds.Tables[0].Rows[0]["CstNo"].ToString();
+            co.CstDate = DateTime.Parse(ds.Tables[0].Rows[0]["CstDate"].ToString());
+            co.PanNo = ds.Tables[0].Rows[0]["PanNo"].ToString();
+            co.ServiceTaxNo = ds.Tables[0].Rows[0]["ServiceTaxNo"].ToString();
+            co.CreditCapacity = ds.Tables[0].Rows[0]["CreditCapacity"].ToString();
+            //so.Rating=ds.Tables[0].Rows[0]["Rating"].ToString();
+            if (int.Parse(ds.Tables[0].Rows[0]["Rating"].ToString()) == -1)
+            {
+                co.Rating = "";
+            }
+            else
+            {
+                co.Rating = ds.Tables[0].Rows[0]["Rating"].ToString();
+            }
+            co.PaymentTerms = ds.Tables[0].Rows[0]["PaymentTerms"].ToString();
+            co.Delivery = ds.Tables[0].Rows[0]["Delivery"].ToString();
+            co.PaymentMode = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
+            co.FreightTerms = ds.Tables[0].Rows[0]["FreightTerms"].ToString();
+            co.Insurance = ds.Tables[0].Rows[0]["Insurance"].ToString();
+            co.Packing = ds.Tables[0].Rows[0]["Packing"].ToString();
+            co.Penalty = ds.Tables[0].Rows[0]["Penalty"].ToString();
+
+            return co;
+
+        }
+
+        #endregion
+
         public string addTax(string taxName, float Percentage)
         {
 
@@ -1946,6 +3018,5 @@ namespace tradingSoftware
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-
     }
 }

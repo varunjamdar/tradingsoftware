@@ -152,6 +152,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomersFind.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Item.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -220,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="SuppliersFind.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Taxsetup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -275,6 +283,9 @@
       <DependentUpon>CustomerDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomerObject.cs" />
+    <Compile Include="CustomersFind.xaml.cs">
+      <DependentUpon>CustomersFind.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataLogic.cs" />
     <Compile Include="DateTimeConverter.cs" />
     <Compile Include="EncryptionDecryption.cs" />
@@ -370,6 +381,9 @@
       <DependentUpon>SupplierDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="SupplierObject.cs" />
+    <Compile Include="SuppliersFind.xaml.cs">
+      <DependentUpon>SuppliersFind.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TaxObject.cs" />
     <Compile Include="Taxsetup.xaml.cs">
       <DependentUpon>Taxsetup.xaml</DependentUpon>
