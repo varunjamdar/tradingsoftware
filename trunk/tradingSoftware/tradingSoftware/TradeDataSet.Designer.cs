@@ -8459,7 +8459,7 @@ namespace tradingSoftware {
             
             private global::System.Data.DataColumn columnAddressLine2;
             
-            private global::System.Data.DataColumn columnAdderssLine3;
+            private global::System.Data.DataColumn columnAddressLine3;
             
             private global::System.Data.DataColumn columnCityId;
             
@@ -8584,9 +8584,9 @@ namespace tradingSoftware {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn AdderssLine3Column {
+            public global::System.Data.DataColumn AddressLine3Column {
                 get {
-                    return this.columnAdderssLine3;
+                    return this.columnAddressLine3;
                 }
             }
             
@@ -8800,7 +8800,7 @@ namespace tradingSoftware {
                         string ContactPerson, 
                         string AddressLine1, 
                         string AddressLine2, 
-                        string AdderssLine3, 
+                        string AddressLine3, 
                         int CityId, 
                         double Pin, 
                         int StateId, 
@@ -8834,7 +8834,7 @@ namespace tradingSoftware {
                         ContactPerson,
                         AddressLine1,
                         AddressLine2,
-                        AdderssLine3,
+                        AddressLine3,
                         CityId,
                         Pin,
                         StateId,
@@ -8891,7 +8891,7 @@ namespace tradingSoftware {
                 this.columnContactPerson = base.Columns["ContactPerson"];
                 this.columnAddressLine1 = base.Columns["AddressLine1"];
                 this.columnAddressLine2 = base.Columns["AddressLine2"];
-                this.columnAdderssLine3 = base.Columns["AdderssLine3"];
+                this.columnAddressLine3 = base.Columns["AddressLine3"];
                 this.columnCityId = base.Columns["CityId"];
                 this.columnPin = base.Columns["Pin"];
                 this.columnStateId = base.Columns["StateId"];
@@ -8933,8 +8933,8 @@ namespace tradingSoftware {
                 base.Columns.Add(this.columnAddressLine1);
                 this.columnAddressLine2 = new global::System.Data.DataColumn("AddressLine2", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAddressLine2);
-                this.columnAdderssLine3 = new global::System.Data.DataColumn("AdderssLine3", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAdderssLine3);
+                this.columnAddressLine3 = new global::System.Data.DataColumn("AddressLine3", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAddressLine3);
                 this.columnCityId = new global::System.Data.DataColumn("CityId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCityId);
                 this.columnPin = new global::System.Data.DataColumn("Pin", typeof(double), null, global::System.Data.MappingType.Element);
@@ -8999,7 +8999,7 @@ namespace tradingSoftware {
                 this.columnContactPerson.MaxLength = 50;
                 this.columnAddressLine1.MaxLength = 50;
                 this.columnAddressLine2.MaxLength = 50;
-                this.columnAdderssLine3.MaxLength = 50;
+                this.columnAddressLine3.MaxLength = 50;
                 this.columnWebsite.MaxLength = 50;
                 this.columnEmailId.MaxLength = 50;
                 this.columnVatGst.MaxLength = 50;
@@ -13666,17 +13666,17 @@ namespace tradingSoftware {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string AdderssLine3 {
+            public string AddressLine3 {
                 get {
                     try {
-                        return ((string)(this[this.tableSupplier.AdderssLine3Column]));
+                        return ((string)(this[this.tableSupplier.AddressLine3Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'AdderssLine3\' in table \'Supplier\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'AddressLine3\' in table \'Supplier\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSupplier.AdderssLine3Column] = value;
+                    this[this.tableSupplier.AddressLine3Column] = value;
                 }
             }
             
@@ -14086,13 +14086,13 @@ namespace tradingSoftware {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsAdderssLine3Null() {
-                return this.IsNull(this.tableSupplier.AdderssLine3Column);
+            public bool IsAddressLine3Null() {
+                return this.IsNull(this.tableSupplier.AddressLine3Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetAdderssLine3Null() {
-                this[this.tableSupplier.AdderssLine3Column] = global::System.Convert.DBNull;
+            public void SetAddressLine3Null() {
+                this[this.tableSupplier.AddressLine3Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -25173,7 +25173,7 @@ SELECT SaleTaxesId, SaleId, TaxId, Type, Amount FROM SaleTaxes WHERE (SaleTaxesI
             tableMapping.ColumnMappings.Add("ContactPerson", "ContactPerson");
             tableMapping.ColumnMappings.Add("AddressLine1", "AddressLine1");
             tableMapping.ColumnMappings.Add("AddressLine2", "AddressLine2");
-            tableMapping.ColumnMappings.Add("AdderssLine3", "AdderssLine3");
+            tableMapping.ColumnMappings.Add("AddressLine3", "AddressLine3");
             tableMapping.ColumnMappings.Add("CityId", "CityId");
             tableMapping.ColumnMappings.Add("Pin", "Pin");
             tableMapping.ColumnMappings.Add("StateId", "StateId");
@@ -25208,8 +25208,8 @@ SELECT SaleTaxesId, SaleId, TaxId, Type, Amount FROM SaleTaxes WHERE (SaleTaxesI
                 "rson] = @Original_ContactPerson)) AND ((@IsNull_AddressLine1 = 1 AND [AddressLin" +
                 "e1] IS NULL) OR ([AddressLine1] = @Original_AddressLine1)) AND ((@IsNull_Address" +
                 "Line2 = 1 AND [AddressLine2] IS NULL) OR ([AddressLine2] = @Original_AddressLine" +
-                "2)) AND ((@IsNull_AdderssLine3 = 1 AND [AdderssLine3] IS NULL) OR ([AdderssLine3" +
-                "] = @Original_AdderssLine3)) AND ((@IsNull_CityId = 1 AND [CityId] IS NULL) OR (" +
+                "2)) AND ((@IsNull_AddressLine3 = 1 AND [AddressLine3] IS NULL) OR ([AddressLine3" +
+                "] = @Original_AddressLine3)) AND ((@IsNull_CityId = 1 AND [CityId] IS NULL) OR (" +
                 "[CityId] = @Original_CityId)) AND ((@IsNull_Pin = 1 AND [Pin] IS NULL) OR ([Pin]" +
                 " = @Original_Pin)) AND ((@IsNull_StateId = 1 AND [StateId] IS NULL) OR ([StateId" +
                 "] = @Original_StateId)) AND ((@IsNull_PhoneNo1 = 1 AND [PhoneNo1] IS NULL) OR ([" +
@@ -25245,8 +25245,8 @@ SELECT SaleTaxesId, SaleId, TaxId, Type, Amount FROM SaleTaxes WHERE (SaleTaxesI
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AddressLine1", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine1", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AddressLine2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine2", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AddressLine2", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine2", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdderssLine3", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdderssLine3", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdderssLine3", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdderssLine3", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AddressLine3", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine3", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AddressLine3", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine3", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CityId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CityId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Pin", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pin", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -25295,15 +25295,15 @@ SELECT SaleTaxesId, SaleId, TaxId, Type, Amount FROM SaleTaxes WHERE (SaleTaxesI
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Packing", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Packing", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Supplier] ([AccountId], [SupplierCompany], [ContactPerson], [AddressLine1], [AddressLine2], [AdderssLine3], [CityId], [Pin], [StateId], [PhoneNo1], [PhoneNo2], [Website], [EmailId], [Fax], [VatGst], [TinNo], [VatGstDate], [CstNo], [CstDate], [PanNo], [ServiceTaxNo], [CreditCapacity], [Rating], [BusinessType], [PaymentTerms], [Delivery], [PaymentMode], [FreightTerms], [Insurance], [Packing], [Penalty]) VALUES (@AccountId, @SupplierCompany, @ContactPerson, @AddressLine1, @AddressLine2, @AdderssLine3, @CityId, @Pin, @StateId, @PhoneNo1, @PhoneNo2, @Website, @EmailId, @Fax, @VatGst, @TinNo, @VatGstDate, @CstNo, @CstDate, @PanNo, @ServiceTaxNo, @CreditCapacity, @Rating, @BusinessType, @PaymentTerms, @Delivery, @PaymentMode, @FreightTerms, @Insurance, @Packing, @Penalty);
-SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, AddressLine2, AdderssLine3, CityId, Pin, StateId, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, CreditCapacity, Rating, BusinessType, PaymentTerms, Delivery, PaymentMode, FreightTerms, Insurance, Packing, Penalty FROM Supplier WHERE (SupplierId = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Supplier] ([AccountId], [SupplierCompany], [ContactPerson], [AddressLine1], [AddressLine2], [AddressLine3], [CityId], [Pin], [StateId], [PhoneNo1], [PhoneNo2], [Website], [EmailId], [Fax], [VatGst], [TinNo], [VatGstDate], [CstNo], [CstDate], [PanNo], [ServiceTaxNo], [CreditCapacity], [Rating], [BusinessType], [PaymentTerms], [Delivery], [PaymentMode], [FreightTerms], [Insurance], [Packing], [Penalty]) VALUES (@AccountId, @SupplierCompany, @ContactPerson, @AddressLine1, @AddressLine2, @AddressLine3, @CityId, @Pin, @StateId, @PhoneNo1, @PhoneNo2, @Website, @EmailId, @Fax, @VatGst, @TinNo, @VatGstDate, @CstNo, @CstDate, @PanNo, @ServiceTaxNo, @CreditCapacity, @Rating, @BusinessType, @PaymentTerms, @Delivery, @PaymentMode, @FreightTerms, @Insurance, @Packing, @Penalty);
+SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, AddressLine2, AddressLine3, CityId, Pin, StateId, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, CreditCapacity, Rating, BusinessType, PaymentTerms, Delivery, PaymentMode, FreightTerms, Insurance, Packing, Penalty FROM Supplier WHERE (SupplierId = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AccountId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AccountId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SupplierCompany", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SupplierCompany", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContactPerson", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContactPerson", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AddressLine1", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AddressLine2", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdderssLine3", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdderssLine3", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AddressLine3", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine3", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CityId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Pin", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StateId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StateId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -25333,7 +25333,7 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Supplier] SET [AccountId] = @AccountId, [SupplierCompany] = @Suppli" +
                 "erCompany, [ContactPerson] = @ContactPerson, [AddressLine1] = @AddressLine1, [Ad" +
-                "dressLine2] = @AddressLine2, [AdderssLine3] = @AdderssLine3, [CityId] = @CityId," +
+                "dressLine2] = @AddressLine2, [AddressLine3] = @AddressLine3, [CityId] = @CityId," +
                 " [Pin] = @Pin, [StateId] = @StateId, [PhoneNo1] = @PhoneNo1, [PhoneNo2] = @Phone" +
                 "No2, [Website] = @Website, [EmailId] = @EmailId, [Fax] = @Fax, [VatGst] = @VatGs" +
                 "t, [TinNo] = @TinNo, [VatGstDate] = @VatGstDate, [CstNo] = @CstNo, [CstDate] = @" +
@@ -25347,8 +25347,8 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
                 "nal_ContactPerson)) AND ((@IsNull_AddressLine1 = 1 AND [AddressLine1] IS NULL) O" +
                 "R ([AddressLine1] = @Original_AddressLine1)) AND ((@IsNull_AddressLine2 = 1 AND " +
                 "[AddressLine2] IS NULL) OR ([AddressLine2] = @Original_AddressLine2)) AND ((@IsN" +
-                "ull_AdderssLine3 = 1 AND [AdderssLine3] IS NULL) OR ([AdderssLine3] = @Original_" +
-                "AdderssLine3)) AND ((@IsNull_CityId = 1 AND [CityId] IS NULL) OR ([CityId] = @Or" +
+                "ull_AddressLine3 = 1 AND [AddressLine3] IS NULL) OR ([AddressLine3] = @Original_" +
+                "AddressLine3)) AND ((@IsNull_CityId = 1 AND [CityId] IS NULL) OR ([CityId] = @Or" +
                 "iginal_CityId)) AND ((@IsNull_Pin = 1 AND [Pin] IS NULL) OR ([Pin] = @Original_P" +
                 "in)) AND ((@IsNull_StateId = 1 AND [StateId] IS NULL) OR ([StateId] = @Original_" +
                 "StateId)) AND ((@IsNull_PhoneNo1 = 1 AND [PhoneNo1] IS NULL) OR ([PhoneNo1] = @O" +
@@ -25374,7 +25374,7 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
                 "inal_FreightTerms)) AND ((@IsNull_Insurance = 1 AND [Insurance] IS NULL) OR ([In" +
                 "surance] = @Original_Insurance)) AND ((@IsNull_Packing = 1 AND [Packing] IS NULL" +
                 ") OR ([Packing] = @Original_Packing)));\r\nSELECT SupplierId, AccountId, SupplierC" +
-                "ompany, ContactPerson, AddressLine1, AddressLine2, AdderssLine3, CityId, Pin, St" +
+                "ompany, ContactPerson, AddressLine1, AddressLine2, AddressLine3, CityId, Pin, St" +
                 "ateId, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, Cst" +
                 "No, CstDate, PanNo, ServiceTaxNo, CreditCapacity, Rating, BusinessType, PaymentT" +
                 "erms, Delivery, PaymentMode, FreightTerms, Insurance, Packing, Penalty FROM Supp" +
@@ -25385,7 +25385,7 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContactPerson", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContactPerson", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AddressLine1", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AddressLine2", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AdderssLine3", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdderssLine3", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AddressLine3", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine3", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CityId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Pin", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StateId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StateId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -25420,8 +25420,8 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AddressLine1", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine1", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AddressLine2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine2", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AddressLine2", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine2", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AdderssLine3", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdderssLine3", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AdderssLine3", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AdderssLine3", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AddressLine3", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine3", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AddressLine3", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AddressLine3", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CityId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CityId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Pin", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pin", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -25482,7 +25482,7 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, AddressLine2, AdderssLine3, CityId, Pin, StateId, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, CreditCapacity, Rating, BusinessType, PaymentTerms, Delivery, PaymentMode, FreightTerms, Insurance, Packing, Penalty FROM dbo.Supplier";
+            this._commandCollection[0].CommandText = @"SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, AddressLine2, AddressLine3, CityId, Pin, StateId, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, CreditCapacity, Rating, BusinessType, PaymentTerms, Delivery, PaymentMode, FreightTerms, Insurance, Packing, Penalty FROM dbo.Supplier";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -25543,7 +25543,7 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
                     string Original_ContactPerson, 
                     string Original_AddressLine1, 
                     string Original_AddressLine2, 
-                    string Original_AdderssLine3, 
+                    string Original_AddressLine3, 
                     global::System.Nullable<int> Original_CityId, 
                     global::System.Nullable<double> Original_Pin, 
                     global::System.Nullable<int> Original_StateId, 
@@ -25599,13 +25599,13 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_AddressLine2));
             }
-            if ((Original_AdderssLine3 == null)) {
+            if ((Original_AddressLine3 == null)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_AdderssLine3));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_AddressLine3));
             }
             if ((Original_CityId.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
@@ -25816,7 +25816,7 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
                     string ContactPerson, 
                     string AddressLine1, 
                     string AddressLine2, 
-                    string AdderssLine3, 
+                    string AddressLine3, 
                     global::System.Nullable<int> CityId, 
                     global::System.Nullable<double> Pin, 
                     global::System.Nullable<int> StateId, 
@@ -25867,11 +25867,11 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(AddressLine2));
             }
-            if ((AdderssLine3 == null)) {
+            if ((AddressLine3 == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(AdderssLine3));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(AddressLine3));
             }
             if ((CityId.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((int)(CityId.Value));
@@ -26048,7 +26048,7 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
                     string ContactPerson, 
                     string AddressLine1, 
                     string AddressLine2, 
-                    string AdderssLine3, 
+                    string AddressLine3, 
                     global::System.Nullable<int> CityId, 
                     global::System.Nullable<double> Pin, 
                     global::System.Nullable<int> StateId, 
@@ -26080,7 +26080,7 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
                     string Original_ContactPerson, 
                     string Original_AddressLine1, 
                     string Original_AddressLine2, 
-                    string Original_AdderssLine3, 
+                    string Original_AddressLine3, 
                     global::System.Nullable<int> Original_CityId, 
                     global::System.Nullable<double> Original_Pin, 
                     global::System.Nullable<int> Original_StateId, 
@@ -26130,11 +26130,11 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(AddressLine2));
             }
-            if ((AdderssLine3 == null)) {
+            if ((AddressLine3 == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(AdderssLine3));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(AddressLine3));
             }
             if ((CityId.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(CityId.Value));
@@ -26318,13 +26318,13 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
                 this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[39].Value = ((string)(Original_AddressLine2));
             }
-            if ((Original_AdderssLine3 == null)) {
+            if ((Original_AddressLine3 == null)) {
                 this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((string)(Original_AdderssLine3));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((string)(Original_AddressLine3));
             }
             if ((Original_CityId.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
@@ -26536,7 +26536,7 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
                     string ContactPerson, 
                     string AddressLine1, 
                     string AddressLine2, 
-                    string AdderssLine3, 
+                    string AddressLine3, 
                     global::System.Nullable<int> CityId, 
                     global::System.Nullable<double> Pin, 
                     global::System.Nullable<int> StateId, 
@@ -26568,7 +26568,7 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
                     string Original_ContactPerson, 
                     string Original_AddressLine1, 
                     string Original_AddressLine2, 
-                    string Original_AdderssLine3, 
+                    string Original_AddressLine3, 
                     global::System.Nullable<int> Original_CityId, 
                     global::System.Nullable<double> Original_Pin, 
                     global::System.Nullable<int> Original_StateId, 
@@ -26592,7 +26592,7 @@ SELECT SupplierId, AccountId, SupplierCompany, ContactPerson, AddressLine1, Addr
                     string Original_FreightTerms, 
                     string Original_Insurance, 
                     string Original_Packing) {
-            return this.Update(AccountId, SupplierCompany, ContactPerson, AddressLine1, AddressLine2, AdderssLine3, CityId, Pin, StateId, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, CreditCapacity, Rating, BusinessType, PaymentTerms, Delivery, PaymentMode, FreightTerms, Insurance, Packing, Penalty, Original_SupplierId, Original_AccountId, Original_SupplierCompany, Original_ContactPerson, Original_AddressLine1, Original_AddressLine2, Original_AdderssLine3, Original_CityId, Original_Pin, Original_StateId, Original_PhoneNo1, Original_PhoneNo2, Original_Website, Original_EmailId, Original_Fax, Original_VatGst, Original_TinNo, Original_VatGstDate, Original_CstNo, Original_CstDate, Original_PanNo, Original_ServiceTaxNo, Original_CreditCapacity, Original_Rating, Original_BusinessType, Original_Delivery, Original_PaymentMode, Original_FreightTerms, Original_Insurance, Original_Packing, Original_SupplierId);
+            return this.Update(AccountId, SupplierCompany, ContactPerson, AddressLine1, AddressLine2, AddressLine3, CityId, Pin, StateId, PhoneNo1, PhoneNo2, Website, EmailId, Fax, VatGst, TinNo, VatGstDate, CstNo, CstDate, PanNo, ServiceTaxNo, CreditCapacity, Rating, BusinessType, PaymentTerms, Delivery, PaymentMode, FreightTerms, Insurance, Packing, Penalty, Original_SupplierId, Original_AccountId, Original_SupplierCompany, Original_ContactPerson, Original_AddressLine1, Original_AddressLine2, Original_AddressLine3, Original_CityId, Original_Pin, Original_StateId, Original_PhoneNo1, Original_PhoneNo2, Original_Website, Original_EmailId, Original_Fax, Original_VatGst, Original_TinNo, Original_VatGstDate, Original_CstNo, Original_CstDate, Original_PanNo, Original_ServiceTaxNo, Original_CreditCapacity, Original_Rating, Original_BusinessType, Original_Delivery, Original_PaymentMode, Original_FreightTerms, Original_Insurance, Original_Packing, Original_SupplierId);
         }
     }
     

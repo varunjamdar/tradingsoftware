@@ -375,9 +375,9 @@
       <DependentUpon>Taxsetup.xaml</DependentUpon>
     </Compile>
     <Compile Include="TradeDataSet.Designer.cs">
-      <DependentUpon>TradeDataSet.xsd</DependentUpon>
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TradeDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Transaction.cs" />
     <Compile Include="TrialBalance.xaml.cs">
@@ -417,9 +417,9 @@
       <DependentUpon>TradeDataSet.xsd</DependentUpon>
     </None>
     <None Include="TradeDataSet.xsd">
-      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>TradeDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="TradeDataSet.xss">
       <DependentUpon>TradeDataSet.xsd</DependentUpon>
