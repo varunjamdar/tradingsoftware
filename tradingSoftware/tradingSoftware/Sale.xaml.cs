@@ -572,6 +572,10 @@ namespace tradingSoftware
                 {
                     ListViewSaleTaxDetails lvc = (ListViewSaleTaxDetails)listViewTaxDetails.Items[i];
                     dl.placeSale_SaleTaxesTable(Int32.Parse(txtSaleNo.Text), dl.getTaxId(lvc.TaxName), lvc.TaxType, lvc.TaxAmount);
+
+                    //Accounting Entry
+                    dl.addJournalEntry(DateTime.Parse(dtPick_SaleDate.Text), lvc.TaxName, customerName, decimal.Parse(lvc.TaxAmount.ToString()));
+
                 }
                 
                 //Challan
@@ -579,6 +583,10 @@ namespace tradingSoftware
                 {
                     dl.placeSale_ChallanTable(Int32.Parse(txtDeliveryNoteNo.Text), Int32.Parse(txtSaleNo.Text), dtPick_ChallanDate.SelectedDate.Value, cBPaymentMode.Text, Int32.Parse(txtLRNo.Text), txtDespatchThru.Text, txtDestination.Text);
                 }
+
+                //Accounting Entry
+                dl.addJournalEntry(DateTime.Parse(dtPick_SaleDate.Text), "Goods", customerName, decimal.Parse(lblTotalAmount.Content.ToString()));
+
 
                 MessageBox.Show("Sale Placed Successfully","Succeeded",MessageBoxButton.OK,MessageBoxImage.Information);
             

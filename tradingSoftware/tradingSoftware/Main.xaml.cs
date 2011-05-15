@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using System.Threading;
 using System.Windows.Threading;
 using System.Configuration;
+using tradingSoftware;
 
 namespace tradingSoftware
 {
@@ -203,15 +204,15 @@ namespace tradingSoftware
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            timer = new DispatcherTimer();
+            //timer = new DispatcherTimer();
 
-            timer.Interval = TimeSpan.FromSeconds(1);
+            //timer.Interval = TimeSpan.FromSeconds(1);
 
-            timer.Tick += timer1_Tick;
+            //timer.Tick += timer1_Tick;
 
 
 
-            timer.Start();
+            //timer.Start();
 
         }
 
@@ -249,6 +250,12 @@ namespace tradingSoftware
         {
             SupplierDetails suppdetails = new SupplierDetails();
             suppdetails.ShowDialog();
+        }
+
+        private void PurchaseOrderReport_Click(object sender, RoutedEventArgs e)
+        {
+            PurchaseOrderReportSelector selectPOform = new PurchaseOrderReportSelector();
+            selectPOform.ShowDialog();
         }
     }
 }
