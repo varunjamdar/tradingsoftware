@@ -1910,5 +1910,42 @@ namespace tradingSoftware
 
             conn.Close();
         }
+
+        public string addTax(string taxName, float Percentage)
+        {
+
+            //check that there is no duplicate Entry for tax
+            ds=new DataSet();
+            cmd.CommandText = "Select TaxName from Tax";
+            adpt.SelectCommand = cmd;
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                if (dr[0].ToString() == taxName)
+                {
+                    return "Tax is already exist";
+                }
+            }
+            //
+            conn.Open();
+            cmd.CommandText = "Insert into Tax (TaxName,Percentage) values ('" + taxName + "'," + Percentage + ")";
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            return "Tax Added Successfully";
+        }
+
+        public void editTax(string TaxName, float TaxRate)
+        {
+
+            conn.Open();
+            cmd.CommandText = "UPDATE Tax SET Percentage = '" + TaxRate + "' Where TaxName='" + TaxName + "'";
+            adpt.SelectCommand = cmd;
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
     }
 }

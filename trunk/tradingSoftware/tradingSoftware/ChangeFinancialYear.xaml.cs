@@ -37,6 +37,7 @@ namespace tradingSoftware
         private void btnChangeFinancialYear_Click(object sender, RoutedEventArgs e)
         {
 
+            MessageBox.Show("Latest Financial Year Changed", "Succeeded", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
