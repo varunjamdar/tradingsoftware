@@ -102,10 +102,12 @@ namespace tradingSoftware
             if (textBoxCity.Text == "")
             {
                 btnDeleteCity.IsEnabled = false;
+                textBoxCity.IsEnabled = false;
             }
             else
             {
                 btnDeleteCity.IsEnabled = true;
+                textBoxCity.IsEnabled = true;
             }
         }
 

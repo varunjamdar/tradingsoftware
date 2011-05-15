@@ -635,6 +635,7 @@ namespace tradingSoftware
         public int getPurchaseOrderNo()
         {
             conn.Open();
+            ds = new DataSet();
             cmd.CommandText = "SELECT Max(PurchaseOrderId) From PurchaseOrder";
             adpt.SelectCommand = cmd;
             adpt.Fill(ds, "PurchaseOrder");
