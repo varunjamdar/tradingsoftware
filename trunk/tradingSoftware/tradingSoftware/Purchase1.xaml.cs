@@ -510,6 +510,13 @@ namespace tradingSoftware
                 string supplierName = (string)cb_Supplier.Text;
                 
                 int supplierId = dl.getSupplierId(supplierName);
+
+                //Accounting Entry
+                dl.addJournalEntry(DateTime.Parse(dtPick_PODate.Text), supplierName, "Goods", decimal.Parse(lblTotalAmount.Content.ToString()));
+
+
+
+
                 dl.placePurchase_PurchaseTable(Int32.Parse(txtPurchaseNo.Text), Int32.Parse(cbRefPO.Text), DateTime.Parse(dtPick_PODate.Text), supplierId, float.Parse(lblTotalAmount.Content.ToString()), float.Parse(lblTotalAmountTax.Content.ToString()), txtNote.Text);
 
 
@@ -525,10 +532,13 @@ namespace tradingSoftware
                 for (int i = 0; i <= listViewTaxDetails.Items.Count - 1; i++)
                 {
                     ListViewPurchaseTaxDetails lvc = (ListViewPurchaseTaxDetails)listViewTaxDetails.Items[i];
-                    dl.placePurchase_PurchaseTaxesTable(Int32.Parse(txtPurchaseNo.Text), dl.getTaxId(lvc.TaxName), lvc.TaxType, lvc.TaxAmount);
                     
                     //Accounting Entry
                     dl.addJournalEntry(DateTime.Parse(dtPick_PODate.Text), supplierName, lvc.TaxName, decimal.Parse(lvc.TaxAmount.ToString()));
+                    
+                    dl.placePurchase_PurchaseTaxesTable(Int32.Parse(txtPurchaseNo.Text), dl.getTaxId(lvc.TaxName), lvc.TaxType, lvc.TaxAmount);
+                    
+                    
                 }
                 
                 if (cbIsPurchaseOrderCompleted.IsChecked==true)
@@ -537,8 +547,7 @@ namespace tradingSoftware
                 }
                 
 
-                //Accounting Entry
-                dl.addJournalEntry(DateTime.Parse(dtPick_PODate.Text), supplierName, "Goods", decimal.Parse(lblTotalAmount.Content.ToString()));
+                
                 
 
                 MessageBox.Show("Purchase Placed Successfully","Succeeded",MessageBoxButton.OK,MessageBoxImage.Information);

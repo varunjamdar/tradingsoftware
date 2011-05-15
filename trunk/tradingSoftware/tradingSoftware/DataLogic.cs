@@ -221,7 +221,7 @@ namespace tradingSoftware
 
         public void addJournalEntry(DateTime dt, string FromAccountName, string ToAccountName, decimal amount)
         {
-            ds.Clear();
+            ds = new DataSet();
 
             cmd.CommandText = "SELECT AccountID FROM Account WHERE AccountName='" + FromAccountName + "'";
             adpt.SelectCommand = cmd;
@@ -229,12 +229,12 @@ namespace tradingSoftware
 
             adpt.Fill(ds);
             int byAccountID = int.Parse(ds.Tables[0].Rows[0][0].ToString());
-            ds.Clear();
+            ds = new DataSet();
             cmd.CommandText = "SELECT AccountID FROM Account WHERE AccountName='" + ToAccountName + "'";
             adpt.SelectCommand = cmd;
             adpt.Fill(ds);
             int toAccountID = int.Parse(ds.Tables[0].Rows[0][0].ToString());
-            ds.Clear();
+            ds = new DataSet();
 
             cmd.CommandText = "INSERT into [Transactions] (Date, ByAccountID, ToAccountID, Amount) values('" + dt + "'," + byAccountID + "," + toAccountID + "," + amount + ")";
 
