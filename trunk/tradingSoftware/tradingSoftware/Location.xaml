@@ -34,8 +34,8 @@
                     <Label HorizontalAlignment="Right" Margin="0,145,249,165" Name="label4" Width="75">City</Label>
                     <TextBox Height="23" HorizontalAlignment="Right" Margin="0,108,95,0" Name="textBoxState" VerticalAlignment="Top" Width="158" Text="{Binding Path=StateName, Mode=OneWay}" IsEnabled="True" />
                     <TextBox HorizontalAlignment="Right" Margin="0,147,95,168" Name="textBoxCity" Width="158" Text="{Binding Path=State_City/CityName, Mode=OneWay}" TextChanged="textBoxCity_TextChanged" IsEnabled="True" />
-                    <Label Height="28" HorizontalAlignment="Right" Margin="0,106,45,0" Name="labelStateID" VerticalAlignment="Top" Width="46" Content="{Binding Path=StateID}"/>
-                    <Label HorizontalAlignment="Right" Margin="0,142,45,168" Name="labelCityID" Width="46" IsEnabled="True" Content="{Binding Path=State_City/CityID}"/>
+                    <Label Height="28" HorizontalAlignment="Right" Margin="0,106,45,0" Name="labelStateID" VerticalAlignment="Top" Width="46" Content="{Binding Path=StateID}" Visibility="Hidden" />
+                    <Label HorizontalAlignment="Right" Margin="0,142,45,168" Name="labelCityID" Width="46" IsEnabled="True" Content="{Binding Path=State_City/CityID}" Visibility="Hidden" />
                     <Button Height="27.04" HorizontalAlignment="Right" Margin="0,0,95,75" Name="btnDeleteState" VerticalAlignment="Bottom" Width="96" Click="btnDeleteState_Click">Delete State</Button>
                     <Label Height="28" HorizontalAlignment="Left" Margin="25,70,0,0" Name="label3" VerticalAlignment="Top" Width="120">State Names</Label>
                     <Label Height="28" HorizontalAlignment="Left" Margin="171,70,0,0" Name="label5" VerticalAlignment="Top" Width="120">City Names</Label>

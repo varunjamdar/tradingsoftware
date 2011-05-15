@@ -301,12 +301,16 @@ namespace tradingSoftware
                 }
                 */
                 MessageBox.Show("Order Placed Successfully", "Succeeded", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 //--Max Purchase Id
                 //Remaining. cant get max id, reset all
                 //MessageBox.Show(dl.getPurchaseOrderNo().ToString());
                 //txt_PurchaseNo.Text = dl.getPurchaseOrderNo().ToString();
                 //btn_ResetItems_Click();
                 //InitializeComponent();
+                listViewPurchseOrder.Items.Clear();
+                lblTotalAmount.Content = 0;
+                txt_PurchaseNo.Text = dl.getPurchaseOrderNo().ToString();
             }
         }
     }
