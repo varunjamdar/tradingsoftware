@@ -32,6 +32,13 @@ namespace tradingSoftware
         private string creditCapacity;
         private string rating;
         private string businessType;
+        private string paymentTerms;
+        private string delivery;
+        private string paymentMode;
+        private string freightTerms;
+        private string insurance;
+        private string packing;
+        private string penalty;
 
 
         public int CustomerId
@@ -353,6 +360,84 @@ namespace tradingSoftware
             set
             {
                 businessType = value;
+            }
+        }
+
+        public string PaymentTerms
+        {
+            get
+            {
+                return paymentTerms;
+            }
+            set
+            {
+                paymentTerms = value;
+            }
+        }
+        public string Delivery
+        {
+            get
+            {
+                return delivery;
+            }
+            set
+            {
+                delivery = value;
+            }
+        }
+        public string PaymentMode
+        {
+            get
+            {
+                return paymentMode;
+            }
+            set
+            {
+                paymentMode = value;
+            }
+        }
+        public string FreightTerms
+        {
+            get
+            {
+                return freightTerms;
+            }
+            set
+            {
+                freightTerms = value;
+            }
+        }
+        public string Insurance
+        {
+            get
+            {
+                return insurance;
+            }
+            set
+            {
+                insurance = value;
+            }
+        }
+        public string Packing
+        {
+            get
+            {
+                return packing;
+            }
+            set
+            {
+                packing = value;
+            }
+        }
+        public string Penalty
+        {
+            get
+            {
+                return penalty;
+            }
+            set
+            {
+                penalty = value;
             }
         }
     }

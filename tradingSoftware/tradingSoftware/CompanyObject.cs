@@ -34,7 +34,8 @@ namespace tradingSoftware
         private string servicetaxno;
         private string imagepath;
 
-        public int CompanyId {
+        public int CompanyId
+        {
             get
             {
                 return this.companyId;
@@ -51,7 +52,8 @@ namespace tradingSoftware
                 }
             }
         }
-        public string CompanyName {
+        public string CompanyName
+        {
             get
             {
                 return this.companyName;
@@ -66,12 +68,13 @@ namespace tradingSoftware
                 {
                     this.companyName = value;
                 }
-            }             
+            }
         }
-        public string CompanyPrintName {
+        public string CompanyPrintName
+        {
             get
             {
-                return this.companyPrintName; 
+                return this.companyPrintName;
             }
             set
             {
@@ -85,7 +88,8 @@ namespace tradingSoftware
                 }
             }
         }
-        public DateTime FyStartDate {
+        public DateTime FyStartDate
+        {
             get
             {
                 return this.fyStartDate;
@@ -95,7 +99,8 @@ namespace tradingSoftware
                 this.fyStartDate = value;
             }
         }
-        public DateTime BooksCommencing {
+        public DateTime BooksCommencing
+        {
             get
             {
                 return this.booksCommencing;
@@ -105,7 +110,8 @@ namespace tradingSoftware
                 this.booksCommencing = value;
             }
         }
-        public string AddLine1 {
+        public string AddLine1
+        {
             get
             {
                 return this.addline1;
@@ -122,7 +128,8 @@ namespace tradingSoftware
                 }
             }
         }
-        public string AddLine2 {
+        public string AddLine2
+        {
             get
             {
                 return this.addline2;
@@ -132,7 +139,8 @@ namespace tradingSoftware
                 this.addline2 = value;
             }
         }
-        public string AddLine3 {
+        public string AddLine3
+        {
             get
             {
                 return this.addline3;
@@ -142,7 +150,8 @@ namespace tradingSoftware
                 this.addline3 = value;
             }
         }
-        public string City {
+        public string City
+        {
             get
             {
                 return this.city;
@@ -152,7 +161,8 @@ namespace tradingSoftware
                 this.city = value;
             }
         }
-        public int Pin {
+        public int Pin
+        {
             get
             {
                 return this.pin;
@@ -169,7 +179,8 @@ namespace tradingSoftware
                 }
             }
         }
-        public string State {
+        public string State
+        {
             get
             {
                 return this.state;
@@ -186,7 +197,8 @@ namespace tradingSoftware
                 }
             }
         }
-        public string Country {
+        public string Country
+        {
             get
             {
                 return this.country;
@@ -203,7 +215,8 @@ namespace tradingSoftware
                 }
             }
         }
-        public string PhoneNo1 {
+        public string PhoneNo1
+        {
             get
             {
                 return this.phoneno1;
@@ -220,7 +233,8 @@ namespace tradingSoftware
                 }
             }
         }
-        public string PhoneNo2 {
+        public string PhoneNo2
+        {
             get
             {
                 return this.phoneno2;
@@ -230,7 +244,8 @@ namespace tradingSoftware
                 this.phoneno2 = value;
             }
         }
-        public string Website {
+        public string Website
+        {
             get
             {
                 return this.website;
@@ -240,7 +255,8 @@ namespace tradingSoftware
                 this.website = value;
             }
         }
-        public string EmailId {
+        public string EmailId
+        {
             get
             {
                 return this.emailId;
@@ -250,7 +266,8 @@ namespace tradingSoftware
                 this.emailId = value;
             }
         }
-        public string Fax {
+        public string Fax
+        {
             get
             {
                 return this.fax;
@@ -260,7 +277,8 @@ namespace tradingSoftware
                 this.fax = value;
             }
         }
-        public string VatGst {
+        public string VatGst
+        {
             get
             {
                 return this.vatgst;
@@ -270,7 +288,8 @@ namespace tradingSoftware
                 this.vatgst = value;
             }
         }
-        public string TinNo {
+        public string TinNo
+        {
             get
             {
                 return this.tinno;
@@ -280,7 +299,8 @@ namespace tradingSoftware
                 this.tinno = value;
             }
         }
-        public DateTime VatGstDate {
+        public DateTime VatGstDate
+        {
             get
             {
                 return this.vstgstdate;
@@ -294,10 +314,11 @@ namespace tradingSoftware
                 else
                 {
                     this.vstgstdate = value;
-                } 
+                }
             }
         }
-        public string CstNo {
+        public string CstNo
+        {
             get
             {
                 return this.cstno;
@@ -307,24 +328,26 @@ namespace tradingSoftware
                 this.cstno = value;
             }
         }
-        public DateTime CstDate {
+        public DateTime CstDate
+        {
             get
             {
                 return this.cstdate;
             }
             set
             {
-                if (value==null)
+                if (value == null)
                 {
                     this.cstdate = DateTime.MinValue;
                 }
                 else
                 {
                     this.cstdate = value;
-                }                
+                }
             }
         }
-        public string PanNo {
+        public string PanNo
+        {
             get
             {
                 return this.panno;
@@ -341,7 +364,8 @@ namespace tradingSoftware
                 }
             }
         }
-        public string ServiceTaxNo {
+        public string ServiceTaxNo
+        {
             get
             {
                 return this.servicetaxno;
@@ -358,7 +382,8 @@ namespace tradingSoftware
                 }
             }
         }
-        public string ImagePath {
+        public string ImagePath
+        {
             get
             {
                 return this.imagepath;

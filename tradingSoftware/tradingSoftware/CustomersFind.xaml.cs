@@ -16,32 +16,33 @@ using System.Data;
 using Microsoft.Windows.Controls.Primitives;
 using Microsoft.Windows.Controls;
 
+
 namespace tradingSoftware
 {
     /// <summary>
-    /// Interaction logic for AccountsFind.xaml
+    /// Interaction logic for CustomersFind.xaml
     /// </summary>
-    public partial class AccountsFind : Window
+    public partial class CustomersFind : Window
     {
-        private DataLogic dl =null;
-        private AccountSetup Parent;
-        private int AccountId;
+        private DataLogic dl = null;
+        private CustomerDetails Parent;
+        private int CustomerId;
 
-        public AccountsFind(AccountSetup Account)
+        public CustomersFind(CustomerDetails Customers)
         {
             InitializeComponent();
 
-            Parent = Account;
+            Parent = Customers;
             dl = new DataLogic();
-            this.AccountGrid.DataContext = dl.getAccounts().DefaultView;
+            this.CustomersGrid.DataContext = dl.getCustomers().DefaultView;
         }
 
-        private void AccountGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void CustomersGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
             {
                 Helper helperClass = new Helper();
-                helperClass.HelperDataGrid = this.AccountGrid;
+                helperClass.HelperDataGrid = this.CustomersGrid;
 
                 DependencyObject dep = (DependencyObject)e.OriginalSource;
 
@@ -73,7 +74,7 @@ namespace tradingSoftware
 
                     DataGridRow row = dep as DataGridRow;
 
-                    
+
                     int rowIndex = helperClass.FindRowIndex(row);
 
                     //ClickedItemDisplay.Text = string.Format("Cell clicked [{0}, {1}] = {2}", rowIndex, columnIndex, value.ToString());
@@ -82,13 +83,13 @@ namespace tradingSoftware
                     object valueToShow = helperClass.ExtractBoundValue(row, dgc);
                     //MessageBox.Show(valueToShow.ToString());
                     // ItemCode = int.Parse(valueToShow.ToString());
-                    AccountId = int.Parse(valueToShow.ToString());
+                    CustomerId = int.Parse(valueToShow.ToString());
 
                     //DataGridCell dgc1 = helperClass.GetCell(rowIndex, 1);
                     //object valueToShow1 = helperClass.ExtractBoundValue(row, dgc1);
                     //ItemName = valueToShow1.ToString();
 
-                    Parent.populate(AccountId);
+                    Parent.populate(CustomerId);
                     this.Close();
                 }
             }
