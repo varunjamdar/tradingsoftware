@@ -142,6 +142,17 @@ namespace tradingSoftware
                 {
                     dl.makeReceipt(ReceiptId, SaleId, cbReceiptMode.SelectedValue.ToString(), receiptDate, TotalAmount, txtNote.Text);
 
+                    //Accounting Entry
+                    dl.addJournalEntry(receiptDate, cbCustomer.SelectedValue.ToString(), cbReceiptMode.SelectedValue.ToString(), decimal.Parse(lblItemAmount.Content.ToString()));
+
+                    Dictionary<string,float> taxes = dl.getTaxesOfSale(SaleId);
+
+                    foreach (KeyValuePair<string,float> kvp in taxes)
+                    {
+                        dl.addJournalEntry(receiptDate, cbCustomer.SelectedValue.ToString(), kvp.Key, decimal.Parse(kvp.Value.ToString()));
+                    }
+
+
                     //Clear All Field
                     lblReceiptId.Content = dl.getReceiptId().ToString();
                     cbReceiptMode.SelectedIndex = -1;

@@ -227,8 +227,6 @@ namespace tradingSoftware
             adpt.SelectCommand = cmd;
             conn.Open();
 
-
-            conn.Open();
             adpt.Fill(ds);
             int byAccountID = int.Parse(ds.Tables[0].Rows[0][0].ToString());
             ds.Clear();
@@ -671,6 +669,24 @@ namespace tradingSoftware
         {
             ds.Clear();
             cmd.CommandText = "SELECT T.TaxName, PT.Amount FROM PurchaseTaxes AS PT INNER JOIN Tax AS T ON PT.TaxId = T.TaxID WHERE (PT.PurchaseId = "+purchaseId+")";
+            conn.Open();
+            adpt.Fill(ds);
+            conn.Close();
+
+            Dictionary<string, float> taxes = new Dictionary<string, float>();
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                taxes.Add(dr[0].ToString(), float.Parse(dr[1].ToString()));
+            }
+
+            return taxes;
+        }
+
+        public Dictionary<string, float> getTaxesOfSale(int saleId)
+        {
+            ds.Clear();
+            cmd.CommandText = "SELECT T.TaxName, ST.Amount FROM SaleTaxes AS ST INNER JOIN Tax AS T ON ST.TaxId = T.TaxID WHERE (ST.SaleId = " + saleId + ")";
             conn.Open();
             adpt.Fill(ds);
             conn.Close();

@@ -1,0 +1,14 @@
+﻿<Window x:Class="tradingSoftware.PurchaseOrderReportSelector"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="PurchaseOrderReportSelector" Height="384" Width="496">
+    <Grid Name="GridPOSelect">
+        <Label Height="28" HorizontalAlignment="Left" Margin="140,99,0,0" Name="label1" VerticalAlignment="Top" Width="62" FontSize="14">Supplier</Label>
+        <ComboBox Height="23" Margin="232,101,122,0" Name="cBSupplier" VerticalAlignment="Top" ItemsSource="{Binding}" DisplayMemberPath="SupplierCompany" IsSynchronizedWithCurrentItem="True" FontSize="14" />
+        <Label Height="28" HorizontalAlignment="Left" Margin="73,143,0,0" Name="label2" VerticalAlignment="Top" Width="129" FontSize="14">Purchase Order No</Label>
+        <ComboBox Height="23" Margin="232,145,122,0" Name="cBPOId" VerticalAlignment="Top" ItemsSource="{Binding Path=Supplier_PurchaseOrder}" DisplayMemberPath="PurchaseOrderId" IsSynchronizedWithCurrentItem="True" FontSize="14" />
+        <Button Height="23" Margin="127,0,0,95" Name="btnView" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75" Click="btnView_Click" FontSize="14">View</Button>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,143,95" Name="btnClose" VerticalAlignment="Bottom" Width="75" Click="btnClose_Click" FontSize="14">Close</Button>
+        <Label FontSize="25" Foreground="Blue" Height="47" Margin="23,15,188,0" Name="label3" VerticalAlignment="Top">View Purchase Order</Label>
+    </Grid>
+</Window>
