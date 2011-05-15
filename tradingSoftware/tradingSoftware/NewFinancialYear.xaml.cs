@@ -82,8 +82,6 @@ namespace tradingSoftware
                     sourcePath = Environment.CurrentDirectory + @"/Trade_log.ldf";
                     destFile = targetPath + @"/Trade_log.ldf";
                     System.IO.File.Copy(sourceFile, destFile, true);
-                    DataLogic dl = new DataLogic();
-                    dl.truncateDatabase();
                     System.Windows.MessageBox.Show("Financial Year Changed Successfully", "Succeed", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
@@ -92,7 +90,8 @@ namespace tradingSoftware
                 }
 
                 //Truncate the current database
-
+                //DataLogic dl = new DataLogic();
+                //dl.truncateDatabase();
             }
         }
 

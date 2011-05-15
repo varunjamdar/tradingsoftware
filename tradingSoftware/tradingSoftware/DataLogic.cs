@@ -1862,8 +1862,53 @@ namespace tradingSoftware
 
         public void truncateDatabase()
         {
+            conn.Open();
 
+            cmd.CommandText = "Truncate Table Transactions";
+            cmd.ExecuteNonQuery();
 
+            cmd.CommandText = "Truncate Table Payment";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "Truncate Table PurchaseItems";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "Truncate Table PurchaseTaxes";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "Truncate Table PurchaseOrderItems";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "Delete from PurchaseOrder where ";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "Truncate Table Purchase";
+            cmd.ExecuteNonQuery();
+
+            
+
+            
+
+            
+
+            cmd.CommandText = "Truncate Table Receipt";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "Truncate Table Challan";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "Truncate Table SaleTaxes";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "Truncate Table SaleItems";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "Truncate Table Sale";
+            cmd.ExecuteNonQuery();
+
+            
+
+            conn.Close();
         }
     }
 }
