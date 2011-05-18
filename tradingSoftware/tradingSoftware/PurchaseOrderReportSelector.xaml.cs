@@ -42,7 +42,7 @@ namespace tradingSoftware
             }
             catch (Exception ex)
             {
-                MessageBox.Show("");
+                MessageBox.Show("Select Purchase Order ID !!");
             }
         }
 
